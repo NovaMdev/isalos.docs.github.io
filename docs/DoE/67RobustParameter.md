@@ -44,7 +44,7 @@ Numerical values should be specified in the input datasheet. Minimum of three co
 {: .no_toc}
 
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. These designs can only be blocked on replicates, so the available options include 1 and the selected `Number of Replicates`. |
 |**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
 |**Time-based RNG Seed**|If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.|
 |**RNG Seed**|Select manually the random generated number seed if required.|
@@ -113,4 +113,4 @@ The output list of experiments is generated for the two control factors and one 
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on January 2025_
+_Instructions last updated on November 2025_

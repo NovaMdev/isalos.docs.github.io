@@ -624,6 +624,7 @@ All variables must be specified in the datasheet. Numerical values are required 
 |**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
 |**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
 
@@ -660,9 +661,10 @@ The input datasheet must include one binary dependent variable, which will serve
 1.	Select the `Scale Parameter Method` [10].
 1.	Specify the `Value` [11] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [15] and moving columns between the `Excluded Columns` [12] and `Factors` [13] and `Covariates` [14] lists.
-1.	Select your preferred option to define the model you want to analyze [16].
-1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
-1.	Click on the `Execute` button [18] to perform the Binary Logistic Classification method.
+1.	`Specify Reference Levels` [16] for the categorical factors.
+1.	Select your preferred option to define the model you want to analyze [17].
+1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.	Click on the `Execute` button [19] to perform the Binary Logistic Classification method.
 <div style="text-align: center;">
 <img src="images/GLM/BinLogGLM_Configuration.png" alt="binlogGLM-config" width="400" height="300" class="img-responsive">
 </div>
@@ -713,6 +715,7 @@ All variables must be specified in the datasheet. Numerical values are required 
 |**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
 |**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
 
@@ -749,9 +752,10 @@ The input datasheet must include one binary dependent variable, which will serve
 1.	Select the `Scale Parameter Method` [10].
 1.	Specify the `Value` [11] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [15] and moving columns between the `Excluded Columns` [12] and `Factors` [13] and `Covariates` [14] lists.
-1.	Select your preferred option to define the model you want to analyze [16].
-1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
-1.	Click on the `Execute` button [18] to perform the Probit Classification method.
+1.	`Specify Reference Levels` [16] for the categorical factors.
+1.	Select your preferred option to define the model you want to analyze [17].
+1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.	Click on the `Execute` button [19] to perform the Probit Classification method.
 <div style="text-align: center;">
 <img src="images/GLM/ProbitGLM_Configuration.png" alt="probitGLM-config" width="400" height="300" class="img-responsive">
 </div>
@@ -799,6 +803,7 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
 |**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
 
@@ -835,9 +840,10 @@ The input datasheet must include one binary dependent variable, which will serve
 1.	Select the `Scale Parameter Method` [10].
 1.	Specify the `Value` [11] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [15] and moving columns between the `Excluded Columns` [12] and `Factors` [13] and `Covariates` [14] lists.
-1.	Select your preferred option to define the model you want to analyze [16].
-1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
-1.	Click on the `Execute` button [18] to perform the Complementary Log-Log Classification method.
+1.	`Specify Reference Levels` [16] for the categorical factors.
+1.	Select your preferred option to define the model you want to analyze [17].
+1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.	Click on the `Execute` button [19] to perform the Complementary Log-Log Classification method.
 <div style="text-align: center;">
 <img src="images/GLM/CLogLogGLM_Configuration.png" alt="cloglogGLM-config" width="400" height="300" class="img-responsive">
 </div>
@@ -883,6 +889,7 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
 |**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
 
@@ -918,9 +925,10 @@ The input datasheet must include one target variable with ordered categories, an
 1.	Select the `Scale Parameter Method` [9].
 1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
-1.	Select your preferred option to define the model you want to analyze [15].
-1.	If the `Custom` option is selected, specify the `Formula` [16] for the analysis.
-1.	Click on the `Execute` button [17] to perform the Ordinal Logistic Classification method.
+1.	`Specify Reference Levels` [15] for the categorical factors.
+1.	Select your preferred option to define the model you want to analyze [16].
+1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
+1.	Click on the `Execute` button [18] to perform the Ordinal Logistic Classification method.
 <div style="text-align: center;">
 <img src="images/GLM/OrdLogGLM_Configuration.png" alt="ordlogGLM-config" width="400" height="300" class="img-responsive">
 </div>
@@ -966,6 +974,7 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
 |**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
 
@@ -1001,9 +1010,10 @@ The input datasheet must include one target variable with ordered categories, an
 1.	Select the `Scale Parameter Method` [9].
 1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
-1.	Select your preferred option to define the model you want to analyze [15].
-1.	If the `Custom` option is selected, specify the `Formula` [16] for the analysis.
-1.	Click on the `Execute` button [17] to perform the Ordinal Probit Classification method.
+1.	`Specify Reference Levels` [15] for the categorical factors.
+1.	Select your preferred option to define the model you want to analyze [16].
+1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
+1.	Click on the `Execute` button [18] to perform the Ordinal Probit Classification method.
 <div style="text-align: center;">
 <img src="images/GLM/OrdProbitGLM_Configuration.png" alt="ordprobitGLM-config" width="400" height="300" class="img-responsive">
 </div>
@@ -1057,6 +1067,7 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
 |**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
 
@@ -1092,9 +1103,10 @@ The input datasheet must include one nominal dependent variable with three or mo
 1.	Select the `Scale Parameter Method` [8].
 1.	Specify the `Value` [9] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [13] and moving columns between the `Excluded Columns` [10] and `Factors` [11] and `Covariates` [12] lists.
-1.	Select your preferred option to define the model you want to analyze [14].
-1.	If the `Custom` option is selected, specify the `Formula` [15] for the analysis.
-1.	Click on the `Execute` button [16] to perform the Multinomial Logistic Classification method.
+1.	`Specify Reference Levels` [14] for the categorical factors.
+1.	Select your preferred option to define the model you want to analyze [15].
+1.	If the `Custom` option is selected, specify the `Formula` [16] for the analysis.
+1.	Click on the `Execute` button [17] to perform the Multinomial Logistic Classification method.
 <div style="text-align: center;">
 <img src="images/GLM/MultLogGLM_Configuration.png" alt="multlogGLM-config" width="400" height="300" class="img-responsive">
 </div>
@@ -1169,6 +1181,7 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
 |**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
 
@@ -1206,9 +1219,10 @@ The dataset must include a binary target variable suitable for modeling with bin
 1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [11].
 1.	Select the method used to estimate the `covariance matrix` [12] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [17] and moving columns between the `Excluded Columns` [13] and `Subjects` [14] and `Factors` [15] and `Covariates `[16] lists.
-1.	Select your preferred option to define the model you want to analyze [18].
-1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
-1.	Click on the `Execute` button [20] to perform the Binary Logistic Classification method.
+1. `Specify Reference Levels` [18] for the categorical factors.
+1.	Select your preferred option to define the model you want to analyze [19].
+1.	If the `Custom` option is selected, specify the `Formula` [20] for the analysis.
+1.	Click on the `Execute` button [21] to perform the Binary Logistic Classification method.
 <div style="text-align: center;">
 <img src="images/GEE/BinLogGEE_Configuration.png" alt="binlogGEE-config" width="400" height="300" class="img-responsive">
 </div>
@@ -1247,6 +1261,7 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
 |**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
 
@@ -1284,9 +1299,10 @@ The dataset must include a binary target variable suitable for modeling with bin
 1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [11].
 1.	Select the method used to estimate the `covariance matrix` [12] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [17] and moving columns between the `Excluded Columns` [13] and `Subjects` [14] and `Factors` [15] and `Covariates `[16] lists.
-1.	Select your preferred option to define the model you want to analyze [18].
-1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
-1.	Click on the `Execute` button [20] to perform the Probit Classification method.
+1. `Specify Reference Levels` [18] for the categorical factors.
+1.	Select your preferred option to define the model you want to analyze [19].
+1.	If the `Custom` option is selected, specify the `Formula` [20] for the analysis.
+1.	Click on the `Execute` button [21] to perform the Probit Classification method.
 <div style="text-align: center;">
 <img src="images/GEE/ProbitGEE_Configuration.png" alt="probitGEE-config" width="400" height="300" class="img-responsive">
 </div>
@@ -1325,6 +1341,7 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
 |**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
 
@@ -1362,9 +1379,10 @@ The dataset must include a binary outcome variable coded as 0 and 1, suitable fo
 1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [11].
 1.	Select the method used to estimate the `covariance matrix` [12] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [17] and moving columns between the `Excluded Columns` [13] and `Subjects` [14] and `Factors` [15] and `Covariates `[16] lists.
-1.	Select your preferred option to define the model you want to analyze [18].
-1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
-1.	Click on the `Execute` button [20] to perform the Complementary Log-Log Classification method.
+1. `Specify Reference Levels` [18] for the categorical factors.
+1.	Select your preferred option to define the model you want to analyze [19].
+1.	If the `Custom` option is selected, specify the `Formula` [20] for the analysis.
+1.	Click on the `Execute` button [21] to perform the Complementary Log-Log Classification method.
 <div style="text-align: center;">
 <img src="images/GEE/CLogLogGEE_Configuration.png" alt="cloglogGEE-config" width="400" height="300" class="img-responsive">
 </div>
@@ -1402,6 +1420,7 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
 |**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
 
@@ -1438,9 +1457,10 @@ All variables must be specified in the datasheet. The dependent variable must be
 1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [10].
 1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
-1.	Select your preferred option to define the model you want to analyze [17].
-1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
-1.	Click on the `Execute` button [19] to perform the Ordinal Logistic Classification method.
+1. `Specify Reference Levels` [17] for the categorical factors.
+1.	Select your preferred option to define the model you want to analyze [18].
+1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.	Click on the `Execute` button [20] to perform the Ordinal Logistic Classification method.
 <div style="text-align: center;">
 <img src="images/GEE/OrdLogGEE_Configuration.png" alt="ordlogGEE-config" width="400" height="300" class="img-responsive">
 </div>
@@ -1478,6 +1498,7 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**M**|In the M-Dependent correlation structure, M specifies the maximum number of consecutive observations within each cluster that are assumed to be correlated, with correlations set to zero for observations more than M time points apart. M must be an integer in the range from 1 to (number of within-subject observations – 1).|
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
 |**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
 
@@ -1514,9 +1535,10 @@ All variables must be specified in the datasheet. The dependent variable must be
 1.	Select the `working correlation Structure` and specify the value of `M` if you select M-Dependent as the correlation structure. [10].
 1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
-1.	Select your preferred option to define the model you want to analyze [17].
-1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
-1.	Click on the `Execute` button [19] to perform the Ordinal Probit Classification method.
+1. `Specify Reference Levels` [17] for the categorical factors.
+1.	Select your preferred option to define the model you want to analyze [18].
+1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.	Click on the `Execute` button [20] to perform the Ordinal Probit Classification method.
 <div style="text-align: center;">
 <img src="images/GEE/OrdProbitGEE_Configuration.png" alt="ordprobitGEE-config" width="400" height="300" class="img-responsive">
 </div>

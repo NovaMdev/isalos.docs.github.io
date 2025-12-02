@@ -48,9 +48,9 @@ Numerical values should be specified in the input datasheet. Halton design is ap
 ### Configuration
 {: .no_toc}
 
-| **Number of Center Points** | Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+| **Number of Center Points per Block** | Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. These designs can only be blocked on replicates, so the available options include 1 and the selected `Number of Replicates`. |
 | **Number of Samples**| Select manually the `Number of Samples` to be included in the output list of experiments. The lowest value that can get is 1.|
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
@@ -75,7 +75,7 @@ In the input datasheet minimum requirement is to specify one factor (column) and
 ##### Configuration
 {: .no_toc}
 1. Select `DOE` $$\rightarrow$$ `Space Filling` $$\rightarrow$$ `Halton Design`.
-1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
+1. Select the `Number of Center Points per Block` [1] to be generated in the output list of experiments.
 1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
 1. Select the `Number of Blocks` [3]. 
 1. Select the `Number of Samples` [4]  to be included in the output list of experiments. The lowest value that can get is 1.
@@ -140,9 +140,9 @@ Numerical values should be specified in the input datasheet. LHS is applied when
 ### Configuration
 {: .no_toc}
 
-| **Number of Center Points** | Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+| **Number of Center Points per Block** | Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. These designs can only be blocked on replicates, so the available options include 1 and the selected `Number of Replicates`. |
 | **Number of Samples**| Select manually the `Number of Samples` to be included in the output list of experiments. The lowest value that can get is 1.|
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
@@ -167,7 +167,7 @@ In the input datasheet minimum requirement is to specify one factor (column) and
 ##### Configuration
 {: .no_toc}
 1. Select `DOE` $$\rightarrow$$ `Space Filling` $$\rightarrow$$ `LHS`.
-1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
+1. Select the `Number of Center Points per Block` [1] to be generated in the output list of experiments.
 1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
 1. Select the `Number of Blocks` [3]. 
 1. Select the `Number of Samples` [4]  to be included in the output list of experiments. The lowest value that can get is 1.
@@ -225,9 +225,9 @@ Numerical values should be specified in the input datasheet. Space-Filling LHS  
 ### Configuration
 {: .no_toc}
 
-| **Number of Center Points** | Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+| **Number of Center Points per Block** | Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. These designs can only be blocked on replicates, so the available options include 1 and the selected `Number of Replicates`. |
 | **Number of Samples**| Select manually the `Number of Samples` to be included in the output list of experiments. The lowest value that can get is 1.|
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
@@ -252,7 +252,7 @@ In the input datasheet minimum requirement is to specify one factor (column) and
 ##### Configuration
 {: .no_toc}
 1. Select `DOE` $$\rightarrow$$ `Space Filling` $$\rightarrow$$ `LHS Space Filling`.
-1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
+1. Select the `Number of Center Points per Block` [1] to be generated in the output list of experiments.
 1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
 1. Select the `Number of Blocks` [3]. 
 1. Select the `Number of Samples` [4]  to be included in the output list of experiments. The lowest value that can get is 1.
@@ -302,9 +302,9 @@ Numerical values should be specified in the input datasheet. Sukharev grid is ap
 ### Configuration
 {: .no_toc}
 
-|**Number of Center Points**|Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation.|
+|**Number of Center Points per Block**|Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation.|
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. These designs can only be blocked on replicates, so the available options include 1 and the selected `Number of Replicates`. |
 |**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
 |**Time-based RNG Seed**|If the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.|
 |**RNG Seed**|Select manually the random generated number seed if required.|
@@ -330,7 +330,7 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 {: .no_toc}
 
 1. Select `DOE` $$\rightarrow$$ `Space Filling` $$\rightarrow$$ `Sukharev Grid`.
-1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
+1. Select the `Number of Center Points per Block` [1] to be generated in the output list of experiments.
 1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
 1. Select the `Number of Blocks` [3]. 
 1. Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
@@ -371,9 +371,9 @@ Numerical values should be specified in the input datasheet. Uniform Design is a
 ### Configuration
 {: .no_toc}
 
-|**Number of Center Points**|Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation.|
+|**Number of Center Points per Block**|Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation.|
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. These designs can only be blocked on replicates, so the available options include 1 and the selected `Number of Replicates`. |
 |**Number of Samples**| Select manually the `Number of Samples` to be included in the resulting design. The lowest value it can get is 1. |
 |**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
 |**Time-based RNG Seed**|If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.|
@@ -398,7 +398,7 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 ##### Configuration
 {: .no_toc}
 1. Select `DOE` $$\rightarrow$$ `Space Filling` $$\rightarrow$$ `Uniform`.
-1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
+1. Select the `Number of Center Points per Block` [1] to be generated in the output list of experiments.
 1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
 1. Select the `Number of Blocks` [3]. 
 1. Select the `Number of Samples` [4] to be generated. The lowest value that can be set is 1.
@@ -437,4 +437,4 @@ A list of 14 experiments (combinations) is generated in the output datasheet alo
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on January 2025_
+_Instructions last updated on November 2025_

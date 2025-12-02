@@ -52,9 +52,9 @@ Numerical values should be specified in the input datasheet. The minimum require
 ### Configuration
 {: .no_toc}
 
-| **Number of Center Points** | Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+| **Number of Center Points per Block** | Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**|Select from the list of available options the Number of Blocks. Available options depend on the selected number of factors and the specified number of replicates.|
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 | **Time-based RNG Seed** | If randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
 | **RNG Seed** | Select manually the random generated number seed if required. |
@@ -81,12 +81,12 @@ In the input datasheet minimum requirement is to specify two factors (columns) a
 {: .no_toc }
 
 1.   Select `DOE` $$\rightarrow$$ `Factorial` $$\rightarrow$$ `Full Factorial`.
-1.   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-1.   Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
-1.   Select the `Number of Blocks` [3]. 
-1.   Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
-1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
-1.   Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
+1.   Select the columns by clicking on the arrow buttons [3] and moving columns between the `Excluded Columns` [1] and `Included Columns` [2] lists.
+1.   Select the `Number of Center Points per Block` [4] to be generated in the output list of experiments.
+1.   Select the `Number of Replicates` [5]. The lowest value that can be set is 1.
+1.   Select the `Number of Blocks` [6]. 
+1.   Select/tick if required the `Random Standard order` [7] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [8] or by manually setting a value [9].
 1.   Click on the `Execute` button [10] to perform Full Factorial design method.
 
 <div style="text-align: center;">
@@ -120,4 +120,4 @@ The output list of experiments is generated for the two factors outlining a list
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on January 2025_
+_Instructions last updated on November 2025_

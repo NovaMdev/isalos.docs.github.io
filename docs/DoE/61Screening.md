@@ -34,18 +34,19 @@ Use the `Plackett Burman` designs by browsing in the top ribbon:
 
 ### Input
 {: .no_toc}
-Numerical values should be specified in the input datasheet. Plackett-Burman design is applied when at least four  factors (columns) are specified along with exactly two levels/values (rows).
+Numerical values should be specified in the input datasheet. Plackett-Burman design is applied when at least three factors (columns) are specified along with exactly two levels/values (rows).
 
 ### Configuration
 {: .no_toc}
 
-|**Number of Center Points**|Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation.|
+|**Number of Center Points per Block**|Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation.|
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Plackett Burman designs can only be blocked on replicates, meaning each replicate defines a block, otherwise all points are put into a single block.|
 |**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
 |**Time-based RNG Seed**|If the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.|
 |**RNG Seed**|Select manually the random generated number seed if required.|
 |**Include/exclude columns**|Select manually the columns through the dialog window: Use the buttons to move columns between the `Included Columns` and `Excluded Columns` list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns.|
+|**Number of Runs**| Select from the available options the number of runs to produce. The available options include multiples of 4 starting from 8 until 48 that are larger than the number of selected factors.|
 
 ### Output
 {: .no_toc}
@@ -65,13 +66,14 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 ##### Configuration
 {: .no_toc}
 1. Select `DOE` $$\rightarrow$$ `Screening` $$\rightarrow$$ `Plackett Burman`.
-1. Select the `Number of Center Points` [1] to be generated in the output list of experiments.
+1. Select the `Number of Center Points per Block` [1] to be generated in the output list of experiments.
 1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
 1. Select the `Number of Blocks` [3]. 
 1. Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
 1. If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
 1. Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
-1. Click on the `Execute` button [10] to perform Plackett-Burman design method.
+1. Select the `Number Of Runs`[10] to produce.
+1. Click on the `Execute` button [11] to perform Plackett-Burman design method.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/Plackett-Burman-config.png" alt="Plackett-Burman Configuration" width="400" height="400" class="img-responsive">
@@ -101,7 +103,7 @@ Isalos uses a term called “Fraction Relationship” to determine the confoundi
 
 Resolution measures the extent to which effects—such as main effects and interactions between factors—can be uniquely estimated without confounding. It is determined by the shortest word in the defining relation of the design, which represents the smallest group of factors whose effects are confounded. The minimum acceptable resolution for a design is Resolution III, as resolutions below this result in main effects being confounded with one another, which is undesirable for meaningful analysis.
 
-To assist users in determining the required "Fraction Relationship," the software provides a comprehensive list of available designs that deliver maximum resolution for each case. These designs serve as a reliable reference, derived from authoritative sources <sup>[3, 4, 5](#references-design-of-experiments)</sup>.
+To assist users in determining the required "Fraction Relationship," the software provides a comprehensive list of available designs that deliver maximum resolution for each case. These designs serve as a reliable reference, derived from authoritative sources <sup>[3, 4, 5](#references-design-of-experiments)</sup> and can be used by selecting one of the options from the Available Designs. However, users can also specify a different fraction relationship by selecting the Custom Option.
 
 | Number of Factors | Fraction | Number of Runs | Design Generators | Fraction Relationship | Resolution |
 |------------------|----------|--------------|------------------|---------------------|------------|
@@ -156,6 +158,9 @@ To assist users in determining the required "Fraction Relationship," the softwar
 |    |"1/1024" | 32 | f=abc, g=abd, h=abe, i=acd, j=ace, k=ade, l=bcd, m=bce, n=bde, o=cde | a b c d e abc abd abe acd ace ade bcd bce bde cde | IV | 
 |    |"1/2048" | 16 | e=abc, f=abd, g=acd, h=bcd, i=abcd, j=ab, k=ac, l=ad, m=bc, n=bd, o=cd | a b c d abc abd acd bcd abcd ab ac ad bc bd cd | III | 
 
+
+Moreover, Isalos offers the option to orthogonally block fractional factorial designs based on block generators found in literature.<sup>[3](#references-design-of-experiments)</sup>
+
 Use the `Fractional Factorial` function by browsing in the top ribbon: 
 
 | DOE $$\rightarrow$$ Screening $$\rightarrow$$ Fractional Factorial|
@@ -167,13 +172,14 @@ Numerical values should be specified in the input datasheet. Fractional factoria
 ### Configuration
 {: .no_toc }
 
-|**Number of Center Points** | Select manually the Number of `Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+|**Available Designs**| Select one of the available design options for the number of factors you have selected. Choices include the fraction of the produced design, while the fraction relationship being used maximizes the resolution of the design. There is also the option to specify a custom design. |
+|**Fraction Relationship** | If the Custom option is selected from the Available Designs, insert manually the Fraction Relationship to define the desired Fractional Factorial design. The kth independent factor(column) corresponds to the kth letter of the alphabet (The letter I is not a special character and should be used for the 9th if that exists). Only alphabetical characters, spaces, '+' and '-' are allowed. |
+|**Number of Center Points per Block** | Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**| Select from the list of available options the Number of Blocks. Available options depend on the selected number of factors, the selected design and the number of replicates. |
 |**Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 |**Time-based RNG Seed** | If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time |
 |**RNG Seed** | Select manually the random generated number seed if required. |
-|**Fraction Relationship** | Insert manually the `Fraction Relationship` to define the desired Fractional Factorial design. The $k^{th}$ independent factor (column) corresponds to the $k^{th}$ letter of the alphabet (The letter "I" is not a special character and should be used for the $9^{th}$ if that exists). Only alphabetical characters, spaces, "+" and "-" are allowed.|
 |**Include/exclude columns** | Select manually the columns through the dialog window: Use the buttons to move columns between the `Included Columns` and `Excluded Columns` list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. |
 
 ### Output
@@ -195,14 +201,15 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 {: .no_toc }
 
 1.   Select `DOE` $$\rightarrow$$ `Screening` $$\rightarrow$$ `Fractional Factorial`.
-1.   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-1.   Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
-1.   Select the `Number of Blocks` [3]. 
-1.   Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
-1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
-1.   Insert the `Fraction Relationship` [7].
-1.   Select the columns by clicking on the arrow buttons [10] and moving columns between the `Excluded Columns` [8] and `Included Columns` [9] lists.
-1.   Click on the `Execute` button [11] to perform Fractional Factorial design method.
+1.   Select the columns by clicking on the arrow buttons [3] and moving columns between the `Excluded Columns` [1] and `Included Columns` [2] lists.
+1.	 Select one `of the Available Designs` [4].
+1.   If the Custom option is selected, insert the `Fraction Relationship` [5].
+1.   Select the `Number of Center Points per Block` [6] to be generated in the output list of experiments.
+1.   Select the `Number of Replicates` [7]. The lowest value that can be set is 1.
+1.   Select the `Number of Blocks` [8]. 
+1.   Select/tick if required the `Random Standard order` [9] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [10] or by manually setting a value [11].
+1.   Click on the `Execute` button [12] to perform Fractional Factorial design method.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/fractional-config.png" alt="Franctional Factorial" width="400" height="300" class="img-responsive">
@@ -234,4 +241,4 @@ A list of experiments (combinations) is generated in the output datasheet along 
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on January 2025_
+_Instructions last updated on November 2025_

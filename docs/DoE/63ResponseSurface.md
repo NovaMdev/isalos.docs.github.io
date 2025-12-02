@@ -39,14 +39,14 @@ Use the `Box Behnken` function by browsing in the top ribbon:
  
 ### Input
 {: .no_toc }
-In the input data sheet, numerical values should be specified with minimum 3 columns and two values each representing min and max level of each factor (column).
+In the input data sheet, numerical values should be specified with minimum 3 columns and two values each representing min and max level of each factor (column). The Box Behnken method is applicable for the following number of selected factors : 3-7,9,10.
 
 ### Configuration
 {: .no_toc }
 
-|**Number of Center Points**| Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+|**Number of Center Points per Block**| Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**|Select from the list of available options the Number of Blocks. Available options depend on the selected number of factors and the specified number of replicates.|
 |**Random Standard order**| You can tick/select the box if randomness is required in the output list of experiments. |
 |**Time-based RNG Seed**| If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.   |
 |**RNG Seed**|Select manually the random generated number seed if required.    |
@@ -71,12 +71,12 @@ In the input datasheet in the right-hand side, you can specify minimum of three 
 {: .no_toc }
 
 1.   Select `DOE` $$\rightarrow$$ `Response Surface` $$\rightarrow$$ `Box Behnken`.
-1.   Type the `Number of Center Points` [1] to be generated in the output list of experiments.
-1.   Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
-1.   Select the `Number of Blocks` [3]. 
-1.   Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
-1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
-1.  Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
+1.   Select the columns by clicking on the arrow buttons [3] and moving columns between the `Excluded Columns` [1] and `Included Columns` [2] lists.
+1.   Type the `Number of Center Points per Block` [4] to be generated in the output list of experiments.
+1.   Select the `Number of Replicates` [5]. The lowest value that can be set is 1.
+1.   Select the `Number of Blocks` [6]. 
+1.   Select/tick if required the `Random Standard order` [7] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [8] or by manually setting a value [9].
 1.   Click on the `Execute` button [10] to perform Box Behnken design method.
 
 <div style="text-align: center;">
@@ -98,13 +98,20 @@ TThe output list of experiments is generated for the three factors outlining a l
 
 The Central Composite Design (CCD), introduced by George E. P. Box and K. B. Wilson in 1951 and followed up by Box and Hunder in 1957,<sup>[2](#references-design-of-experiments)</sup> is a foundational technique in Response Surface Methodology (RSM) designed to explore the entire response surface of a process and locate the optimal response within that surface. The structure of CCD includes a factorial or fractional factorial design, augmented with center points and a set of “star points”. These star points are strategically placed along the axes of the factors under investigation at a distance that extends beyond the factorial points, crucial for estimating the curvature of the response surface. This design is adept at fitting a full quadratic model, capturing both the interactions between factors and their squared effects.
 
-CCD is divided into three primary variations, each tailored to meet specific experimental needs and constraints:
+CCD is divided into two primary variations, each tailored to meet specific experimental needs and constraints:
 
-*   **Circumscribed Designs (CCC):** This variant situates cube points at the corners of a unit cube defined by the product of intervals [-1,1]. It includes star points that may lie on or extend outside the cube and center points at the origin. The CCC is advantageous for its ability to explore beyond the confines defined by the factorial points, making it suitable for experiments where extending the range of factor levels is possible.
-*   **Inscribed Designs (CCI):** In this design, the star points are scaled to the values of -1 and +1, placing them on the surface of the unit cube, while the cube points are located within the interior of the cube. The CCI is particularly beneficial when there are restrictions on the maximum or minimum factor levels that can be practically or safely tested, as it confines the experimentation within the standard levels.
-*   **Faced Designs (CCF):** This approach positions the star points on the faces of the cube, rather than extending beyond or resting on the surface of the cube. This results in a design that utilizes only three levels per factor, as opposed to the five levels used in the circumscribed and inscribed designs. Faced designs are advantageous in scenarios where resources are limited or when there are constraints that prevent a more extensive exploration of factor levels.
+*   **Circumscribed Designs :** This variant situates cube points at the corners of a unit cube defined by the product of intervals [-1,1]. It includes star points that may lie on or extend outside the cube and center points at the origin. The CCC is advantageous for its ability to explore beyond the confines defined by the factorial points, making it suitable for experiments where extending the range of factor levels is possible.
+*   **Inscribed Designs:** In this design, the star points are scaled to the values of -1 and +1, placing them on the surface of the unit cube, while the cube points are located within the interior of the cube. The CCI is particularly beneficial when there are restrictions on the maximum or minimum factor levels that can be practically or safely tested, as it confines the experimentation within the standard levels.
 
 Each of these designs is tailored to fit different experimental conditions and requirements, allowing researchers to choose based on the number of factors, the limitations on factor levels, the necessity to explore beyond the factorial space, and the resources available for conducting experiments. By providing a range of configurations, CCDs offer a flexible and robust framework for experimenters aiming to optimize processes and responses effectively.
+
+For each design, the distance of each star point from the center point of the design—denoted as α (alpha)—must be calculated. Isalos offers four different calculation options for determining α:
+
+*   **Rotatable :** This option sets α such that the design is rotatable, meaning the prediction variance of the response is constant at all points equidistant from the center. Rotatable designs are often preferred for their balanced precision across the experimental space.
+*   **Orthogonal:** In this configuration, α is chosen to make the design orthogonal, ensuring that the estimates of the linear and quadratic effects are uncorrelated. Orthogonal designs are advantageous when minimizing confounding between model terms is a priority.
+*   **Face Centered :** This approach positions the star points directly on the faces of the cube rather than beyond its surface. Consequently, each factor is evaluated at only three levels instead of the five used in the other design options. Face-centered designs are useful when experimental resources are limited or when physical or operational constraints prevent exploring the full range of factor levels.
+*   **User Defined:** This option allows the user to specify a custom value for α. It provides full flexibility for tailoring the design to specific experimental needs, such as aligning with prior studies, physical limitations, or desired precision within a particular region of interest.
+
 
 Use the `Central Composite` function by browsing in the top ribbon: 
 
@@ -117,14 +124,18 @@ Numerical values should be specified in the input datasheet. The minimum require
 ### Configuration
 {: .no_toc }
 
-|**Number of Center Points** |Select manually the `Number of Center Points` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+|**Factorial Fraction**|Select the `Factorial Fraction` to be used for the factorial portion of the design. The available options automatically adjust based on the number of factors selected.|
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Currently, the only supported option is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Available options depend on the selected number of factors, the selected factorial fraction and the number of replicates.|
+|**Use Default Number of Center Points** |You can tick/select the box if you want to use the default number of center points that produce orthogonal designs, when possible.|
+|**Number of Center Points per Cube Block** |This option refers to the number of center points that will be added in each block that contains cube/factorial runs. If the `Use Default Number of Center Points` option is not selected, insert manually the `Number of Center Points per Cube Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+|**Number of Center Points per Axial Block** |This option refers to the number of center points that will be added in each block that contains axial/star runs. If the `Use Default Number of Center Points` option is not selected, insert manually the `Number of Center Points per Axial Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
 |**Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
 |**Time-based RNG Seed** | If in the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time. |
 |**RNG Seed** | Select manually the random generated number seed if required. |
-|**Select Design** | Choose among the options, `ccc`, `ccf`, `cci` representing circumscribed design, faced design and inscribed design, respectively. |
-|**Select alpha method** | If `ccc` or `cci` designs are previously selected, then select either orthogonal or rotatable design. |
+|**Select Central Composite Design** | Choose among the options, `Circumscribed`, `Inscribed`. |
+|**Select alpha method** | Select the method that will be used to compute the alpha parameter. Available options include: `Rotatable`, `Orthogonal`, `Face Centered` (Not available when the inscribed option is selected) and `User Defined` |
+|**Value of alpha** |If the User Defined alpha method is selected insert manually the value of alpha. |
 |**Include/exclude columns**| Select manually the columns through the dialog window: Use the buttons to move columns between the `Included Columns` and `Excluded Columns` list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. | 
 
 ### Output
@@ -146,15 +157,18 @@ In the input datasheet minimum requirement is to specify three factors (columns)
 {: .no_toc }
 
 1.   Select `DOE` $$\rightarrow$$ `Response Surface` $$\rightarrow$$ `Central Composite`.
-1.   Select the `Number of Center Points` [1] to be generated in the output list of experiments.
-1.   Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
-1.   Select the `Number of Blocks` [3]. 
-1.   Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
-1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
-1.   Choose to `Select Design` [7] method among the options, `ccc`, `ccf` and `cci` representing circumscribed, faced and inscribed designs, respectively.
-1.   If ccc or cci designs are previously selected, then `Select alpha method` [8] either to have `orthogonal` or `rotatable` design.
-1.   Select the columns by clicking on the arrow buttons [11] and moving columns between the `Excluded Columns` [9] and `Included Columns` [10] lists.
-1.   Click on the `Execute` button [12] to apply the Central Composite design method.
+1.   Select the columns by clicking on the arrow buttons [3] and moving columns between the `Excluded Columns` [1] and `Included Columns` [2] lists.
+1.	 Select the `Factorial Fraction` [4] from the list of available options.
+1.   Select the `Number of Replicates` [5]. The lowest value that can be set is 1.
+1.   Select the `Number of Blocks` [6]. 
+1.   Select whether to `Use Default Number of Center Points`.[7]
+1.   If the Default Number of Center Points is not selected Select the `Number of Center Points per Cube Block` [8] and the `Number of Center Points per Axial Block` [9] to be generated in the output list of experiments. 
+1.   Select/tick if required the `Random Standard order` [10] to imply randomness in the output list of experiments.
+1.   If randomness is selected either select/tick to generate the number seed for randomness based on time [11]] or by manually setting a value [12].
+1.   Choose to `Select Central Composite Design` [13] method among the options, `Circumscribed` , `Inscribed`.
+1.   `Select alpha method` [14] among the options : `Orthogonal`, `Rotatable`, `Face Centered` and `User Defined`.
+1.   If the `User Defined` alpha method is selected, specify the `Value of alpha` [15]. 
+1.   Click on the `Execute` button [16] to apply the Central Composite design method.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/central-config.png" alt="Central Composite" width="400" height="300" class="img-responsive">
@@ -187,4 +201,4 @@ The output list of experiments is generated for the two factors outlining a list
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on October 2025_
+_Instructions last updated on November 2025_

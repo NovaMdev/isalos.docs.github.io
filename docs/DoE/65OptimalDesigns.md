@@ -330,4 +330,4 @@ The computed design along with the algorithm statistics will be shown in the out
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on October 2025_
+_Instructions last updated on November 2025_
