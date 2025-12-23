@@ -667,7 +667,7 @@ The two tables analyzing the within-subject effects and the between-subject effe
 
 ---
 
-## References {#references-Analysis-Of-(Co)Variance}
+## References 
 1.	Rutherford, A. (2011). ANOVA and ANCOVA: a GLM approach. John Wiley & Sons.
 1.	Huberty, C. J., & Olejnik, S. (2007). Applied MANOVA and discriminant analysis. John Wiley & Sons.
 1.	Cohen, B. H. (2002). Calculating a factorial ANOVA from means and standard deviations. Understanding Statistics: Statistical Issues in Psychology, Education, and the Social Sciences, 1(3), 191-203.

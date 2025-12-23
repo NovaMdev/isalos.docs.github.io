@@ -86,55 +86,6 @@ The `Existing Model Utilization` function is useful in cases when test/external 
 Different types of models can be applied on data including [`Normalizers`](https://www.docs.isalos.novamechanics.com/normalizers.html), [`Regression`](https://www.docs.isalos.novamechanics.com/regression.html), [`Classification`](https://www.docs.isalos.novamechanics.com/classification.html) and [`Clustering`](https://www.docs.isalos.novamechanics.com/clustering.html) models, and the applicability [`Domain – APD limits`](https://www.docs.isalos.novamechanics.com/domain-apd.html).
 
 For model import from a library of existing models refer to [`Import Model from`](https://www.docs.isalos.novamechanics.com/save_import.html#importing-projectsmodels) and [`Export Model from`](https://www.docs.isalos.novamechanics.com/save_import.html#exporting-models) options.
-
-### Workflows
-{: .no_toc }
-
-#### Bodyfat prediction case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Bodyfat prediction/body_fat.iap)
-* [Report](files/Regression/Bodyfat prediction/Bodyfat Prediction.pdf)
-
-#### House pricing case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Housing prices/house_pricing.iap)
-* [Report](files/Regression/Housing prices/Housing Prices.pdf)
-
-#### Insurance charges case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Insurance charges/insurance_charges.iap)
-* [Report](files/Regression/Insurance charges/Insurance Charges.pdf)
-
-#### MA score case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/MA score/ma_score_data.iap)
-* [Report](files/Regression/MA score/MA score Data.pdf)
-
-#### Salary prediction case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Salary prediction/salary_prediction.iap)
-* [Report](files/Regression/Salary prediction/Salary Prediction.pdf)
-
-#### Breast cancer case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Breast cancer/breast_cancer.iap)
-* [Report](files/Classification/Breast cancer/Breast Cancer.pdf)
-
-#### Credit card case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Credit card/credit_card.iap)
-* [Report](files/Classification/Credit card/Credit Card.pdf)
-
-#### Parkinson's disease case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Parkinson's disease/parkinsons_disease.iap)
-* [Report](files/Classification/Parkinson's disease/Parkinson's Disease.pdf)
-
-#### Students' performance case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Student's performance/students_performance.iap)
-* [Report](files/Classification/Student's performance/Students' Performance.pdf)
-
 ---
 
 ## Version History
