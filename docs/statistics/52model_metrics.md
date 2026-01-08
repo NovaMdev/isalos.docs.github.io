@@ -280,7 +280,7 @@ For the development of regression models refer to the [`Regression`](https://www
 * [Isalos workflow](files/Classification/Student's performance/students_performance.iap)
 * [Report](files/Classification/Student's performance/Students' Performance.pdf)
 
-## References {#references-metrics}
+## References 
 1. Naser MZ, Alavi AH. Error Metrics and Performance Fitness Indicators for Artificial Intelligence and Machine Learning in Engineering and Sciences. Archit Struct Constr 2021. [doi.org/10.1007/s44150-021-00015-8](https://doi.org/10.1007/s44150-021-00015-8).
 1. Witten Ian H and Frank, Eibe and Hall, Mark A and Pal CJ. Data Mining: Practical Machine Learning Tools and Techniques. Fourth. Morgan Kaufmann; 2011. [doi.org/10.1016/C2009-0-19715-5](https://doi.org/10.1016/C2009-0-19715-5).
 

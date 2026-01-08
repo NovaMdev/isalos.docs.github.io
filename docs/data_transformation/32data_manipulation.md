@@ -300,21 +300,6 @@ Fill Missing Column(s) Values:
 
 * The use of the methods `Mean of Nearby Points`, `Median of Nearby Points`, and `Linear Trend at point` is recommended when the missing values are part of a time series, but they can also be used in other cases non-restrictively.
 
-## See also 
-
-### Workflows
-{: .no_toc }
-
-#### MA score case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/MA score/ma_score_data.iap)
-* [Report](files/Regression/MA score/MA score Data.pdf)
-
-#### Credit card case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Credit card/credit_card.iap)
-* [Report](files/Classification/Credit card/Credit Card.pdf)
-
 ---
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.3

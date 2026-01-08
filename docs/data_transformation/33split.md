@@ -163,54 +163,6 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 ## See also
 The generated train and test sets from the splitting function can be imported to subsequent tabs/nodes (see [`Data Representation`](https://www.docs.isalos.novamechanics.com/data-representation.html)). For data scaling refer to the [`Normalizers`](https://www.docs.isalos.novamechanics.com/normalizers.html) functions.
 
-### Workflows
-{: .no_toc }
-
-#### Bodyfat prediction case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Bodyfat prediction/body_fat.iap)
-* [Report](files/Regression/Bodyfat prediction/Bodyfat Prediction.pdf)
-
-#### House pricing case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Housing prices/house_pricing.iap)
-* [Report](files/Regression/Housing prices/Housing Prices.pdf)
-
-#### Insurance charges case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Insurance charges/insurance_charges.iap)
-* [Report](files/Regression/Insurance charges/Insurance Charges.pdf)
-
-#### MA score case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/MA score/ma_score_data.iap)
-* [Report](files/Regression/MA score/MA score Data.pdf)
-
-#### Salary prediction case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Salary prediction/salary_prediction.iap)
-* [Report](files/Regression/Salary prediction/Salary Prediction.pdf)
-
-#### Breast cancer case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Breast cancer/breast_cancer.iap)
-* [Report](files/Classification/Breast cancer/Breast Cancer.pdf)
-
-#### Credit card case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Credit card/credit_card.iap)
-* [Report](files/Classification/Credit card/Credit Card.pdf)
-
-#### Parkinson's disease case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Parkinson's disease/parkinsons_disease.iap)
-* [Report](files/Classification/Parkinson's disease/Parkinson's Disease.pdf)
-
-#### Students' performance case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Student's performance/students_performance.iap)
-* [Report](files/Classification/Student's performance/Students' Performance.pdf)
-
 ## References {#references-split}
 1. Daszykowski M, Walczak B, Massart DL. Representative subset selection. Anal Chim Acta 2002. [doi.org/10.1016/S0003-2670(02)00651-7](https://doi.org/10.1016/S0003-2670(02)00651-7).
 1. Witten Ian H and Frank, Eibe and Hall, Mark A and Pal CJ. Data Mining: Practical Machine Learning Tools and Techniques. Fourth. Morgan Kaufmann; 2011. [doi.org/10.1016/C2009-0-19715-5](https://doi.org/10.1016/C2009-0-19715-5).
