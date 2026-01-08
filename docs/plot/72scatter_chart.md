@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 7.2 Scatter/Line Chart
-parent: 7. Plot
+parent: 7. Plot & Business Intelligence
 nav_order: 2
 permalink: /scatter-line-chart.html
 ---
