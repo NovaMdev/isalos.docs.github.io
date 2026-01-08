@@ -1,9 +1,9 @@
 ---
 layout: default
-title: 7. Plot
+title: 7. Plot & Business Intelligence
 nav_order: 7
 has_children: true
-permalink: /plot.html
+permalink: /plot_bi.html
 ---
 
 # Plot
