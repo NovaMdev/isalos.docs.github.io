@@ -115,11 +115,11 @@ Upon clicking Execute the line chart appears in a separate window.
 
 ##### Output
 {: .no_toc}
-
-By browsing through the File options: File→ Save as Image (1), the line chart can be saved in PNG format.
+To save the chart customization changes in Isalos, click  File→ Save (1).
+To save the chart as a PNG image, select File→ Save as Image (2).
 
 <div style="text-align: center;">
-<img src="images/plots/line_save.png" alt="Save Line Chart" width="400" height="300" class="img-responsive">
+<img src="images/plots/chart_save.png" alt="Save Line Chart" width="200" height="100" class="img-responsive">
 </div>
 
 The downloadable, customized line chart is presented below.
