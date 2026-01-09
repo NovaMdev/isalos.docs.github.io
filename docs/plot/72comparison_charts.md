@@ -40,7 +40,7 @@ One categorical column listing the category names and one numerical column conta
 | **Horizontal Axis Title** | Type the horizontal axis title.|  
 | **Vertical Axis Title**   | Type the vertical axis title. |   
 | **Category Column**      | Select the category column. |   
-| **Value Column**      | Select the value column. |   
+| **Value Column**      | Select the numerical value column. |   
 | **Include Subcategory**      | Check to include subcategory. |   
 | **Subcategory**      | Select the subcategory column. |   
 | **Stacked Bar Chart**      | Check to make subcategories stacked. |   
@@ -160,7 +160,7 @@ One categorical column listing the category names and one numerical column conta
 
 | **Chart Title**           | Type the chart title.|  
 | **Category Column**      | Select the category column. |   
-| **Value Column**      | Select the value column. |   
+| **Value Column**      | Select the numerical value column. |   
 
 
 ### Chart customization 
@@ -257,7 +257,7 @@ One categorical column listing the category names and one numerical column conta
 
 | **Chart Title**           | Type the chart title.|  
 | **Category Column**      | Select the category column. |   
-| **Value Column**      | Select the value column. |   
+| **Value Column**      | Select the numerical value column. |   
 
 
 ### Chart customization 
@@ -356,7 +356,7 @@ One categorical column listing the category names and one numerical column conta
 
 | **Chart Title**           | Type the chart title.|  
 | **Category Column**      | Select the category column. |   
-| **Value Column**      | Select the value column. |   
+| **Value Column**      | Select the numerical value column. |   
 
 
 ### Chart customization 
@@ -449,7 +449,7 @@ Use the `Radar Chart` function by browsing in the top ribbon:
 ### Input
 {: .no_toc}
 
-One categorical column for different variables to be compared, one categorical column for grouping, and one numerical column for the corresponding values. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+One categorical column for different variables to be compared, one categorical column for grouping, and one numerical column for the corresponding values. Each combination of variable and group category must be unique and present in the data. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
 
 ### Configuration
 {: .no_toc}
@@ -457,7 +457,7 @@ One categorical column for different variables to be compared, one categorical c
 | **Chart Title**           | Type the chart title.|  
 | **Variable**      | Select the variable column which will define the chart axes. |   
 | **Group by**      | Select the grouping column. |   
-| **Value Column**      | Select the value column. |   
+| **Value Column**      | Select the numerical value column. |   
 
 
 ### Chart customization 
@@ -557,7 +557,7 @@ Use the `Parallel Coordinates Chart` function by browsing in the top ribbon:
 ### Input
 {: .no_toc}
 
-One categorical column for different variables to be compared, one categorical column for grouping, and one numerical column for the corresponding values. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+One categorical column for different variables to be compared, one categorical column for grouping, and one numerical column for the corresponding values. Each combination of variable and group category must be unique and present in the data. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
 
 ### Configuration
 {: .no_toc}
@@ -565,7 +565,7 @@ One categorical column for different variables to be compared, one categorical c
 | **Chart Title**           | Type the chart title.|  
 | **Variable**      | Select the variable column which will define the chart axes. |   
 | **Group by**      | Select the grouping column. |   
-| **Value Column**      | Select the value column. |   
+| **Value Column**      | Select the numerical value column. |   
 
 
 ### Chart customization 
@@ -671,7 +671,7 @@ One categorical column listing the category names and one numerical column conta
 | **Horizontal Axis Title** | Type the horizontal axis title.|  
 | **Vertical Axis Title**   | Type the vertical axis title. |   
 | **Category Column**      | Select the category column. |   
-| **Value Column**      | Select the value column. |   
+| **Value Column**      | Select the numerical value column. |   
 
 
 ### Chart customization 
