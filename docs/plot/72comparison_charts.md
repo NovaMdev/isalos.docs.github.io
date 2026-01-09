@@ -9,7 +9,8 @@ permalink: /comparison_charts.html
 # Comparison Charts
 {: .no_toc }
 
-Short paragraph on  Comparison Charts
+Comparison charts are visual tools used to evaluate and contrast multiple items, options, or variables side by side. By organizing key features, metrics, or criteria into a clear, structured format, they make similarities and differences easy to identify. This helps readers process information more efficiently, support decision-making, and reduce complexity when dealing with multiple choices. 
+
 
 ## Table of contents
 {: .no_toc .text-delta }
