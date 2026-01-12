@@ -32,7 +32,7 @@ Use the `HeatMap Chart function` by browsing in the tools ribbon:
 ### Input
 {: .no_toc}
 
-Two categorical columns listing the x and y category names. Optionally a  numerical column containing the values of each category. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+A data table in long format consisting of two categorical columns listing the x and y category names. Optionally a  numerical column containing the values of each category. If necessary, the conversion from wide to long format can be achieved via the `Wide to Long` function that can be found in the `Data Transformation` menu of the tools ribbon, under `Data Manipulation`. 
 
 ### Configuration
 {: .no_toc}
@@ -138,7 +138,7 @@ Use the `Bubble Grid Chart function` by browsing in the tools ribbon:
 ### Input
 {: .no_toc}
 
-Two categorical columns listing the x and y category names and a  numerical column containing the values of each category combination. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+A data table in long format consisting of two categorical columns listing the x and y category names and a  numerical column containing the values of each category combination. If necessary, the conversion from wide to long format can be achieved via the `Wide to Long` function that can be found in the `Data Transformation` menu of the tools ribbon, under `Data Manipulation`.
 
 ### Configuration
 {: .no_toc}
@@ -239,7 +239,7 @@ Use the `Matrix Chart function` by browsing in the tools ribbon:
 ### Input
 {: .no_toc}
 
-Two categorical columns listing the x and y category names and a  numerical or categorical column containing the values of each category combination. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+A data table in long format consisting of two categorical columns listing the x and y category names and a  numerical or categorical column containing the values of each category combination. If necessary, the conversion from wide to long format can be achieved via the `Wide to Long` function that can be found in the `Data Transformation` menu of the tools ribbon, under `Data Manipulation`.
 
 ### Configuration
 {: .no_toc}
@@ -354,7 +354,7 @@ Use the `Ridge Line Chart function` by browsing in the tools ribbon:
 ### Input
 {: .no_toc}
 
-One categorical column listing the category names and a  numerical column containing the values of each category. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+A data table in long format consisting of one categorical column listing the category names and a  numerical column containing the values of each category. If necessary, the conversion from wide to long format can be achieved via the `Wide to Long` function that can be found in the `Data Transformation` menu of the tools ribbon, under `Data Manipulation`. 
 
 ### Configuration
 {: .no_toc}
@@ -444,7 +444,19 @@ The downloadable, customized ridge line chart is presented below.
 
 ---
 
-## Version History
-Introduced in Isalos Analytics Platform v0.2.4
+## Tips
+HeatMap Chart
+-	It is often advisable to normalize the data before creating a HeatMap, to highlight the magnitude of relationships between categories without being influenced by differences in value ranges.
 
-_Instructions last updated on November 2025_
+
+Bubble Grid Chart
+-	Use this chart when most category relationship differences are significant, since subtle differences are not easily recognizable in the bubble grid format.
+
+
+---
+
+
+## Version History
+Introduced in Isalos Analytics Platform v2.0.0
+
+_Instructions last updated on December 2025_

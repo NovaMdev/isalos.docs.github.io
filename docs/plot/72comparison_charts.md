@@ -32,7 +32,7 @@ Use the `Bar Chart function` by browsing in the tools ribbon:
 ### Input
 {: .no_toc}
 
-One categorical column listing the category names and one numerical column containing the values, frequencies, or percentages of each category. For stacked bar charts, an additional categorical column is required to indicate the subcategory values. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+A data table in long format consisting of one categorical column listing the category names and one numerical column containing the values, frequencies, or percentages of each category. For stacked bar charts, an additional categorical column is required to indicate the subcategory values. If necessary, the conversion from wide to long format can be achieved via the `Wide to Long` function that can be found in the `Data Transformation` menu of the tools ribbon, under `Data Manipulation`.
 
 ### Configuration
 {: .no_toc}
@@ -153,8 +153,7 @@ Use the `Pie Chart` function by browsing in the top ribbon:
 
 ### Input
 {: .no_toc}
-
-One categorical column listing the category names and one numerical column containing the values, frequencies, or percentages of each category. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+A data table in long format consisting of one categorical column listing the category names and one numerical column containing the values, frequencies, or percentages of each category. If necessary, the conversion from wide to long format can be achieved via the `Wide to Long` function that can be found in the `Data Transformation` menu of the tools ribbon, under `Data Manipulation`.
 
 ### Configuration
 {: .no_toc}
@@ -251,7 +250,7 @@ Use the `Polar Area Chart Chart` function by browsing in the top ribbon:
 ### Input
 {: .no_toc}
 
-One categorical column listing the category names and one numerical column containing the values, frequencies, or percentages of each category. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+A data table in long format consisting of one categorical column listing the category names and one numerical column containing the values, frequencies, or percentages of each category. If necessary, the conversion from wide to long format can be achieved via the `Wide to Long` function that can be found in the `Data Transformation` menu of the tools ribbon, under `Data Manipulation`.
 
 ### Configuration
 {: .no_toc}
@@ -350,7 +349,8 @@ Use the `Concentric Ring Chart Chart` function by browsing in the top ribbon:
 ### Input
 {: .no_toc}
 
-One categorical column listing the category names and one numerical column containing the values, frequencies, or percentages of each category. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+A data table in long format consisting of one categorical column listing the category names and one numerical column containing the values, frequencies, or percentages of each category. If necessary, the conversion from wide to long format can be achieved via the `Wide to Long` function that can be found in the `Data Transformation` menu of the tools ribbon, under `Data Manipulation`.
+
 
 ### Configuration
 {: .no_toc}
@@ -450,7 +450,7 @@ Use the `Radar Chart` function by browsing in the top ribbon:
 ### Input
 {: .no_toc}
 
-One categorical column for different variables to be compared, one categorical column for grouping, and one numerical column for the corresponding values. Each combination of variable and group category must be unique and present in the data. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+A data table in long format consisting of one categorical column for different variables to be compared, one categorical column for grouping, and one numerical column for the corresponding values. Each combination of variable and group category must be unique and present in the data. If necessary, the conversion from wide to long format can be achieved via the `Wide to Long` function that can be found in the `Data Transformation` menu of the tools ribbon, under `Data Manipulation`.
 
 ### Configuration
 {: .no_toc}
@@ -558,7 +558,7 @@ Use the `Parallel Coordinates Chart` function by browsing in the top ribbon:
 ### Input
 {: .no_toc}
 
-One categorical column for different variables to be compared, one categorical column for grouping, and one numerical column for the corresponding values. Each combination of variable and group category must be unique and present in the data. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+A data table in long format consisting of one categorical column for different variables to be compared, one categorical column for grouping, and one numerical column for the corresponding values. Each combination of variable and group category must be unique and present in the data. If necessary, the conversion from wide to long format can be achieved via the `Wide to Long` function that can be found in the `Data Transformation` menu of the tools ribbon, under `Data Manipulation`.
 
 ### Configuration
 {: .no_toc}
@@ -663,7 +663,7 @@ Use the `Pareto Chart function` by browsing in the tools ribbon:
 ### Input
 {: .no_toc}
 
-One categorical column listing the category names and one numerical column containing the values, frequencies, or percentages of each category. All Isalos charts use the long format, so if your data is in a wide format, it can be easily converted using the Wide to Long function available in the Data Transformation → Data Manipulation  ribbon.
+A data table in long format consisting of one categorical column listing the category names and one numerical column containing the values, frequencies, or percentages of each category. If necessary, the conversion from wide to long format can be achieved via the `Wide to Long` function that can be found in the `Data Transformation` menu of the tools ribbon, under `Data Manipulation`.
 
 ### Configuration
 {: .no_toc}
@@ -757,7 +757,29 @@ The downloadable, customized pareto chart is presented below.
 
 ---
 
-## Version History
-Introduced in Isalos Analytics Platform v0.2.4
+## Tips
 
-_Instructions last updated on November 2025_
+Bar Chart
+-	Use a common zero-valued baseline for an easier comparison of bar lengths.
+
+
+
+Pie Chart
+-	Always label slices or include a legend to enhance plot interpretability.
+- 	For closely proportioned data, opt for bar, stacked bar or polar charts to avoid confusion caused by similar angles in pie or ring charts.
+
+
+Radar Chart
+-	To avoid a cluttered chart, choose to visualize a small number of observations on a radar chart. For numerous observations it is advisable to opt for the parallel coordinates chart.
+
+Parallel Coordinates Chart
+-	A common scaling is important to compare variables of different metric units. 
+-	Consider binning or aggregation for very large datasets.
+
+
+---
+
+## Version History
+Introduced in Isalos Analytics Platform v2.0.0
+
+_Instructions last updated on December 2025_
