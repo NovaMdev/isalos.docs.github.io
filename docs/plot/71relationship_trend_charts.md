@@ -142,7 +142,7 @@ Use the `Scatter Chart function` by browsing in the tools ribbon:
 ### Input
 {: .no_toc}
 
-A data table in long format consisting of at least two columns, at least one of which is numerical. 
+A data table in long format consisting of at least two numerical columns. 
 
 ### Configuration
 {: .no_toc}
@@ -151,7 +151,7 @@ A data table in long format consisting of at least two columns, at least one of 
 | **Horizontal Axis Title** | Type the horizontal axis title.|   |
 | **Vertical Axis Title**   | Type the vertical axis title. |   |
 | **Add Column Pairs**      | Select the input column pair(s) to be plotted against each other.  |  |
-|                           | **Select X column**  | Select from the drop-down menu the numerical or categorical variable to be plotted on the horizontal axis. |
+|                           | **Select X column**  | Select from the drop-down menu the numerical variable to be plotted on the horizontal axis. |
 |                           | **Select Y column**  | Select from the drop-down menu the numerical variable to be plotted on the vertical axis. |
 | **Remove Selected Column Pairs** | Remove the selected column pair(s). |   |
 
