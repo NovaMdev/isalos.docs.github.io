@@ -238,7 +238,7 @@ The downloadable, customized scatter chart is presented below.
 ---
 
 ## Bivariate Area Chart
-The bivariate area chart is a visualization tool used to display the evolution of two numerical variables along a shared x axis, which is often a time variable. It is particularly useful for identifying trends in both variables, and more importantly, for highlighting the gap, balance, flips, and trade-offs between them. Its most distinctive feature is that the variables’ curves are color-coded, and the area where one variable exceeds the other across the x axis is shaded accordingly. This makes it easier to identify both the number and extent of imbalances between the variables.
+The bivariate area chart is a visualization tool used to display the evolution of two numerical variables along a shared horizontal axis, which is often a time variable. It is particularly useful for identifying trends in both variables, and more importantly, for highlighting the gap, balance, flips, and trade-offs between them. Its most distinctive feature is that the variables’ curves are color-coded, and the area where one variable exceeds the other across the horizontal axis is shaded accordingly. This makes it easier to identify both the number and extent of imbalances between the variables.
 
 The chart is commonly used for commercial and economic analyses, e.g. to visualize the trends in exports and imports over time.
 
@@ -350,7 +350,7 @@ The downloadable, customized bivariate area chart is presented below.
 ## Stream Chart
 A stream chart, or streamgraph, is a type of stacked area graph in which the numerical values of different categories (layers) are distributed around a horizontal axis in the center of the graph, creating a flowing, stream-like shape. The stacked categories are displayed as continuous areas through interpolation between the given data points. The height of each layer is analogous to its numeric value, and the total height of the graph reflects the sum of categories at any given point. The geometry of the chart is dependent on the bottom layer outline which is determined by the minimization of the average of the squares of slopes between each layer’s midpoints, weighted by layer height.
 
-This chart is typically used to illustrate how the values of each category evolve over the baseline category on the x axis (e.g. the variable of time). This characteristic makes it particularly useful for visualizing the relative proportions of the whole as they evolve along the horizontal axis, while also revealing trends and patterns within the data. For example, stream charts can be used to capture the trends of energy consumption across different sectors (industrial, commercial, transportation) over a given period of time.
+This chart is typically used to illustrate how the values of each category evolve over the baseline category on the horizontal axis (e.g. the variable of time). This characteristic makes it particularly useful for visualizing the relative proportions of the whole as they evolve along the horizontal axis, while also revealing trends and patterns within the data. For example, stream charts can be used to capture the trends of energy consumption across different sectors (industrial, commercial, transportation) over a given period of time.
 
 It should be noted that since the horizontal axis is not fixed in a stream chart, distinguishing between positive and negative values is not possible. Therefore, exclusively positive or negative values should be included in one plot.
 
@@ -362,7 +362,7 @@ Use the `Stream Chart function` by browsing in the tools ribbon:
 ### Input
 {: .no_toc}
 
-A categorical or numerical column consisting of the categories to be layered and a numerical column with continuous values for each category. The baseline values (categorical or numerical) over which the main categories are evolving should be given in a separate column. If needed, the conversion from wide to long format can be achieved via the `Wide to Long` found in the `Data Transformation` menu in the tools ribbon. 
+A categorical or numerical column consisting of the categories to be layered and a numerical column with continuous values for each category. The baseline values (categorical or numerical) over which the main categories are evolving should be given in a separate column. If necessary, the conversion from wide to long format can be achieved via the `Wide to Long` function that can be found in the `Data Transformation` menu of the tools ribbon. 
 
 ### Configuration
 {: .no_toc}
