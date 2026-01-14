@@ -154,9 +154,9 @@ Data matrix with transactions, where each row represents a transaction and each 
 |**Minimum Confidence**|A float between 0 and 1 representing the minimum confidence threshold. Only rules with confidence greater than or equal to this value will be generated. |
 |**Minimum Lift**|A non-negative float representing the minimum lift threshold. Only rules with lift greater than or equal to this value will be considered significant. |
 |**Maximum Length**|An integer representing the maximum number of items allowed in an itemset. |
+|**No. of Threads**|An integer representing the number of CPU threads that the algorithm will use for parallel processing. |
 |**Frequent Itemsets**|	Outputs all itemsets that satisfy the configured thresholds. These itemsets show which combinations of items occur frequently together in the dataset. |
 |**Association Rules**|	Outputs rules derived from frequent itemsets that satisfy the configured thresholds. Each rule shows a relationship in the form “If item(s) A occur, then item(s) B also occur,” along with metrics like support, confidence, and lift. |
-|**No. of Threads**|An integer representing the number of CPU threads that the algorithm will use for parallel processing. |
 |**Sort by** |	Select the metric used to sort the output. |
 
 ### Output
@@ -179,8 +179,8 @@ In the left-hand spreadsheet of the tab, import the data matrix containing the t
 1. Select `Statistics` $$\rightarrow$$ `Association Rules` $$\rightarrow$$ `Eclat`.
 1. Configure the parameters: `Minimum Support` [1], `Minimum Confidence` [2], `Minimum Lift` [3] to determine the thresholds for frequent itemsets and association rules.
 1. Set `Maximum Length` [4] to define the largest number of items allowed in a frequent itemset.
-1. Select Output option to choose whether to display `Frequent Itemsets` or `Association Rules` [5] in the output.
-1. Set `No. of Threads` [6] to define the number of CPU threads used for parallel processing.
+1. Set `No. of Threads` [5] to define the number of CPU threads used for parallel processing.
+1. Select Output option to choose whether to display `Frequent Itemsets` or `Association Rules` [6] in the output.
 1. Select `Sort By` [7] to choose the metric used to order the output.
 1. Click on the `Execute` [8] button to apply the algorithm on the input dataset.
 
@@ -226,9 +226,9 @@ Data matrix with transactions, where each row represents a transaction and each 
 |**Minimum Confidence**|A float between 0 and 1 representing the minimum confidence threshold. Only rules with confidence greater than or equal to this value will be generated. |
 |**Minimum Lift**|A non-negative float representing the minimum lift threshold. Only rules with lift greater than or equal to this value will be considered significant. |
 |**Maximum Length**|An integer representing the maximum number of items allowed in an itemset. |
+|**No. of Partitions**|Sets the number of partitions used by parallel FP-growth. |
 |**Frequent Itemsets**|	Outputs all itemsets that satisfy the configured thresholds. These itemsets show which combinations of items occur frequently together in the dataset. |
 |**Association Rules**|	Outputs rules derived from frequent itemsets that satisfy the configured thresholds. Each rule shows a relationship in the form “If item(s) A occur, then item(s) B also occur,” along with metrics like support, confidence, and lift. |
-|**No. of Partitions**|Sets the number of partitions used by parallel FP-growth. |
 |**Sort by** |	Select the metric used to sort the output. |
 
 ### Output
@@ -252,8 +252,8 @@ In the left-hand spreadsheet of the tab, import the data matrix containing the t
 1. Select `Statistics` $$\rightarrow$$ `Association Rules` $$\rightarrow$$ `FP Growth`.
 1. Configure the parameters: `Minimum Support` [1], `Minimum Confidence` [2], `Minimum Lift` [3] to determine the thresholds for frequent itemsets and association rules.
 1. Set `Maximum Length` [4] to define the largest number of items allowed in a frequent itemset.
-1. Select Output option to choose whether to display `Frequent Itemsets` or `Association Rules` [5] in the output.
-1. Set `No. of Partitions` [6] to divide the dataset into for parallel implementation.
+1. Set `No. of Partitions` [5] to divide the dataset into for parallel implementation.
+1. Select Output option to choose whether to display `Frequent Itemsets` or `Association Rules` [6] in the output.
 1. Select `Sort By` [7] to choose the metric used to order the output.
 1. Click on the `Execute` [8] button to apply the algorithm on the input dataset.
 
