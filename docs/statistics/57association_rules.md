@@ -27,7 +27,7 @@ Formally, for an itemset X, the support is computed as:
 <div id="eq. support">
     $$
     \begin{equation}
-    Support(X) = \frac{\text{Number of total transactions containing X}}{\text{Total number of transactions}}
+    \text{Support}(X) = \frac{\text{Number of total transactions containing X}}{\text{Total number of transactions}}
     \end{equation}
     $$
 </div>
@@ -40,7 +40,7 @@ Confidence represents the reliability of an association rule. It measures how of
 Confidence quantifies the conditional probability of the consequent given the antecedent. Formally, for a rule X→Y, the confidence is computed as:
 <div id="eq_confidence">
 $$
-\text{Confidence}(X \Rightarrow Y) = \frac{\text{Support}(X \cap Y)}{\text{Support}(X)}
+\text{Confidence}(X \Rightarrow Y) = \frac{\text{Support}(X,Y)}{\text{Support}(X)}
 $$
 </div>
 
