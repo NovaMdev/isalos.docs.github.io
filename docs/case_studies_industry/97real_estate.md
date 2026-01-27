@@ -6,6 +6,9 @@ nav_order: 7
 permalink: /case_studies_industry_real_estate.html
 ---
 
+# Real Estate
+{: .no_toc }
+
 ## Table of contents
 {: .no_toc .text-delta }
 

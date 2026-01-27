@@ -6,6 +6,9 @@ nav_order: 6
 permalink: /case_studies_industry_education.html
 ---
 
+# Education
+{: .no_toc }
+
 ## Table of contents
 {: .no_toc .text-delta }
 

@@ -6,6 +6,9 @@ nav_order: 8
 permalink: /case_studies_industry_banking.html
 ---
 
+# Banking
+{: .no_toc }
+
 ## Table of contents
 {: .no_toc .text-delta }
 

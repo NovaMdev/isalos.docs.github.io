@@ -6,6 +6,9 @@ nav_order: 11
 permalink: /case_studies_industry_insurance.html
 ---
 
+# Insurance
+{: .no_toc }
+
 ## Table of contents
 {: .no_toc .text-delta }
 

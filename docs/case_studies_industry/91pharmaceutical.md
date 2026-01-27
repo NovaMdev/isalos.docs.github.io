@@ -6,6 +6,9 @@ nav_order: 1
 permalink: /case_studies_industry_pharmaceutical.html
 ---
 
+# Pharmaceutical
+{: .no_toc }
+
 ## Table of contents
 {: .no_toc .text-delta }
 

@@ -6,6 +6,9 @@ nav_order: 10
 permalink: /case_studies_industry_cybersecurity.html
 ---
 
+# Cybersecurity
+{: .no_toc }
+
 ## Table of contents
 {: .no_toc .text-delta }
 
