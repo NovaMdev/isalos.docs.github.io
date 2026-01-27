@@ -5,6 +5,7 @@ parent: 8. Knowledge Base
 nav_order: 2
 permalink: /knowledge_base_doe.html
 ---
+
 # Design of Experiments (DOE)
 {: .no_toc }
 
