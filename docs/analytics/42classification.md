@@ -1555,7 +1555,84 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 
 
 ---
- 
+
+## Auto ML
+
+This function develops machine learning models for classification tasks and performs hyperparameter optimization to evaluate their performance. The models are trained and validated using all the variables of the input dataset after specification of the target variable. Additionally, the function supports multiple data splitting and normalization methods, as well as variable selection algorithms. Finally, all models are ranked according to the selected performance metrics.
+
+Use the `Auto ML` function by browsing in the top ribbon:
+
+|Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Auto ML|
+
+### Input
+{: .no_toc }
+
+Data matrix with training set data. The categories of the target feature should be presented as strings. Other categorical features must be encoded into numerical values, presented as either integers or doubles. 
+
+### Configuration
+{: .no_toc }
+
+| **Available/selected models** | Select manually the machine learning algorithms through the dialog window: Use the buttons to move algorithms between the `Available Models` and `Selected Models` list. Single-arrow buttons will move all selected algorithms and double-arrow buttons will move all algorithms. Available options include: k-Nearest Neighbours (kNN), Radial Basis Function Network, XGBoost, Random Forest, J48, and Fully Connected Neural Network. Double-click on each algorithm to specify the range (**Min value**, **Max value** and **Step**) of its hyperparameters. See more for the configuration options of each algorithm in the sections above. |
+| **RNG Seed** | Select an integer as seed to get reproducible results. The option to select a time-based random number-generated seed is available. This seed will be used consistently for all operations within the AutoML function that require a seed. |
+| **Type** | Select either Grid Search or the Genetic Algorithm to perform the hyperaparameter tuning. |
+| **Target column** | Select manually from the drop-down menu the column name containing the target variable that is going to be predicted. |
+| **Split Method** | Select manually from the drop-down menu the method for the splitting of the data into train and test sets. Available options include: Kennard-Stone, Random Partitioning, and k-Fold Partitioning. After you select the split method, specify its configuration parameters by clicking on `Configure Split Method`. See more for the configuration of each splitting method [here](https://www.docs.isalos.novamechanics.com//split.html). |
+| **Normalizer** | Select manually from the drop-down menu a normalization method. Available options include: ZScore Normalizer and Min-Max Normalizer. If you select the Min-Max Normalizer, click on `Configure Normalizer` to specify the Min and Max values for the normalization. |
+| **Variable Selector** | Select manually from the drop-down menu a variable selection method. Available options include: Genetic Algorithm, Boruta, Generalized Simulated Annealing, Particle Swarm Optimization, Recursive Feature Elimination, Successive Projections Algorithm, MI-VIF Variable Selection, and Best First. After you select the variable selection method, specify its configuration parameters by clicking on `Configure Selector`. See more for the configuration of each variable selection method [here](https://www.docs.isalos.novamechanics.com//variable-selection.html). |
+| **Selected Metric** | Select manually from the drop-down menu the metric which will be used to evaluate the performance of each algorithm. Available options include: Accuracy, MCC, Confusion Matrix, Precision, Recall, F1Score, Sensitivity, False Discovery Rate, Youden's J, Roc Auc, Hamming Loss, Balanced Accuracy, Kappa, Micro Precision, Macro Precision, Weighted Precision, Micro Recall, Macro Recall, Weighted Recall, Micro F1, Macro F1, Weighted F1, Micro Specificity, Macro Specificity, Weighted Specificity, Micro Youden's J, Macro Youden's J, Weighted Youden's J, and Macro AverageRocAuc. |
+| **Top Results to Show** | Specify how many of the algorithm ranking results, starting from the top, will be presented in the output speradsheet. |
+| **Number of Cores** | Specify the number of CPU cores that will be used for the execution of the computations. |
+
+### Output
+{: .no_toc }
+
+A ranking matrix of all the trained models including the number of top results specified in the Auto ML configuration box. The matrix presents the models starting from the top of the ranking, and consists of columns with each model's algorithm, the variables used for the prediction of the target, and the evaluation metrics.   
+
+### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+
+In the left-hand spreadsheet of the tab import the data matrix including the target variable, which should have at least two distinct categories for prediction. In case that categorical-string columns are included in the set, these should be encoded into representative numerical values.
+
+<div style="text-align: center;">
+<img src="images\AutoML\Classification\automl_classification_input.png" alt="Auto ML classification input" width="750" height="650" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc }
+
+1.   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Auto ML`.
+1.   Select the algorithms by clicking on the arrow buttons and moving the algorithms between the `Available Models` and `Selected Models` lists [1].
+1.   Double-click on each algorithm to specify the range of its hyperparameters. Default values, data types (double or integer) and acceptable ranges are indicated as guidance on the input parameter values [2], [3], [4]. 
+1.   Type an `RNG Seed` [5] for reproducible results or a random number generated `Time-based RNG Seed`.
+1.   Select the `Type` of hyperparameter optimization methods [6].
+1.   Select the `Target Column` that is going to be predicted from the drop-down menu [7].
+1.   Select the `Split Method` that will be applied on the dataset from the drop-down menu [8].
+1.   Click on `Configure Split Method` to specify the parameters of the splitting method [9], [10].
+1.   Select a `Normalizer` [11] from the drop-down menu. If you select the **Min-Max nomralizer** click on `Configure Normalizer` to specify the minimum and maximum values for the normalization [12], [13]. 
+1.   Select a method from the `Variable Selector` drop-down menu to remove redundant prediction variables [14].
+1.   Click on `Configure Selector` to specify the parameters for the variable selection method [15], [16].
+1.   Select the metric which will evaluate the model performance from the `Selected Metric` drop-down menu [17].
+1.   Type the number of `Top Results to Show` from the model ranking [18].
+1.   Type the `Number or Cores` that will be used to execute the computations [19].
+1.   Click on the `Execute` button to apply the Auto ML function [20].
+
+<div style="text-align: center;">
+<img src="images\AutoML\Classification\automl_classification_conf.png" alt="Auto ML classification configuration" width="700" height="700" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc }
+
+In the right-hand spreadsheet of the tab the matrix with the ranking of the predictive models is presented.
+
+<div style="text-align: center;">
+<img src="images\AutoML\Classification\automl_classification_output.png" alt="Auto ML classification output" width="750" height="700" class="img-responsive">
+</div>
+---
+
 ## Tips
 
 k Nearest Νeighbors:
