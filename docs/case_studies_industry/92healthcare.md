@@ -6,6 +6,9 @@ nav_order: 2
 permalink: /case_studies_industry_healthcare.html
 ---
 
+# Healthcare
+{: .no_toc }
+
 ## Table of contents
 {: .no_toc .text-delta }
 

@@ -6,6 +6,9 @@ nav_order: 3
 permalink: /case_studies_industry_analytical_chemistry.html
 ---
 
+# Analytical Chemistry
+{: .no_toc }
+
 ## Table of contents
 {: .no_toc .text-delta }
 

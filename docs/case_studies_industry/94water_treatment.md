@@ -6,6 +6,9 @@ nav_order: 4
 permalink: /case_studies_industry_water.html
 ---
 
+# Water Treatment
+{: .no_toc }
+
 ## Table of contents
 {: .no_toc .text-delta }
 

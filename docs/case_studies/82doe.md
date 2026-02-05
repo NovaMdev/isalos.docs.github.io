@@ -6,6 +6,9 @@ nav_order: 2
 permalink: /knowledge_base_doe.html
 ---
 
+# Design of Experiments (DOE)
+{: .no_toc }
+
 ## Table of contents
 {: .no_toc .text-delta }
 
@@ -97,3 +100,12 @@ permalink: /knowledge_base_doe.html
 {: .no_toc }
 * [Isalos workflow](files\DoE\Analytical chemistry\2016_Terzic\2016_Terzic.iap)
 * [Report](files\DoE\Analytical chemistry\2016_Terzic\2016_Terzic.pdf)
+
+
+# Isalos Publications
+
+#### Ammonia borane catalytic hydrolysis for H<sub>2</sub> generation ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
+{: .no_toc }
+* [Isalos workflow](files\DoE\Catalysis\2025_Michael\2025_Michael_Isalos.iap)
+* [Report](files\DoE\Catalysis\2025_Michael\2025_Michael.pdf)
+
