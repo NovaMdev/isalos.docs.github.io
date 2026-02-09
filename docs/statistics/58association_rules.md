@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 5.7 Association Rules Mining
+title: 5.8 Association Rules Mining
 parent: 5. Statistics
-nav_order: 7
+nav_order: 8
 permalink: /association-rules-mining.html
 ---
 

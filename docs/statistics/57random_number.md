@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 5.6 Random Number Generator
+title: 5.7 Random Number Generator
 parent: 5. Statistics
-nav_order: 6
+nav_order: 7
 permalink: /random-number-generator.html
 ---
 
