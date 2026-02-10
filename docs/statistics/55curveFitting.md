@@ -246,6 +246,8 @@ The parameter estimates and goodness of fit tables are shown in the output sprea
        class="img-responsive">
 </div>
 
+---
+
 ### Available Models
 #### Dose-Response
 ##### Bell-shaped, X is log10(concentration)
@@ -357,6 +359,151 @@ The independent variable (X) must be the concentration/dose on a linear scale an
 1. $$nH_2$$: Controls the steepness of component 2 and the stimulation vs inhibition
 
 ---
+##### Absolute IC/EC50, X is Concentration
+{: .no_toc }
+The Absolute IC/EC50 (X is concentration) model fits an inhibitory/stimulatory dose–response curve when you want the IC50/EC50 defined relative to a fixed reference baseline rather than relative to the fitted Bottom plateau. In many assays, the “fully inhibited” level is determined by a standard inhibitor / positive control (or another external reference) and may not coincide with the Bottom plateau reached by the tested compound. This model therefore distinguishes between Bottom (the asymptote of the tested compound) and Baseline (the externally defined 100% inhibition reference). The fitted Absolute IC50 is the concentration at which the response falls halfway between Top (no inhibitor) and Baseline (maximal inhibition reference), while the rest of the curve (Top, Bottom, HillSlope) is fitted to the data.
+
+
+###### Equation
+{: .no_toc }
+<div id="absolute-ic50-x"> \[ \begin{equation} \begin{alignedat}{2} \mathrm{Fifty} &= \frac{\mathrm{Top}+\mathrm{Baseline}}{2} \qquad & \\ \mathrm{Scale} &= \frac{\mathrm{Top}-\mathrm{Bottom}}{\mathrm{Fifty}-\mathrm{Bottom}}-1 \qquad & \end{alignedat} \end{equation} \] </div> <div id="absolute-ic50-x-2"> \[ \begin{equation} Y=\mathrm{Bottom}+\frac{\mathrm{Top}-\mathrm{Bottom}}{1+\left(\mathrm{Scale}\cdot\left(\frac{\mathrm{AbsoluteIC50}}{X}\right)\right)^{\mathrm{HillSlope}}} \end{equation} \] </div>
+
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/absolute_X.png" alt="Absolute IC/EC50, X is Concentration" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be the concentration/dose on a linear scale and therefore must be strictly positive $$(X>0)$$. Zero or negative X values are not used in the calculations (they are ignored/excluded). The model also requires a column containing the dependent variable (Y) response values (in any consistent units). This equation also requires the specification of one extra parameter:
+1. $$Baseline$$: The response level corresponding to maximal inhibition defined by a standard control (e.g., a reference inhibitor). It is used to define “100% inhibition” for the purpose of computing Absolute IC50. Baseline must be provided by the user and is in the same units as $$Y$$.
+
+###### Parameters
+{: .no_toc }
+1. $$Top$$: The upper plateau of the inhibition curve (response with no inhibitor / very low inhibitor). Same units as $$Y$$.
+
+1. $$Bottom$$: The lower plateau approached by the tested inhibitor at high concentrations (residual response). Same units as $$Y$$.
+
+1. $$AbsoluteIC50/AbsoluteEC50$$: The inhibitor/stimulation concentration that produces a response halfway between Top and Baseline.
+
+1. $$HillSlope$$: Controls the steepness of the curve transition.
+
+---
+##### Absolute IC/EC50, X is log10(concentration)
+{: .no_toc }
+The Absolute IC/EC50 (X is concentration) model fits an inhibitory/stimulatory dose–response curve when you want the IC50/EC50 defined relative to a fixed reference baseline rather than relative to the fitted Bottom plateau. In many assays, the “fully inhibited” level is determined by a standard inhibitor / positive control (or another external reference) and may not coincide with the Bottom plateau reached by the tested compound. This model therefore distinguishes between Bottom (the asymptote of the tested compound) and Baseline (the externally defined 100% inhibition reference). The fitted Absolute IC50 is the concentration at which the response falls halfway between Top (no inhibitor) and Baseline (maximal inhibition reference), while the rest of the curve (Top, Bottom, HillSlope) is fitted to the data. Here, $$X$$ is $$log_{10}(concentration)$$.
+
+
+###### Equation
+{: .no_toc }
+<div id="absolute-ic50-logX-defs"> \[ \begin{equation} \begin{alignedat}{2} \mathrm{Fifty} &= \frac{\mathrm{Top}+\mathrm{Baseline}}{2} \qquad & \\ \mathrm{Shift} &= \log_{10}\!\left(\frac{\mathrm{Top}-\mathrm{Bottom}}{\mathrm{Fifty}-\mathrm{Bottom}}-1\right) \qquad & \end{alignedat} \end{equation} \] </div> <div id="absolute-ic50-logX-eq"> \[ \begin{equation} Y = \mathrm{Bottom} + \frac{\mathrm{Top}-\mathrm{Bottom}} {1+10^{\big((\mathrm{LogAbsoluteIC50}-X)\cdot \mathrm{HillSlope} + \mathrm{Shift}\big)}} \end{equation} \] </div>
+
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/absolute_logX.png" alt="Absolute IC/EC50, X is log10(concentration)" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be the log10-transformed concentration/dose (i.e., $$𝑋 = log_{10}(concentration/dose)$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units). This equation also requires the specification of one extra parameter:
+1. $$Baseline$$: The response level corresponding to maximal inhibition defined by a standard control (e.g., a reference inhibitor). It is used to define “100% inhibition” for the purpose of computing Absolute IC50. Baseline must be provided by the user and is in the same units as $$Y$$.
+
+###### Parameters
+{: .no_toc }
+1. $$Top$$: The upper plateau of the inhibition curve (response with no inhibitor / very low inhibitor). Same units as $$Y$$.
+
+1. $$Bottom$$: The lower plateau approached by the tested inhibitor at high concentrations (residual response). Same units as $$Y$$.
+
+1. $$LogAbsoluteIC50/LogAbsoluteEC50$$: The $$log_{10}(concentration)$$ that produces a response halfway between Top and Baseline.
+
+1. $$HillSlope$$: Controls the steepness of the curve transition.
+
+---
+
+##### Allosteric EC50 shift, X is Concentration
+{: .no_toc }
+The Allosteric EC50 shift model fits agonist dose–response curves measured at multiple fixed concentrations of an allosteric modulator (including a no-modulator control). The modulator does not directly generate a response; instead, it shifts the agonist’s apparent potency by changing the effective agonist concentration required to produce a given effect. The model globally estimates the agonist potency in the absence of modulator (EC50), the modulator affinity for its allosteric site (KB), and a cooperativity factor ($$a$$) that quantifies how modulator binding alters agonist potency. Curves shift left ($$a > 1$$) when the modulator increases agonist potency and shift right ($$α < 1$$) when it decreases potency.
+
+
+###### Equation
+{: .no_toc }
+<div id="allosteric-ec50-shift"> \[ \begin{equation} \begin{alignedat}{2} \beta &= \frac{1+\mathrm{Allo}/K_B}{1+\alpha\,\mathrm{Allo}/K_B} \qquad & \mathrm{Antag} &= \mathrm{Agonist}\cdot \beta \\ Y &= \mathrm{Bottom} + \frac{\mathrm{Top}-\mathrm{Bottom}} {1+\left(\frac{\mathrm{EC50}}{\mathrm{Antag}}\right)^{\mathrm{HillSlope}}} \qquad & \end{alignedat} \end{equation} \] </div>
+
+(Here $$Allo$$ is the fixed modulator concentration for each curve.)
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/allosteric_ec50_shift_X.png" alt="Allosteric EC50 shift, X is Concentration" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be the concentration/dose on a linear scale and therefore must be strictly positive $$(X>0)$$. Zero or negative X values are not used in the calculations (they are ignored/excluded). The dependent variable (Y) contains the measured response values. This is a global fit across multiple curves: each curve corresponds to a fixed modulator concentration ($$Allo$$). Provide one dataset with $$Allo=0$$ (no modulator) and additional datasets for each modulator level, using consistent concentration units throughout.
+
+###### Parameters
+{: .no_toc }
+1. $$Top$$: The upper plateau of the inhibition curve (response with no inhibitor / very low inhibitor). Same units as $$Y$$.
+
+1. $$Bottom$$: The lower plateau approached by the tested inhibitor at high concentrations (residual response). Same units as $$Y$$.
+
+1. $$EC50$$: Agonist concentration that produces half-maximal response in the absence of modulator. Same units as $$X$$. Lower $$EC50$$ indicates higher agonist potency.
+
+1. $$HillSlope$$: Controls the steepness of the curve transition.
+
+1. $$KB$$: Equilibrium dissociation constant (affinity) of the modulator for its allosteric site. Same molar units as $$Allo$$. Lower $$KB$$ indicates tighter modulator binding.
+
+1. $$a$$: Cooperativity factor describing how modulator binding changes agonist potency:
+     1. $$a = 1$$: no shift (modulator does not affect potency)
+     1. $$a > 1$$: left shift (agonist becomes more potent; EC50 decreases)
+     1. $$a < 1$$: right shift (agonist becomes less potent; EC50 increases)
+
+---
+
+##### Allosteric EC50 shift, X is log10(concentration)
+{: .no_toc }
+The Allosteric EC50 shift model fits agonist dose–response curves measured at multiple fixed concentrations of an allosteric modulator (including a no-modulator control), when the agonist concentrations are entered as log₁₀ values. The modulator changes the apparent potency of the agonist without necessarily changing maximal efficacy, producing left- or right-shifts of the dose–response curves. By fitting all curves globally, the model estimates the agonist potency in the absence of modulator (logEC50), the modulator affinity for its site (logKB), and a cooperativity factor $$(logAlpha / α)$$ that quantifies how modulator binding alters agonist potency. Curves shift left when $$α>1$$ and shift right when $$α<1$$.
+
+
+###### Equation
+{: .no_toc }
+<div id="allosteric-ec50-shift-logX"> \[ \begin{equation} \begin{alignedat}{2} \mathrm{EC50} &= 10^{\mathrm{logEC50}} \qquad & K_B &= 10^{\mathrm{logKB}} \\ \alpha &= 10^{\mathrm{logAlpha}} \qquad & \mathrm{Antag} &= \frac{1+\mathrm{Allo}/K_B}{1+\alpha\,\mathrm{Allo}/K_B} \\ \mathrm{LogEC} &= \log_{10}\!\left(\frac{\mathrm{EC50}}{\mathrm{Antag}}\right) \qquad & \end{alignedat} \end{equation} \] </div> <div id="allosteric-ec50-shift-logX-2"> \[ \begin{equation} Y=\mathrm{Bottom}+\frac{\mathrm{Top}-\mathrm{Bottom}}{1+10^{(\mathrm{LogEC}-X)\cdot \mathrm{HillSlope}}} \end{equation} \] </div>
+
+(Here $$Allo$$ is the fixed modulator concentration for each curve.)
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/allosteric_ec50_shift_logX.png" alt="Allosteric EC50 shift, X is log10(concentration)" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be the log₁₀-transformed agonist concentration ($$X = log_{10}(agonist)$$).. The dependent variable (Y) contains the measured response values. This is a global fit across multiple curves: each curve corresponds to a fixed modulator concentration ($$Allo$$). Provide one dataset with $$Allo=0$$ (no modulator) and additional datasets for each modulator level, using consistent concentration units throughout.
+
+###### Parameters
+{: .no_toc }
+1. $$Top$$: The upper plateau of the inhibition curve (response with no inhibitor / very low inhibitor). Same units as $$Y$$.
+
+1. $$Bottom$$: The lower plateau approached by the tested inhibitor at high concentrations (residual response). Same units as $$Y$$.
+
+1. $$logEC50$$: The base-10 logarithm of the agonist concentration that produces half-maximal response in the absence of modulator.
+
+1. $$HillSlope$$: Controls the steepness of the curve transition.
+
+1. $$logKB$$: The base-10 logarithm of the equilibrium dissociation constant for the modulator binding to its allosteric site.
+
+1. $$logAlpha$$: The base-10 logarithm of the cooperativity factor a:
+     1. $$a = 1$$: no shift (modulator does not affect potency)
+     1. $$a > 1$$: left shift (agonist becomes more potent; EC50 decreases)
+     1. $$a < 1$$: right shift (agonist becomes less potent; EC50 increases)
+
+---
+
 
 #### Receptor Binding
 
@@ -605,11 +752,374 @@ This is a global fit across multiple curves: each curve corresponds to a fixed a
      1. $$alpha > 1$$: apparent affinity of radioligand increases (curve shifts left; more binding at a given $$X$$).
 
 ---
+##### Specific Binding with Hill Slope
+{: .no_toc }
+The Specific binding with Hill slope model extends the one-site specific binding isotherm by allowing the curve’s steepness to vary through a Hill coefficient. It is used when nonspecific binding has already been removed and you are fitting specific binding only, but the transition from low to high binding is steeper or shallower than expected for simple 1:1 mass-action binding. The Hill slope ($$h$$) provides an empirical way to capture apparent cooperativity or heterogeneity in binding behavior, while still estimating the binding capacity (Bmax) and the concentration scale parameter (Kd).
 
+###### Equation
+{: .no_toc }
+<div id="specific-binding-hill"> 
+\[ \begin{equation} 
+\begin{alignedat}{2} 
+Y &= \frac{\mathrm{Bmax}\,X^{h}}{\mathrm{Kd}^{h}+X^{h}} \qquad & 
+\end{alignedat} \end{equation} \]
+ </div>
 
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/specificBindingHillSlope.png" alt="Specific Binding with Hill Slope" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be on a linear scale and therefore must be strictly positive $$(X>0)$$. Zero or negative X values are not used in the calculations (they are ignored/excluded). The dependent variable ($$Y$$) should contain specific binding values in consistent units, with any nonspecific binding removed prior to fitting.
+
+###### Parameters
+{: .no_toc }
+1. $$Bmax$$: The maximum specific binding capacity of the high-affinity site population (plateau contribution from that site). Reported in the same units as $$Y$$.
+
+1. $$K_d$$: The concentration scale parameter in the same units as $$X$$. When $$h=1$$, $$K_d$$ is the equilibrium dissociation constant and equals the ligand concentration that yields half-maximal specific binding. When $$h
+\neq 1$$, $$K_d$$ still sets the concentration range where the curve transitions, but its strict mechanistic interpretation as a true dissociation constant depends on why $$h$$ differs from 1.
+
+1. $$h$$: Controls the steepness of the binding curve: 
+     1. $$h=1$$: classic one-site binding (no cooperativity)
+     1. $$h>1$$: steeper, more sigmoidal transition (often associated with positive cooperativity or multiple interacting sites)
+     1. $$0<h<1$$: shallower transition (often consistent with site heterogeneity or negative cooperativity)
+
+---
+
+##### One site - Fit Ki, X is log10(competitor)
+{: .no_toc }
+The One site — Fit Ki model is used in competition binding experiments to estimate the affinity ($$K_i$$) of an unlabeled competitor ligand. Binding of a fixed concentration of radioligand is measured while increasing concentrations of the competitor are added. As competitor concentration increases, radioligand binding decreases in a sigmoidal manner when plotted versus the log10 competitor concentration. The model fits this inhibition curve and converts the fitted midpoint to $$K_i$$ using the Cheng–Prusoff relationship, accounting for the radioligand concentration and its $$K_d$$.
+
+###### Equation
+{: .no_toc }
+<div id="one-site-fit-ki"> 
+\[ \begin{equation} 
+\begin{alignedat}{2} 
+\mathrm{LogEC50} &= \log_{10}\!\Big(10^{\mathrm{log}K_i}\big(1+\frac{\mathrm{HotNM}}{\mathrm{HotKdNM}}\big)\Big) \qquad & \\ Y &= \mathrm{Bottom} + \frac{\mathrm{Top}-\mathrm{Bottom}}{1+10^{(X-\mathrm{LogEC50})}} \qquad & 
+\end{alignedat} 
+\end{equation} \] 
+</div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/oneSite_fitKi.png" alt="One site - Fit Ki, X is log10(competitor)" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be the log10-transformed competitor concentration (i.e., $$𝑋 = log_{10}(competitor)$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units). This equation also requires the specification of two extra parameters:
+
+1. $$HotNM$$: The concentration of radioligand used in the experiment (in nM). It is constant across the dataset.
+
+1. $$HotKdNM$$: The equilibrium dissociation constant ($$K_d$$) of the radioligand (in nM). Used to convert the fitted midpoint to $$K_i$$.
+
+###### Parameters
+{: .no_toc }
+1. $$Top$$: The upper plateau of the curve (binding when competitor is very low/absent). Reported in the same units as $$Y$$.
+
+1. $$Bottom$$: The lower plateau of the curve (residual binding at very high competitor concentrations). Reported in the same units as $$Y$$.
+
+1. $$logK_i$$: The base-10 logarithm of the competitor affinity. It is the primary fitted affinity parameter reported on a log scale.
+
+---
+
+##### One site - Fit LogIC50, X is log10(competitor)
+{: .no_toc }
+The One site — Fit Ki model is used in competition binding experiments to estimate the affinity ($$K_i$$) of an unlabeled competitor ligand. Binding of a fixed concentration of radioligand is measured while increasing concentrations of the competitor are added. As competitor concentration increases, radioligand binding decreases in a sigmoidal manner when plotted versus the log10 competitor concentration. The model fits this inhibition curve and converts the fitted midpoint to $$K_i$$ using the Cheng–Prusoff relationship, accounting for the radioligand concentration and its $$K_d$$.
+
+###### Equation
+{: .no_toc }
+<div id="one-site-fit-logic50"> 
+\[ \begin{equation} 
+\begin{alignedat}{2} Y &= \mathrm{Bottom} + \frac{\mathrm{Top}-\mathrm{Bottom}}{1+10^{(X-\mathrm{LogIC50})}} \qquad & 
+\end{alignedat} 
+\end{equation} \] 
+</div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/oneSite_fitLogIC50.png" alt="One site - Fit LogIC50, X is log10(competitor)" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be the log10-transformed competitor concentration (i.e., $$𝑋 = log_{10}(competitor)$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+1. $$Top$$: The upper plateau of the curve (binding when competitor is very low/absent). Reported in the same units as $$Y$$.
+
+1. $$Bottom$$: The lower plateau of the curve (residual binding at very high competitor concentrations). Reported in the same units as $$Y$$.
+
+1. $$LogIC50$$: The base-10 logarithm of the competitor concentration that reduces binding to halfway between $$Top$$ and $$Bottom$$. Lower $$LogIC50$$ (or $$IC50$$) values indicate higher competitor potency.
+
+---
+
+##### Two sites - Fit Ki, X is log10(competitor)
+{: .no_toc }
+The Two sites — Fit Ki model is used in competition binding experiments when the radioligand (or receptor population) exhibits two binding site classes (typically high- and low-affinity). Binding is measured at a fixed radioligand concentration while increasing concentrations of an unlabeled competitor are added, with $$X$$ entered as the log10 competitor concentration. The curve is fit as the sum of two sigmoidal inhibition components, weighted by the fraction of sites in the high-affinity class. The fitted midpoints are converted to two $$K_i$$ values (high and low) using a Cheng–Prusoff–style adjustment that accounts for radioligand concentration and the radioligand $$K_d$$ for each site class.
+
+###### Equation
+{: .no_toc }
+<div id="two-sites-fit-ki"> 
+\[ \begin{equation} 
+\begin{alignedat}{2} 
+\mathrm{LogEC50}_{\mathrm{Lo}} &= \log_{10}\!\Big(10^{\mathrm{log}K_{i,\mathrm{Lo}}}\big(1+\frac{\mathrm{HotNM}}{\mathrm{HotKdNM}_{\mathrm{Lo}}}\big)\Big) \qquad & \mathrm{LogEC50}_{\mathrm{Hi}} &= \log_{10}\!\Big(10^{\mathrm{log}K_{i,\mathrm{Hi}}}\big(1+\frac{\mathrm{HotNM}}{\mathrm{HotKdNM}_{\mathrm{Hi}}}\big)\Big) \\ \mathrm{Span} &= \mathrm{Top}-\mathrm{Bottom} \qquad & \mathrm{Part}_1 &= \frac{\mathrm{FractionHi}\cdot \mathrm{Span}}{1+10^{(X-\mathrm{LogEC50}_{\mathrm{Hi}})}} \\ \mathrm{Part}_2 &= \frac{(1-\mathrm{FractionHi})\cdot \mathrm{Span}}{1+10^{(X-\mathrm{LogEC50}_{\mathrm{Lo}})}} \qquad & 
+\end{alignedat} 
+\end{equation} \] 
+</div>
+<div id="two-sites-fit-ki-2"> 
+\[ \begin{equation} Y=\mathrm{Bottom}+\mathrm{Part}_1+\mathrm{Part}_2 \end{equation} \] 
+</div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/twoSites_fitKi.png" alt="Two sites - Fit Ki, X is log10(competitor)" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be the log10-transformed competitor concentration (i.e., $$𝑋 = log_{10}(competitor)$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units). This equation also requires the specification of three extra parameters:
+
+1. $$HotNM$$: Radioligand concentration used in the experiment (nM), constant across the dataset.
+
+1. $$HotKdNM_{Hi},HotKdNM_{Lo}$$: Radioligand $$K_d$$ values (nM) for the high- and low-affinity site classes. Used in the Cheng–Prusoff adjustment that links $$IC50$$ midpoints to $$K_i$$.
+
+###### Parameters
+{: .no_toc }
+1. $$Top$$: The upper plateau of the curve (binding when competitor is very low/absent). Reported in the same units as $$Y$$.
+
+1. $$Bottom$$: The lower plateau of the curve (residual binding at very high competitor concentrations). Reported in the same units as $$Y$$.
+
+1. $$FractionHi$$: The fraction of binding sites (or binding component) that follow the high-affinity competitor interaction. Constrained to $$ 0≤FractionHi≤1 $$. The low-affinity fraction is $$1−FractionHi$$.
+
+1. $$logK_i^{Hi}, logK_i^{Lo}$$: Base-10 logarithms of the competitor affinities for the high- and low-affinity site classes.
+
+---
+##### Two sites - Fit LogIC50, X is log10(competitor)
+{: .no_toc }
+The Two sites — Fit logIC50 model is used for competition binding experiments when the data suggest two distinct classes of binding sites (or binding components) with different affinities for the competitor. Binding is measured at a fixed radioligand concentration while increasing concentrations of unlabeled competitor are added, with $$X$$ entered as the log₁₀ competitor concentration. The observed inhibition curve is modeled as the sum of two logistic components, each with its own midpoint (logIC50), weighted by the fraction of sites belonging to the high-affinity class. Unlike the “Fit Ki” version, this model does not convert midpoints to $$K_i$$; instead, it directly estimates two empirical logIC50 values that describe where each component is half-inhibited.
+
+###### Equation
+{: .no_toc }
+<div id="two-sites-fit-logic50"> 
+\[ \begin{equation} 
+\begin{alignedat}{2} \mathrm{Span} &= \mathrm{Top}-\mathrm{Bottom} \qquad & \\ \mathrm{Part}_1 &= \frac{\mathrm{FractionHi}\cdot \mathrm{Span}} {1+10^{(X-\mathrm{LogIC50}_{\mathrm{Hi}})}} \qquad & \mathrm{Part}_2 = \frac{(1-\mathrm{FractionHi})\cdot \mathrm{Span}} {1+10^{(X-\mathrm{LogIC50}_{\mathrm{Lo}})}} 
+\end{alignedat} 
+\end{equation} \] 
+</div> 
+<div id="two-sites-fit-logic50-2"> 
+\[ \begin{equation} Y = \mathrm{Bottom} + \mathrm{Part}_1 + \mathrm{Part}_2 
+\end{equation} \] 
+</div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/twoSites_fitLogIC50.png" alt="Two sites - Fit LogIC50, X is log10(competitor)" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be the log10-transformed competitor concentration (i.e., $$𝑋 = log_{10}(competitor)$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+1. $$Top$$: The upper plateau of the curve (binding when competitor is very low/absent). Reported in the same units as $$Y$$.
+
+1. $$Bottom$$: The lower plateau of the curve (residual binding at very high competitor concentrations). Reported in the same units as $$Y$$.
+
+1. $$FractionHi$$: The fraction of binding sites (or binding component) that follow the high-affinity competitor interaction. Constrained to $$ 0≤FractionHi≤1 $$. The low-affinity fraction is $$1−FractionHi$$.
+
+1. $$LogIC50_{Hi}, LogIC50_{Lo}$$: Base-10 logarithms of the $$log_{10}(concentration)$$ that inhibits half of the high/low-affinity component.
+
+---
+##### One site - Homologous
+{: .no_toc }
+The One site — Homologous model is used in competition binding experiments where the labeled and unlabeled ligands are assumed to have identical affinity for the same single class of receptors (i.e., they are chemically identical or behave equivalently at the binding site). Binding of a fixed concentration of radioligand is measured while increasing concentrations of the unlabeled (cold) ligand are added, with $$X$$ entered as the $$log_{10}$$ competitor concentration. Because both ligands are assumed to share the same $$K_d$$, the analysis allows you to estimate a single common affinity along with Bmax and a linear nonspecific component.
+
+###### Equation
+{: .no_toc }
+<div id="one-site-homologous"> 
+\[ \begin{equation} 
+\begin{alignedat}{2} \mathrm{ColdNM} &= 10^{X} \qquad \text{(cold competitor in nM)} \\ \mathrm{KdNM} &= 10^{\mathrm{LogKd}} \qquad \text{(shared affinity in nM)} 
+\end{alignedat} 
+\end{equation} \] 
+</div>
+
+<div id="one-site-homologous-2"> 
+\[ \begin{equation} 
+Y = \frac{\mathrm{Bmax}\cdot \mathrm{HotNM}} {\mathrm{HotNM}+\mathrm{ColdNM}+\mathrm{KdNM}} + \mathrm{Bottom} 
+\end{equation} \] 
+</div>
+
+(Here HotNM is the fixed radioligand concentration for a given curve, and ColdNM is the competitor concentration derived from $$X=log_{10}(competitor)$$.)
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/oneSite_homologous.png" alt="One site - Homologous" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be the log10-transformed competitor concentration (i.e., $$𝑋 = log_{10}(competitor)$$). The model also requires at lease one column containing the dependent variable (Y) response values (in any consistent units). You must provide the radioligand concentration (HotNM) for each curve. Using at least two different radioligand concentrations is recommended for more reliable estimation of $$K_d, Bmax$$, and nonspecific binding.
+
+###### Parameters
+{: .no_toc }
+1. $$LogKd$$: The base-10 logarithm of the equilibrium dissociation constant shared by both labeled and unlabeled ligand.
+
+1. $$Bmax$$: The maximum binding capacity of the receptor system (same units as $$Y$$). It represents binding when receptors are saturated with ligand.
+
+1. $$NS$$: A constant baseline representing nonspecific binding (or residual signal). It is effectively the binding observed at very high competitor concentrations and is reported in the same units as $$Y$$.
+Conceptually, this reflects the fraction of radioligand that binds nonspecifically rather than to receptors.
+
+---
+
+##### One Site -- Heterologous with depletion
+{: .no_toc }
+The One Site — Heterologous with depletion model is used for competition binding experiments when a substantial fraction of the added radioligand becomes bound, so the free radioligand concentration is meaningfully lower than the amount added (ligand depletion). In this setting, the usual competition model (which assumes free ≈ added) can bias affinity estimates. This depletion-aware formulation uses the experimental design constants (radioligand amount in CPM, radioligand $$K_d$$, specific activity, and reaction volume) to correct for depletion and fit the competition curve accordingly.Because the method relies on comparing added ligand and bound ligand in the same CPM units, it is intended for radioactive ligands and is generally not applicable to fluorescent ligand formats.
+
+###### Equation
+{: .no_toc }
+<div id="one-site-heterologous-depletion"> 
+\[ \begin{equation}
+ \begin{alignedat}{2} \mathrm{KdCPM} &= \mathrm{KdNM}\cdot \mathrm{SpAct}\cdot \mathrm{Vol}\cdot 1000 \qquad & \\ R &= \mathrm{NS}+1 \qquad & S &= 1+10^{(X-\mathrm{Log}K_i)}\cdot \mathrm{KdCPM} + \mathrm{Hot} \\ a &= -1\cdot R \qquad & b &= R\cdot S + R\cdot \mathrm{Hot} + \mathrm{Bmax} \\ c &= -1\cdot \mathrm{Hot}\,(S\cdot \mathrm{NS} + \mathrm{Bmax}) \qquad & 
+ \end{alignedat} 
+ \end{equation} \] 
+ </div> 
+ <div id="one-site-heterologous-depletion-2"> 
+ \[ \begin{equation} Y=\frac{-b+\sqrt{b^{2}-4ac}}{2a} 
+ \end{equation} \] 
+ </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/oneSite_heterologous.png" alt="One Site -- Heterologous with depletion" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be the log10-transformed competitor concentration (i.e., $$𝑋 = log_{10}(competitor)$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units). This equation also requires the specification of three extra parameters:
+
+1. $$Hot$$: The amount/concentration of radioligand used for the experiment, expressed in CPM (constant across the dataset).
+
+1. $$KdNM$$: The radioligand equilibrium dissociation constant in nM.
+
+1. $$SpAct$$: Specific radioactivity (e.g., CPM per fmol), used to convert concentration units into CPM units.
+
+1. $$Vol$$: Reaction volume (e.g., mL), used in the concentration → CPM conversion for $$KdCPM$$.
+
+###### Parameters
+{: .no_toc }
+1. $$LogKi$$: The base-10 logarithm of the competitor affinity.
+
+1. $$Bmax$$: The maximum specific binding capacity (in CPM) corresponding to saturable receptor binding. Because it represents total receptor capacity, it is typically higher than the observed “Top” of an inhibition curve.
+
+1. $$NS$$: The nonspecific binding fraction (or proportionality factor) describing the portion of radioligand signal attributable to nonspecific binding sites under this CPM-based formulation.
+
+---
 
 ## Lethal Concentration/Dose (LCx/LDx)
+In this context, LCx/LDx analysis refers to estimating the concentration (LCx) or dose (LDx) that produces a specified proportion $$x%$$ of “response” (typically mortality) in a population. Unlike the nonlinear least-squares models above, LCx/LDx models are naturally formulated as a binomial-response problem: each observation represents $$y_i$$ affected individuals out of $$n_i$$ tested at a given concentration/dose $$X_i$$. The probability of response, $$p_i$$, is modeled using a generalized linear model (GLM) with a probit link:
 
+<div id="lcx-generic"> 
+\[ \begin{equation} 
+y_i \sim \mathrm{Binomial}(n_i, p_i) \end{equation} \] 
+</div> 
+<div id="lcx-probit"> 
+\[ \begin{equation} \Phi^{-1}(p_i)=\eta_i=\beta_0+\beta_1\,g(X_i) 
+\end{equation} \] 
+</div> 
+where $$\Phi^{-1}(\cdot)$$ is the inverse standard normal CDF (the **probit** link), $$\eta_i$$ is the linear predictor, $$\beta_0,\beta_1$$ are regression coefficients, and $$g(X)$$ is the chosen predictor scale (commonly $$\log_{10}(X)$$ for dose/concentration–response).
+
+Once $$\beta_0$$ and $$\beta_1$$ are estimated, the LCx/LDx value is obtained by solving for the $$X$$ that yields $$ p = x/100$$. Let $$z_x = \Phi^{-1}(x/100)$$. Then:
+
+<div id="lcx-solve"> 
+\[ \begin{equation}
+ z_x=\beta_0+\beta_1\,g(LC_x)\quad\Rightarrow\quad g(LC_x)=\frac{z_x-\beta_0}{\beta_1} 
+ \end{equation} \] 
+ </div> 
+ and $$LC_x$$ (or $$LD_x$$) is found by applying the inverse of $$g(\cdot)$$ (e.g., exponentiating if $$g(X)=\log_{10}(X)$$). This framework is preferred for lethal endpoints because it explicitly models **probabilities**, respects the **0–1 bounds**, and correctly handles the fact that variance depends on $$p_i$$ and $$n_i$$, rather than assuming constant-variance residuals.
+
+To fit probit GLMs, Isalos uses the generalized linear model routine with parameters estimated by the Newton–Raphson method. Newton–Raphson updates the coefficient vector by repeatedly using the gradient and curvature of the log-likelihood to move toward the maximum-likelihood solution. This approach is standard for GLMs because it is efficient, converges rapidly for well-behaved datasets, and provides the estimated coefficient covariance matrix needed for uncertainty quantification.
+
+After fitting, uncertainty can be reported either on the regression coefficients  or directly on derived quantities such as LC50/LD50. Symmetrical confidence intervals are computed from the approximate normality of the maximum-likelihood estimates (Wald-type intervals).
+
+Fit your data using the Lethal Concentration/Dose (LCx/LDx) function by browsing in the top ribbon:
+
+| `Statistics` $$\rightarrow$$ `Curve Fitting` $$\rightarrow$$ `Lethal Concentration/Dose (LCx/LDx)` |
+
+### Input
+{: .no_toc }
+Numerical values should be specified in the input datasheet. The design for  Lethal Concentration/Dose (LCx/LDx) requires at least three numerical columns in the input sheet: one column representing the independent variable, one column corresponding to the number of trials performed with the specified concentration/dose and one column with the number of successes. Columns with empty cells cannot be inculded in the analysis. Each row represents a single observation.
+
+### Configuration
+{: .no_toc }
+
+|**Concentration/Dose Column**| Select the column that contains the independent variable (applied concentration or dose). |
+|**Trials Column**| Select the column that indicates the total number of individuals/units tested at each concentration or dose. |
+|**Successes Column**| Select the column that indicates the number of observed lethal responses at each concentration or dose. |
+|**Logarithmize Concentration/Dose Column**| Enable this option to transform the concentration/dose values using a base-10 logarithm, which is commonly used to stabilize variance and linearize the probit relationship.|
+|**Logarithm Base**| Choose the base used for the logarithmic transformation of the concentration/dose column (default is base 10). |
+|**Lethal Effect (%)**| Specify the target effect level (e.g., 50% for LC50/LD50) for which the corresponding concentration or dose will be estimated. |
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+
+### Output
+{: .no_toc }
+The output spreadsheet contains three tables:
+1. Lethal Concentration/Dose Estimation Table: contains the estimate for the lethal concentration/dose at the specified user percentage alongside its confidence interval.
+1. Parameter Estimates Table: includes the estimated coefficients. Each row corresponds to a predictor and includes its coefficient, standard error, confidence interval, test statistic, degrees of freedom, and p-value.
+1. Goodness of Fit: includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+
+In addition, a pop-up window displays a plot of the fitted curve overlaid with the experimental data points.
+
+### Example
+{: .no_toc }
+
+#### Input
+{: .no_toc }
+In the input datasheet the requirement is to specify at least three numerical columns and insert the appropriate data, as shown below.
+<div style="text-align: center;">
+<img src="images/Curve Fitting/lcld_input.png" alt="LCx/LDx-input" width="400" height="300" class="img-responsive">
+</div>
+
+#### Configuration
+{: .no_toc }
+1. Select  `Statistics` → `Curve Fitting` → `Lethal Concentration/Dose (LCx/LDx)`.
+1. Select the column that corresponds to the `Concentration/Dose Column`[1]. 
+1. Select the column that corresponds to the `Trials Column`[2]. 
+1. Select the column that corresponds to the `Successes Column`[3]. 
+1. Select/tick if you wish to `Logarithmize Concentration/Dose Column` before fitting [4].
+1. If the logaritmize option is selected, specify the `Logarithm Base`[5] for the transformation.
+1. Specify the `Lethal Effect Level (%)`[6]  for which the corresponding concentration or dose will be estimated.
+1. Specify the `Confidence Level (%)`[7] for tests.
+1. Click on the `Execute` button [8] to perform the Non Linear Curve Fitting method.
+<div style="text-align: center;">
+<img src="images/Curve Fitting/lcld_config.png" alt="LCx/LDx-config" width="400" height="300" class="img-responsive">
+</div>
+
+#### Output
+{: .no_toc }
+The lethal concentration/dose estimates, parameter estimates and goodness of fit tables are shown in the output spreadsheet and the line chart showcasing the fitted curve and the experimental points is shown in a separate window.
+<div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+  <img src="images/Curve Fitting/lcld_output.png"
+       alt="LCx/LDx-output"
+       style="max-width:350px; width:100%; height:auto;"
+       class="img-responsive">
+
+  <img src="images/Curve Fitting/lcld_output_plot.png"
+       alt="LCx/LDx-output-plot"
+       style="max-width:350px; width:100%; height:auto;"
+       class="img-responsive">
+</div>
 
 ---
  
