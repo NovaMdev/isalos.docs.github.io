@@ -2345,6 +2345,843 @@ The independent variable (X) must be the log10-transformed competitor concentrat
 
 ---
 
+##### Dissociation Kinetics
+The Dissociation kinetics model describes how receptor–ligand binding decreases over time after conditions are changed to prevent re-binding (e.g., by adding excess unlabeled ligand, washing away radioligand, or strong dilution). Under the assumption of a single dominant dissociation process, the bound complex decays as a one-phase exponential, approaching a constant residual level at long times. The fitted dissociation rate constant ($$k_{off}$$) quantifies how quickly ligand dissociates from the receptor.
+
+###### Equation
+{: .no_toc }
+<div id="dissociation-kinetics"> 
+\[ \begin{equation} 
+\begin{alignedat}{2} Y &= (Y_0-\mathrm{NS})\,e^{-k_{\mathrm{off}}X} + \mathrm{NS} \qquad & 
+\end{alignedat} 
+\end{equation} \] 
+</div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/dissociation_kinetics.png" alt="Dissociation Kinetics" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be on a linear scale and therefore must be strictly positive $$(X>0)$$. Zero or negative X values are not used in the calculations (they are ignored/excluded). The dependent variable ($$Y$$) is the measured binding signal (total or specific, depending on your assay) in consistent units.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_0$$: Binding at time zero (immediately after initiating dissociation), in the same units as $$Υ$$.
+
+1. $$NS$$: The asymptotic binding at very long times (the plateau the curve approaches). This is often interpreted as residual nonspecific binding or incomplete dissociation, in the same units as $$Υ$$.
+
+1. $$k_{off}$$: (must be positive) The dissociation rate constant (units of 1/time). Larger $$k_{off}$$ means faster dissociation. The dissociation half-life is: 
+<div id="dissociation-halfLife"> 
+\[ \begin{equation} 
+\begin{alignedat}{2} t_{1/2} &= \frac{ln(2)}{k_{off}} \qquad & 
+\end{alignedat} 
+\end{equation} \] 
+</div>
+---
+
+##### Association Kinetics – One Ligand
+The Association kinetics (one ligand concentration) model describes how radioligand binding increases over time toward equilibrium at a single fixed ligand concentration. The time course follows a single exponential approach to a maximum, governed by an apparent rate constant that depends on both association and dissociation. In this formulation, you fix the dissociation rate constant (koff) from an independent experiment and estimate the association rate constant (kon) from the binding time course. This model assumes a simple one-site binding process with no ligand depletion and constant ligand concentration throughout the experiment.
+
+###### Equation
+{: .no_toc }
+<div id="association-one-conc"> \[ \begin{equation} \begin{aligned} K_d &= \frac{k_{\text{off}}}{k_{\text{on}}} \\ [L] &= \mathrm{HotNm}\cdot 10^{-9} \\ k_{\text{obs}} &= k_{\text{on}}\,[L] + k_{\text{off}} \\ \mathrm{Occupancy} &= \frac{[L]}{[L]+K_d} \\ Y_{\max} &= \mathrm{Occupancy}\cdot B_{max} \\ Y(t) &= Y_{\max}\left(1-e^{-k_{\text{obs}}\, t}\right) \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/association_one_conc.png" alt="Association kinetics (one concentration)" width="400" height="300" class="img-responsive"> </div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be time  on a linear scale and therefore must be non-negative ($$X≥0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units). This equation also requires the specification of three extra parameters:
+
+1. $$Hotnm$$: The radioligand concentration in nM (a single concentration is used for the entire experiment).
+
+1. $$k_{off}$$: the dissociation rate constant in $$min^{-1}$$ (must be positive).
+
+###### Parameters
+{: .no_toc }
+1. $$k_{on}$$: Association rate constant, in $$min^{-1}$$. Describes how rapidly ligand binds to free receptors.
+
+1. $$Bmax$$: The maximal binding at equilibrium (same units as $$Y$$), extrapolated to maximal radioligand concentration.
+
+---
+
+##### Association Kinetics – Two or More Ligand Concentrations
+This model describes radioligand association measured at two or more fixed ligand concentrations, which allows simultaneous estimation of both $$k_{on}$$ and $$k_{off}$$ from a single global fit. Because the observed association rate depends on both rate constants and ligand concentration, fitting multiple concentrations removes the ambiguity that exists when only one concentration is used. All time courses are assumed to follow a single-exponential approach to equilibrium with a concentration-dependent observed rate constant.
+
+###### Equation
+{: .no_toc }
+<div id="association-two-conc">
+\[
+\begin{equation}
+\begin{aligned}
+K_d &= \frac{k_{\text{off}}}{k_{\text{on}}} \\[4pt]
+[L] &= \mathrm{HotNm}\cdot 10^{-9} \\[4pt]
+k_{\text{obs}} &= k_{\text{on}}\,[L] + k_{\text{off}} \\[4pt]
+\mathrm{Occupancy} &= \frac{[L]}{[L]+K_d} \\[4pt]
+Y_{\max} &= \mathrm{Occupancy}\cdot B_{max} \\[4pt]
+Y(t) &= Y_{\max}\left(1-e^{-k_{\text{obs}}\, t}\right)
+\end{aligned}
+\end{equation}
+\]
+</div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/association_two_conc.png" alt="Association kinetics (two or more concentrations)" width="400" height="300" class="img-responsive"> </div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be time  on a linear scale and therefore must be non-negative ($$X≥0$$).  The model also requires at lease one column containing the dependent variable (Y) response values (in any consistent units). You must provide the radioligand concentration (HotNM) for each curve. 
+
+###### Parameters
+{: .no_toc }
+1. $$k_{on}$$: Association rate constant, in $$min^{-1}$$. 
+
+1. $$k_{off}$$: Dissociation rate constant, in $$min^{-1}$$.
+
+1. $$Bmax$$: The maximal binding at equilibrium (same units as $$Y$$), extrapolated to maximal radioligand concentration.
+
+---
+
+##### Association then Dissociation
+The Association then dissociation model fits a single time-course experiment where binding is first allowed to associate toward equilibrium at a fixed radioligand concentration, and then at a defined time point (Time0) dissociation is initiated (e.g., by adding excess unlabeled ligand or performing a large dilution). The model combines an exponential association phase (governed by $$k_{on}$$ and $$k_{off}$$ through $$k_{obs}$$) with an exponential dissociation phase (governed by $$k_{off}$$ alone). By fitting both phases in one dataset, the model can estimate $$k_{on}$$ and $$k_{off}$$ without requiring multiple ligand concentrations. The predicted response includes the parameter $$NS$$ to capture nonspecific binding or baseline signal.
+
+###### Equation
+{: .no_toc }
+<div id="association-then-dissociation"> \[ \begin{equation} \begin{aligned} \mathrm{Radioligand} &= \mathrm{HotNM}\cdot 10^{-9} \\ k_{\text{obs}} &= \mathrm{Radioligand}\cdot k_{on} + k_{off} \\ K_d &= \frac{k_{off}}{k_{on}} \\ Eq &= B_{max}\cdot \frac{\mathrm{Radioligand}}{\mathrm{Radioligand}+K_d} \\ \mathrm{Association}(X) &= Eq\left(1-e^{-k_{\text{obs}}X}\right) \\ Y_{at\,Time0} &= Eq\left(1-e^{-k_{\text{obs}}\,Time0}\right) \\ \mathrm{Dissociation}(X) &= Y_{at\,Time0}\,e^{-k_{off}(X-Time0)} \\ Y &= \mathrm{IF}(X<Time0,\ \mathrm{Association}(X),\ \mathrm{Dissociation}(X)) + NS \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/association_dissociation.png" alt="Association then Dissociation" width="400" height="300" class="img-responsive"> </div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be time on a linear scale (e.g., minutes) and therefore must be non-negative ($$X≥0$$). The dependent variable (Y) must be binding measured in any consistent units. The model requires the specification of two extra parameters:
+
+1. $$Hotnm$$: The radioligand concentration in nM (a single concentration is used for the entire experiment).
+
+1. $$Time of switch$$$: the time (in the same units as X) at which dissociation is initiated.
+
+###### Parameters
+{: .no_toc }
+1. $$k_{on}$$: The association rate constant, in $$min^{-1}$$ (or inverse time matching X). $$k_{off}$$ must be strictly positive.
+
+1. $$k_{off}$$: The dissociation rate constant, in $$min^{-1}$$ (or inverse time matching X). $$k_{off}$$ must be strictly positive.
+
+1. $$Bmax$$: The maximal binding capacity (same units as $$Y$$), extrapolated to saturation. 
+
+1. $$NS$$: The constant baseline (nonspecific binding/offset) in the units of $$Y$$. It represents the binding level at $$X=0$$ and the residual level approached at long times after dissociation.
+
+---
+
+##### Kinetics - Competitive Binding
+The Kinetics of competitive binding model estimates the association and dissociation rate constants of an unlabeled competitor by measuring how the binding of a labeled radioligand changes over time when both ligands are added together. The kinetic parameters of the labeled ligand are treated as known (constrained from separate kinetic experiments), and the model fits the kinetic parameters of the unlabeled ligand by globally analyzing time courses collected at two or more competitor concentrations. Because the interaction between labeled and unlabeled ligands produces a biexponential time course, the model computes two observed rate constants and combines them to predict the time-dependent specific binding.
+
+###### Equation
+{: .no_toc }
+<div id="kinetics-competitive-binding"> \[ \begin{equation} \begin{aligned} K_A &= k_1\cdot L \cdot 10^{-9} + k_2 \\ K_B &= k_3\cdot I \cdot 10^{-9} + k_4 \\ S &= \sqrt{(K_A-K_B)^2 + 4\,k_1k_3\,I\,L\cdot 10^{-18}} \\ K_F &= \frac{1}{2}\left(K_A+K_B+S\right) \\ K_S &= \frac{1}{2}\left(K_A+K_B-S\right) \\ DIFF &= K_F-K_S \\ Q &= \frac{B_{max}\,k_1\,I\cdot 10^{-9}}{DIFF} \\ Y &= Q\left(\frac{k_4\,DIFF}{K_FK_S} + \frac{K_4-K_F}{K_F}e^{-K_FX} - \frac{K_4-K_S}{K_S}e^{-K_SX}\right) \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/kinetics_competitive_binding.png" alt="Kinetics of competitive binding" width="400" height="300" class="img-responsive"> </div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be time  on a linear scale and therefore must be non-negative ($$X≥0$$).  The model also requires at lease one column containing the dependent variable (Y) response values (in any consistent units). The unlabeled ligand concentrations (in nM) must be provided for each curve.The model requires the specification of three extra parameters:
+1. $$k_1 (1/M*min)$$: The association rate constant of the labeled ligand.
+
+1. $$k_2 (1/min)$$: The dissociation rate constant of the labeled ligand.
+
+1. $$L (nM)$$: The concentration of labeled ligand (radioligand) in nM, treated as constant for the experiment.
+
+###### Parameters
+{: .no_toc }
+1. $$k_3$$: The association rate constant of the unlabeled ligand, in $$(1/M*min)$$.
+.
+
+1. $$k_4$$: Dissociation rate constant, in $$min^{-1}$$.
+
+1. $$Bmax$$: The maximal binding capacity (same units as $$Y$$), representing total receptor binding capacity.
+
+---
+
+#### Enzyme Kinetics
+##### Michaelis-Menten
+The Michaelis–Menten model describes classic steady-state enzyme kinetics when substrate concentration is varied and initial reaction velocity is measured. The model assumes that enzyme–substrate complex formation reaches a quasi-steady state and that product formation is rate-limiting. As substrate concentration increases, velocity rises rapidly at low concentrations and then approaches an asymptotic maximum velocity ($$V_{max}$$). This formulation is appropriate when the concentration of enzyme catalytic sites is unknown or when the primary quantities of interest are ($$V_{max}$$) and ($$K_{m}$$) rather than ($$k_{cat}$$).
+
+###### Equation
+{: .no_toc }
+
+<div id="michaelis-menten"> 
+\[ \begin{equation} 
+Y = \frac{V_{max}\, X}{K_m + X} 
+\end{equation} 
+\] </div>
+
+###### Visualization
+{: .no_toc }
+
+<div style="text-align: center;"> <img src="images/Curve Fitting/michaelis_menten.png" alt="Michaelis–Menten curve" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and must be strictly positive ($$𝑋 > 0$$); zero or negative values are excluded from the fit. The dependent variable (Y) must be initial enzyme velocity expressed in consistent concentration-per-time units (e.g., µM/min, nM/s). No additional fixed parameters are required for this model.
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The maximal enzyme velocity in the same units as $$Y$$. This is the velocity the enzyme would reach at infinitely high substrate concentration and is typically higher than any measured velocity in the experiment.
+
+1. $$K_m$$: The Michaelis–Menten constant, in the same units as $$X$$. It is the substrate concentration required to reach half of $$V_{max}$$. A lower $$K_m$$ indicates higher apparent affinity of the enzyme for the substrate.
+
+---
+
+##### Determine kcat
+The Determine kcat model is a re-parameterized form of the Michaelis–Menten equation used when the concentration of enzyme catalytic sites (Et) is known. Instead of fitting Vmax, the model estimates the turnover number (kcat) — the number of substrate molecules converted to product per catalytic site per unit time. The model assumes classic steady-state Michaelis–Menten kinetics: velocity increases with substrate concentration and asymptotically approaches a maximum rate equal to $$E_t*k_{cat}$$. This formulation is useful when comparing catalytic efficiency across enzymes or conditions because kcat is independent of enzyme concentration, whereas Vmax is not.
+
+###### Equation
+{: .no_toc }
+<div id="determine-kcat"> \[ \begin{equation} Y = \frac{E_t \cdot k_{cat}\, X}{K_m + X} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/determine_kcat.png" alt="Determine Kcat" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and therefore must be strictly positive ($$X>0$$); zero or negative values are excluded. The dependent variable (Y) must be initial enzyme velocity in consistent concentration-per-time units (e.g., µM/min, nM/s). The model requires the specification of one extra parameter:
+
+1. $$E_t$$: the concentration of enzyme catalytic sites, in the same concentration units used for $$Y$$ (time units are defined by kcat).
+
+###### Parameters
+{: .no_toc }
+1. $$k_{cat}$$: The turnover number: the number of substrate molecules converted to product per catalytic site per unit time. Units are the inverse of the time units in 
+$$Y$$ (e.g., $$s^{-1}$$ or $$min^{-1}$$). Larger $$k_{cat}$$ means a faster enzyme.
+
+1. $$K_m$$: The Michaelis–Menten constant (same units as $$X$$). It is the substrate concentration required to reach half of the maximal velocity. Lower $$K_m$$ indicates higher apparent affinity for substrate.
+
+1. $$V_{max}$$: The nonspecific binding fraction (or proportionality factor) describing the portion of radioligand signal attributable to nonspecific binding sites under this CPM-based formulation.
+
+---
+
+##### Allosteric (sigmoidal) enzyme kinetics
+The Allosteric sigmoidal model describes enzyme kinetics when the enzyme displays cooperative substrate binding. In this case, the velocity–substrate curve is not hyperbolic (as in Michaelis–Menten) but sigmoidal. This behavior is captured empirically by adding a Hill coefficient to the Michaelis–Menten form. The model is useful when binding of substrate to one catalytic site alters the affinity of other sites, producing positive cooperativity.
+
+###### Equation
+{: .no_toc }
+<div id="allosteric-sigmoidal"> \[ \begin{equation} Y = \frac{V_{max}\, X^h}{K_{half}^h + X^h} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/allosteric_sigmoidal_kinetics.png" alt="Allosteric (sigmoidal) enzyme kinetics" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and must be strictly positive ($$𝑋 > 0$$); zero or negative values are excluded from the fit. The dependent variable (Y) must be initial enzyme velocity expressed in consistent concentration-per-time units (e.g., µM/min, nM/s). No additional fixed parameters are required for this model.
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The maximal enzyme velocity in the same units as $$Y$$. This is the velocity the enzyme would reach at infinitely high substrate concentration and is typically higher than any measured velocity in the experiment.
+
+1. $$K_{half}$$: The substrate concentration that produces half-maximal velocity. It plays a role analogous to $$K_m$$ in Michaelis–Menten kinetics and is sometimes called the EC50 for enzyme velocity.
+
+1. $$h (Hill slope)$$: An empirical measure of cooperativity and curve steepness. If:
+     1. $$h=1$$, the equation reduces to the standard Michaelis–Menten model.
+     1. $$h>1$$, the curve becomes sigmoidal, indicating positive cooperativity.
+h does not necessarily equal the number of binding sites; it reflects the degree of cooperative behavior rather than a strict mechanistic count.
+
+---
+
+##### Competitive Inhibition
+The Competitive enzyme inhibition model describes enzyme kinetics in the presence of a reversible competitive inhibitor. A competitive inhibitor binds to the same active site as the substrate, so its effect can be overcome by increasing substrate concentration. As a result, $$V_{max}$$ remains unchanged, while the apparent Michaelis–Menten constant increases. By fitting substrate–velocity curves measured at multiple inhibitor concentrations, the model estimates the inhibition constant $$K_i$$ together with the shared kinetic parameters $$V_{max}$$ and $$K_m$$.
+
+###### Equation
+{: .no_toc }
+<div id="competitive-enzyme-inhibition"> \[ \begin{equation} \begin{aligned} K_{m,obs} &= K_m\left(1+\frac{I}{K_i}\right) \\ Y &= \frac{V_{max}\,X}{K_{m,obs}+X} \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/competitive_inhibition.png" alt="Competitive enzyme inhibition" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and therefore must be strictly positive ($$X>0$$). The dependent variables (Y) must be enzyme velocity measured at several inhibitor concentrations. Each Y column represents one inhibitor concentration. The inhibitor concentration $$I$$ (in the same units for all curves, typically µM) must be entered as numeric concentration values (not logarithms). These values are treated as data-set constants during fitting.
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The maximal enzyme velocity in the absence of inhibitor, expressed in the same units as $$Y$$. It is shared across all inhibitor concentrations.
+
+1. $$K_{i}$$: The inhibition constant, expressed in the same units as $$I$$. It quantifies the affinity of the inhibitor for the enzyme. Lower $$K_i$$ indicates stronger inhibition.
+
+1. $$k_m$$: The Michaelis–Menten constant in the absence of inhibitor, expressed in the same units as $$X$$. It represents the substrate concentration required to reach half of $$𝑉_{max}$$ when $$I=0$$.
+
+---
+
+##### Noncompetitive Inhibition
+The Noncompetitive enzyme inhibition model describes enzyme kinetics in the presence of an inhibitor that binds reversibly to both the free enzyme and the enzyme–substrate complex with the same affinity. In this simplified “pure noncompetitive” case, inhibition reduces the effective maximal velocity ($$V_{max}$$) while leaving $$K_m$$ unchanged. By fitting substrate–velocity curves measured at multiple inhibitor concentrations, the model estimates the inhibition constant $$K_i$$ together with the shared parameters $$V_{max}$$ and $$K_m$$. If inhibition does not follow this simplified behavior, a mixed-model inhibition equation is often more appropriate.
+
+###### Equation
+{: .no_toc }
+<div id="noncompetitive-enzyme-inhibition"> \[ \begin{equation} \begin{aligned} V_{max,inh} &= \frac{V_{max}}{1+\frac{I}{K_i}} \\ Y &= \frac{V_{max,inh}\,X}{K_m+X} \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/noncompetitive_inhibition.png" alt="Noncompetitive enzyme inhibition" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and therefore must be strictly positive ($$X>0$$). The dependent variables (Y) must be enzyme velocity measured at multiple inhibitor concentrations. Each Y column represents one inhibitor concentration. The inhibitor concentration $$I$$ (in the same units for all curves, typically µM) must be entered as numeric concentration values (not logarithms). These values are treated as data-set constants during fitting.
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The maximum enzyme velocity in the absence of inhibitor, expressed in the same units as $$Y$$. It is shared across all inhibitor concentrations.
+
+1. $$K_{i}$$: The inhibition constant, expressed in the same units as $$I$$. It quantifies the affinity of the inhibitor for the enzyme. Lower $$K_i$$ indicates stronger inhibition.
+
+1. $$k_m$$: The Michaelis–Menten constant in the absence of inhibitor, expressed in the same units as $$X$$. It represents the substrate concentration required to reach half of $$𝑉_{max}$$ when $$I=0$$.
+
+---
+
+##### Uncompetitive Inhibition
+The Uncompetitive enzyme inhibition model describes inhibition in which the inhibitor binds exclusively to the enzyme–substrate complex, not to the free enzyme. As a result, both the apparent maximal velocity and the apparent Michaelis constant decrease by the same factor. The substrate–velocity curves shift downward and to the left as inhibitor concentration increases. By fitting multiple curves measured at different inhibitor concentrations, the model estimates the inhibition constant together with the shared kinetic parameters of the uninhibited system.
+
+###### Equation
+{: .no_toc }
+<div id="uncompetitive-enzyme-inhibition"> \[ \begin{equation} \begin{aligned} V_{max}^{app} &= \frac{V_{max}}{1+\frac{I}{\alpha K_i}} \\ K_m^{app} &= \frac{K_m}{1+\frac{I}{\alpha K_i}} \\ Y &= \frac{V_{max}^{app}\,X}{K_m^{app}+X} \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/uncompetitive_inhibition.png" alt="Uncompetitive enzyme inhibition" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and therefore must be strictly positive ($$X>0$$). The dependent variables (Y) must be enzyme velocity measured at several inhibitor concentrations. Each Y column represents one inhibitor concentration. The inhibitor concentration $$I$$ (in the same units for all curves, typically µM) must be entered as numeric concentration values (not logarithms). These values are treated as data-set constants during fitting.
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The maximal enzyme velocity in the absence of inhibitor, expressed in the same units as $$Y$$. This parameter is shared across all inhibitor concentrations.
+
+1. $$aK_{i}$$: The effective inhibition constant for binding to the enzyme–substrate complex, expressed in the same units as $$I$$. Only the product $$αK_i$$ can be identified in this formulation.
+
+1. $$k_m$$: The Michaelis–Menten constant in the absence of inhibitor, expressed in the same units as $$X$$. It represents the substrate concentration required to reach half of $$𝑉_{max}$$ when $$I=0$$.
+
+
+---
+
+##### Mixed-model Inhibition
+The Mixed-model enzyme inhibition equation is the most general reversible inhibition model. It includes competitive, uncompetitive, and noncompetitive inhibition as special cases. In this framework, the inhibitor can bind both to the free enzyme and to the enzyme–substrate complex, but with potentially different affinities. The additional parameter $$α$$ quantifies the relative preference of inhibitor binding to these two forms and therefore provides mechanistic insight into the mode of inhibition. By fitting multiple substrate–velocity curves measured at different inhibitor concentrations, the model estimates a single shared set of kinetic and inhibition parameters.
+
+###### Equation
+{: .no_toc }
+<div id="mixed-model-enzyme-inhibition"> \[ \begin{equation} \begin{aligned} V_{max}^{app} &= \frac{V_{max}}{1+\frac{I}{\alpha K_i}} \\ K_m^{app} &= K_m \frac{1+\frac{I}{K_i}}{1+\frac{I}{\alpha K_i}} \\ Y &= \frac{V_{max}^{app}\,X}{K_m^{app}+X} \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/mixed_model_inhibition.png" alt="Mixed-model enzyme inhibition" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and therefore must be strictly positive ($$X>0$$). The dependent variables (Y) must be enzyme velocity measured at several inhibitor concentrations. Each Y column represents one inhibitor concentration. The inhibitor concentration $$I$$ (in the same units for all curves, typically µM) must be entered as numeric concentration values (not logarithms). These values are treated as data-set constants during fitting.
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The maximal enzyme velocity in the absence of inhibitor, expressed in the same units as $$Y$$. Shared across all inhibitor concentrations.
+
+1. $$K_m$$: The Michaelis–Menten constant in the absence of inhibitor, expressed in the same units as $$𝑋$$.
+
+1. $$K_i$$: The inhibition constant for inhibitor binding to the free enzyme, expressed in the same units as $$I$$.​
+
+1. $$a$$: The interaction factor describing how inhibitor binding affects substrate binding affinity. It is dimensionless and must be greater than zero.
+     1. If $$α=1$$, the inhibitor binds equally well to free enzyme and enzyme–substrate complex (pure noncompetitive inhibition).
+     1. If $$α>1$$, the inhibitor preferentially binds to the free enzyme (approaching competitive inhibition as $$α→∞$$).
+     1. If $$α<1$$ (but >0), the inhibitor preferentially binds to the enzyme–substrate complex (approaching uncompetitive inhibition as $$α→0$$).
+
+
+---
+
+##### Substrate Inhibition
+The Substrate inhibition model describes enzyme kinetics in which high substrate concentrations reduce enzyme activity. This occurs when a second substrate molecule binds to the enzyme–substrate complex, forming an inactive ternary complex. As a result, velocity initially increases with substrate concentration following Michaelis–Menten behavior, reaches a maximum, and then decreases at higher substrate levels. This model is appropriate when the rate–substrate curve shows a clear peak followed by a decline.
+
+###### Equation
+{: .no_toc }
+<div id="substrate-inhibition"> \[ \begin{equation} Y = \frac{V_{max}\,X}{K_m + X\left(1+\frac{X}{K_i}\right)} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/substrate_inhibition.png" alt="Substrate inhibition" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and strictly positive ($$X>0$$). Zero or negative substrate concentrations are excluded.
+The dependent variable (Y) must be enzyme velocity measured in consistent concentration-per-time units (e.g., µM/min, nM/s).
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The theoretical maximum enzyme velocity in the absence of substrate inhibition. Expressed in the same units as $$Y$$.
+
+1. $$K_m$$: The Michaelis–Menten constant (same units as $$X$$). It is the substrate concentration at which velocity reaches half of $$V_{max}$$ when substrate inhibition is negligible.
+
+1. $$K_i$$: The inhibition constant for binding of the second substrate molecule (same units as $$X$$). Smaller $$K_i$$ values indicate stronger substrate inhibition (the decline in velocity begins at lower substrate concentrations).
+
+---
+
+##### Tight inhibition (Morrison equation)
+The Tight inhibition model (Morrison equation) describes enzyme inhibition under conditions where the inhibitor binds with high affinity and its concentration is comparable to the enzyme concentration. In this regime, the free inhibitor concentration cannot be approximated by the total inhibitor concentration because a substantial fraction becomes bound to enzyme. This model explicitly accounts for ligand depletion and is appropriate when $$[I] \sim [E]$$ or when the inhibition curve deviates from standard Michaelis–Menten competitive behavior. Unlike classical inhibition models, this formulation requires independent knowledge of enzyme concentration and substrate conditions, as these cannot be reliably estimated from inhibition data alone.
+
+###### Equation
+{: .no_toc }
+<div id="tight-inhibition-morrison"> \[ \begin{equation} Q = K_i\left(1+\frac{S}{K_m}\right) \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/morrison_tight_binding.png" alt="Tight inhibition Morrison equation" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be the total inhibitor concentration on a linear scale and strictly positive ($$X>0$$). The dependent variable (Y) must be enzyme activity measured in consistent units (e.g., velocity in µM/min, absorbance change per minute, etc.). The following parameters must be provided and constrained to constant values based on independent experiments:
+
+1. $$E_t$$: Total concentration of enzyme catalytic sites (same concentration units as $$X$$).
+
+1. $$S$$: Substrate concentration used in the assay (same units as $$X$$).
+
+1. $$K_m$$: Michaelis–Menten constant determined in the absence of inhibitor (same units as $$X$$).
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{0}$$: Enzyme velocity in the absence of inhibitor, expressed in the same units as $$Y$$.
+
+1. $$K_i$$: Inhibition constant, expressed in the same units as $$X$$. Smaller $$K_i$$ values indicate tighter binding.
+
+---
+
+#### Exponential
+
+##### One phase decay
+The One phase decay model describes exponential decline processes in which the rate of decrease is proportional to the amount remaining. This behavior is characteristic of first-order kinetics and applies to many biological and chemical systems, including ligand dissociation, radioactive decay, and drug elimination. The model assumes a single homogeneous population decaying toward a stable plateau. The decay rate constant determines how rapidly the response approaches this asymptote.
+
+###### Equation
+{: .no_toc }
+<div id="one-phase-decay"> \[ \begin{equation} Y = (Y_0 - \text{Plateau})\,e^{-KX} + \text{Plateau} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/one_phase_decay.png" alt="One phase decay" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response value at time zero, expressed in the same units as $$Y$$.
+
+1. $$Plateau$$: The response value as time approaches infinity. It represents the asymptotic minimum.
+
+1. $$K$$: The first-order rate constant (units are inverse time, e.g., $$min^{-1}$$ or $$s^{-1}$$). $$K$$ must be positive. Larger $$K$$ values correspond to faster decay.
+
+---
+
+##### Two phase decay
+The Two phase decay model describes processes in which the observed response is the sum of two independent first-order exponential decays: a fast component and a slow component. This situation arises when two kinetically distinct populations or mechanisms contribute to the signal (e.g., two binding states, two compartments, or heterogeneous molecular species). The total response declines toward a plateau as both components decay over time. The model assumes that each component follows first-order kinetics and that their contributions are additive.
+
+###### Equation
+{: .no_toc }
+<div id="two-phase-decay-spans"> \[ \begin{equation} \begin{aligned} \text{Span} &= Y_0 - \text{Plateau} \\ \text{Span}_{\text{Fast}} &= \text{Span}\cdot\frac{\text{PercentFast}}{100} \\ \text{Span}_{\text{Slow}} &= \text{Span}\cdot\frac{100 - \text{PercentFast}}{100} \end{aligned} \end{equation} \] </div>
+<div id="two-phase-decay"> \[ \begin{equation} Y = \text{Plateau} + \text{Span}_{\text{Fast}}\,e^{-K_{\text{Fast}}X} + \text{Span}_{\text{Slow}}\,e^{-K_{\text{Slow}}X} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/two_phase_decay.png" alt="Two phase decay" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response value at time zero, expressed in the same units as $$Y$$.
+
+1. $$Plateau$$: The response value as time approaches infinity. It represents the asymptotic minimum.
+
+1. $$K_{Fast}$$: Rate constant of the fast component (units: inverse time). Must be positive.
+
+1. $$K_{Slow}$$: Rate constant of the slow component (units: inverse time). Must be positive.
+
+1. $$PercentFast$$: Fraction (0–100%) of the total span attributed to the fast-decaying component.
+
+---
+
+##### Three phase decay
+The Three phase decay model describes processes in which the observed response is the sum of three independent first-order exponential decays: fast, intermediate, and slow components. This model is appropriate when the signal arises from three kinetically distinct populations or mechanisms (e.g., multiple binding states or compartments). Each component decays exponentially and independently, and the total response is their sum plus a plateau value. Because this model contains several correlated parameters, reliable fitting requires dense time sampling and low experimental noise.
+
+###### Equation
+{: .no_toc }
+<div id="three-phase-decay"> \[ \begin{equation} Y = \text{Plateau} + \text{Span}_{\text{Fast}}\,e^{-K_{\text{Fast}}X} + \text{Span}_{\text{Medium}}\,e^{-K_{\text{Medium}}X} + \text{Span}_{\text{Slow}}\,e^{-K_{\text{Slow}}X} \end{equation} \] </div> <div id="three-phase-decay-spans"> \[ \begin{equation} \begin{aligned} \text{Span} &= Y_0 - \text{Plateau} \\ \text{Span}_{\text{Fast}} &= \text{Span}\cdot\frac{\text{PercentFast}}{100} \\ \text{Span}_{\text{Slow}} &= \text{Span}\cdot\frac{\text{PercentSlow}}{100} \\ \text{Span}_{\text{Medium}} &= \text{Span} - \text{Span}_{\text{Fast}} - \text{Span}_{\text{Slow}} \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/three_phase_decay.png" alt="Three phase decay" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response value at time zero, expressed in the same units as $$Y$$.
+
+1. $$Plateau$$: The response value as time approaches infinity. It represents the asymptotic minimum.
+
+1. $$K_{Fast}$$: Rate constant of the fast component (units: inverse time). Must be positive.
+
+1. $$K_{Medium}$$: Rate constant of the intermediate component (units: inverse time). Must be positive.
+
+1. $$K_{Slow}$$: Rate constant of the slow component (units: inverse time). Must be positive.
+
+1. $$PercentFast$$: Fraction (0–100%) of the total span attributed to the fast-decaying component.
+
+1. $$PercentSlow$$: Percentage (0–100%) of the total span attributed to the slow component.
+
+---
+
+##### Plateau followed by one phase decay
+The Plateau followed by one phase decay model is a piecewise exponential-decay equation used when the response remains approximately constant for an initial period (baseline/plateau), and then begins to decay only after an intervention at a known (or fitted) start time $$X_0$$. Before $$X_0$$ the response is flat at $$Y_0$$; after $$X_0$$ it decays exponentially toward a final plateau. This is useful for experiments where decay is initiated by a washout, dilution, drug addition, temperature shift, or any trigger applied at a specific time.
+
+###### Equation
+{: .no_toc }
+<div id="plateau-one-phase-decay"> \[ \begin{equation} Y = \begin{cases} Y_0, & X < X_0 \\ \text{Plateau} + (Y_0-\text{Plateau})\,e^{-K\,(X-X_0)}, & X \ge X_0 \end{cases} \end{equation} \] </div> <div id="plateau-one-phase-decay-span"> \[ \begin{equation} \text{Span} = Y_0 - \text{Plateau} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/plateau_one_phase_decay.png" alt="Plateau followed by one phase decay" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$X_0$$: The time at which decay begins (same time units as $$X$$).
+
+1. $$Y_{0}$$: The baseline response level before decay begins (same units as $$Y$$). Conceptually, it is the plateau value for $$X<X_0$$.
+
+1. $$Plateau$$: The response value as time approaches infinity. It represents the asymptotic minimum.
+
+1. $$K$$: The first-order decay rate constant (units: inverse time). $$K$$ must be positive; larger $$K$$ means faster decay after $$X_0$$.
+
+---
+
+##### One phase association
+The One phase association model describes pseudo–first-order association kinetics, where the response increases over time as binding/formation occurs and then approaches a steady-state plateau. Early in the experiment, many binding sites (or reactants) are available, so the response rises quickly; as sites become occupied, the rate of increase slows and the curve asymptotically approaches a maximum. This model is commonly used for simple association processes such as ligand–receptor binding, enzyme–substrate complex formation, or any system with a single dominant association phase.
+
+###### Equation
+{: .no_toc }
+<div id="one-phase-association"> \[ \begin{equation} Y = Y_0 + (\text{Plateau}-Y_0)\left(1-e^{-KX}\right) \end{equation} \] </div> <div id="one-phase-association-span"> \[ \begin{equation} \text{Span} = \text{Plateau} - Y_0 \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/one_phase_association.png" alt="One phase association" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response at time zero (same units as $$Y$$).
+
+1. $$Plateau$$: The response at time zero (same units as $$Y$$). If background-subtracted data start at the origin, this can be fixed to 0.
+
+1. $$K$$: The association rate constant for the one-phase approach (units: inverse time). $$K$$ must be positive; larger $$K$$ means the curve reaches the plateau faster.
+
+---
+
+##### Two phase association
+The Two phase association model describes a response that approaches a plateau through the sum of two independent exponential association processes: a fast component and a slow component. It is used when the measured response reflects two kinetically distinct populations or mechanisms (e.g., two receptor states, two binding sites, or parallel pathways). The curve rises rapidly at early times due to the fast component and then continues more slowly toward the same final plateau.
+
+###### Equation
+{: .no_toc }
+<div id="two-phase-association-main"> \[ \begin{equation} Y = Y_0 + \text{SpanFast}\left(1-e^{-K_{\text{Fast}}X}\right) + \text{SpanSlow}\left(1-e^{-K_{\text{Slow}}X}\right) \end{equation} \] </div> <div id="two-phase-association-spans"> \[ \begin{equation} \text{SpanFast} = (\text{Plateau}-Y_0)\frac{\text{PercentFast}}{100} \end{equation} \] </div> <div id="two-phase-association-span-slow"> \[ \begin{equation} \text{SpanSlow} = (\text{Plateau}-Y_0)\left(1-\frac{\text{PercentFast}}{100}\right) \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/two_phase_association.png" alt="Two phase association" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response at time zero (same units as $$Y$$).
+
+1. $$Plateau$$: The response at time zero (same units as $$Y$$). If background-subtracted data start at the origin, this can be fixed to 0.
+
+1. $$K_{Fast}$$: Rate constant of the fast association phase (units: inverse time). Larger values correspond to a more rapid initial rise.
+
+1. $$K_{Slow}$$: Rate constant of the slow association phase (units: inverse time). 
+
+1. $$PercentFast$$: Percentage of the total span ($$Y_0$$ to Plateau) attributable to the fast component (range 0–100).
+
+---
+
+##### Plateau followed by one phase association
+The Plateau followed by one phase association model describes a system in which the response remains at a baseline level until a defined time point $$X_0$$, after which a first-order association process begins. It is used when an experimental intervention (e.g., ligand addition, mixing, stimulus) initiates association at a known or fitted time rather than at $$X=0$$. After $$X_0$$, the response rises exponentially toward a plateau.
+
+###### Equation
+{: .no_toc }
+<div id="plateau-followed-by-association"> \[ \begin{equation} Y = \begin{cases} Y_0, & X < X_0 \\ Y_0 + (\text{Plateau}-Y_0)\left(1-e^{-K(X-X_0)}\right), & X \ge X_0 \end{cases} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/plateau_one_phase_association.png" alt="Plateau followed by one phase association" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$X_0$$: The time at which association begins (same time units as $$X$$).
+
+1. $$Y_{0}$$: The baseline response level before association begins (same units as $$Y$$). Conceptually, it is the plateau value for $$X<X_0$$.
+
+1. $$Plateau$$: The response value as time approaches infinity. It represents the asymptotic minimum.
+
+1. $$K$$: Association rate constant (units: inverse time). Larger $$K$$ produces a steeper rise.
+
+---
+
+##### Exponential Growth
+The Exponential growth model describes processes that increase at a rate proportional to their current value. This produces growth with a constant doubling time. It is commonly used for population growth, cell proliferation, bacterial expansion, or compound accumulation under first-order kinetics.
+
+###### Equation
+{: .no_toc }
+<div id="exponential-growth"> \[ \begin{equation} Y = Y_0\, e^{KX} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/exponential_growth.png" alt="Exponential growth" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response at $$X=0$$ (same units as $$Y$$).
+
+1. $$K$$: Growth rate constant (units: inverse time). Larger $$K$$ produces faster growth.
+
+---
+
+#### Lines
+##### Simple Line
+The Simple line (nonlinear regression) model fits a linear relationship between an independent variable $$X$$ and a dependent response $$Y$$. Although the equation is linear in form, it is included here because it is fit using the nonlinear regression workflow, which can be useful when you want nonlinear-regression features (e.g., model comparison, weighting, or automatic outlier handling) while still fitting a straight line. The model assumes that changes in $$Y$$ are proportional to changes in $$X$$ across the measured range.
+
+###### Equation
+{: .no_toc }
+<div id="straight-line-nonlinear"> \[ \begin{equation} Y = Y_{\text{Intercept}} + \mathrm{Slope}\cdot X \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/simple_line.png" alt="Simple line (nonlinear regression)" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable column $$X$$ can be any real-valued numeric data (linear scale). The dependent variable column $$Y$$ contains the response values in consistent units.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Intercept$$: The fitted value of $$X=0$$ (the point where the line intersects the $$Y$$-axis). Units are the same as $$Y$$.
+
+1. $$Slope$$: The slope of the fitted line, representing the change in $$Y$$ per unit change in $$X$$. Units are $$Y$$-units divided by $$X$$-units.
+
+---
+
+##### Simple Line through origin
+The Simple Line through origin model fits a straight-line relationship between $$X$$ and $$Y$$ while forcing the intercept to be exactly zero. This is appropriate when theory or experimental design requires that 
+$$Y=0$$ when $$X=0$$ (i.e., the relationship must pass through the origin). Because the intercept is fixed, the only fitted parameter is the slope, which represents the proportionality between $$Y$$ and $$X$$.
+
+###### Equation
+{: .no_toc }
+<div id="line-through-origin"> \[ \begin{equation} Y = \mathrm{Slope}\cdot X \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/simple_line_origin.png" alt="Simple line through origin" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable column $$X$$ can be any real-valued numeric data (linear scale). The dependent variable column $$Y$$ contains the response values in consistent units.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Slope$$: The slope of the fitted line, representing the change in $$Y$$ per unit change in $$X$$. Units are $$Y$$-units divided by $$X$$-units.
+
+---
+
+##### Simple Line through (X0,Y0)
+The Simple line through $$(X_0,Y_0)$$ model fits a straight line while forcing it to pass through a specified point $$(X_0,Y_0)$$. This is useful when you know one exact calibration/reference point that the fitted relationship must satisfy (e.g., a baseline measurement, a normalization anchor, or a physical constraint). The model estimates a single parameter (Slope), while the intercept is implied by the requirement that the line passes through $$(X_0,Y_0)$$.
+
+###### Equation
+{: .no_toc }
+<div id="line-through-x0y0"> \[ \begin{equation} Y = Y_0 + \mathrm{Slope}\,(X - X_0) \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/simple_line_point.png" alt="Simple line through point" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable column $$X$$ can be any real-valued numeric data (linear scale). The dependent variable column $$Y$$ contains the response values in consistent units.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Slope$$: The slope of the fitted line, representing the change in $$Y$$ per unit change in $$X$$. Units are $$Y$$-units divided by $$X$$-units.
+
+---
+
+##### Segmental linear regression (2 segments)
+Segmental linear regression (also called piecewise or segmented regression) fits two straight-line segments with a single breakpoint at $$X_0$$. One line is used for $$X < X_0$$ and a second line is used for $$X≥X_0$$, with continuity enforced so the two segments meet exactly at $$X_0$$. This is useful when the relationship changes slope abruptly at a known or unknown transition point (e.g., an intervention time, a threshold effect, or a regime change).
+
+###### Equation
+{: .no_toc }
+<div id="segmental-linear-regression"> \[ \begin{equation} \begin{aligned} Y_1 &= \mathrm{Intercept}_1 + \mathrm{Slope}_1\,X \\ Y_{\text{at}X_0} &= \mathrm{Intercept}_1 + \mathrm{Slope}_1\,X_0 \\ Y_2 &= Y_{\text{at}X_0} + \mathrm{Slope}_2\,(X - X_0) \\ Y &= \mathrm{IF}(X<X_0,\; Y_1,\; Y_2) \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/segmental2_linear_regression.png" alt="Segmental linear regression" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable column $$X$$ can be any real-valued numeric data (linear scale). The dependent variable column $$Y$$ contains the response values in consistent units. The model requires the sepcification of one extra parameter: 
+1. $$X_0$$:  The breakpoint (the $$X$$ value where the slope changes). This is the X value where the model switches from the first line to the second, with continuity enforced at $$X_0$$.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Intercept$$: The $$Y$$-intercept of the first segment (units: $$Y$$). It is the predicted $$Y$$ value when $$X=0$$ according to the first line.
+
+1. $$Slope_1$$: The slope of the first segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X<X_0$$.
+
+1. $$Slope_2$$: The slope of the second segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X \geq X_0$$.
+
+---
+
+##### Segmental linear regression (3 segments)
+This three-segment (piecewise) linear regression fits three straight-line segments separated by two breakpoints, $$X_0$$ and $$X_1$$. The model uses one line for $$X < X_0$$, a second line for $$X_0 \leq X < X_1$$, and a third line for $$X \geq X_1$$. Continuity is enforced so the segments meet exactly at both breakpoints.
+
+###### Equation
+{: .no_toc }
+<div id="segmental-linear-regression-3"> \[ \begin{equation} \begin{aligned} Y_1 &= \mathrm{Intercept}_1 + \mathrm{Slope}_1\,X \\ Y_{\text{at}X_0} &= \mathrm{Intercept}_1 + \mathrm{Slope}_1\,X_0 \\ Y_2 &= Y_{\text{at}X_0} + \mathrm{Slope}_2\,(X - X_0) \\ Y_{\text{at}X_1} &= Y_{\text{at}X_0} + \mathrm{Slope}_2\,(X_1 - X_0) \\ Y_3 &= Y_{\text{at}X_1} + \mathrm{Slope}_3\,(X - X_1) \\ Y &= \mathrm{IF}(X<X_0,\; Y_1,\; \mathrm{IF}(X<X_1,\; Y_2,\; Y_3)) \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/segmental3_linear_regression.png" alt="Segmental (3 segments) linear regression" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable column $$X$$ can be any real-valued numeric data (linear scale). The dependent variable column $$Y$$ contains the response values in consistent units. The model requires the sepcification of two extra parameters: 
+1. $$X_0$$: The first breakpoint provided by the user (units: $$X$$). The model switches from segment 1 to segment 2 at $$X_0$$.
+1. $$X_1$$: The second breakpoint provided by the user (units: $$X$$). The model switches from segment 2 to segment 3 at $$X_1$$.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Intercept$$: The $$Y$$-intercept of the first segment (units: $$Y$$). It is the predicted $$Y$$ value when $$X=0$$ according to the first line.
+
+1. $$Slope_1$$: The slope of the first segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X<X_0$$.
+
+1. $$Slope_2$$: The slope of the second segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X_0 \leq X < X_1$$.
+
+1. $$Slope_3$$: The slope of the third segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X \geq X_1$$.
+
+---
+
+
+#### Polynomial 
+##### Polynomial Models (order 1-6)
+Polynomial models provide a flexible, empirical way to describe the relationship between an independent variable $$X$$ and a response $$Y$$ by expressing $$Y$$ as a finite sum of powers of $$X$$. Increasing the polynomial order adds additional curvature and can improve fit, but higher-order polynomials may also introduce unnecessary “wiggles” and overfit noise. Because polynomial models are typically used for interpolation/smoothing rather than to represent an underlying mechanistic process, the coefficients are often not directly interpretable.
+
+###### Equation
+{: .no_toc }
+<div id="polynomial-models"> \[ \begin{equation} Y = B_0 + B_1X + B_2X^2 + \cdots + B_nX^n \end{equation} \] </div> <div id="polynomial-orders"> \[ \begin{equation} \begin{aligned} \text{First order:}\quad & Y = B_0 + B_1X \\ \text{Second order:}\quad & Y = B_0 + B_1X + B_2X^2 \\ \text{Third order:}\quad & Y = B_0 + B_1X + B_2X^2 + B_3X^3 \\ \text{Fourth order:}\quad & Y = B_0 + B_1X + B_2X^2 + B_3X^3 + B_4X^4 \\ \text{Fifth order:}\quad & Y = B_0 + B_1X + B_2X^2 + B_3X^3 + B_4X^4 + B_5X^5 \\ \text{Sixth order:}\quad & Y = B_0 + B_1X + B_2X^2 + B_3X^3 + B_4X^4 + B_5X^5 + B_6X^6 \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/polynomial.png" alt="Polynomial models" width="600" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale. The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$B_{0}$$: Intercept term (value of the polynomial at $$X=0$$).
+
+1. $$B_1,B_2,...,B_n$$: Polynomial coefficients for the linear, quadratic, …, n-th order terms.
+
+---
+
+##### Centered Polynomial Models (order 1-6)
+Centered polynomial models are algebraically equivalent to ordinary polynomial models, but instead of using $$X$$ directly, they use a centered variable defined as the deviation from the mean of $$X$$. Centering improves numerical stability, reduces parameter covariance, and yields tighter standard errors and confidence intervals — especially for higher-order polynomials or when $$X$$ values are large.
+
+In centered models, the mean of the independent variable is subtracted before fitting:
+<div id="xmean"> \[ \begin{equation} X_{C} = X - X_{mean}  \end{equation} \] </div>
+
+where $$X_{mean}$$ is the mean of all $$X$$ values used in the fit. This quantity is treated as a constant (data-set constant), not as a fitted parameter.
+
+###### Equation
+{: .no_toc }
+<div id="centered-polynomial-orders"> \[ \begin{aligned} \textbf{First order:}\quad & Y = B_0 + B_1(X - X_{\text{mean}}) \\[6pt] \\ \textbf{Second order:}\quad & Y = B_0 + B_1(X - X_{\text{mean}}) + B_2(X - X_{\text{mean}})^2 \\[6pt] \\ \textbf{Third order:}\quad & Y = B_0 + B_1(X - X_{\text{mean}}) + B_2(X - X_{\text{mean}})^2 \\ & \qquad + B_3(X - X_{\text{mean}})^3 \\[6pt] \\ \textbf{Fourth order:}\quad & Y = B_0 + B_1(X - X_{\text{mean}}) + B_2(X - X_{\text{mean}})^2 \\ & \qquad + B_3(X - X_{\text{mean}})^3 + B_4(X - X_{\text{mean}})^4 \\[6pt] \\ \textbf{Fifth order:}\quad & Y = B_0 + B_1(X - X_{\text{mean}}) + B_2(X - X_{\text{mean}})^2 \\ & \qquad + B_3(X - X_{\text{mean}})^3 + B_4(X - X_{\text{mean}})^4 \\ & \qquad + B_5(X - X_{\text{mean}})^5 \\[6pt] \\ \textbf{Sixth order:}\quad & Y = B_0 + B_1(X - X_{\text{mean}}) + B_2(X - X_{\text{mean}})^2 \\ & \qquad + B_3(X - X_{\text{mean}})^3 + B_4(X - X_{\text{mean}})^4 \\ & \qquad + B_5(X - X_{\text{mean}})^5 + B_6(X - X_{\text{mean}})^6 \end{aligned} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/polynomial.png" alt="Centered Polynomial models" width="600" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale. The model also requires a column containing the dependent variable (Y) response values (in any consistent units). The model requires the specification of one extra parameter:
+1. $$X_{mean}$$: The mean of the X values.
+
+###### Parameters
+{: .no_toc }
+
+1. $$B_{0}$$: Intercept term (value of the polynomial at $$X=X_{mean}$$).
+
+1. $$B_1,B_2,...,B_n$$: Polynomial coefficients for the linear, quadratic, …, n-th order terms.
+
+---
+
 ## Lethal Concentration/Dose (LCx/LDx)
 In this context, LCx/LDx analysis refers to estimating the concentration (LCx) or dose (LDx) that produces a specified proportion $$x%$$ of “response” (typically mortality) in a population. Unlike the nonlinear least-squares models above, LCx/LDx models are naturally formulated as a binomial-response problem: each observation represents $$y_i$$ affected individuals out of $$n_i$$ tested at a given concentration/dose $$X_i$$. The probability of response, $$p_i$$, is modeled using a generalized linear model (GLM) with a probit link:
 
