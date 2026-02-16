@@ -9,7 +9,7 @@ nav_order: 1
   <img src="images/icons/isalos-logo-01.svg" alt="isalos-logo" width="120" height="120">
 </div>
 <br>
-The Isalos Predictive Analytics Platform (Isalos) is a simple, user-friendly software designed to facilitate data manipulation and model development without requiring programming  skills. This platform empowers non-programmers to engage in data analytics through an intuitive interface, which leverages commonly used computer functions such as menus, buttons, and spreadsheets. Isalos is designed to streamline the development of predictive models by allowing users to manipulate and process data in an accessible, visual format. The platform’s primary goal is to enable data analysis without needing to write code, making it highly accessible to business professionals, analysts, or anyone with basic computer skills.
+The Isalos Predictive Analytics Platform (Isalos) is a simple, user-friendly software designed to facilitate data manipulation and model development without requiring programming  skills. This standalone platform empowers non-programmers to engage in data analytics through an intuitive interface, which leverages commonly used computer functions such as menus, buttons, and spreadsheets. Isalos is designed to streamline the development of predictive models by allowing users to manipulate and process data in an accessible, visual format. The platform’s primary goal is to enable data analysis without needing to write code, making it highly accessible to business professionals, analysts, or anyone with basic computer skills. It is available for Windows, macOS, and Linux.
 <br>
 
 
@@ -39,8 +39,7 @@ The core operation of Isalos revolves around the concept of tabs, which act as n
 
 ### What can you do with Isalos? Here are a few examples:
 * Prepare your data for modelling, following standard pre-processing steps (normalization, filtering, variable selection, and data partitioning).
-* Develop and validate your own models through an intuitive environment.
-* Deploy and share your models via the [Enalos Cloud Platform](https://www.enaloscloud.novamechanics.com/).
+* Develop and validate your own models through an intuitive standalone environment.
 * Devise your experimental plan based on the Isalos Experimental Design functionalities.
 * More coming soon…
  

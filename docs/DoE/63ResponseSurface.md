@@ -86,7 +86,7 @@ In the input datasheet in the right-hand side, you can specify minimum of three 
 ##### Output
 {: .no_toc }
 
-TThe output list of experiments is generated for the three factors outlining a list of 12 experiments based on the Box Behnken design. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
+The output list of experiments is generated for the three factors outlining a list of 12 experiments based on the Box Behnken design. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/behnken-output.png" alt="Box Behnken" width="350" height="300" class="img-responsive">
