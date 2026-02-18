@@ -3126,6 +3126,39 @@ The independent variable column $$X$$ can be any real-valued numeric data (linea
 
 ---
 
+##### Hinge function 
+The hinge function fits two approximately linear segments joined by a smooth transition rather than a sharp corner. For values of $$X$$ far below the breakpoint $$X_0$$, the curve behaves like a straight line with slope $$Slope_1$$. For values far above $$X_0$$, it approaches a second straight line with slope Slope_2. The transition between these two slopes is controlled by the parameter $$Δ$$, which determines how gradual the bend is. There is also an option to constrain $$Δ$$ using the Hinge function (fixed $$Δ$$ equation.)
+
+When $$Δ→0$$, the model approaches ordinary segmented (piecewise) linear regression with two intersecting straight lines. Larger $$Δ$$ values produce a smoother, more gradual change in slope.
+
+###### Equation
+{: .no_toc }
+<div id="hinge-function"> \[ \begin{equation} Y = \mathrm{Intercept} + \mathrm{Slope}_1 (X - X_0) + (\mathrm{Slope}_2 - \mathrm{Slope}_1)\,\Delta \,\ln\!\left(1 + \exp\!\left(\frac{X - X_0}{\Delta}\right)\right) \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/hinge_function.png" alt="Hinge function" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable column $$X$$ can be any real-valued numeric data (linear scale). The dependent variable column $$Y$$ contains the response values in consistent units. The model requires the sepcification of two extra parameters: 
+1. $$X_0$$: The breakpoint provided by the user (units: $$X$$). The model switches from segment 1 to segment 2 at $$X_0$$.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Intercept$$: The $$Y$$-intercept of the first segment (units: $$Y$$). It is the predicted $$Y$$ value when $$X=0$$ according to the first line.
+
+1. $$Slope_1$$: The slope of the first segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X<X_0$$.
+
+1. $$Slope_2$$: The slope of the second segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X_0 \leq X $$.
+
+1. $$\Delta$$: The smoothness parameter (units of $$X$$). It controls how sharp or gradual the bend is. It must be strictly positive.
+     1. As $$Δ→0$$, the model approaches two intersecting straight lines.
+     1. Larger $$Δ$$ values produce a more gradual transition.
+
+---
+
 
 #### Polynomial 
 ##### Polynomial Models (order 1-6)
@@ -3181,6 +3214,585 @@ The independent variable (X) must be on a linear scale. The model also requires 
 1. $$B_1,B_2,...,B_n$$: Polynomial coefficients for the linear, quadratic, …, n-th order terms.
 
 ---
+
+#### Gaussian
+##### Gaussian Distribution
+The Gaussian (normal) distribution describes symmetric, bell-shaped frequency distributions that arise when variability is driven by many independent, additive factors. In histogram fitting, the X values represent bin centers and the Y values represent frequencies (counts).
+
+###### Equation
+{: .no_toc }
+<div id="gaussian-distribution"> \[ \begin{equation} Y = \mathrm{Amplitude} \cdot \exp\!\left(-\frac{1}{2}\left(\frac{X - \mathrm{Mean}}{\mathrm{SD}}\right)^2\right) \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/gaussian.png" alt="Gaussian distribution" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be Bin centers of the frequency distribution (linear scale). The model also requires a column containing the dependent variable (Y) as the observed frequency (number of observations) in each bin. 
+
+###### Parameters
+{: .no_toc }
+
+1. $$Amplitude$$: The peak height of the distribution (maximum $$Y$$ value). Units: same as $$Y$$.
+
+1. $$Mean$$: The center of the distribution (location of the peak). Units: same as $$X$$.
+
+1. $$SD$$: The standard deviation, describing the spread (width) of the distribution. Units: same as $$X$$.
+
+---
+
+##### Sum of two Gaussian Distributions
+The Sum of two Gaussian distributions model is used when a frequency distribution (histogram-style XY table) appears to be a mixture of two underlying normal populations. The observed counts are modeled as the sum of two bell-shaped Gaussian components, each with its own center and spread.
+
+###### Equation
+{: .no_toc }
+<div id="sum-two-gaussians"> \[ \begin{aligned} Y &= \mathrm{One} + \mathrm{Two} \\ \mathrm{One} &= \mathrm{Amplitude1}\cdot \exp\!\left(-0.5\left(\frac{X-\mathrm{Mean1}}{\mathrm{SD1}}\right)^2\right) \\ \mathrm{Two} &= \mathrm{Amplitude2}\cdot \exp\!\left(-0.5\left(\frac{X-\mathrm{Mean2}}{\mathrm{SD2}}\right)^2\right) \end{aligned} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/sum_two_gaussians.png" alt="Sum of two Gaussian distributions" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be Bin centers of the frequency distribution (linear scale). The model also requires a column containing the dependent variable (Y) as the observed frequency (number of observations) in each bin. 
+
+###### Parameters
+{: .no_toc }
+
+1. $$Amplitude_1$$: The peak height of the first distribution (maximum $$Y$$ value). Units: same as $$Y$$.
+
+1. $$Mean_1$$: The center of the first distribution (location of the peak). Units: same as $$X$$.
+
+1. $$SD_1$$: The standard deviation, describing the spread (width) of the first distribution. Units: same as $$X$$.
+
+1. $$Amplitude_2$$: The peak height of the second distribution (maximum $$Y$$ value). Units: same as $$Y$$.
+
+1. $$Mean_2$$: The center of the second distribution (location of the peak). Units: same as $$X$$.
+
+1. $$SD_2$$: The standard deviation, describing the spread (width) of the second distribution. Units: same as $$X$$.
+
+---
+
+##### Lognormal Distribution
+The Lognormal distribution model is used to fit frequency distributions when the logarithm of the variable is normally distributed. Such data arise when variability results from the product (rather than the sum) of many independent, positive factors. On a linear X-axis the distribution is right-skewed; on a logarithmic X-axis it appears Gaussian.
+
+###### Equation
+{: .no_toc }
+<div id="lognormal-distribution"> \[ Y = \frac{A}{X}\,\exp\!\left(-\frac{1}{2}\left(\frac{\ln(X/\mathrm{GeoMean})}{\ln(\mathrm{GeoSD})}\right)^2\right) \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/lognormal_distribution.png" alt="Lognormal distribution" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be Bin centers of the frequency distribution (positive values only).Zero or negative X values are not used in the calculations (they are ignored/excluded). The model also requires a column containing the dependent variable (Y) as the observed frequency (number of observations) in each bin. 
+
+###### Parameters
+{: .no_toc }
+
+1. $$A$$: A scaling constant related to the total area under the curve.
+
+1. $$GeoMean$$: The geometric mean of the distribution. Units: same as $$X$$.
+
+1. $$GeoSD$$: The geometric standard deviation factor (dimensionless). It determines the spread of the distribution on a logarithmic scale.
+
+---
+
+##### Cumulative Gaussian distribution
+The Cumulative Gaussian distribution model fits cumulative frequency data derived from an underlying Gaussian (normal) distribution. Instead of plotting the frequency within bins, the cumulative distribution plots the number (or fraction or percentage) of observations less than or equal to each value of $$X$$.
+
+If the underlying data follow a Gaussian distribution, the cumulative plot has a sigmoidal (S-shaped) form.
+
+###### Equation
+{: .no_toc }
+There are three forms of the model, depending on whether $$Y$$ values represent percentages, fractions, or counts.
+1. When $$Y$$ is in percentages (0–100) \[ Y = 100 \cdot \Phi(z) \]:
+<div id="cumulative-gaussian-percent"> \[ z = \frac{X - \mathrm{Mean}}{\mathrm{SD}} \]  </div>
+
+1. When $$Y$$ is in fractions (0–1) $$Y = \Phi(z)$$:
+<div id="cumulative-gaussian-fraction"> \[ z = \frac{X - \mathrm{Mean}}{\mathrm{SD}}  \] </div>
+
+1. When $$Y$$ is counts (number of observations) $$Y = N \cdot \Phi(z)$$:
+<div id="cumulative-gaussian-counts"> \[ z = \frac{X - \mathrm{Mean}}{\mathrm{SD}}  \] </div>
+Where: $$ \Phi(z) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{z} e^{-t^2/2} dt$$ is the cumulative distribution function (CDF) of the standard normal distribution.
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/cumulative_gaussian.png" alt="Cumulative Gaussian distribution" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be Bin centers of the frequency distribution. The model also requires a column containing the dependent variable (Y) as the cumulative percent/fraction or count of observaitions less than or equal to each $$X$$ value. If $$Y$$ contains counts, constrain $$N$$ to a constant equal to the total number of observations.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Mean$$: The mean of the underlying Gaussian distribution (same units as $$X$$).
+
+1. $$SD$$: The standard deviation of the underlying Gaussian distribution (same units as $$X$$).
+
+---
+
+##### Lorentzian Distribution
+The Lorentzian (Cauchy) distribution is a bell-shaped frequency distribution with much heavier tails than a Gaussian distribution. It is often used when extreme values/outliers occur more frequently than a normal model would predict. In curve fitting, it is commonly applied to histogram-style frequency data, where $$X$$ represents bin centers and $$Y$$ is the number of observations in each bin.
+
+###### Equation
+{: .no_toc }
+<div id="lorentzian-distribution"> \[ \begin{equation} Y = \frac{\mathrm{Amplitude}}{1 + \left(\frac{X-\mathrm{Center}}{\mathrm{Width}}\right)^2} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/lorentzian.png" alt="Lorentzian distribution" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be Bin centers of the frequency distribution (linear scale). The model also requires a column containing the dependent variable (Y) as the observed frequency (number of observations) in each bin. 
+
+###### Parameters
+{: .no_toc }
+
+1. $$A$$: Peak height of the distribution (in $$Y$$ units). This is the value of $$Y$$ when $$X=Center$$.
+
+1. $$Center$$: Location of the peak (same units as $$X$$). It is the $$X$$ value at which the distribution is maximal.
+
+1. $$Width$$: A width (scale) parameter (same units as $$X$$). Larger $$Width$$ produces a broader peak with heavier spread.
+
+---
+
+##### Sum of two Lorentzian Distributions
+This model describes data arising from the sum of two Lorentzian (Cauchy) components, each with its own center and width. It is commonly used when a frequency distribution exhibits two overlapping heavy-tailed peaks.
+
+###### Equation
+{: .no_toc }
+<div id="sum-two-lorentzian-distributions"> \[ \begin{equation} Y = \frac{\mathrm{Amplitude1}}{1 + \left(\frac{X-\mathrm{Center1}}{\mathrm{Width1}}\right)^2} + \frac{\mathrm{Amplitude2}}{1 + \left(\frac{X-\mathrm{Center2}}{\mathrm{Width2}}\right)^2} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/sum_two_lorentzian_distributions.png" alt="Sum of two Lorentzian distributions" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be Bin centers of the frequency distribution (linear scale). The model also requires a column containing the dependent variable (Y) as the observed frequency (number of observations) in each bin. 
+
+###### Parameters
+{: .no_toc }
+
+1. $$A_1$$: Peak height of the first distribution (in $$Y$$ units). This is the value of $$Y$$ when $$X=Center$$.
+
+1. $$Center_1$$: Location of the peak of the first distribution (same units as $$X$$). It is the $$X$$ value at which the first distribution is maximal.
+
+1. $$Width_1$$: A width (scale) parameter for the first distribution (same units as $$X$$). Larger $$Width$$ produces a broader peak with heavier spread.
+
+1. $$A_2$$: Peak height of the second distribution (in $$Y$$ units). This is the value of $$Y$$ when $$X=Center$$.
+
+1. $$Center_2$$: Location of the peak of the second distribution (same units as $$X$$). It is the $$X$$ value at which the second distribution is maximal.
+
+1. $$Width_2$$: A width (scale) parameter for the second distribution  (same units as $$X$$). Larger $$Width$$ produces a broader peak with heavier spread.
+
+---
+
+#### Sine Waves
+##### Standard Sine wave
+The Standard sine wave model describes a periodic oscillatory process with constant amplitude and wavelength. The response varies sinusoidally with respect to the independent variable and is defined by three parameters: amplitude (peak magnitude), wavelength (period of oscillation), and phase shift (horizontal displacement of the wave).
+
+###### Equation
+{: .no_toc }
+<div id="standard-sine-wave"> \[ \begin{equation} Y = \mathrm{Amplitude}\,\sin\!\left(\frac{2\pi X}{\mathrm{Wavelength}} + \mathrm{PhaseShift}\right) \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/standard_sine_wave.png" alt="Standard sine wave" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) is typically time, angle, or spatial position and may take positive or negative values. The dependent variable (Y) represents the oscillatory response and can be in any consistent units. X must be on a linear scale.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Amplitude$$: The peak magnitude of the oscillation (in Y units). The wave oscillates between $$+Amplitude$ and $$−Amplitude$$.
+
+1. $$Wavelength$$: The length of one complete cycle (same units as X). It determines how frequently the oscillation repeats.
+
+1. $$PhaseShift$$: The phase offset (in radians). It shifts the waveform horizontally along the X-axis.
+     1. If $$PhaseShift=0$$, then $$Y=0$$ at $$X=0$$.
+     1. If $$PhaseShift=\pi/2$$, the function is at its maximum at  at $$X=0$$.
+
+---
+
+##### Damped Sine wave
+The Damped sine wave model describes oscillatory behavior whose amplitude decreases exponentially over time (or over the X variable). It is appropriate for systems where repeated cycles persist but energy is lost (damping), so peaks shrink as X increases. The oscillation itself is governed by a sine function (with wavelength and phase shift), while the damping envelope is controlled by an exponential decay term with decay constant $$K$$.
+
+###### Equation
+{: .no_toc }
+<div id="damped_sine_wave"> \begin{equation} Y = Amplitude \cdot e^{-KX}\cdot \sin\left(\frac{2\pi X}{Wavelength}\right) + PhaseShift \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/damped_sine_wave.png" alt="Damped sine wave" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) is typically time (or any linear-scale variable along which damping occurs) and may take positive or negative values, though damping is usually interpreted for increasing X. The dependent variable (Y) is the measured oscillatory response in any consistent units. X must be on a linear scale.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Amplitude$$: The peak magnitude of the oscillation (in Y units). As X increases, the effective amplitude decays according to $$Amplitude * e^{−KX}$$.
+
+1. $$Wavelength$$: The length of one complete cycle (same units as X). It determines how frequently the oscillation repeats.
+
+1. $$PhaseShift$$: The phase offset (in radians). It shifts the oscillation horizontally along X (e.g., $$PhaseShift=0$$ implies the sine term is zero at $$X=0$$).
+
+1. $$K$$: The exponential decay (damping) constant (units $$X^{-1}$$). Larger $$K$$ means faster damping. Typically, $$K>0$$ for a decaying envelope.
+     
+---
+
+##### Sinc wave
+The Sinc wave model (also called the sampling function or sine cardinal function) describes an oscillatory signal whose envelope decays as $$1/X$$. It appears frequently in signal and image processing because it is the Fourier transform of a rectangular pulse. The curve oscillates with a characteristic wavelength, while the peak magnitude at $$X=0$$ equals the amplitude.
+
+###### Equation
+{: .no_toc }
+<div id="sinc_wave"> \begin{equation} Y(X)= \begin{cases} Amplitude, & X=0\\[6pt] Amplitude\cdot \dfrac{\sin\!\left(\dfrac{2\pi X}{Wavelength}\right)}{\dfrac{2\pi X}{Wavelength}}, & X\neq 0 \end{cases} \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/sinc_wave.png" alt="Sinc wave" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale (often time or distance). Values may be positive or negative; the model is well-defined at $$X=0$$ by the special-case definition above. The dependent variable (Y) is the measured response in any consistent units.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Amplitude$$: The peak value at the center of the function (in Y units). By definition, $$Y(0)=Amplitude$$.
+
+1. $$Wavelength$$: he characteristic period of the underlying sine term (same units as X). Smaller $$Wavelength$$ produces more closely spaced oscillations.
+     
+---
+
+##### Sine wave with nonzero baseline
+The Sine wave with nonzero baseline model describes periodic oscillations around a constant offset rather than around zero. The waveform has constant amplitude and wavelength, but the entire curve is vertically shifted by a baseline term. This model is appropriate when the oscillatory signal fluctuates around a steady background level rather than zero.
+
+###### Equation
+{: .no_toc }
+<div id="sine_wave_nonzero_baseline"> \begin{equation} Y = Amplitude \cdot \sin\!\left(\frac{2\pi X}{Wavelength} + PhaseShift\right) + Baseline \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/sine_wave_nonzero_baseline.png" alt="Sine wave with nonzero baseline" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale (often time or distance). Values may be positive or negative; the model is well-defined at $$X=0$$ by the special-case definition above. The dependent variable (Y) is the measured response in any consistent units.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Amplitude$$: The peak value at the center of the function (in Y units). By definition, $$Y(0)=Amplitude$$.
+
+1. $$Wavelength$$: The characteristic period of the underlying sine term (same units as X). Smaller $$Wavelength$$ produces more closely spaced oscillations.
+
+1. $$PhaseShift$$: The horizontal phase offset, expressed in radians.
+
+1. $$Baseline$$: The constant vertical offset about which the sine wave oscillates. It is expressed in the same units as Y.
+     
+---
+
+#### Growth Equations
+##### Log of exponential growth
+The Log of exponential growth model is used when the response has already been logarithm-transformed. If the underlying process follows exponential growth, then plotting the logarithm of the population (or signal) versus time yields a straight line. Fitting this model is often more appropriate when measurement scatter increases with the magnitude of the response on the original scale, since the log transform can stabilize variance. For correct interpretation of doubling time, the Y values should be the natural logarithm of the population (or signal).
+
+###### Equation
+{: .no_toc }
+<div id="log_exponential_growth"> \begin{equation} Y = \log(Y_0) + kX \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/log_exponential_growth.png" alt="Log of exponential growth" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) is time on a linear scale (any time units). The dependent variable (Y) must be the logarithm of the measured quantity (e.g., $$Y=ln(population)$$). For meaningful doubling-time interpretation, use the natural log for Y. X values can be any real numbers; Y must be defined by your log transform (so the original, unlogged values must have been strictly positive).
+
+###### Parameters
+{: .no_toc }
+
+1. $$log(Y_0)$$: The intercept of the line, equal to the log of the population (or signal) at $$X=0$$, expressed in the same logarithmic units used for Y (typically ln units).
+
+1. $$k$$: The growth rate constant (slope), in inverse X units. Larger $$k$$ corresponds to faster exponential growth on the original (unlogged) scale.
+     
+---
+
+##### Logistic growth
+The Logistic growth model describes population growth that is initially close to exponential but progressively slows as it approaches a maximum carrying capacity. The growth rate decreases linearly with population size, and at any time the instantaneous growth rate is proportional to $$Y(1-Y/Y_M)$$, where $$Y$$ is the current population and 
+$$Y_M$$ is the maximum (carrying capacity). As $$Y→Y_M$$, growth slows and eventually stops.
+
+###### Equation
+{: .no_toc }
+<div id="logistic_growth"> \begin{equation} Y = \frac{Y_M \, Y_0}{(Y_M - Y_0)e^{-kX} + Y_0} \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/logistic_growth.png" alt="Logistic growth" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) represents time on a linear scale (any consistent time units). The dependent variable (Y) represents population size or another quantity that approaches a finite maximum. X values may be zero or positive. Y values must be non-negative and typically increase toward a plateau.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_0$$: The initial population at $$X=0$$ (same units as Y).
+
+1. $$Y_M$$: The maximum population (carrying capacity), representing the asymptotic upper limit of Y (same units as Y).
+
+1. $$k$$: The logistic growth rate constant (inverse units of X). Larger $$k$$ produces a steeper rise and earlier inflection.
+     
+---
+
+##### Gompertz growth
+The Gompertz growth model describes saturating growth where the relative growth rate decays exponentially as the population approaches its maximum. Compared with the logistic model, Gompertz growth typically rises faster when $$Y$$ is small and slows more strongly near the plateau. The curve approaches an asymptote $$Y_M$$ as time increases, and its inflection occurs at $$X=1/k$$ under this parameterization.
+
+###### Equation
+{: .no_toc }
+<div id="gompertz_growth"> \begin{equation} Y = Y_M\left(\frac{Y_0}{Y_M}\right)^{\exp(-kX)} \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/gompertz_growth.png" alt="Gompertz growth" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) represents time on a linear scale (any consistent time units). The dependent variable (Y) represents population size (or another strictly non-negative quantity) that approaches a finite maximum. X values may be zero or positive.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_0$$: The initial population at $$X=0$$ (same units as Y).
+
+1. $$Y_M$$: The maximum population (carrying capacity), representing the asymptotic upper limit of Y (same units as Y).
+
+1. $$k$$: The Gompertz rate constant (inverse units of X). In this Prism-style parameterization,1/k is the X-value of the inflection point (often interpreted as a lag-time scale).
+     
+---
+
+##### Exponential Plateau
+The Exponential plateau model describes a response that starts at an initial value $$Y_0$$ and rises (or falls) exponentially toward a limiting value called Plateau. The difference between the current value and the plateau decreases exponentially with rate constant k.
+
+###### Equation
+{: .no_toc }
+<div id="exponential_plateau"> \begin{equation} Y = \text{Plateau} - (\text{Plateau}-Y_0)\exp(-kX) \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/exponential_plateau.png" alt="Exponential plateau" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response at time zero (same units as $$Y$$).
+
+1. $$Plateau$$: The response at time zero (same units as $$Y$$). If background-subtracted data start at the origin, this can be fixed to 0.
+
+1. $$k$$: The rate constant (inverse units of X) that determines how quickly the curve approaches the plateau. Larger k produces a faster approach.
+
+---
+
+##### Beta growth and decline
+The Beta growth and decline model describes a population (or signal) that increases from zero, reaches a single peak, and then declines back to zero by a specified end time. It is a convenient empirical model for “rise-and-fall” trajectories where you know (or can estimate) the time of the peak and the time the response returns to baseline. The curve is parameterized so that the maximum value is $$Y_m$$, it peaks at time $$T_e$$, and its inflection point occurs at time $$T_m$$.
+
+###### Equation
+{: .no_toc }
+<div id="beta-growth-decline"> \begin{equation} Y = Y_m\left(1+\frac{(T_e-X)(T_e-T_m)}{X\,T_e}\right)\left(\frac{X}{T_e}\right)^{\left(\frac{T_e}{T_e-T_m}\right)} \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/beta_growth_decline.png" alt="Beta growth and decline" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) is time on a linear scale. For the model to be well-defined, X values used for fitting must satisfy: $$0<X<T_e$$. The dependent variable (Y) is the measured population/response in consistent units. Because the model starts and ends at zero, it is most appropriate when the response is near zero at the beginning and near zero again by $$X=T_e$$ (or when data have been baseline-corrected).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_m$$: The peak (maximum) value of the response, in the same units as $$Y$$.
+
+1. $$T_e$$: The time at which the response peaks (and the endpoint that sets the return-to-zero behavior), in the same units as $$X$$. Must be positive.
+
+1. $$T_m$$: The time of the inflection point (where curvature changes sign on the rising phase), in the same units as $$X$$. Must satisfy $$O<T_m<T_e$$.
+
+---
+
+#### Linear–quadratic survival models
+##### Linear Quadratic, Y is Fraction Surviving
+The linear–quadratic (LQ) model describes the fraction of cells surviving after exposure to ionizing radiation. It assumes that cell killing arises from two components: a linear component proportional to dose (single-track events) and a quadratic component proportional to dose squared (interaction of sublethal damage). The model predicts a continuously decreasing survival fraction with increasing radiation dose and is widely used in radiobiology and radiation oncology.
+
+###### Equation
+{: .no_toc }
+<div id="linear_quadratic_fraction_surviving"> \begin{equation} Y = \exp\left[-\left(A X + B X^{2}\right)\right] \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/linear_quadratic_fraction_surviving.png" alt="Linear quadratic - fraction surviving" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) represents radiation dose and must be on a linear scale with $$X \geq 0$$. The dependent variable (Y) represents the fraction of cells surviving and must satisfy $$0 \leq Y \leq 1$$.
+
+###### Parameters
+{: .no_toc }
+
+1. $$A$$: The linear killing coefficient (units of inverse dose). It represents cell death caused by single radiation tracks. Larger A results in steeper initial decline in survival.
+
+1. $$B$$: The quadratic killing coefficient (units of inverse dose squared). It represents cell death from interaction of two sublethal events. Larger B increases curvature at higher doses.
+
+---
+
+##### Linear Quadratic, Y is Percent Surviving
+This linear–quadratic (LQ) variant models percent cell survival after radiation exposure. As in the standard LQ model, survival decreases with dose due to a linear (single-track) and a quadratic (two-track) killing component. The only difference from the “fraction surviving” form is a scaling by 100 so that the predicted response is expressed as a percentage, approaching 100% at dose zero and decreasing toward 0% as dose increases.
+
+###### Equation
+{: .no_toc }
+<div id="linear_quadratic_percent_surviving"> \begin{equation} Y = 100 \, \exp\left[-\left(A X + B X^{2}\right)\right] \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/linear_quadratic_percent_surviving.png" alt="Linear quadratic - percent surviving" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) represents radiation dose and must be on a linear scale with $$X \geq 0$$. The dependent variable (Y) represents the fraction of cells surviving and must satisfy $$0 \leq Y \leq 100$$. Y must be entered as a percentage (not a fraction). If your data are fractions, use the “fraction surviving” form instead.
+
+###### Parameters
+{: .no_toc }
+
+1. $$A$$: The linear killing coefficient (units of inverse dose). It represents cell death caused by single radiation tracks. Larger A results in steeper initial decline in survival.
+
+1. $$B$$: The quadratic killing coefficient (units of inverse dose squared). It represents cell death from interaction of two sublethal events. Larger B increases curvature at higher doses.
+
+---
+
+##### Linear Quadratic, Y is Number Surviving
+This linear–quadratic (LQ) model describes the absolute number of surviving cells after exposure to radiation dose $$X$$. Survival decreases with dose according to a linear (single-event) and quadratic (two-event) killing component. Unlike the fraction or percent forms, this formulation includes an explicit initial population term $$Y_0$$.
+	​
+
+, which represents the number of cells present at zero dose. The model predicts exponential decay of the population size as radiation dose increases.
+
+###### Equation
+{: .no_toc }
+<div id="linear_quadratic_number_surviving"> \begin{equation} Y = Y_0 \, \exp\left[-\left(A X + B X^{2}\right)\right] \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/linear_quadratic_number_surviving.png" alt="Linear quadratic - number surviving" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be radiation dose on a linear scale and must satisfy $$X≥0$$. The dependent variable (Y) must be the number of surviving cells (absolute counts) and should be strictly positive $$Y>0$$. If your data are recorded as fraction surviving or percent surviving, use the corresponding linear–quadratic model variants for those output types instead.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_0$$: The number of cells when $$X=0$$ (initial population size), in the same units as $$Y$$.
+
+1. $$A$$: The linear killing coefficient (units of inverse dose). It represents cell death caused by single radiation tracks. Larger A results in steeper initial decline in survival.
+
+1. $$B$$: The quadratic killing coefficient (units of inverse dose squared). It represents cell death from interaction of two sublethal events. Larger B increases curvature at higher doses.
+
+---
+
+##### Linear Quadratic, Y is Fraction Dead
+The linear–quadratic (LQ) model describes the fraction of cells that are dead after exposure to ionizing radiation. It assumes that cell killing arises from two components: a linear component proportional to dose (single-track events) and a quadratic component proportional to dose squared (interaction of sublethal damage). The model predicts a continuously increasing death fraction with increasing radiation dose and is widely used in radiobiology and radiation oncology.
+
+###### Equation
+{: .no_toc }
+<div id="linear_quadratic_fraction_dead"> \begin{equation} Y = 1.0 - \exp\left[-\left(A X + B X^{2}\right)\right] \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/linear_quadratic_fraction_dead.png" alt="Linear quadratic - fraction dead" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) represents radiation dose and must be on a linear scale with $$X \geq 0$$. The dependent variable (Y) represents the fraction of cells that are dead and must satisfy $$0 \leq Y \leq 1$$.
+
+###### Parameters
+{: .no_toc }
+
+1. $$A$$: The linear killing coefficient (units of inverse dose). It represents cell death caused by single radiation tracks. Larger A results in steeper initial increase in deaths.
+
+1. $$B$$: The quadratic killing coefficient (units of inverse dose squared). It represents cell death from interaction of two sublethal events. Larger B increases curvature at higher doses.
+
+---
+
+##### Linear Quadratic, Y is Percent Dead
+This linear–quadratic (LQ) variant models percent cell that are dead after radiation exposure. As in the standard LQ model, survival decreases with dose due to a linear (single-track) and a quadratic (two-track) killing component. The only difference from the “fraction dead form is a scaling by 100 so that the predicted response is expressed as a percentage, approaching 100% at dose zero and decreasing toward 0% as dose increases.
+
+###### Equation
+{: .no_toc }
+<div id="linear_quadratic_percent_dead"> \begin{equation} Y = 100* (1.0 - \exp\left[-\left(A X + B X^{2}\right)\right]) \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/linear_quadratic_percent_dead.png" alt="Linear quadratic - percent dead" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) represents radiation dose and must be on a linear scale with $$X \geq 0$$. The dependent variable (Y) represents the fraction of cells that are dead and must satisfy $$0 \leq Y \leq 100$$. Y must be entered as a percentage (not a fraction). If your data are fractions, use the “fraction dead form instead.
+
+###### Parameters
+{: .no_toc }
+
+1. $$A$$: The linear killing coefficient (units of inverse dose). It represents cell death caused by single radiation tracks. Larger A results in steeper initial increase in death.
+
+1. $$B$$: The quadratic killing coefficient (units of inverse dose squared). It represents cell death from interaction of two sublethal events. Larger B increases curvature at higher doses.
+
+---
+
+##### Linear Quadratic, Y is Number Dead
+This linear–quadratic (LQ) model describes the absolute number of dead cells after exposure to radiation dose $$X$$. Deaths increase with dose according to a linear (single-event) and quadratic (two-event) killing component. Unlike the fraction or percent forms, this formulation includes an explicit initial population term $$Y_0$$.
+, which represents the number of cells present at zero dose.
+
+###### Equation
+{: .no_toc }
+<div id="linear_quadratic_number_dead"> \begin{equation} Y = Y_0 * (1.0 -  \exp\left[-\left(A X + B X^{2}\right)\right]) \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/linear_quadratic_number_dead.png" alt="Linear quadratic - number dead" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be radiation dose on a linear scale and must satisfy $$X≥0$$. The dependent variable (Y) must be the number of dead cells (absolute counts) and should be positive $$Y>=0$$. If your data are recorded as fraction dead or percent dead, use the corresponding linear–quadratic model variants for those output types instead.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_0$$: The number of cells when $$X=0$$ (initial population size), in the same units as $$Y$$.
+
+1. $$A$$: The linear killing coefficient (units of inverse dose). It represents cell death caused by single radiation tracks. Larger A results in steeper initial increase in deaths.
+
+1. $$B$$: The quadratic killing coefficient (units of inverse dose squared). It represents cell death from interaction of two sublethal events. Larger B increases curvature at higher doses.
+
+---
+
 
 ## Lethal Concentration/Dose (LCx/LDx)
 In this context, LCx/LDx analysis refers to estimating the concentration (LCx) or dose (LDx) that produces a specified proportion $$x%$$ of “response” (typically mortality) in a population. Unlike the nonlinear least-squares models above, LCx/LDx models are naturally formulated as a binomial-response problem: each observation represents $$y_i$$ affected individuals out of $$n_i$$ tested at a given concentration/dose $$X_i$$. The probability of response, $$p_i$$, is modeled using a generalized linear model (GLM) with a probit link:
