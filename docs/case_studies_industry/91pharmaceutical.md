@@ -68,3 +68,9 @@ permalink: /case_studies_industry_pharmaceutical.html
 * [Report](files\DoE\Pharmaceuticals\2017_Valenzuela-Oses\2017_Valenzuela-Oses.pdf)
 
 
+# AutoML
+
+#### Acute Rat Toxicity ([`Classification`](https://www.docs.isalos.novamechanics.com///classification.html))
+{: .no_toc }
+* [Isalos workflow](files\AutoML\Classification\2026_Theodori\2026_Theodori_Toxicity.iap)
+* [Report](files\AutoML\Classification\2026_Theodori_Toxicity.pdf)

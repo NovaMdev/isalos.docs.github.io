@@ -6,7 +6,7 @@ nav_order: 8
 permalink: /post-doe-analysis.html
 ---
 
-# Post DoEAnalysis
+# Post DoE Analysis
 {: .no_toc }
 
 Post DoE Analysis provides a comprehensive set of tools to evaluate and interpret experimental results obtained through Design of Experiments (DoE) methodologies. With this module, users can easily identify the most influential factors, explore the impact of individual variables, and study interactions between them. Available visualization options include:

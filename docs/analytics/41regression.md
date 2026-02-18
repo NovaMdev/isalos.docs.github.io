@@ -159,7 +159,7 @@ In the right-hand spreadsheet of the tab the output data matrix with the actual 
 
 ## Radial Basis Function Network
 
-Radial basis function networks (RBF) network is an artificial neural network that employs RBF kernels as activation functions. The network consists of three layers: the input layer modeling a vector that passes data, the hidden layer that performs computations and the output layer designated for regression problems. The output layer of the neural network is a linear combination of the activation (output) from the hidden units.<sup>[1, 3](#references-regression)</sup>
+Radial basis function (RBF) network is an artificial neural network that employs RBF kernels as activation functions. The network consists of three layers: the input layer modeling a vector that passes data, the hidden layer that performs computations and the output layer designated for regression problems. The output layer of the neural network is a linear combination of the activation (output) from the hidden units.<sup>[1, 3](#references-regression)</sup>
 
 A Radial Basis Function is a real-valued function $φ(r)$ that is dependent only on the distance between a fixed input point ($r$) to the center ($c$) of each neuron as reference point [Eq. 1](#eq. rbf1).<sup>[3](#references-regression)</sup> 
 
@@ -1461,7 +1461,7 @@ And then choosing "Poisson" as the `Type`.
 
 ##### Input
 {: .no_toc }
-count variable, consisting of non-negative integer values and suitable for modeling with a Poisson distribution, as Poisson Regression within the GEE framework is used for modeling count data such as number of events, visits, or occurrences over time. Covariates should be numerical, while categorical predictors can be represented using either text labels or numeric codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables (covariates or factors). Each row should correspond to a single observation. Additionally, a subject identifier column is required to define clusters of repeated measurements, and optionally a within-subject variable to specify the order of observations within each subject. The structure of the dataset should support modeling intra-subject correlation under the Poisson distribution assumption using an appropriate link function (e.g., log link) within the GEE framework.
+All variables must be specified in the datasheet. The dependent variable must be a count variable, consisting of non-negative integer values and suitable for modeling with a Poisson distribution, as Poisson Regression within the GEE framework is used for modeling count data such as number of events, visits, or occurrences over time. Covariates should be numerical, while categorical predictors can be represented using either text labels or numeric codes. The input datasheet must include at least two columns: one for the dependent variable and one or more for the independent variables (covariates or factors). Each row should correspond to a single observation. Additionally, a subject identifier column is required to define clusters of repeated measurements, and optionally a within-subject variable to specify the order of observations within each subject. The structure of the dataset should support modeling intra-subject correlation under the Poisson distribution assumption using an appropriate link function (e.g., log link) within the GEE framework.
 
 ##### Configuration
 {: .no_toc }

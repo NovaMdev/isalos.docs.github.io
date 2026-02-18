@@ -232,54 +232,6 @@ In the right-hand spreadsheet of the tab the confusion matrix is depicted [7], f
 ## See also
 For the development of regression models refer to the [`Regression`](https://www.docs.isalos.novamechanics.com/regression.html) functions and for the development of classification models refer to the [`Classification`](https://www.docs.isalos.novamechanics.com/classification.html) functions.
 
-### Workflows
-{: .no_toc }
-
-#### Bodyfat prediction case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Bodyfat prediction/body_fat.iap)
-* [Report](files/Regression/Bodyfat prediction/Bodyfat Prediction.pdf)
-
-#### House pricing case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Housing prices/house_pricing.iap)
-* [Report](files/Regression/Housing prices/Housing Prices.pdf)
-
-#### Insurance charges case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Insurance charges/insurance_charges.iap)
-* [Report](files/Regression/Insurance charges/Insurance Charges.pdf)
-
-#### MA score case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/MA score/ma_score_data.iap)
-* [Report](files/Regression/MA score/MA score Data.pdf)
-
-#### Salary prediction case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Salary prediction/salary_prediction.iap)
-* [Report](files/Regression/Salary prediction/Salary Prediction.pdf)
-
-#### Breast cancer case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Breast cancer/breast_cancer.iap)
-* [Report](files/Classification/Breast cancer/Breast Cancer.pdf)
-
-#### Credit card case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Credit card/credit_card.iap)
-* [Report](files/Classification/Credit card/Credit Card.pdf)
-
-#### Parkinson's disease case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Parkinson's disease/parkinsons_disease.iap)
-* [Report](files/Classification/Parkinson's disease/Parkinson's Disease.pdf)
-
-#### Students' performance case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Student's performance/students_performance.iap)
-* [Report](files/Classification/Student's performance/Students' Performance.pdf)
-
 ## References 
 1. Naser MZ, Alavi AH. Error Metrics and Performance Fitness Indicators for Artificial Intelligence and Machine Learning in Engineering and Sciences. Archit Struct Constr 2021. [doi.org/10.1007/s44150-021-00015-8](https://doi.org/10.1007/s44150-021-00015-8).
 1. Witten Ian H and Frank, Eibe and Hall, Mark A and Pal CJ. Data Mining: Practical Machine Learning Tools and Techniques. Fourth. Morgan Kaufmann; 2011. [doi.org/10.1016/C2009-0-19715-5](https://doi.org/10.1016/C2009-0-19715-5).
