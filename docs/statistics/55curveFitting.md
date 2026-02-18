@@ -1847,7 +1847,7 @@ Y = Bmax \frac{X}{K_d+X} + NS*X + Background
 ###### Visualization
 {: .no_toc }
 <div style="text-align: center;">
-<img src="images/Curve Fitting/oneSite_Total.png" alt="One Site -- Total" width="400" height="300" class="img-responsive">
+<img src="images/Curve Fitting/oneSite_total.png" alt="One Site -- Total" width="400" height="300" class="img-responsive">
 </div>
 
 ###### Input 
