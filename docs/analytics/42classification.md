@@ -4,18 +4,12 @@ title: 4.2 Classification
 parent: 4. Analytics
 nav_order: 2
 permalink: /classification.html
+description: "Develop classification models in Isalos for binary and multiclass prediction using supervised machine learning algorithms."
 ---
 
 # Classification
 {: .no_toc }
 Classification is a typical supervised learning technique in predictive modeling that aims to categorize data into predefined classes. Classification analysis is used when the target is a categorical value, and algorithms are trained on labeled datasets to predict the category of unseen objects. There are two types of classification problems; Binary classification where the possible outcome can be one of two distinct classes, and Multiclass classification where the outcome can be one of several categories. <sup>[1](#references-classification)</sup>
-
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

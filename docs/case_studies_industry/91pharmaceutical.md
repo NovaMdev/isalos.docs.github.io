@@ -4,18 +4,13 @@ title: 9.1 Pharmaceutical
 parent: 9. Case Studies per Industry
 nav_order: 1
 permalink: /case_studies_industry_pharmaceutical.html
+description: "Pharmaceutical analytics case studies in Isalos for drug delivery optimisation and formulation design."
 ---
 
 # Pharmaceutical
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-# Design of Experiments
+## Design of Experiments
 
 #### Opthalmic Drug Delivery System ([`Fractional Factorial`](https://www.docs.isalos.novamechanics.com//screening.html))
 {: .no_toc }
@@ -68,7 +63,7 @@ permalink: /case_studies_industry_pharmaceutical.html
 * [Report](files\DoE\Pharmaceuticals\2017_Valenzuela-Oses\2017_Valenzuela-Oses.pdf)
 
 
-# AutoML
+## AutoML
 
 #### Acute Rat Toxicity ([`Classification`](https://www.docs.isalos.novamechanics.com///classification.html))
 {: .no_toc }

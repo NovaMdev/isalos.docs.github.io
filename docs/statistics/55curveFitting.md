@@ -4,6 +4,7 @@ title: 5.5 Curve Fitting
 parent: 5. Statistics
 nav_order: 5
 permalink: /curvefitting.html
+description: "Run curve fitting for different non-linear equation categories."
 ---
 
 # Curve Fitting
@@ -13,12 +14,6 @@ Curve fitting is the process of estimating model parameters so a mathematical fu
 Different curve fitting methods make different assumptions and trade-offs. Nonlinear least squares is widely used for dose–response because it directly estimates interpretable parameters, but it can be sensitive to starting values, local minima, and parameter correlation—especially in multi-parameter models. Robust regression reduces the influence of outliers, while regularization or constraints (fixing slopes, bounding parameters) can stabilize fits when data are sparse or noisy. Good practice is to evaluate fit quality using residual plots, confidence intervals, and goodness-of-fit metrics (e.g., $$R^2$$), and to prefer models that are both statistically adequate and biologically/chemically plausible rather than simply the most flexible.
 
 This section is organized into two subsections that reflect the main families of curve fitting used in this framework. The first subsection covers nonlinear equations, where model parameters are estimated using the Levenberg–Marquardt algorithm. The second subsection focuses on Lethal Concentration/Dose (LCx/LDx) analysis, which relies on probit regression solved using the Newton–Raphson method. The theoretical basis, assumptions, and practical implications of each approach are described in detail in their respective sections.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

@@ -1,13 +1,28 @@
 title: Isalos Analytics Platform Docs
-description: The Documentation of Isalos Analytics Platform powered by Just the docs
+description: >-
+  Official documentation for the Isalos Analytics Platform by NovaMechanics.
+  Learn data manipulation, predictive modelling, Design of Experiments, and
+  business intelligence — no programming skills required.
 theme: just-the-docs
 
 baseurl: "/docs"
 url: https://www.docs.isalos.novamechanics.com/
 
-aux_links:
-  Template Repository: https://github.com/just-the-docs/just-the-docs-template
+# Default social sharing image (used by jekyll-seo-tag for og:image)
+og_image: /images/icons/Isalos_long.png
 
-example: ok
+# Twitter card configuration
+twitter:
+  card: summary_large_image
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+aux_links:
+  Isalos Platform: https://isalos.novamechanics.com/
 
 color_scheme: light
+
+lang: en

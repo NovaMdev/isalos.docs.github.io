@@ -4,17 +4,12 @@ title: 5.7 Random Number Generator
 parent: 5. Statistics
 nav_order: 7
 permalink: /random-number-generator.html
+description: "Generate random numbers from various probability distributions for data science workflows in Isalos."
 ---
 
 # Random Number Generator
 {: .no_toc }
 Random numbers are widely used in data science and machine learning model development to mimic input data obtained from a uniform population where every number of the population has the same chance of selection.  
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

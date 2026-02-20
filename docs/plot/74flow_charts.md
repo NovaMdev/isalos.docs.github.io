@@ -4,18 +4,13 @@ title: 7.4 Flow Charts
 parent: 7. Plot & Business Intelligence
 nav_order: 4
 permalink: /flow_charts.html
+description: "Create Sankey diagrams and flow visualisations in Isalos to represent data movement and relationships."
 ---
 
 # Flow Charts
 {: .no_toc }
 
 Flow plots are useful visualizations for representing relationships, movements, or transfers between entities. They highlight how quantities flow from one category to another, making it easy to track connections, dependencies, and the distribution of resources across a system. By emphasizing the magnitude and direction of flows, these charts provide an intuitive way to understand complex networks and interactions in a single view.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

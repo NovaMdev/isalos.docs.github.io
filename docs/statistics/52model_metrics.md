@@ -4,17 +4,12 @@ title: 5.2 Model Metrics
 parent: 5. Statistics
 nav_order: 2
 permalink: /model-metrics.html
+description: "Evaluate machine learning model performance in Isalos using regression and classification accuracy metrics."
 ---
 
 # Model Metrics
 {: .no_toc }
 The assessment of a machine learning model’s performance can be achieved using statistical metrics that quantify the accuracy of the model’s predictions (how closely the predictions match their true values) and identify possible underfitting or overfitting. A regression model’s performance is assessed based on how close the actual ($$y_i$$) and the predicted ($$\widehat{y_i}$$) values of the target are, usually by calculating the differences (residuals) between actual and predicted values. The performance of classification models is evaluated based on the number of correct predictions and the number of misclassifications.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

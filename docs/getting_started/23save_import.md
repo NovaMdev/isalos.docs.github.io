@@ -4,17 +4,12 @@ title: 2.3 Save/Import Project and Models
 parent: 2. Getting Started
 nav_order: 3
 permalink: /save_import.html
+description: "Save, open, and import Isalos projects and models. Manage workflows and export results using the File menu."
 ---
 
 # Save/Import Project and Models
 {: .no_toc }
 Isalos offers various options for managing your projects and models. You can save, open, and import projects or models directly from the `File` menu for easy workflow management.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

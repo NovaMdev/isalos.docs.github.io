@@ -4,17 +4,12 @@ title: 5.1 Applicability Domain
 parent: 5. Statistics
 nav_order: 1
 permalink: /domain-apd.html
+description: "Define the applicability domain of predictive models in Isalos to assess the reliability of predictions."
 ---
 
 # Applicability Domain - APD
 {: .no_toc }
 The main goal of models’ development and machine learning applications is the possibility of facilitating strategic decisions by providing reliable predictions. However, stakeholders need to build a level of confidence towards the produced predictions to employ it in real-life applications. Therefore, every theoretical model should be accepted in practical use via the definition of an area of accepted (reliable) predictions. This can be achieved by defining the applicability domain of the model, for example, by comparing the relative “position” of the test instances to the space limits framed by the training instances.<sup>[1](#references-domain)</sup>
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

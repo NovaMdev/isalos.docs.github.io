@@ -9,13 +9,7 @@ permalink: /case_studies_industry_automotive.html
 # Automotive
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-# Regression
+## Regression
 
 #### Vehicle
 {: .no_toc }

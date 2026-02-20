@@ -4,18 +4,13 @@ title: 9.2 Healthcare
 parent: 9. Case Studies per Industry
 nav_order: 2
 permalink: /case_studies_industry_healthcare.html
+description: "Healthcare analytics case studies using Isalos for clinical data regression and classification modelling."
 ---
 
 # Healthcare
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-# Regression
+## Regression
 
 #### Bodyfat
 {: .no_toc }
@@ -28,7 +23,7 @@ permalink: /case_studies_industry_healthcare.html
 * [Report](files\Regression\Life expectancy\life_expectancy.pdf)
 
 
-# Classification
+## Classification
 
 #### Breast Cancer
 {: .no_toc }

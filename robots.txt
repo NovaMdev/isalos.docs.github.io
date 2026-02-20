@@ -1,0 +1,8 @@
+# Robots.txt for Isalos Analytics Platform Documentation
+# https://www.docs.isalos.novamechanics.com/
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.docs.isalos.novamechanics.com/sitemap.xml

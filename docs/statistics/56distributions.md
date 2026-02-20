@@ -4,17 +4,12 @@ title: 5.6 Probability Distribution Functions
 parent: 5. Statistics
 nav_order: 6
 permalink: /distributions.html
+description: "Explore probability distribution functions in Isalos. Plot PDF and CDF for a wide range of distribution families."
 ---
 
 # Probability Distribution Functions
 {: .no_toc }
 Isalos provides tools to explore probability distribution functions across a wide range of well-known distribution families, including options to customize parameters for each distribution. This flexibility allows users to model specific scenarios, analyse different shapes of distributions, and observe how changes in parameters affect the distribution's behaviour. Isalos also provides the ability to plot the probability mass function (PDF) or probability density function (PDF) and the cumulative distribution function (CDF) of a random variable of a known distribution for the parameters that the user has inputted. 
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

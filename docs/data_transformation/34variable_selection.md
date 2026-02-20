@@ -4,6 +4,7 @@ title: 3.4 Variable Selection
 parent: 3. Data Transformation
 nav_order: 4
 permalink: /variable-selection.html
+description: "Select the most relevant features using filter and wrapper variable selection methods in the Isalos Analytics Platform."
 ---
 
 # Variable Selection
@@ -20,13 +21,6 @@ These methods evaluate the machine learning model’s performance on different s
 
 
 <!--A key step during model development is the feature selection. The main goal of this step is to exclude from further analysis noisy variables that may lead to over-fitting phaenomena. By reducing the data space, the modelling computational time is also reduced, and the predictive performance is improved.<sup>[1,2](#references-variable-selection)</sup>-->
-
-## Table of contents
-{: .no_toc .text-delta }
-
-
-1. TOC
-{:toc}
 
 ---
 

@@ -2,6 +2,7 @@
 title: 1. Introduction
 layout: home
 nav_order: 1
+description: "Introduction to the Isalos Analytics Platform — a no-code tool for data manipulation, predictive modelling, and analytics."
 ---
 
 <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">

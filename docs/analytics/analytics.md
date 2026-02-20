@@ -4,6 +4,7 @@ title: 4. Analytics
 nav_order: 4
 has_children: true
 permalink: /analytics.html
+description: "Core analytics tools in Isalos for building regression, classification, clustering, and anomaly detection models."
 ---
 
 # Analytics

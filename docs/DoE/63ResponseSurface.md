@@ -4,18 +4,12 @@ title: 6.3 Response Surface
 parent: 6. DOE
 nav_order: 3
 permalink: /response-surface.html
+description: "Build response surface designs in Isalos to optimise experimental outcomes and model factor interactions."
 ---
 
 # Response Surface
 {: .no_toc }
 Response Surface Designs are a subset of Design of Experiments (DoE) aimed at optimizing a response variable by exploring the relationships between multiple factors and their interactions. These designs are used when the goal is to find the optimal settings for factors that lead to the best outcome, and they are usually used as a next step after performing a screening design to reduce the number of parameters included in the model. By fitting a mathematical model to experimental data, response surface designs allow researchers to map out a surface that represents the response's behavior across factor levels. 
-
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

@@ -4,18 +4,13 @@ title: 9.4 Water Treatment
 parent: 9. Case Studies per Industry
 nav_order: 4
 permalink: /case_studies_industry_water.html
+description: "Water treatment case studies in Isalos applying response surface methods to purification process optimisation."
 ---
 
 # Water Treatment
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-# Design of Experiments
+## Design of Experiments
 
 #### Removal of humic substances using coconut copra ([`Central Composite - CCI`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }

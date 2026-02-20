@@ -4,17 +4,12 @@ title: 3.1 Normalizers
 parent: 3. Data Transformation
 nav_order: 1
 permalink: /normalizers.html
+description: "Normalize and standardize data in Isalos using Z Score, Min-Max, and other scaling methods for machine learning workflows."
 ---
 
 # Normalizers
 {: .no_toc }
 Data scaling (normalization or standardization) is considered as a standard pre-processing procedure in data science and in machine learning model development. Both techniques aim to force data that have substantially different numerical ranges to acquire comparable values and thus, to facilitate their manipulation and modeling and contribute equally to the analysis.<sup>[1](#references-normalizers)</sup>
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

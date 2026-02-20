@@ -4,17 +4,12 @@ title: 4.5 Existing Model Utilization
 parent: 4. Analytics
 nav_order: 5
 permalink: /existing-model-utilization.html
+description: "Apply existing models to new data in Isalos. Reuse normalization, regression, classification, and clustering models."
 ---
 
 # Existing Model Utilization
 {: .no_toc }
 This function treats or transforms the input data according to the parameters of an existing model (typically a normalization, a regression, a classification, a clustering model or an applicability domain model). The applied mathematical transformation is applied to all columns in the input data that are contained in the existing model. This model is either generated within the project or imported from the user’s Isalos models library.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

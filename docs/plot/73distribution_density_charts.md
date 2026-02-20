@@ -4,18 +4,13 @@ title: 7.3 Distribution and Density Charts
 parent: 7. Plot & Business Intelligence
 nav_order: 3
 permalink: /distribution_density_charts.html
+description: "Visualise data distributions with histograms, density plots, and heatmaps in the Isalos Analytics Platform."
 ---
 
 # Distribution and Density Charts
 {: .no_toc }
 
 Distribution and density charts are visual tools used to illustrate how data values are spread across one or more dimensions and how frequently they occur. By representing magnitude through position, grouping, or intensity, these charts make it easier to identify patterns, concentrations, gaps, and variations within a dataset. They reveal where values cluster, how distributions change across categories or time, and whether trends or imbalances are present.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

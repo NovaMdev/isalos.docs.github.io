@@ -4,18 +4,13 @@ title: 9.3 Analytical Chemistry
 parent: 9. Case Studies per Industry
 nav_order: 3
 permalink: /case_studies_industry_analytical_chemistry.html
+description: "Analytical chemistry case studies in Isalos for method development and optimisation using DoE."
 ---
 
 # Analytical Chemistry
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-# Design of Experiments
+## Design of Experiments
 
 #### Development of hydrophilic interaction LC method ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }

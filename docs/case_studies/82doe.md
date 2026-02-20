@@ -4,18 +4,14 @@ title: 8.2 Design of Experiments (DOE)
 parent: 8. Knowledge Base
 nav_order: 2
 permalink: /knowledge_base_doe.html
+description: "Design of Experiments case studies in Isalos featuring screening, factorial, and response surface examples."
 ---
 
 # Design of Experiments (DOE)
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
 
-1. TOC
-{:toc}
-
-# Screening Designs 
+## Screening Designs 
 
 #### Opthalmic Drug Delivery System ([`Fractional Factorial`](https://www.docs.isalos.novamechanics.com//screening.html))
 {: .no_toc }
@@ -28,7 +24,7 @@ permalink: /knowledge_base_doe.html
 * [Report](files\DoE\Food Chemistry\2016_Ma\2016_Ma.pdf)
 
 
-# Factorial Design
+## Factorial Design
 
 #### Development of pellets for oral lysozyme delivery ([`Full Factorial`](https://www.docs.isalos.novamechanics.com///factorial.html))
 {: .no_toc }
@@ -51,7 +47,7 @@ permalink: /knowledge_base_doe.html
 * [Report](files\DoE\Pharmaceuticals\2017_Valenzuela-Oses\2017_Valenzuela-Oses.pdf)
 
 
-# Response Surface Designs
+## Response Surface Designs
 
 #### Formulation of extended release beads ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
@@ -94,7 +90,7 @@ permalink: /knowledge_base_doe.html
 * [Report](files\DoE\Pharmaceuticals\2016_Patel\2016_Patel.pdf)
 
 
-# Combination
+## Combination
 
 #### Bilastine determination by hydrophilic interaction LC ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html) & [`Fractional Factorial`](https://www.docs.isalos.novamechanics.com//screening.html))
 {: .no_toc }
@@ -102,7 +98,7 @@ permalink: /knowledge_base_doe.html
 * [Report](files\DoE\Analytical chemistry\2016_Terzic\2016_Terzic.pdf)
 
 
-# Isalos Publications
+## Isalos Publications
 
 #### Ammonia borane catalytic hydrolysis for H<sub>2</sub> generation ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }

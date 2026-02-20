@@ -4,18 +4,13 @@ title: 4.3 Clustering
 parent: 4. Analytics
 nav_order: 3
 permalink: /clustering.html
+description: "Perform cluster analysis in Isalos using unsupervised learning to group data points and discover hidden patterns."
 ---
 
 # Clustering
 {: .no_toc }
 
 Cluster analysis is an unsupervised learning technique that is able to group instances into clusters based on the distinct characteristics of the data points. Unsupervised learning operates on unlabeled data and focuses on learning from input without human supervision. The goal of clustering is to divide unlabeled objects into meaningful groups where items in each subset are similar to each other rather than to instances in other subsets. This method is often used for data exploration, facilitating the identification of underlying patterns within the dataset that are not immediately obvious. <sup>[1,2](#references-clustering)</sup>
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 
