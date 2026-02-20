@@ -20,6 +20,12 @@
    0. COLOR PALETTE
    ============================================================================= */
 
+  
+/* Font */
+body, input, button {
+  font-family: 'Nunito Sans', sans-serif !important;
+}
+
 :root {
 
   /* Base */
@@ -89,7 +95,7 @@
 .top-nav-container .search {
   flex: 0 0 auto !important;
   flex-grow: 0 !important;
-  width: 307px !important;
+  width: 313px !important;
   position: absolute !important;
   left: 50%;
   transform: translateX(-50%);
