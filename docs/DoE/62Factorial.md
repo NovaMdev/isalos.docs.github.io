@@ -4,17 +4,11 @@ title: 6.2 Factorial
 parent: 6. DOE
 nav_order: 2
 permalink: /factorial.html
+description: "Generate full and fractional factorial designs in Isalos to study factor effects and interactions systematically."
 ---
 
 # Factorial
 {: .no_toc }
-
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

@@ -4,18 +4,13 @@ title: 9.6 Education
 parent: 9. Case Studies per Industry
 nav_order: 6
 permalink: /case_studies_industry_education.html
+description: "Education analytics case studies in Isalos for predicting student performance with regression models."
 ---
 
 # Education
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-# Regression
+## Regression
 
 #### Student Performance
 {: .no_toc }
@@ -23,7 +18,7 @@ permalink: /case_studies_industry_education.html
 * [Report](files\Regression\Student performance\student_performance.pdf)
 
 
-# Classification
+## Classification
 
 #### Student Performance
 {: .no_toc }

@@ -4,17 +4,12 @@ title: 3.2 Data Manipulation
 parent: 3. Data Transformation
 nav_order: 2
 permalink: /data-manipulation.html
+description: "Manipulate data in Isalos with filtering, sorting, missing value handling, column removal, and matrix transpose operations."
 ---
 
 # Data Manipulation
 {: .no_toc }
 This menu includes functionalities that enable the users to prepare their data for modelling and analysis. These functions correspond to standard pre-processing steps for the development of data analysis and machine learning workflows, such as data filtering, missing values filling, sorting and matrix transpose.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

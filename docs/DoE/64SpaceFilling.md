@@ -4,17 +4,12 @@ title: 6.4 Space Filling
 parent: 6. DOE
 nav_order: 4
 permalink: /space-filling.html
+description: "Create space-filling designs in Isalos for uniform coverage of the experimental factor space."
 ---
 
 # Space Filling
 {: .no_toc }
 Space-Filling Designs are a type of Design of Experiments (DoE) used to explore a wide range of factor combinations in a systematic and efficient way. The goal is to ensure that the experimental points are distributed evenly across the entire factor space, maximizing the coverage of possible factor levels. These designs are particularly useful when the underlying model is unknown or when the focus is on understanding the behavior of a system across a broad spectrum of conditions. 
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

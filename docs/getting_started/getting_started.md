@@ -4,6 +4,7 @@ title: 2. Getting Started
 nav_order: 2
 has_children: true
 permalink: /getting_started.html
+description: "Get started with Isalos Analytics Platform. Learn installation, data representation, project management, and workflow setup."
 ---
 
 # Getting Started

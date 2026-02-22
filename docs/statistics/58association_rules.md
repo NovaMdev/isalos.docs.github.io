@@ -4,17 +4,12 @@ title: 5.8 Association Rules Mining
 parent: 5. Statistics
 nav_order: 8
 permalink: /association-rules-mining.html
+description: "Discover association rules and patterns in transactional data. Market basket analysis, frequent itemset mining, and rule-based learning for business intelligence."
 ---
 
 # Association Rules Mining
 {: .no_toc }
 Association Rule Mining is an unsupervised learning technique used to extract interesting correlations, frequent patterns, associations or casual structures among sets of items in transaction databases or other data repositories. The primary objective of association rule mining is to identify frequent itemsets and generate rules that describe relationships between items. These rules are typically evaluated using metrics such as support, confidence, and lift, which help assess their significance and usefulness.<sup>[1](#references-association)</sup>
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

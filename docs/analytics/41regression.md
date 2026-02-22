@@ -4,17 +4,12 @@ title: 4.1 Regression
 parent: 4. Analytics
 nav_order: 1
 permalink: /regression.html
+description: "Build regression models in Isalos using kNN, Random Forest, SVM, neural networks, and other supervised learning algorithms."
 ---
 
 # Regression
 {: .no_toc }
 Regression is a typical supervised learning task in predictive modelling that aims to investigate the relationship between a set of independent features and a dependent target variable. Regression analysis algorithms are employed when the target variable is a continuous numeric value.<sup>[1](#references-regression)</sup>
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

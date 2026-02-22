@@ -4,17 +4,12 @@ title: 5.3 Basic Statistics
 parent: 5. Statistics
 nav_order: 3
 permalink: /descriptive-statistics.html
+description: "Calculate descriptive statistics, confidence intervals, and hypothesis tests on your data using Isalos."
 ---
 
 # Basic Statistics
 {: .no_toc }
 Basic statistics is a tool that includes fundamental techniques used to summarize and interpret a given dataset. It encompasses descriptive statistics, such as mean, median, mode, variance, and standard deviation, which help characterize the central tendency and variability of data sets. It also includes confidence intervals, providing a range within which population parameters are likely to fall, and hypothesis testing, which allows analysts to make inferences or decisions based on sample data. Additionally, weighting cases can be applied to adjust for the relative importance of different data points. These tools are essential for understanding data behavior and supporting informed decision-making in research and analysis.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

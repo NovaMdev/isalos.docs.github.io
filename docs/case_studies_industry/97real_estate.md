@@ -4,18 +4,13 @@ title: 9.7 Real Estate
 parent: 9. Case Studies per Industry
 nav_order: 7
 permalink: /case_studies_industry_real_estate.html
+description: "Real estate analytics case studies in Isalos for housing price prediction using machine learning."
 ---
 
 # Real Estate
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-# Regression
+## Regression
 
 #### Housing Prices
 {: .no_toc }

@@ -4,18 +4,13 @@ title: 9.10 Cybersecurity
 parent: 9. Case Studies per Industry
 nav_order: 10
 permalink: /case_studies_industry_cybersecurity.html
+description: "Cybersecurity case studies in Isalos for email spam classification and threat detection modelling."
 ---
 
 # Cybersecurity
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-# Classification
+## Classification
 
 #### Email Spam
 {: .no_toc }

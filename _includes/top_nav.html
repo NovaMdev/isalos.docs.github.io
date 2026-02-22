@@ -1,0 +1,67 @@
+<!-- Top Navigation Bar -->
+<div class="top-nav-bar">
+  <div class="top-nav-container">
+    <!-- Logo on the left -->
+    <div class="top-nav-logo">
+      <a href="{{ '/' | relative_url }}">
+        <img src="{{ 'images/icons/Isalos_letters_icon.png' | relative_url }}" alt="Isalos Logo" height="40">
+      </a>
+    </div>
+    
+    {% capture search_placeholder %}{% include search_placeholder_custom.html %}{% endcapture %}
+
+    <div class="search" role="search">
+      <div class="search-input-wrap">
+        <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="{{ search_placeholder | strip_html | strip }}" aria-label="{{ search_placeholder | strip_html| strip }}" autocomplete="off">
+        <label for="search-input" class="search-label">
+          <svg viewBox="0 0 24 24" class="search-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </label>
+      </div>
+      <div id="search-results" class="search-results"></div>
+    </div>
+
+    <!-- Links on the right -->
+    <nav class="top-nav-links">
+      <a href="https://isalos.novamechanics.com/" target="_blank" class="icon-link">
+        <img src="{{ 'images\icons\Isalos_simple_logo_hover.png' | relative_url }}" 
+            alt="Isalos Analytics Platform" 
+            height="38" 
+            width="44"
+            class="icon-default">
+        <img src="{{ 'images\icons\Isalos_simple_logo.png' | relative_url }}" 
+            alt="Isalos Analytics Platform" 
+            height="38" 
+            width="44"
+            class="icon-hover">
+      </a>
+      <a href="https://novamechanics.com/" target="_blank" class="icon-link">
+        <img src="{{ 'images\icons\novaM_gray_logo.png' | relative_url }}" 
+            alt="NovaMechanics Ltd" 
+            height="38" 
+            width="44"
+            class="icon-default">
+        <img src="{{ 'images\icons\novaM_logo.png' | relative_url }}" 
+            alt="NovaMechanics Ltd" 
+            height="38" 
+            width="44"
+            class="icon-hover">
+      </a>
+      <a href="https://www.youtube.com/@novamechanicsltd5621" target="_blank" class="icon-link">
+        <img src="{{ 'images\icons\yt_logo_circle.png' | relative_url }}" 
+            alt="Youtube channel" 
+            height="35" 
+            width="40"
+            class="icon-default">
+        <img src="{{ 'images\icons\yt_logo_circle_hover.png' | relative_url }}" 
+            alt="Youtube channel" 
+            height="35" 
+            width="40"
+            class="icon-hover">
+      </a>
+    </nav>
+  </div>
+</div>
+

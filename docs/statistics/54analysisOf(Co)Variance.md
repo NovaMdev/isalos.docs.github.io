@@ -4,19 +4,13 @@ title: 5.4 Analysis of (Co)Variance
 parent: 5. Statistics
 nav_order: 4
 permalink: /anova_ancova.html
+description: "Run ANOVA, ANCOVA, and repeated measures analysis in Isalos to test differences in means across groups."
 ---
 
 # Analysis of (Co)Variance
 {: .no_toc }
 The Analysis of (Co)Variance section includes a range of statistical methods designed to test differences in means across groups, while optionally accounting for multiple variables or repeated measures. These techniques are extensions of ANOVA (Analysis of Variance) and ANCOVA (Analysis of Covariance), and they are essential tools in experimental design and multivariate analysis.
 Many methods are provided, from more simple and straightforward ones, e.g. One-Way ANOVA to more complex ones, allowing for covariances (ANCOVA), repeated measures (Repeated Measures ANOVA) and mixed effects (Mixed ANOVA).
-
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

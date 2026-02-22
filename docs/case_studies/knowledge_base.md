@@ -4,6 +4,7 @@ title: 8. Knowledge Base
 nav_order: 8
 has_children: true
 permalink: /knowledge_base.html
+description: "Hands-on case studies and tutorials for the Isalos Analytics Platform with downloadable workflows and guides."
 ---
 
 # Case Studies

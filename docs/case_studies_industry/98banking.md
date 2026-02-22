@@ -4,18 +4,13 @@ title: 9.8 Banking
 parent: 9. Case Studies per Industry
 nav_order: 8
 permalink: /case_studies_industry_banking.html
+description: "Banking analytics case studies in Isalos for salary prediction and financial data modelling."
 ---
 
 # Banking
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-# Regression
+## Regression
 
 #### Salary Prediction
 {: .no_toc }
@@ -23,7 +18,7 @@ permalink: /case_studies_industry_banking.html
 * [Report](files\Regression\Salary prediction\salary_prediction.pdf)
 
 
-# Classification
+## Classification
 
 #### Bank Customer Churn
 {: .no_toc }

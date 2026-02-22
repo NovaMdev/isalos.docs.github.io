@@ -4,6 +4,7 @@ title: 7. Plot & Business Intelligence
 nav_order: 7
 has_children: true
 permalink: /plot_bi.html
+description: "Data visualisation and business intelligence tools in Isalos for charts, plots, and interactive dashboards."
 ---
 
 # Plot & Business Intelligence

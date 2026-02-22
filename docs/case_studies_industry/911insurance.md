@@ -4,18 +4,13 @@ title: 9.11 Insurance
 parent: 9. Case Studies per Industry
 nav_order: 11
 permalink: /case_studies_industry_insurance.html
+description: "Insurance analytics case studies in Isalos for charge prediction using regression modelling techniques."
 ---
 
 # Insurance
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-# Regression
+## Regression
 
 #### Insurance Charges
 {: .no_toc }

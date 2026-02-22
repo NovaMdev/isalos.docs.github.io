@@ -4,6 +4,7 @@ title: 6.8 Post DoE Analysis
 parent: 6. DOE
 nav_order: 8
 permalink: /post-doe-analysis.html
+description: "Analyse DoE results in Isalos with Pareto charts, main effects plots, and interaction plots."
 ---
 
 # Post DoE Analysis
@@ -17,12 +18,6 @@ Post DoE Analysis provides a comprehensive set of tools to evaluate and interpre
 
 The tool supports both factorial/screening designs and response surface designs, making it adaptable to a wide variety of experimental setups.
 For screening and factorial designs only, users may choose to include center points in the design. This does not mean the addition of extra experimental points in the design but rather that center points already included in the design will be handled differently. This is done by adding an extra 0/1 indicator variable, where a value of 1 identifies center points. Including this variable allows the algorithm to capture a portion of unexplained variability that is not accounted for by the main effects and interaction terms. This indicator is not included in the Pareto plots or in the main effect and interaction plots; it is only used internally to improve the explanation of variability. In contrast, for response surface designs, this option is not available, since the inclusion of curvature and quadratic terms already incorporates the information provided by center points.
-
-# Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

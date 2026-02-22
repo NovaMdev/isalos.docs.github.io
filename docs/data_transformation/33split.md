@@ -4,18 +4,12 @@ title: 3.3 Split
 parent: 3. Data Transformation
 nav_order: 3
 permalink: /split.html
+description: "Split datasets into training and test sets using Kennard-Stone, random sampling, and other partitioning methods in Isalos."
 ---
 
 # Split
 {: .no_toc }
 The splitting of a dataset is a common pre-processing step in data analysis and modelling, either to reduce the volume of the data or to create subsets that will be used within the model external validation process<sup>[1](#references-split)</sup>. In the latter case, two representative subsets are often required, and for that the initial dataset is divided into training and test sets. Objects within the test set are not used during model development but are left out to measure the performance of the model in real-case scenarios<sup>[2,3](#references-split)</sup>. The splitting can be performed either randomly or using a method of representative selection, so that the selected instances cover uniformly the data space.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-
-1. TOC
-{:toc}
 
 ---
 

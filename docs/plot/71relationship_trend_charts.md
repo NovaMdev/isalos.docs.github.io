@@ -4,18 +4,13 @@ title: 7.1 Relationship and Trend Charts
 parent: 7. Plot & Business Intelligence
 nav_order: 1
 permalink: /relationship_trend_charts.html
+description: "Create scatter plots, line charts, and trend visualisations in Isalos to explore variable relationships."
 ---
 
 # Relationship and Trend Charts
 {: .no_toc }
 
 Relationship and trend charts are powerful tools for understanding how data behaves and interacts. By highlighting patterns, correlations, and shifts within datasets, they enable users to quickly identify trends, detect anomalies, and make informed decisions. As a versatile category of visualizations, these charts provide a clear and intuitive way to explore relationships between variables and track developments across diverse data contexts.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

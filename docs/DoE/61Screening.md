@@ -4,18 +4,12 @@ title: 6.1 Screening
 parent: 6. DOE
 nav_order: 1
 permalink: /screening.html
+description: "Create screening designs in Isalos to identify the most significant experimental factors before optimisation."
 ---
 
 # Screening
 {: .no_toc }
 Screening Designs are a subcategory under Design of Experiments (DoE),  focused on identifying the most significant factors that influence a response variable before optimizing. These designs are used when there are many potential factors to consider, and the goal is to quickly determine which ones have a meaningful effect in order to preserve resources and minimize cost. By systematically varying multiple factors at different levels and analyzing their effects, screening designs help prioritize the factors that warrant further investigation in more detailed studies. 
-
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

@@ -4,6 +4,7 @@ title: 9. Case Studies per Industry
 nav_order: 9
 has_children: true
 permalink: /case_studies_industry.html
+description: "Industry-specific case studies showcasing the Isalos Analytics Platform across pharmaceutical, healthcare, food, and more."
 ---
 
 # Case Studies per Industry

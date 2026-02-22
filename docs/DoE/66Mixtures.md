@@ -4,17 +4,11 @@ title: 6.6 Mixtures
 parent: 6. DOE
 nav_order: 6
 permalink: /mixtures.html
+description: "Design mixture experiments in Isalos where component proportions must sum to a fixed total."
 ---
 
 # Mixtures
 {: .no_toc }
-
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

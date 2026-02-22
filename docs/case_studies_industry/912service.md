@@ -4,18 +4,13 @@ title: 9.12 Service
 parent: 9. Case Studies per Industry
 nav_order: 12
 permalink: /case_studies_industry_service.html
+description: "Service industry case studies in Isalos for predictive analytics and customer data modelling."
 ---
 
 # Service
 {: .no_toc }
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-# Regression
+## Regression
 
 #### Tips
 {: .no_toc }
