@@ -481,6 +481,7 @@ html.search-active .page-toc {
   pointer-events: none;
 }
 
+/* Back to top button */
 .toc-back-to-top {
   position: fixed;
   bottom: 1.5rem;
@@ -578,6 +579,12 @@ body:not(.parent-page) .text-delta + ol,
 body:not(.parent-page) .text-delta + ul {
   display: none !important;
 }
+
+/* Color of the chain link */
+.main-content .anchor-heading svg {
+  color: var(--isalos-darkblue);
+}
+
 
 
 /* =============================================================================
