@@ -1,3 +1,5 @@
+---
+---
 // Generate and manage right-side Table of Contents with collapsible sections
 (function() {
   'use strict';
@@ -146,7 +148,14 @@
     const backToTop = document.createElement('button');
     backToTop.className = 'toc-back-to-top';
     backToTop.setAttribute('aria-label', 'Back to top');
-    backToTop.innerHTML = '<img class="toc-back-to-top-icon-default" src="/docs/images/icons/elevator_gray.png" alt="Back to top"><img class="toc-back-to-top-icon-hover" src="/docs/images/icons/elevator.png" alt="Back to top">';
+    backToTop.innerHTML = `
+      <img class="toc-back-to-top-icon-default"
+        src="{{ '/images/icons/elevator_gray.png' | relative_url }}"
+        alt="Back to top">
+      <img class="toc-back-to-top-icon-hover"
+        src="{{ '/images/icons/elevator.png' | relative_url }}"
+        alt="Back to top">
+    `;
     backToTop.addEventListener('click', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
