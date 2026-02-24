@@ -580,6 +580,12 @@ body:not(.parent-page) .text-delta + ul {
   display: none !important;
 }
 
+/* Color of the chain link */
+.main-content .anchor-heading svg {
+  color: var(--isalos-darkblue);
+}
+
+
 
 /* =============================================================================
    5. SEARCH BAR
