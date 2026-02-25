@@ -78,6 +78,7 @@ body, input, button {
 .top-nav-logo {
   display: flex;
   align-items: center;
+  margin-left: 0.5rem;
 }
 
 .top-nav-logo a {
@@ -112,8 +113,6 @@ body, input, button {
   height: 40px !important;
 }
 
-
-
 .top-nav-container .search:focus-within {
   width: 600px !important;
   box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.2);
@@ -131,7 +130,6 @@ body, input, button {
   box-shadow: none !important;
   border-radius: 0 !important;
 }
-
 
 .top-nav-container .search-input {
   position: relative !important;
@@ -208,6 +206,7 @@ body {
 }
 
 .main-header {
+  display: block !important;
   top: 60px;
   padding: 0.75rem 1.0rem !important;
   min-height: auto !important;
@@ -235,6 +234,45 @@ body {
 .top-nav-links .icon-link:hover .icon-default { opacity: 0; }
 .top-nav-links .icon-link:hover .icon-hover { opacity: 1; }
 
+/* Sidebar mobile links — same icon hover behaviour as top nav */
+.sidebar-mobile-links {
+  display: none;
+}
+
+.sidebar-mobile-links .icon-link {
+  position: relative;
+  display: inline-block;
+}
+
+.sidebar-mobile-links .icon-link .icon-default {
+  opacity: 1;
+}
+
+.sidebar-mobile-links .icon-link .icon-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.sidebar-mobile-links .icon-link:hover .icon-default { opacity: 0; }
+.sidebar-mobile-links .icon-link:hover .icon-hover   { opacity: 1; }
+
+
+@media (min-width: 769px) {
+  .top-nav-menu-button {
+    display: none !important;
+  }
+
+  .toc-mobile-toggle-btn {       
+    display: none !important;
+  }
+
+  .sidebar-overlay {         
+    display: none !important;
+  }
+}
+
 
 
 /* =============================================================================
@@ -242,30 +280,20 @@ body {
    ============================================================================= */
 
 .side-bar {
-  top: 60px;
-  height: calc(100vh - 60px);
   background-color: var(--color-bg) !important;
 }
 
-/* Sidebar header */
-.site-header {
-  height: 48px !important;  /* Fixed height */
-  min-height: 48px !important;
-  padding: 0 !important;
-  border-bottom: none !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#menu-button {
-  margin: 0 auto;
+@media (min-width: 50rem) {
+  .side-bar {
+    top: 60px;
+    height: calc(100vh - 60px);
+  }
 }
 
 /* Sidebar navigation */
 .site-nav {
   border-top: none !important;
-  padding-top: 0 !important;
+  padding-top: 48px !important;
 }
 
 /* Sidebar text colors */
@@ -673,14 +701,237 @@ body.parent-page .main-content ul li a:hover {
 
 /* Mobile: Hide top nav links */
 @media (max-width: 768px) {
+
+  .main-content-wrap {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+
   .top-nav-links {
     display: none;
   }
-  
+
   .top-nav-logo img {
     height: 32px;
   }
+
+  /* Collapsed: icon-only circle */
+  .top-nav-container .search {
+    position: relative !important;
+    left: auto !important;
+    transform: none !important;
+    flex: 1 1 auto !important;
+    max-width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+    margin: 0 0.25rem 0 auto !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    transition: max-width 0.3s ease, border-radius 0.3s ease, padding 0.3s ease !important;
+  }
+
+  /* Center the icon when collapsed */
+  .top-nav-container .search:not(:focus-within) .search-input-wrap {
+    justify-content: center !important;
+  }
+
+  .top-nav-container .search:not(:focus-within) .search-input {
+    max-width: 0 !important;
+    margin-left: 0 !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Expanded: fills all available space */
+  .top-nav-container .search:focus-within {
+    max-width: 100% !important;
+    border-radius: 30px !important;
+    padding: 6px 12px !important;
+    overflow: visible !important;
+  }
+
+  /* Hide logo when search expands, to give it the full space */
+  .top-nav-container:has(.search:focus-within) .top-nav-logo {
+    display: none !important;
+  }
+
+
+  .search-input {
+    font-size: 16px !important;
+  }
+
+  .top-nav-container .search #search-results {
+    position: fixed !important;
+    top: 60px !important;
+    left: 0 !important;
+    width: 100vw !important;
+    max-height: calc(100vh - 60px) !important;
+    overflow-y: auto !important;
+    z-index: 1001 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  /* Left sidebar: fixed overlay sliding from the left */
+  .side-bar {
+    position: fixed !important;
+    top: 60px !important;
+    left: 0 !important;
+    width: 280px !important;
+    max-width: 80vw !important;
+    height: calc(100vh - 60px) !important;
+    z-index: 998 !important;
+    transform: translateX(-100%) !important;
+    transition: transform 0.3s ease !important;
+    overflow: hidden !important;
+    margin-top: 0 !important;
+    flex-flow: column nowrap !important;
+    border-right: 1px solid var(--color-border) !important;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15) !important;
+    padding: 1rem !important;
+  }
+
+  /* Slide in when nav is open */
+  .side-bar:has(.nav-open) {
+    transform: translateX(0) !important;
+  }
+
+  /* Remove the desktop-only top padding from the nav list */
+  .site-nav {
+    padding-top: 0 !important;
+    overflow-y: auto !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+  }
+
+  /* Push main content below the fixed top nav bar (sidebar no longer does this) */
+  .main {
+    margin-top: 60px;
+  }
+
+  /* Mobile sidebar toggle button in top nav */
+  .top-nav-menu-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none !important;
+    background-image: none !important;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .top-nav-menu-button:hover {
+    background-image: none !important;
+    color: var(--isalos-lightblue);
+  }
+
+  .top-nav-menu-button .icon {
+    width: 22px;
+    height: 22px;
+    color: var(--color-text-primary) !important;
+  }
+
+  #menu-button[aria-pressed="true"] .icon {
+    color: var(--isalos-darkblue) !important;
+  }
+
+
+  /* Reduce left padding to bring button flush to the edge */
+  .top-nav-container {
+    padding-left: 0.5rem;
+  }
+
+  /* Mobile TOC toggle button */
+  .toc-mobile-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none !important;
+    background-image: none !important;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .toc-mobile-toggle-btn .toc-btn-icon {
+    color: var(--color-text-primary);
+    width: 22px;
+    height: 22px;
+  }
+
+  .toc-mobile-toggle-btn.toc-btn-active .toc-btn-icon {
+    color: var(--isalos-orange);
+  }
+
+  /* Mobile TOC overlay panel */
+  .page-toc.toc-mobile-open {
+    display: block !important;
+    position: fixed !important;
+    top: 60px !important;
+    right: 0 !important;
+    width: 280px !important;
+    max-width: 85vw !important;
+    height: calc(100vh - 60px) !important;
+    z-index: 999 !important;
+    overflow-y: auto !important;
+    border-left: 1px solid var(--color-border) !important;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15) !important;
+    background-color: var(--color-bg) !important;
+    padding: 1.5rem 1rem !important;
+  }
+
+  /* Reduce right padding to match the left side */
+  .top-nav-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .sidebar-mobile-links {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: var(--color-bg);
+    padding: 1rem 0 0.5rem;
+    border-top: 1px solid var(--color-border);
+    z-index: 1;
+  }
+
+  /* Gray overlay when a sidebar is open */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 997;
+    cursor: pointer;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+/*
+  .sidebar-mobile-links img {
+    width: 44px;
+    height: 38px;
+  }
+
+  .sidebar-mobile-links a:last-child img {
+    width: 40px;
+    height: 35px;
+  }
+*/
 }
+
 
 /* Smooth scroll */
 html {
