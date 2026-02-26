@@ -214,6 +214,9 @@ function closeRightTOC() {
       <img class="toc-back-to-top-icon-hover"
         src="{{ '/images/icons/elevator.png' | relative_url }}"
         alt="Back to top">
+      <img class="toc-back-to-top-icon-dark-hover"
+        src="{{ '/images/icons/elevator_dark_hover.png' | relative_url }}"
+        alt="Back to top">
     `;
     backToTop.addEventListener('click', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
