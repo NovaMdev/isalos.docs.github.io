@@ -3,13 +3,72 @@
 // Generate and manage right-side Table of Contents with collapsible sections
 (function() {
   'use strict';
+  let overlay = null;
+
 
   // Wait for DOM to be ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTOC);
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    initTOC();
+    init();
   }
+
+function init() {
+  initMobileOverlay();
+  initTOC();
+}
+
+function initMobileOverlay() {
+  overlay = document.createElement('div');
+  overlay.className = 'sidebar-overlay';
+  document.body.appendChild(overlay);
+
+  // Watch left sidebar for nav-open class changes
+  const siteNav = document.getElementById('site-nav');
+  if (siteNav) {
+    new MutationObserver(updateOverlay).observe(siteNav, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+  }
+
+  // Click overlay → close everything
+  overlay.addEventListener('click', function () {
+    closeLeftSidebar();
+    closeRightTOC();
+    updateOverlay();
+  });
+}
+
+function updateOverlay() {
+  const siteNav = document.getElementById('site-nav');
+  const toc = document.querySelector('.page-toc');
+  const leftOpen = siteNav && siteNav.classList.contains('nav-open');
+  const rightOpen = toc && toc.classList.contains('toc-mobile-open');
+  if (leftOpen || rightOpen) {
+    if (overlay) overlay.classList.add('active');
+  } else {
+    if (overlay) overlay.classList.remove('active');
+  }
+}
+
+function closeLeftSidebar() {
+  const menuBtn = document.getElementById('menu-button');
+  if (menuBtn && menuBtn.getAttribute('aria-pressed') === 'true') {
+    menuBtn.click();
+  }
+}
+
+function closeRightTOC() {
+  const toc = document.querySelector('.page-toc');
+  const tocBtn = document.querySelector('.toc-mobile-toggle-btn');
+  if (toc) toc.classList.remove('toc-mobile-open');
+  if (tocBtn) {
+    tocBtn.classList.remove('toc-btn-active');
+    tocBtn.setAttribute('aria-expanded', 'false');
+  }
+}
+
 
   function initTOC() {
     // Only run on pages with main content
@@ -163,6 +222,44 @@
 tocContainer.appendChild(backToTop);
 
     document.body.appendChild(tocContainer);
+
+    // Create mobile TOC toggle button and inject into top nav
+    const tocToggleBtn = document.createElement('button');
+    tocToggleBtn.className = 'toc-mobile-toggle-btn btn-reset';
+    tocToggleBtn.setAttribute('aria-label', 'Toggle table of contents');
+    tocToggleBtn.setAttribute('aria-expanded', 'false');
+    tocToggleBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="toc-btn-icon" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="16" y2="12"></line><line x1="3" y1="18" x2="19" y2="18"></line></svg>';
+
+    const topNavContainer = document.querySelector('.top-nav-container');
+    if (topNavContainer) {
+      topNavContainer.appendChild(tocToggleBtn);
+    }
+
+    // Toggle the TOC panel open/closed
+    tocToggleBtn.addEventListener('click', function() {
+      const isOpen = tocContainer.classList.contains('toc-mobile-open');
+      if (isOpen) {
+        tocContainer.classList.remove('toc-mobile-open');
+        this.setAttribute('aria-expanded', 'false');
+        this.classList.remove('toc-btn-active');
+      } else {
+        tocContainer.classList.add('toc-mobile-open');
+        this.setAttribute('aria-expanded', 'true');
+        this.classList.add('toc-btn-active');
+      }
+      updateOverlay();
+    });
+
+    // Close TOC automatically when user taps a link inside it
+    tocContainer.addEventListener('click', function(e) {
+      if (e.target.tagName === 'A') {
+        tocContainer.classList.remove('toc-mobile-open');
+        tocToggleBtn.setAttribute('aria-expanded', 'false');
+        tocToggleBtn.classList.remove('toc-btn-active');
+        updateOverlay(); 
+      }
+    });
+
 
     // Highlight current section on scroll
     setupScrollSpy(headers);
