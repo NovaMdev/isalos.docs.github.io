@@ -20,7 +20,7 @@
    0. COLOR PALETTE
    ============================================================================= */
 
-  
+
 /* Font */
 body, input, button {
   font-family: 'Nunito Sans', sans-serif !important;
@@ -32,6 +32,7 @@ body, input, button {
   --color-bg: #ffffff;
   --color-border: #eeebee;
   --color-shadow: rgba(0, 0, 0, 0.1);
+  --lm-button: rgb(101, 202, 253);
 
   /* Neutral text */
   --color-text-primary: #5c5962;
@@ -45,17 +46,345 @@ body, input, button {
   /* Scrollbar */
   --color-scrollbar: #d5d5d5;
   --color-scrollbar-hover: #b5b5b5;
+
+  /* Dark mode surfaces */
+  --dm-bg: #1e1e2e;
+  --dm-surface-1: #313244;
+  --dm-button: #cc71167f;
+  --dm-shadow-button: #cc71167f;
+
+  /* Dark mode text */
+  --dm-text-primary: #cdd6f4;
+  --dm-text-muted: #a6adc8;
+
+  /* Dark mode borders/shadows/scrollbar */
+  --dm-border: #3a3a4a;
+  --dm-shadow: rgba(0, 0, 0, 0.4);
+  --dm-scrollbar: #45475a;
+  --dm-scrollbar-hover: #585b70;
+
+  /* Dark mode tables */
+  --dm-td-bg: #313244;
+  --dm-th-bg: #525370;
 }
 
-/* Dark mode overrides */
 body.dark-mode {
-  --color-bg: #1e1e2e;
-  --color-border: #3a3a4a;
-  --color-shadow: rgba(0, 0, 0, 0.4);
-  --color-text-primary: #cdd6f4;
-  --color-text-muted: #a6adc8;
-  --color-scrollbar: #45475a;
-  --color-scrollbar-hover: #585b70;
+  --color-bg: var(--dm-bg);
+  --color-border: var(--dm-border);
+  --color-shadow: var(--dm-shadow);
+  --color-text-primary: var(--dm-text-primary);
+  --color-text-muted: var(--dm-text-muted);
+  --color-scrollbar: var(--dm-scrollbar);
+  --color-scrollbar-hover: var(--dm-scrollbar-hover);
+
+  /* Override Just the Docs hardcoded values */
+  background-color: var(--dm-bg) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+body.dark-mode .side-bar,
+body.dark-mode .main-header,
+body.dark-mode .main-content-wrap,
+body.dark-mode .top-nav-bar,
+body.dark-mode .page-toc {
+  background-color: var(--dm-bg) !important;
+  border-color: var(--dm-border) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+body.dark-mode .nav-list .nav-list-item > a,
+body.dark-mode .site-title {
+  color: var(--dm-text-primary) !important;
+}
+
+body.dark-mode hr,
+body.dark-mode .main-header {
+  border-color: var(--dm-text-primary) !important;
+  background-color: var(--dm-bg) !important;
+}
+
+/* Dark mode headers */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: var(--dm-text-primary) !important;
+}
+
+/* Logo swap for dark mode */
+.logo-dark { display: none; }
+body.dark-mode .logo-light { display: none; }
+body.dark-mode .logo-dark  { display: block; }
+
+/* Dark mode code blocks */
+body.dark-mode :not(pre, figure) > code {
+  background-color: var(--dm-surface-1) !important;
+  border-color: var(--dm-border) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+body.dark-mode div.highlighter-rouge,
+body.dark-mode figure.highlight,
+body.dark-mode pre.highlight,
+body.dark-mode .highlight {
+  background-color: var(--dm-surface-1) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+body.dark-mode .highlight pre,
+body.dark-mode .highlight .hll,
+body.dark-mode .highlight .table-wrapper td,
+body.dark-mode .highlight .table-wrapper pre {
+  background-color: var(--dm-surface-1) !important;
+}
+
+body.dark-mode div.highlighter-rouge > button,
+body.dark-mode figure.highlight > button {
+  background-color: var(--dm-surface-1) !important;
+  border-color: var(--dm-surface-1) !important;
+  color: var(--dm-text-primary) !important;
+}
+
+/* Dark mode tables */
+body.dark-mode table {
+  color: var(--dm-text-primary) !important;
+  background-color: var(--dm-th-bg) !important;
+}
+
+body.dark-mode thead {
+  color: var(--dm-text-primary) !important;
+}
+
+body.dark-mode th {
+  background-color: var(--dm-th-bg) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+body.dark-mode td {
+  background-color: var(--dm-td-bg) !important;
+  color: var(--dm-text-primary) !important;
+  border-color: var(--dm-border) !important;
+}
+
+/* Dark mode links */
+body.dark-mode .main-content a {
+  color: var(--isalos-lightblue) !important;
+}
+
+body.dark-mode .main-content a:hover {
+  color: var(--isalos-lightblue) !important;
+}
+
+/* Dark mode sidebar hover */
+body.dark-mode .nav-list .nav-list-item > a:hover {
+  color: var(--isalos-lightblue) !important;
+}
+
+/* Dark mode sidebar active/clicked */
+body.dark-mode .nav-list .nav-list-item > a.active,
+body.dark-mode .nav-list .nav-list-item > a[aria-current="page"] {
+  color: var(--isalos-lightblue) !important;
+}
+
+/* Dark mode nav icons */
+.icon-dark-default { display: none; }
+.icon-dark-default-hover { display: none; }
+
+.top-nav-links .icon-link .icon-dark-default-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+body.dark-mode .top-nav-links .icon-link .icon-default { display: none; }
+body.dark-mode .top-nav-links .icon-link .icon-dark-default { display: inline-block; }
+
+body.dark-mode .top-nav-links .icon-link:hover .icon-dark-default { opacity: 0; }
+body.dark-mode .top-nav-links .icon-link:hover .icon-dark-default-hover { display: inline-block; opacity: 1; }
+
+body.dark-mode .sidebar-mobile-links .icon-link .icon-default { display: none; }
+body.dark-mode .sidebar-mobile-links .icon-link .icon-dark-default { display: inline-block; }
+
+body.dark-mode .sidebar-mobile-links .icon-link:hover .icon-dark-default { opacity: 0; }
+body.dark-mode .sidebar-mobile-links .icon-link:hover .icon-dark-default-hover { display: inline-block; opacity: 1; }
+
+/* Content area logo swap for dark mode */
+.content-logo-dark { display: none; }
+body.dark-mode .content-logo-light { display: none; }
+body.dark-mode .content-logo-dark  { display: block; }
+
+/* LIGHT mode: override green button too (solid fill like dark mode) */
+body:not(.dark-mode) a.btn.btn-green,
+body:not(.dark-mode) a.btn.btn-green:visited,
+body:not(.dark-mode) a.btn.btn-green:hover,
+body:not(.dark-mode) a.btn.btn-green:active,
+body:not(.dark-mode) a.btn.btn-green:focus,
+body:not(.dark-mode) a.btn.btn-green:focus-visible,
+html:not(.dark-mode) a.btn.btn-green,
+html:not(.dark-mode) a.btn.btn-green:visited,
+html:not(.dark-mode) a.btn.btn-green:hover,
+html:not(.dark-mode) a.btn.btn-green:active,
+html:not(.dark-mode) a.btn.btn-green:focus,
+html:not(.dark-mode) a.btn.btn-green:focus-visible {
+  background: var(--lm-button) !important;
+  background-image: none !important;
+  border: 1px solid var(--lm-button) !important;
+  color: var(--isalos-darkblue) !important; /* readable on light background */
+  text-decoration: none !important;
+}
+
+/* LIGHT mode hover shadow (same "style" as your top nav) */
+body:not(.dark-mode) a.btn.btn-green:hover,
+html:not(.dark-mode) a.btn.btn-green:hover {
+  box-shadow: 0 1px 3px var(--color-shadow) !important;
+}
+
+/* Dark mode: override green button no matter how JTD draws it */
+body.dark-mode a.btn.btn-green,
+body.dark-mode a.btn.btn-green:visited,
+body.dark-mode a.btn.btn-green:hover,
+body.dark-mode a.btn.btn-green:active,
+body.dark-mode a.btn.btn-green:focus,
+body.dark-mode a.btn.btn-green:focus-visible,
+html.dark-mode a.btn.btn-green,
+html.dark-mode a.btn.btn-green:visited,
+html.dark-mode a.btn.btn-green:hover,
+html.dark-mode a.btn.btn-green:active,
+html.dark-mode a.btn.btn-green:focus,
+html.dark-mode a.btn.btn-green:focus-visible {
+  background: var(--dm-button) !important;
+  background-image: none !important;
+  border: 1px solid var(--dm-button) !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+body.dark-mode a.btn.btn-green:hover,
+html.dark-mode a.btn.btn-green:hover {
+  box-shadow: 0 1px 3px var(--dm-shadow-button) !important;
+}
+
+body.dark-mode a.btn.btn-green::before,
+body.dark-mode a.btn.btn-green::after,
+html.dark-mode a.btn.btn-green::before,
+html.dark-mode a.btn.btn-green::after {
+  background: var(--dm-button) !important;
+  background-image: none !important;
+}
+
+/* Dark mode search results */
+body.dark-mode #search-results {
+  background-color: var(--dm-bg) !important;
+  border-color: var(--dm-border) !important;
+}
+
+body.dark-mode #search-results .search-result-doc-title {
+  color: var(--isalos-lightblue) !important;
+}
+
+body.dark-mode #search-results .search-result-section {
+  color: var(--dm-text-muted) !important;
+}
+
+body.dark-mode #search-results .search-result-icon {
+  color: var(--isalos-lightblue) !important;
+}
+
+body.dark-mode #search-results .search-result:hover {
+  background-color: var(--dm-surface-1) !important;
+}
+
+/* Dark mode elevator hover icon */
+.toc-back-to-top-icon-dark-hover {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  transition: opacity 0.2s ease;
+  opacity: 0;
+}
+
+body.dark-mode .toc-back-to-top:hover .toc-back-to-top-icon-hover { opacity: 0; }
+body.dark-mode .toc-back-to-top:hover .toc-back-to-top-icon-dark-hover { opacity: 1; }
+
+/* Dark mode sidebar toggle hover background */
+body.dark-mode .nav-list .nav-list-item .nav-list-expander:hover {
+  background-image: linear-gradient(-90deg, var(--dm-surface-1) 0%, rgba(49, 50, 68, 0.8) 100%) !important;
+}
+
+/* Dark mode hamburger button active color */
+body.dark-mode #menu-button[aria-pressed="true"] .icon {
+  color: var(--isalos-lightblue) !important;
+}
+
+/* Dark mode scrollbar */
+body.dark-mode ::-webkit-scrollbar-track {
+  background: var(--dm-bg) !important;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+  background: var(--dm-scrollbar) !important;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+  background: var(--dm-scrollbar-hover) !important;
+}
+
+body.dark-mode html::-webkit-scrollbar-track,
+html:has(body.dark-mode)::-webkit-scrollbar-track {
+  background: var(--dm-bg) !important;
+}
+
+html:has(body.dark-mode)::-webkit-scrollbar-thumb {
+  background: var(--dm-scrollbar) !important;
+}
+
+html:has(body.dark-mode)::-webkit-scrollbar-thumb:hover {
+  background: var(--dm-scrollbar-hover) !important;
+}
+
+html:has(body.dark-mode) {
+  scrollbar-color: var(--dm-scrollbar) var(--dm-bg);
+}
+
+/* Remove mobile tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Dark mode: make ONLY the neutral/gray syntax tokens use body text color.
+   Keep strings/keywords/numbers/comments as the theme defines them. */
+body.dark-mode .highlight,
+body.dark-mode pre,
+body.dark-mode code {
+  color: var(--dm-text-primary) !important; /* base fallback */
+}
+
+/* Neutral tokens (commonly gray in Rouge themes) */
+body.dark-mode .highlight .n,
+body.dark-mode .highlight .na,
+body.dark-mode .highlight .nb,
+body.dark-mode .highlight .bp,
+body.dark-mode .highlight .nc,
+body.dark-mode .highlight .nd,
+body.dark-mode .highlight .ne,
+body.dark-mode .highlight .nf,
+body.dark-mode .highlight .nl,
+body.dark-mode .highlight .nn,
+body.dark-mode .highlight .no,
+body.dark-mode .highlight .nt,
+body.dark-mode .highlight .nv,
+body.dark-mode .highlight .nx,
+body.dark-mode .highlight .p,
+body.dark-mode .highlight .o,
+body.dark-mode .highlight .ow,
+body.dark-mode .highlight .w,
+body.dark-mode .highlight .x {
+  color: var(--dm-text-primary) !important;
 }
 
 /* =============================================================================
@@ -123,6 +452,21 @@ body.dark-mode {
   height: 40px !important;
 }
 
+/* Dark mode sidebar expand arrows */
+body.dark-mode .side-bar .nav-list .nav-list-expander {
+  color: var(--isalos-lightblue) !important;
+}
+
+body.dark-mode .side-bar .nav-list .nav-list-expander::before {
+  color: var(--isalos-lightblue) !important;
+  border-color: var(--isalos-lightblue) !important;
+}
+
+body.dark-mode .side-bar .nav-list .nav-list-expander svg {
+  fill: var(--isalos-lightblue) !important;
+  stroke: var(--isalos-lightblue) !important;
+}
+
 .top-nav-container .search:focus-within {
   width: 600px !important;
   box-shadow: 0 0 0 3px rgba(0, 191, 255, 0.2);
@@ -156,6 +500,43 @@ body.dark-mode {
   box-shadow: none !important;
   color: var(--color-text-primary) !important;
 }
+
+/* Dark mode button icon size */
+.js-toggle-dark-mode .theme-icon-light,
+.js-toggle-dark-mode .theme-icon-dark {
+  height: 28px !important;
+  width: auto;
+}
+
+.theme-icon-dark { display: none; }
+body.dark-mode .theme-icon-light { display: none; }
+body.dark-mode .theme-icon-dark  { display: block; }
+
+/* Dark mode button hover icons */
+.theme-icon-light-hover { display: none; }
+.theme-icon-dark-hover  { display: none; }
+
+.js-toggle-dark-mode .theme-icon-light-hover,
+.js-toggle-dark-mode .theme-icon-dark-hover {
+  height: 28px !important;
+  width: 28;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* LIGHT MODE hover: only swap light -> light-hover */
+body:not(.dark-mode) .js-toggle-dark-mode:hover .theme-icon-light { display: none; }
+body:not(.dark-mode) .js-toggle-dark-mode:hover .theme-icon-light-hover { display: block; }
+/* Ensure the dark hover never appears in light mode */
+body:not(.dark-mode) .js-toggle-dark-mode:hover .theme-icon-dark-hover { display: none; }
+
+/* DARK MODE hover: only swap dark -> dark-hover */
+body.dark-mode .js-toggle-dark-mode:hover .theme-icon-dark { display: none; }
+body.dark-mode .js-toggle-dark-mode:hover .theme-icon-dark-hover { display: block; }
+/* Ensure the light hover never appears in dark mode */
+body.dark-mode .js-toggle-dark-mode:hover .theme-icon-light-hover { display: none; }
 
 
 .top-nav-container .search-label {
@@ -244,9 +625,83 @@ body {
 .top-nav-links .icon-link:hover .icon-default { opacity: 0; }
 .top-nav-links .icon-link:hover .icon-hover { opacity: 1; }
 
+/* Dark mode toggle button — make it behave like the other icon links */
+.top-nav-links .js-toggle-dark-mode {
+  position: relative;
+  display: inline-block;
+  width: 44px;   /* same footprint as other icons */
+  height: 38px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.top-nav-links .js-toggle-dark-mode img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 28px;
+  width: auto;
+}
+
+/* Hide hover versions by default */
+.top-nav-links .theme-icon-light-hover,
+.top-nav-links .theme-icon-dark-hover {
+  display: none;
+}
+
+/* LIGHT MODE */
+body:not(.dark-mode) .top-nav-links .theme-icon-dark,
+body:not(.dark-mode) .top-nav-links .theme-icon-dark-hover {
+  display: none;
+}
+
+body:not(.dark-mode) .top-nav-links .js-toggle-dark-mode:hover .theme-icon-light {
+  display: none;
+}
+body:not(.dark-mode) .top-nav-links .js-toggle-dark-mode:hover .theme-icon-light-hover {
+  display: block;
+}
+
+/* DARK MODE */
+body.dark-mode .top-nav-links .theme-icon-light,
+body.dark-mode .top-nav-links .theme-icon-light-hover {
+  display: none;
+}
+
+body.dark-mode .top-nav-links .js-toggle-dark-mode:hover .theme-icon-dark {
+  display: none;
+}
+body.dark-mode .top-nav-links .js-toggle-dark-mode:hover .theme-icon-dark-hover {
+  display: block;
+}
+
 /* Sidebar mobile links — same icon hover behaviour as top nav */
 .sidebar-mobile-links {
   display: none;
+}
+
+/* Make the sidebar dark-mode toggle not shift when toggled */
+.sidebar-mobile-links .js-toggle-dark-mode {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 38px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar-mobile-links .js-toggle-dark-mode img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 28px;
+  width: auto;
 }
 
 .sidebar-mobile-links .icon-link {
@@ -282,19 +737,6 @@ body {
     display: none !important;
   }
 }
-
-/* Dark mode toggle button 
-.js-toggle-dark-mode {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.4rem;
-  line-height: 1;
-  padding: 0.2rem 0.3rem;
-  display: flex;
-  align-items: center;
-  color: var(--color-text-primary);
-}*/
 
 
 /* =============================================================================
@@ -363,17 +805,17 @@ body {
 
 /* Sidebar expand arrows */
 .side-bar .nav-list .nav-list-expander {
-  color: var(--isalos-lightblue) !important;
+  color: var(--isalos-darkblue) !important;
 }
 
 .side-bar .nav-list .nav-list-expander::before {
-  color: var(--isalos-lightblue) !important;
-  border-color: var(--isalos-lightblue) !important;
+  color: var(--isalos-darkblue) !important;
+  border-color: var(--isalos-darkblue) !important;
 }
 
 .side-bar .nav-list .nav-list-expander svg {
-  fill: var(--isalos-lightblue) !important;
-  stroke: var(--isalos-lightblue) !important;
+  fill: var(--isalos-darkblue) !important;
+  stroke: var(--isalos-darkblue) !important;
 }
 
 /* Sidebar width fix */
@@ -635,7 +1077,10 @@ body:not(.parent-page) .text-delta + ul {
   color: var(--isalos-darkblue);
 }
 
-
+/* Dark mode: make header anchor (chain icon) light blue */
+body.dark-mode .main-content .anchor-heading svg {
+  color: var(--isalos-lightblue) !important;
+}
 
 /* =============================================================================
    5. SEARCH BAR

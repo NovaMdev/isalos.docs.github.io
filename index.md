@@ -7,7 +7,8 @@ description: "Introduction to the Isalos Analytics Platform — a no-code tool f
 
 <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
   <h1>Introduction</h1>
-  <img src="images/icons/isalos-logo-01.svg" alt="isalos-logo" width="120" height="120">
+  <img src="images/icons/isalos-logo-01.svg" alt="isalos-logo" width="120" height="120" class="content-logo-light">
+  <img src="images/icons/isalos-logo-dark.png" alt="isalos-logo" width="120" height="120" class="content-logo-dark">
 </div>
 <br>
 What if building powerful predictive models was as easy as working in a spreadsheet? With Isalos, it is.
