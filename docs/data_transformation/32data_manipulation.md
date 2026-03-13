@@ -289,7 +289,71 @@ In the right-hand spreadsheet of the tab, the missing values of the input table 
 </div>
 
 ---
+## Mathematical Calculations
+The Mathematical Calculations feature provides a calculator-style tool that enables users to perform one-to-one mathematical calculations between data columns. Either by clicking or by typing a function’s name, users can select the desired columns and perform complex calculations. The results are displayed as an additional column in the output spreadsheet and can be used for further analysis in subsequent tabs.
 
+The calculator tool supports a range of operations, including basic arithmetic (addition, multiplication), logarithmic, root, and exponential transformations, trigonometric functions, and essential statistical functions.
+
+Use the `Mathematical Calculations` feature by browsing in the top ribbon: 
+
+| Data Transformation $$\rightarrow$$ Data Manipulation $$\rightarrow$$ Mathematical Calculations |
+
+### Input
+{: .no_toc }
+Data matrix including numerical columns to be used in calculations.
+
+### Configuration
+{: .no_toc }
+Click or type the functions’ names and select the column(s) to be used in calculations from the Existing Columns section. The available mathematic functions are presented below.
+
+|**+, -, ÷,×**| Basic arithmetic functions addition, subtraction, division, and multiplication. |
+|**ln, log**| Logarithmic transformation functions are available using the natural base (e) or a base specified by the user. |
+|**√x**| Root functions where the user can specify the root degree. |
+|**abs**| Function for calculating the absolute value of a number. |
+|**n!**| Function for calculating the factorial of a number. |
+|**mod**| Function returning the remainder of the division of a number with a divisor. |
+|**tan(°), sin(°), cos(°)**| Trigonometric functions for calculating tangent, sine, and cosine. The input column should be provided in degrees. |
+|**tanh(°), sinh(°), cosh(°)**| Hyperbolic functions for calculating hyperbolic tangent, hyperbolic sine, and hyperbolic cosine. The input column should be provided in degrees. |
+|**atan, asin, acos**| Inverse trigonometric functions for calculating arctangent, arcsine, and arccosine.  |
+|**floor, ceiling, round**| Rounding functions to adjust numbers: floor rounds down to the nearest multiple, ceiling rounds up to the nearest multiple, and round rounds to an integer. |
+|**σ, Std, Σ(x), x̄, min, max**| Statistical functions for calculating the standard deviation, sum, average, minimum, and maximum values for a column, respectively. σ denotes the population standard deviation while Std denotes the sample standard deviation. |
+
+### Output
+{: .no_toc }
+The input data matrix with an additional column displaying the results of the mathematical calculations. 
+
+### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+In the left-hand spreadsheet import the data matrix to be used in calculations.
+
+<div style="text-align: center;">
+<img src="images/Data manipulation/calculator 1.PNG" alt="calculator input" width="700" height="500" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc }
+1. Select `Data Transformation` $$\rightarrow$$ `Data Manipulation` $$\rightarrow$$ `Mathematical Calculations`.
+2.	Click or type the functions to be used (1) and the select the columns to be used for the calculations from the `Existing Columns` section (2).
+3.	Review and, if needed, edit the mathematical formula (3).
+4.	Click `Execute` (4) to perform the calculations.
+
+
+<div style="text-align: center;">
+<img src="images/Data manipulation/calculator 2.png" alt="calculator configuration" width="500" height="400" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc }
+The calculated results are displayed in a new column on the right-hand spreadsheet, while the original input data columns remain unchanged.
+
+<div style="text-align: center;">
+<img src="images/Data manipulation/calculator 3.PNG" alt="calculator output" width="700" height="500" class="img-responsive">
+</div>
+
+---
 ## Tips
 Fill Missing Column(s) Values:
 
@@ -299,4 +363,4 @@ Fill Missing Column(s) Values:
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.3
 
-_Instructions last updated on June 2024_
+_Instructions last updated on March 2026_
