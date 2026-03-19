@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 5.7 Random Number Generator
+title: 5.8 Random Number Generator
 parent: 5. Statistics
-nav_order: 7
+nav_order: 8
 permalink: /random-number-generator.html
 description: "Generate random numbers from various probability distributions for data science workflows in Isalos."
 ---

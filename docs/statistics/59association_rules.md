@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 5.8 Association Rules Mining
+title: 5.9 Association Rules Mining
 parent: 5. Statistics
-nav_order: 8
+nav_order: 9
 permalink: /association-rules-mining.html
 description: "Discover association rules and patterns in transactional data. Market basket analysis, frequent itemset mining, and rule-based learning for business intelligence."
 ---

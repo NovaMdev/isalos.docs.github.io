@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 5.6 Probability Distribution Functions
+title: 5.7 Probability Distribution Functions
 parent: 5. Statistics
-nav_order: 6
+nav_order: 7
 permalink: /distributions.html
 description: "Explore probability distribution functions in Isalos. Plot PDF and CDF for a wide range of distribution families."
 ---
