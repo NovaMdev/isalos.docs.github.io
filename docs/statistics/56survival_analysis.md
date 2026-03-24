@@ -159,18 +159,18 @@ The variability of the survival estimate is commonly assessed using Greenwood’
 </div>
 From this, the standard error can be derived, allowing the construction of confidence intervals for the survival function.
 
-The results of the Kaplan–Meier estimator are visualized using the Kaplan–Meier survival curve, which displays the estimated survival probability over time and confidence intervals, shown as bands around the curve. The median survival time is can be derived directly from the curve as the time at which $$S(t) \leq 0.5$$.
+The results of the Kaplan–Meier estimator are visualized using the Kaplan–Meier survival curve, which displays the estimated survival probability over time and confidence intervals, shown as bands around the curve. The median survival time is can be derived directly from the curve as the time at which $$S(t) \leq 0.5$$. Optionally the user can select to visualize the estimated hazard function and the estimated cumulative probability of failure.
 
 Use Kaplan Meier Estimator method by browsing in the top ribbon: 
 
 
 | `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Non-Parametric` $$\rightarrow$$ `Kaplan Meier Estimator` |
 
-### Input
+#### Input
 {: .no_toc }
-The Kaplan–Meier estimator requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a binary variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
+The Kaplan–Meier estimator requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a binary variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. Finally, a grouping column can be specidied as a categorical variable, either numerical or textual, indicating the group membership of each observation. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
 
-### Configuration
+#### Configuration
 {: .no_toc }
 
 | **Time Column** | Select the column corresponding to the observed time-to-event or time-to-censoring for each subject. This column must be numerical and contain non-negative values. |
@@ -185,26 +185,118 @@ The Kaplan–Meier estimator requires at least one column of numerical data to b
 | **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
 | **Censor times at or above a value** | Enable this option to treat all time values greater than or equal to a specified threshold as censored. |
 | **Censoring Threshold Value** | If the `Censor times at or above a value` option is enabled, specify the value above or equal to which observations will be treated as censored. |
+| **Use a Grouping Column** | Enable this option to include a grouping column in the analysis, allowing comparison of survival across different groups in the population. |
+| **Grouping Column** |  If the `Use a Grouping Column` option is enabled, select the column containing grouping information for each observation. This column must be categorical. |
 | **Confidence Level (%)** | Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. Default value is set to 95. |
 | **Confidence Interval Type** | Select the type of confidence interval to compute. Available options include: `Two-sided`, `Lower Bound`, `Upper Bound`. |
+| **Hazard Function Plot** | Enable this option to generate a plot of the estimated hazard function over time. |
+| **Cumulative Probability of Failure Plot** | Enable this option to generate a plot of the estimated cumulative probability of failure over time. |
 
 
-### Output
+#### Output
 {: .no_toc }
-The output spreadsheet contains a table summarizing the survival analysis results at each observed time point. This includes the number of subjects at risk, the number of events, the estimated survival probability, its standard error, and the corresponding confidence interval bounds at the selected confidence level.
+The output spreadsheet contains a table summarizing the survival analysis results at each observed time point. This includes the number of subjects at risk, the number of events, the estimated survival probability, its standard error, and the corresponding confidence interval bounds at the selected confidence level. If a grouping column is specified, the spreadsheet first presents the overall results for the full sample, followed by separate tables for each group.
 
-In addition, a pop-up window displays the Kaplan–Meier survival curve, showing the stepwise estimate of survival probability over time along with the associated confidence interval bounds.
+In addition, a pop-up window displays the Kaplan–Meier survival curve, showing the stepwise estimate of survival probability over time along with the associated confidence interval bounds. When grouping is enabled, the plot includes the overall survival curve as well as separate curves with confidence bounds for each group. Similarly, if selected, the hazard function and cumulative probability of failure plots are generated and display both the overall estimates and the corresponding group-specific curves.
 
-### Example
+#### Example
 {: .no_toc }
+
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+---
+
+### Life Table Analysis
+The Life Table method (also known as the Actuarial method) is a non-parametric approach used to estimate survival characteristics from time-to-event data by grouping observations into time intervals. Unlike the Kaplan–Meier estimator, which updates the survival estimate at each distinct event time, the Life Table method summarizes the data within predefined intervals and computes the relevant quantities at the interval level.
+
+The time axis is partitioned into consecutive intervals of the form $$[0,e_0), [e_0,e_1), ... , [e_{k-1},e_k), [e_k,\inf)$$. These intervals may either be specified explicitly through user-defined endpoints or generated automatically using a given end time and interval width.
+
+For each interval $$i$$, the method determines the number of subjects entering the interval, the number of events occurring within the interval, and the number of censored observations. If a frequency column is provided, observations contribute according to their specified frequencies. Optional censoring indicators and threshold censoring are also incorporated, and event mode filtering allows only selected event types to be considered.
+
+Because censoring may occur at any point within an interval, the method uses an effective sample size defined as
+
+<div style="text-align: center;"> $$ n_i' = n_i - \frac{w_i}{2} $$ </div>
+
+where $$n_i$$ is the number of subjects entering interval $$i$$ and $$w_i$$ is the number censored within that interval. This adjustment reflects the assumption that censoring occurs approximately uniformly throughout the interval.
+
+The conditional probability of failure in interval $$i$$ is then estimated as
+
+<div style="text-align: center;"> $$ q_i = \frac{d_i}{n_i - \frac{w_i}{2}} $$ </div>
+
+where $$d_i$$ is the number of events occurring in that interval.
+
+The survival function is estimated as the product of the conditional survival probabilities across intervals:
+
+<div style="text-align: center;"> $$ \hat{S}(t) = \prod_{t_j \leq t} (1 - q_j) $$ </div>
+
+with the estimate initialized at $$S(0)=1$$. The resulting survival curve is a step function with changes occurring at the interval boundaries.
+
+In addition to the survival function, the method also estimates the hazard function within each finite interval. In this implementation, the hazard is computed using an exposure-based approximation, where the exposure accounts for both censoring and events within the interval. The hazard estimate therefore represents the event rate over the interval and is associated with the midpoint of the interval.
+
+The variability of the estimates is assessed using a Greenwood-type variance formulation applied at the interval level. Standard errors are computed for the conditional probability of failure, the survival function, and the hazard function, and corresponding confidence intervals are constructed according to the selected confidence level and interval type.
+
+The Life Table method produces a structured tabular output in which each row corresponds to an interval. For each interval, the table reports the number entering the interval, the number of events, the number censored, the effective sample size, the conditional probability of failure, the estimated survival probability at the end of the interval, and the hazard function, together with their standard errors and confidence interval bounds. The final interval is represented as an open-ended interval $$[a,+∞)$$; quantities that depend on a finite interval width, such as the hazard function and survival updates, are only reported for the finite intervals.
+
+The results are typically visualized using plots of the survival function, and optionally the hazard function and cumulative probability of failure, providing a graphical representation of the interval-based estimates.
+
+Use Life Table Analysis method by browsing in the top ribbon: 
+
+
+| `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Non-Parametric` $$\rightarrow$$ `Life Table Analysis` |
 
 #### Input
 {: .no_toc }
+The Life Table method requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a binary variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. A grouping column may also be specified as a categorical variable, either numerical or textual, indicating the group membership of each observation. An additional optional column may be provided to specify the endpoints of the intervals used in the analysis; if this is not specified, the intervals are generated automatically based on the chosen end time and interval width. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
 
 #### Configuration
 {: .no_toc }
 
+| **Time Column** | Select the column corresponding to the observed time-to-event or time-to-censoring for each subject. This column must be numerical and contain non-negative values. |
+|**Configure Event Mode Options**| Use this button to open the `Configure Event Mode Options` window |
+|**Event Mode Column**| Within the `Configure Event Mode Options` window, specify the column containing event mode information. |
+|**Levels not Considered as Event/Levels Considered as Event**| Manually select which levels should be treated as events from the available levels of the Event Mode Column. Use the arrow buttons to move levels between the two lists. Single-arrow buttons move selected levels, while double-arrow buttons move all levels. At least one level must be selected as an event. |
+|**Clear Event Mode Options**| Use this button to clear all selections related to event mode configuration. |
+|**Specify End Time and Time Steps / Use a column to specify end points**| SSelect whether to define the intervals automatically by specifying an end time and interval width, or to provide a column containing the endpoints of each interval. |
+|**Intervals through / by**| Specify the end time and the width of each interval when automatic interval generation is selected. |
+|**End Points Column**|  If the option to use a column is selected, choose the column containing the endpoints of the intervals. This column must be numerical and contain non-negative values. |
+| **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
+| **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
+| **Use a Censoring  Column** | Enable this option to include a censoring column in the analysis. |
+| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be binary (contain exactly two levels) and may be either numerical or textual. |
+| **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
+| **Censor times at or above a value** | Enable this option to treat all time values greater than or equal to a specified threshold as censored. |
+| **Censoring Threshold Value** | If the `Censor times at or above a value` option is enabled, specify the value above or equal to which observations will be treated as censored. |
+| **Use a Grouping Column** | Enable this option to include a grouping column in the analysis, allowing comparison of survival across different groups in the population. |
+| **Grouping Column** |  If the `Use a Grouping Column` option is enabled, select the column containing grouping information for each observation. This column must be categorical. |
+| **Confidence Level (%)** | Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. Default value is set to 95. |
+| **Confidence Interval Type** | Select the type of confidence interval to compute. Available options include: `Two-sided`, `Lower Bound`, `Upper Bound`. |
+| **Hazard Function Plot** | Enable this option to generate a plot of the estimated hazard function over time. |
+| **Cumulative Probability of Failure Plot** | Enable this option to generate a plot of the estimated cumulative probability of failure over time. |
+
+
 #### Output
+{: .no_toc }
+The output spreadsheet contains a table summarizing the survival analysis results for each time interval. This includes the number of subjects entering the interval, the number of events, the number censored, the effective sample size, the estimated conditional probability of failure, its standard error, and the corresponding confidence interval bounds at the selected confidence level. In addition, the table reports the estimated survivor function at the end of each interval, along with its standard error and confidence bounds, as well as the estimated hazard function and its associated uncertainty measures for finite intervals. If a grouping column is specified, the spreadsheet first presents the overall results for the full sample, followed by separate tables for each group.
+
+In addition, a pop-up window displays the Life Table survival curve, showing the stepwise estimate of survival probability across intervals along with the associated confidence interval bounds. When grouping is enabled, the plot includes the overall survival curve as well as separate curves with confidence bounds for each group. Similarly, if selected, the hazard function and cumulative probability of failure plots are generated and display both the overall estimates and the corresponding group-specific curves.
+
+#### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
 {: .no_toc }
 
 ---
