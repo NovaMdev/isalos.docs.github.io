@@ -33,6 +33,17 @@
 
     <!-- Links on the right -->
     <nav class="top-nav-links">
+
+      <!-- Dark mode toggle -->
+      <button class="js-toggle-dark-mode btn-reset" aria-label="Switch to dark mode" title="Toggle dark mode">
+        <img src="{{ 'images/icons/dark_mode_button.png' | relative_url }}" class="theme-icon-light" alt="Switch to dark mode">
+        <img src="{{ 'images/icons/light_mode_button.png' | relative_url }}" class="theme-icon-dark" alt="Switch to light mode">
+        <img src="{{ 'images/icons/dark_mode_button_hover.png' | relative_url }}" class="theme-icon-light-hover" alt="Switch to dark mode">
+        <img src="{{ 'images/icons/light_mode_button_hover.png' | relative_url }}" class="theme-icon-dark-hover" alt="Switch to light mode">
+      </button>
+
+      <span class="top-nav-separator"></span>
+
       <a href="https://isalos.novamechanics.com/" target="_blank" class="icon-link">
         <img src="{{ 'images/icons/Isalos_simple_logo_hover.png' | relative_url }}" 
             alt="Isalos Analytics Platform" 
@@ -87,15 +98,6 @@
             width="40"
             class="icon-dark-default">
       </a>
-      <!-- Dark mode toggle -->
-      <button class="js-toggle-dark-mode btn-reset" aria-label="Switch to dark mode" title="Toggle dark mode">
-        <img src="{{ 'images/icons/dark_mode_button.png' | relative_url }}" class="theme-icon-light" alt="Switch to dark mode" height="28">
-        <img src="{{ 'images/icons/light_mode_button.png' | relative_url }}" class="theme-icon-dark" alt="Switch to light mode" height="28">
-        <img src="{{ 'images/icons/dark_mode_button_hover.png' | relative_url }}" class="theme-icon-light-hover" alt="Switch to dark mode">
-        <img src="{{ 'images/icons/light_mode_button_hover.png' | relative_url }}" class="theme-icon-dark-hover" alt="Switch to light mode">
-      </button>
-
-
     </nav>
   </div>
 </div>
