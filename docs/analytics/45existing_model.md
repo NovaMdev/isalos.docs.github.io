@@ -75,7 +75,13 @@ In the right-hand spreadsheet of the tab the output data matrix with the normali
 
 ## Tips
 
-The `Existing Model Utilization` function is useful in cases when test/external data shall be transformed the same as way as training data has been processed, or when predictions shall be generated for a dataset using an already developed machine learning model.
+<div class="tip-box">
+  <ul>
+    <li>
+      The <code>Existing Model Utilization</code> function is useful in cases where test or external data should be transformed in the same way as the training data has been processed, or when predictions need to be generated for a dataset using an already developed machine learning model.
+    </li>
+  </ul>
+</div>
 
 ## See also
 Different types of models can be applied on data including [`Normalizers`](https://www.docs.isalos.novamechanics.com/normalizers.html), [`Regression`](https://www.docs.isalos.novamechanics.com/regression.html), [`Classification`](https://www.docs.isalos.novamechanics.com/classification.html) and [`Clustering`](https://www.docs.isalos.novamechanics.com/clustering.html) models, and the applicability [`Domain – APD limits`](https://www.docs.isalos.novamechanics.com/domain-apd.html).

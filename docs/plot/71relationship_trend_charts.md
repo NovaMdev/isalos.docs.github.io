@@ -550,18 +550,26 @@ The downloadable, customized polar chart is presented below.
 ---
 
 ## Tips
-Line and Scatter Chart 
--	They are commonly used to visualize linear relationships between two variables, but other patterns can also be detected, e.g. sin, cos, square relationships.
--	Avoid including a vast number of observations on the scatter plot (oversampling), as it can lead to overlapping data points.
--	Avoid displaying too many lines in a line chart (spaghetti chart) to ensure readability. 
--	For time series line charts, ensure time intervals are consistent to avoid misleading slopes.
+<div class="tip-box">
+  <div class="tip-title">💡 Line and Scatter Chart:</div>
+  <ul>
+    <li>They are commonly used to visualize linear relationships between two variables, but other patterns can also be detected, e.g. sine, cosine, or quadratic relationships.</li>
+    <li>Avoid including a vast number of observations on the scatter plot (oversampling), as it can lead to overlapping data points.</li>
+    <li>Avoid displaying too many lines in a line chart (spaghetti chart) to ensure readability.</li>
+    <li>For time series line charts, ensure time intervals are consistent to avoid misleading slopes.</li>
+  </ul>
 
-Polar Chart
--	It is ideal for representing the relationships between periodical or cyclical data.
+  <div class="tip-title">💡 Polar Chart:</div>
+  <ul>
+    <li>It is ideal for representing the relationships between periodical or cyclical data.</li>
+  </ul>
 
-Stream Chart
--	A stream chart cannot simultaneously represent both positive and negative values, as the central axis is not a true zero baseline but rather a visual balancing point.
--	Usually, it is difficult to accurately compare or subtract layer heights, so this type of chart should not be used to visualize quantitative information, but patterns and trends in an intuitive and engaging way.
+  <div class="tip-title">💡 Stream Chart:</div>
+  <ul>
+    <li>A stream chart cannot simultaneously represent both positive and negative values, as the central axis is not a true zero baseline but rather a visual balancing point.</li>
+    <li>Usually, it is difficult to accurately compare or subtract layer heights, so this type of chart should not be used to visualize quantitative information, but rather patterns and trends in an intuitive and engaging way.</li>
+  </ul>
+</div>
 
 ---
 

@@ -113,9 +113,21 @@ Each tab functions as a node in the data analysis workflow. These nodes are repr
 </div>
 
 ## Tips
-* You can periodically save the intermediate results of your data analysis or modelling using the [`Export SpreadSheet`](https://www.docs.isalos.novamechanics.com/save_import.html#exporting-data) data option, for further analysis or study of the effects of each workflow step. This is particularly useful for debugging purposes.
-* To have an overview of the analysis through the workflow outline, as the analysis progresses choose to import your data using the [`Import from SpreadSheet`](https://www.docs.isalos.novamechanics.com/data-representation.html#import-from-spreadsheet) option rather than copying and pasting data between tabs.
-
+<div class="tip-box">
+  <div class="tip-title">💡 Recommendations</div>
+  <ul>
+    <li>
+      You can periodically save the intermediate results of your data analysis or modelling using the
+      <a href="https://www.docs.isalos.novamechanics.com/save_import.html#exporting-data">Export SpreadSheet</a>
+      data option, for further analysis or study of the effects of each workflow step. This is particularly useful for debugging purposes.
+    </li>
+    <li>
+      To have an overview of the analysis through the workflow outline, as the analysis progresses choose to import your data using the
+      <a href="https://www.docs.isalos.novamechanics.com/data-representation.html#import-from-spreadsheet">Import from SpreadSheet</a>
+      option rather than copying and pasting data between tabs.
+    </li>
+  </ul>
+</div>
 
 ## References {#references-data-representation}
 1. Varsou D-D, Tsoumanis A, Papadiamantis AG, Melagraki G, Afantitis A. Isalos Predictive Analytics Platform: Cheminformatics, Nanoinformatics, and Data Mining Applications. Springer International Publishing; 2023. [doi.org/10.1007/978-3-031-20730-3_9](https://doi.org/10.1007/978-3-031-20730-3_9).

@@ -753,22 +753,29 @@ The downloadable, customized pareto chart is presented below.
 
 ## Tips
 
-Bar Chart
--	Use a common zero-valued baseline for an easier comparison of bar lengths.
+<div class="tip-box">
+  <div class="tip-title">💡 Bar Chart:</div>
+  <ul>
+    <li>Use a common zero-valued baseline for an easier comparison of bar lengths.</li>
+  </ul>
 
+  <div class="tip-title">💡 Pie Chart:</div>
+  <ul>
+    <li>Always label slices or include a legend to enhance plot interpretability.</li>
+    <li>For closely proportioned data, opt for bar, stacked bar, or polar charts to avoid confusion caused by similar angles in pie or ring charts.</li>
+  </ul>
 
+  <div class="tip-title">💡 Radar Chart:</div>
+  <ul>
+    <li>To avoid a cluttered chart, choose to visualize a small number of observations on a radar chart. For numerous observations, it is advisable to opt for the parallel coordinates chart.</li>
+  </ul>
 
-Pie Chart
--	Always label slices or include a legend to enhance plot interpretability.
-- 	For closely proportioned data, opt for bar, stacked bar or polar charts to avoid confusion caused by similar angles in pie or ring charts.
-
-
-Radar Chart
--	To avoid a cluttered chart, choose to visualize a small number of observations on a radar chart. For numerous observations it is advisable to opt for the parallel coordinates chart.
-
-Parallel Coordinates Chart
--	A common scaling is important to compare variables of different metric units. 
--	Consider binning or aggregation for very large datasets.
+  <div class="tip-title">💡 Parallel Coordinates Chart:</div>
+  <ul>
+    <li>A common scaling is important to compare variables of different metric units.</li>
+    <li>Consider binning or aggregation for very large datasets.</li>
+  </ul>
+</div>
 
 
 ---
