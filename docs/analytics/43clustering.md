@@ -164,8 +164,18 @@ In the right-hand spreadsheet of the tab the output data matrix with the  cluste
 
 ## Tips
 
-*   As calculations of Euclidean distances are performed, consider scaling the data beforehand using a [`Normalizer`](https://www.docs.isalos.novamechanics.com/normalizers.html) function. 
-*   The K-Means algorithm requires the number of clusters to be specified. Its performance is highly influenced by the initialization of the centroids and the selection of _K_.
+<div class="tip-box">
+  <ul>
+    <li>
+      As calculations of Euclidean distances are performed, consider scaling the data beforehand using a
+      <a href="https://www.docs.isalos.novamechanics.com/normalizers.html">Normalizer</a>
+      function.
+    </li>
+    <li>
+      The K-Means algorithm requires the number of clusters to be specified. Its performance is highly influenced by the initialization of the centroids and the selection of <em>K</em>.
+    </li>
+  </ul>
+</div>
 
 ## See also 
 

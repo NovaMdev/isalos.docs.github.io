@@ -17,3 +17,11 @@ description: "Automated machine learning use cases for classification and regres
 {: .no_toc }
 * [Isalos workflow](files\AutoML\Classification\2026_Theodori\2026_Theodori_Toxicity.iap)
 * [Report](files\AutoML\Classification\2026_Theodori_Toxicity.pdf)
+
+
+## Regression
+
+#### Graduate Admission
+{: .no_toc }
+* [Isalos workflow](files\Regression\Graduate admission\Graduate_Admission_v201.iap)
+* [Report](files\Regression\Graduate admission\Graduate_Admission_Manual_en.pdf)

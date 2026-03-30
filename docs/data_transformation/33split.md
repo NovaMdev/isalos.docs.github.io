@@ -148,10 +148,24 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 
 ## Tips
 
-* The splitting functions are useful when two (or more) subsets of data are needed e.g., as training and test/validation sets in model development or when the original dataset is too large to process in its entirety, allowing for analysis to be conducted on a more manageable subset.
-* The Kennard and Stone methodology, in contrast to the random partitioning, is a deterministic methodology, producing consistent partitions for given input parameters and data matrices. It also allows more representative subset selection that covers all the data space. However, it is more time-consuming compared to random partitioning for the same input data matrix and splitting ratio.
-* Consider [data scaling](https://www.docs.isalos.novamechanics.com/normalizers.html)  -if necessary- prior to the use of Kennard-Stone function, as calculation of distances is performed.
-* The external validation using the Kennard-Stone splitting is advised to be supplemented by cross-validation and or/other validation methodologies, as it is possible that the results lead to an overestimation of the models’ predictive ability (test set too similar to the training set). 
+<div class="tip-box">
+  <ul>
+    <li>
+      The splitting functions are useful when two (or more) subsets of data are needed, e.g., as training and test/validation sets in model development or when the original dataset is too large to process in its entirety, allowing for analysis to be conducted on a more manageable subset.
+    </li>
+    <li>
+      The Kennard and Stone methodology, in contrast to random partitioning, is a deterministic methodology, producing consistent partitions for given input parameters and data matrices. It also allows more representative subset selection that covers all the data space. However, it is more time-consuming compared to random partitioning for the same input data matrix and splitting ratio.
+    </li>
+    <li>
+      Consider
+      <a href="https://www.docs.isalos.novamechanics.com/normalizers.html">data scaling</a>
+      &ndash; if necessary &ndash; prior to the use of the Kennard-Stone function, as calculation of distances is performed.
+    </li>
+    <li>
+      External validation using Kennard-Stone splitting is advised to be supplemented by cross-validation and/or other validation methodologies, as it is possible that the results lead to an overestimation of the models’ predictive ability (test set too similar to the training set).
+    </li>
+  </ul>
+</div>
 
 
 ## See also

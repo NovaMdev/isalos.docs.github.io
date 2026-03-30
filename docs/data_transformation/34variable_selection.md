@@ -305,8 +305,16 @@ At a significance level of 0.05, the p-values of the coefficients indicate that 
 
 
 ## Tips
-* Ensure your dataset is preprocessed correctly before applying feature selection.
-* Different evaluators and configurations may yield different results; experiment to find the best setup for your specific dataset and problem.
+<div class="tip-box">
+  <ul>
+    <li>
+      Ensure your dataset is preprocessed correctly before applying feature selection.
+    </li>
+    <li>
+      Different evaluators and configurations may yield different results; experiment to find the best setup for your specific dataset and problem.
+    </li>
+  </ul>
+</div>
 
 ## See also
 Explore further preprocessing steps in the [`Data Transformation`](https://www.docs.isalos.novamechanics.com/data-transformation.html) group of functions.

@@ -291,9 +291,14 @@ In the right-hand spreadsheet of the tab, the missing values of the input table 
 ---
 
 ## Tips
-Fill Missing Column(s) Values:
-
-* The use of the methods `Mean of Nearby Points`, `Median of Nearby Points`, and `Linear Trend at point` is recommended when the missing values are part of a time series, but they can also be used in other cases non-restrictively.
+<div class="tip-box">
+  <div class="tip-title">💡Fill Missing Column(s) Values:</div>
+  <ul>
+    <li>
+      The use of the methods <code>Mean of Nearby Points</code>, <code>Median of Nearby Points</code>, and <code>Linear Trend at point</code> is recommended when the missing values are part of a time series, but they can also be used in other cases non-restrictively.
+    </li>
+  </ul>
+</div>
 
 ---
 ## Version History

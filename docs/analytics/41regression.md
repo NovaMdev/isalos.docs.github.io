@@ -1844,22 +1844,38 @@ In the right-hand spreadsheet of the tab the matrix with the ranking of the pred
 
 ## Tips
 
-k Nearest neighbors:
-*   It works more efficiently for small to medium datasets and low-dimensional data. kNN is sensitive to missing data.
-*   The performance of the model is highly influenced by the selection of _k_.
+<div class="tip-box">
+  <div class="tip-title">💡 k Nearest neighbors:</div>
+  <ul>
+    <li>It works more efficiently for small to medium datasets and low-dimensional data. kNN is sensitive to missing data.</li>
+    <li>The performance of the model is highly influenced by the selection of <em>k</em>.</li>
+  </ul>
 
-Radial Basis Function Network:
-*   The number of neurons in the hidden layer has a high impact on the model performance, since a large number of neurons can lead to overfitting.
+  <div class="tip-title">💡 Radial Basis Function Network:</div>
+  <ul>
+    <li>The number of neurons in the hidden layer has a high impact on the model performance, since a large number of neurons can lead to overfitting.</li>
+  </ul>
 
-Linear SGD:
-*   It is effective in large datasets and can handle high-dimensional feature spaces. Higher learning rates may be required when Huber loss is selected, because it is less sensitive to outliers.
-*   Consider scaling the input data with a [`Z score`](https://www.docs.isalos.novamechanics.com/normalizers.html) normalizer to center them to mean and have a unit standard deviation.
+  <div class="tip-title">💡 Linear SGD:</div>
+  <ul>
+    <li>It is effective in large datasets and can handle high-dimensional feature spaces. Higher learning rates may be required when Huber loss is selected, because it is less sensitive to outliers.</li>
+    <li>
+      Consider scaling the input data with a
+      <a href="https://www.docs.isalos.novamechanics.com/normalizers.html">Z score</a>
+      normalizer to center them to mean and have a unit standard deviation.
+    </li>
+  </ul>
 
-XGBoost:
-*   Be cautious during hyperparameter tuning: Choosing smaller `eta` values, as well as increasing the `lambda`, `alpha` and `gamma` values result in a more conservative boosting process. Increasing the value of `max depth` parameter makes the model more complex, more likely to overfit.
+  <div class="tip-title">💡 XGBoost:</div>
+  <ul>
+    <li>Be cautious during hyperparameter tuning: choosing smaller <code>eta</code> values, as well as increasing the <code>lambda</code>, <code>alpha</code>, and <code>gamma</code> values, result in a more conservative boosting process. Increasing the value of the <code>max depth</code> parameter makes the model more complex and more likely to overfit.</li>
+  </ul>
 
-Random Forest:
-*   This algorithm performs well with datasets that contain missing values. However, it is not as efficient with a large number of sparse features or with categorical variables of many levels that are improperly encoded.
+  <div class="tip-title">💡 Random Forest:</div>
+  <ul>
+    <li>This algorithm performs well with datasets that contain missing values. However, it is not as efficient with a large number of sparse features or with categorical variables of many levels that are improperly encoded.</li>
+  </ul>
+</div>
 
 ## See also 
 

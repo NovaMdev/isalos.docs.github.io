@@ -221,8 +221,16 @@ In the right-hand spreadsheet of the tab the confusion matrix is depicted [7], f
 ---
 
 ## Tips
-*  In model development, the abovementioned statistical measures can be calculated for both training set predictions (to assess model fit and potential overfitting) and external/test set predictions (to assess generalization and predictive performance).
-*  In classification, the following metrics: precision, recall/sensitivity, specificity, F<sub>1</sub> score, and F<sub>$$\mathrm{\beta}$$</sub> score, are calculated for all classes. This approach is crucial when dealing with imbalanced class distributions, where one class might be much more frequent than the other(s). By calculating these statistics for both the positive and negative classes, you can better understand how well the developed model performs across both common and rare events. This comprehensive evaluation provides a complete performance picture of the model.
+<div class="tip-box">
+  <ul>
+    <li>
+      In model development, the abovementioned statistical measures can be calculated for both training set predictions (to assess model fit and potential overfitting) and external/test set predictions (to assess generalization and predictive performance).
+    </li>
+    <li>
+      In classification, the following metrics &mdash; precision, recall/sensitivity, specificity, F<sub>1</sub> score, and F<sub>&beta;</sub> score &mdash; are calculated for all classes. This approach is crucial when dealing with imbalanced class distributions, where one class might be much more frequent than the other(s). By calculating these statistics for both the positive and negative classes, you can better understand how well the developed model performs across both common and rare events. This comprehensive evaluation provides a complete performance picture of the model.
+    </li>
+  </ul>
+</div>
 
 ## See also
 For the development of regression models refer to the [`Regression`](https://www.docs.isalos.novamechanics.com/regression.html) functions and for the development of classification models refer to the [`Classification`](https://www.docs.isalos.novamechanics.com/classification.html) functions.

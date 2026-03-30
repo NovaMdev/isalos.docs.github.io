@@ -195,10 +195,13 @@ body.dark-mode .nav-list .nav-list-item > a[aria-current="page"] {
 
 .top-nav-links .icon-link .icon-dark-default-hover {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
   opacity: 0;
 }
+
 
 body.dark-mode .top-nav-links .icon-link .icon-default { display: none; }
 body.dark-mode .top-nav-links .icon-link .icon-dark-default { display: inline-block; }
@@ -501,30 +504,13 @@ body.dark-mode .side-bar .nav-list .nav-list-expander svg {
   color: var(--color-text-primary) !important;
 }
 
-/* Dark mode button icon size */
-.js-toggle-dark-mode .theme-icon-light,
-.js-toggle-dark-mode .theme-icon-dark {
-  height: 28px !important;
-  width: auto;
-}
-
 .theme-icon-dark { display: none; }
 body.dark-mode .theme-icon-light { display: none; }
 body.dark-mode .theme-icon-dark  { display: block; }
 
-/* Dark mode button hover icons */
 .theme-icon-light-hover { display: none; }
 .theme-icon-dark-hover  { display: none; }
 
-.js-toggle-dark-mode .theme-icon-light-hover,
-.js-toggle-dark-mode .theme-icon-dark-hover {
-  height: 28px !important;
-  width: 28;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 /* LIGHT MODE hover: only swap light -> light-hover */
 body:not(.dark-mode) .js-toggle-dark-mode:hover .theme-icon-light { display: none; }
@@ -606,7 +592,8 @@ body {
 /* Make the link act like an icon container */
 .top-nav-links .icon-link {
   position: relative;
-  display: inline-block;
+  display: inline-flex;  
+  align-items: center;
 }
 
 /* Default image stays in flow, hover image overlays it */
@@ -616,33 +603,112 @@ body {
 
 .top-nav-links .icon-link .icon-hover {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0;
 }
+
+
+.top-nav-links .isalos-icon-link img {
+  height: 30px;
+  width: auto;
+}
+
+.top-nav-links .novaM-icon-link img {
+  height: 30px;
+  width: auto;
+}
+
+.top-nav-links .yt-icon-link img {
+  height: 35px;
+  width: auto;
+}
+
+.top-nav-links .linkedin-icon-link img {
+  height: 55px;
+  width: auto;
+}
+
+body.dark-mode .top-nav-links .isalos-icon-link img {
+  height: 50px; /* adjust until it visually matches */
+  width: auto;
+}
+
+body.dark-mode .top-nav-links .novaM-icon-link img {
+  height: 30px; /* adjust until it visually matches */
+  width:auto;
+}
+
+body.dark-mode .top-nav-links .yt-icon-link img {
+  height: 50px; /* adjust until it visually matches */
+  width: auto;
+}
+
+body.dark-mode .top-nav-links .linkedin-icon-link img {
+  height: 55px; /* adjust until it visually matches */
+  width: auto;
+}
+
+body.dark-mode .top-nav-links .yt-icon-link .icon-dark-default-hover {
+  height: 30px; /* ← set your desired dark hover size */
+  width: auto;
+}
+
+body.dark-mode .top-nav-links .yt-icon-link .icon-dark-default-hover {
+  height: 32px; /* ← set your desired size here */
+  width: auto;
+}
+
 
 /* Hover state: swap */
 .top-nav-links .icon-link:hover .icon-default { opacity: 0; }
 .top-nav-links .icon-link:hover .icon-hover { opacity: 1; }
+body.dark-mode .top-nav-links .icon-link:hover .icon-hover { opacity: 0; }
+
 
 /* Dark mode toggle button — make it behave like the other icon links */
 .top-nav-links .js-toggle-dark-mode {
   position: relative;
-  display: inline-block;
-  width: 44px;   /* same footprint as other icons */
-  height: 38px;
-  padding: 0;
-  background: none;
-  border: none;
+  display: inline-flex;        /* ← flexbox to center the image */
+  align-items: center;
+  justify-content: center;
+  padding: 5px 8px;            /* ← controls spacing around the image */
+  background-color: #eeebee69;
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
   cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
+.top-nav-links .js-toggle-dark-mode:hover {
+  background-color: rgba(0, 191, 255, 0.119);
+  border-color: rgba(149, 188, 201, 0.211);
+}
+
+body.dark-mode .top-nav-links .js-toggle-dark-mode {
+  background-color: var(--dm-surface-1);
+  border-color: var(--dm-border);
+}
+
+body.dark-mode .top-nav-links .js-toggle-dark-mode:hover {
+  background-color: rgba(204, 113, 22, 0.2);
+  border-color: rgba(204, 113, 22, 0.5);
+}
+
+
 .top-nav-links .js-toggle-dark-mode img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 28px;
+  height: 30px;
+  width: auto;
+}
+
+.top-nav-links .js-toggle-dark-mode .theme-icon-dark {
+  height: 34px;  
+  width: auto;
+}
+
+.top-nav-links .js-toggle-dark-mode .theme-icon-dark-hover {
+  height: 34px;  
   width: auto;
 }
 
@@ -683,26 +749,44 @@ body.dark-mode .top-nav-links .js-toggle-dark-mode:hover .theme-icon-dark-hover 
   display: none;
 }
 
-/* Make the sidebar dark-mode toggle not shift when toggled */
-.sidebar-mobile-links .js-toggle-dark-mode {
-  position: relative;
-  display: inline-block;
-  width: 44px;
-  height: 38px;
-  padding: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
+/* Mobile sidebar — dark mode toggle at top */
+.sidebar-top-dark-mode {
+  display: none;
 }
 
-.sidebar-mobile-links .js-toggle-dark-mode img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.sidebar-top-dark-mode .js-toggle-dark-mode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 8px;
+  background-color: rgba(0, 191, 255, 0.1);
+  border: 1px solid rgba(0, 191, 255, 0.2);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.sidebar-top-dark-mode .js-toggle-dark-mode:hover {
+  background-color: rgba(0, 191, 255, 0.2);
+  border-color: rgba(0, 191, 255, 0.4);
+}
+
+body.dark-mode .sidebar-top-dark-mode .js-toggle-dark-mode {
+  background-color: var(--dm-surface-1);
+  border-color: var(--dm-border);
+}
+
+body.dark-mode .sidebar-top-dark-mode .js-toggle-dark-mode:hover {
+  background-color: rgba(204, 113, 22, 0.2);
+  border-color: rgba(204, 113, 22, 0.5);
+}
+
+.sidebar-top-dark-mode .js-toggle-dark-mode img {
   height: 28px;
   width: auto;
 }
+
+
 
 .sidebar-mobile-links .icon-link {
   position: relative;
@@ -723,6 +807,22 @@ body.dark-mode .top-nav-links .js-toggle-dark-mode:hover .theme-icon-dark-hover 
 .sidebar-mobile-links .icon-link:hover .icon-default { opacity: 0; }
 .sidebar-mobile-links .icon-link:hover .icon-hover   { opacity: 1; }
 
+.sidebar-mobile-links .icon-link .icon-dark-default-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  display: none;
+}
+
+.sidebar-mobile-links .icon-link:active .icon-default { opacity: 0; }
+.sidebar-mobile-links .icon-link:active .icon-hover   { opacity: 1; }
+
+body.dark-mode .sidebar-mobile-links .icon-link:active .icon-dark-default { opacity: 0; }
+body.dark-mode .sidebar-mobile-links .icon-link:active .icon-dark-default-hover { display: inline-block; opacity: 1; }
+body.dark-mode .sidebar-mobile-links .icon-link:active .icon-hover { opacity: 0; }
+body.dark-mode .sidebar-mobile-links .icon-link:active .icon-default { opacity: 0; }
+body.dark-mode .sidebar-mobile-links .icon-link:hover .icon-hover { opacity: 0; }
 
 @media (min-width: 769px) {
   .top-nav-menu-button {
@@ -1082,6 +1182,65 @@ body.dark-mode .main-content .anchor-heading svg {
   color: var(--isalos-lightblue) !important;
 }
 
+/* === TIP CALLOUT BOX === */
+.tip-box {
+  background-color: #fff5e7;
+  border: 1px solid #f0a029;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.tip-box .tip-title {
+  font-weight: bold;
+  color: #7a3f00;
+  margin-bottom: 0.5rem;
+}
+
+.tip-box ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #3b2a00;
+}
+
+.tip-box ul li {
+  margin-bottom: 0.4rem;
+}
+
+.tip-box ul {
+  list-style: none;       /* remove default bullets */
+  padding-left: 1.25rem;
+}
+
+.tip-box ul li::before {
+  content: "•";
+  color: #7a3f00;         /* ← your bullet color */
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+
+/* Dark mode version */
+body.dark-mode .tip-box {
+  background-color: #2a1900;
+  border-color: #c87100;
+}
+
+body.dark-mode .tip-box .tip-title {
+  color: #c18f1c;
+}
+
+body.dark-mode .tip-box ul {
+  color: #e8d0a3;
+}
+
+body.dark-mode .tip-box ul li::before {
+  color: #c18f1c;
+}
+
+
 /* =============================================================================
    5. SEARCH BAR
    ============================================================================= */
@@ -1386,23 +1545,20 @@ body.parent-page .main-content ul li a:hover {
   .sidebar-overlay.active {
     display: block;
   }
-/*
-  .sidebar-mobile-links img {
-    width: 44px;
-    height: 38px;
+
+  .sidebar-top-dark-mode {
+    display: flex;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-border);
   }
 
-  .sidebar-mobile-links a:last-child img {
-    width: 40px;
-    height: 35px;
-  }
-*/
 }
 
 
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 70px;
 }
 
 

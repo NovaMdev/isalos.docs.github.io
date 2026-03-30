@@ -440,12 +440,17 @@ The downloadable, customized ridge line chart is presented below.
 ---
 
 ## Tips
-HeatMap Chart
--	It is often advisable to normalize the data before creating a HeatMap, to highlight the magnitude of relationships between categories without being influenced by differences in value ranges.
+<div class="tip-box">
+  <div class="tip-title">💡 HeatMap Chart:</div>
+  <ul>
+    <li>It is often advisable to normalize the data before creating a HeatMap, to highlight the magnitude of relationships between categories without being influenced by differences in value ranges.</li>
+  </ul>
 
-
-Bubble Grid Chart
--	Use this chart when most category relationship differences are significant, since subtle differences are not easily recognizable in the bubble grid format.
+  <div class="tip-title">💡 Bubble Grid Chart:</div>
+  <ul>
+    <li>Use this chart when most category relationship differences are significant, since subtle differences are not easily recognizable in the bubble grid format.</li>
+  </ul>
+</div>
 
 
 ---
