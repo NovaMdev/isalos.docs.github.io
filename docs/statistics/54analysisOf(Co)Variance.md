@@ -210,7 +210,8 @@ The output includes a table summarizing the analysis of variance/covariance. For
 1. Sum of Squares (SS): The variation attributed to the term, either adjusted (Type III) or sequential (Type I), depending on the method used.
 1. Mean Square (MS): The sum of squares divided by the degrees of freedom for the term.
 1. F-statistic: The ratio of the mean square of the term to the mean square of the residuals, used to test the statistical significance of the term.
-1. p-value: The probability of observing an F-statistic as extreme as the one calculated, assuming the null hypothesis is true.
+1. P-value: The probability of observing an F-statistic as extreme as the one calculated, assuming the null hypothesis is true.
+1. Significant: A binary column specifying whether the term is significant based on the specified confidence level and the calculated P-value.
 
 
 
@@ -247,7 +248,7 @@ In the input datasheet the requirement is to specify at least two columns  and i
 {: .no_toc }
 A table analyzing the variance/covariance of each term in the formula is outputted in the output spreadsheet.
 <div style="text-align: center;">
-<img src="images/ANOVA/FactorialANOVA_output.png" alt="FactorialANOVA-output" width="400" height="300" class="img-responsive">
+<img src="images/ANOVA/FactorialANOVA_output.png" alt="FactorialANOVA-output" width="600" height="300" class="img-responsive">
 </div>
 
 ---
@@ -307,7 +308,8 @@ The output includes a table summarizing the analysis of variance/covariance. For
 1. Sum of Squares (SS): The variation attributed to the term, either adjusted (Type III) or sequential (Type I), depending on the method used.
 1. Mean Square (MS): The sum of squares divided by the degrees of freedom for the term.
 1. F-statistic: The ratio of the mean square of the term to the mean square of the residuals, used to test the statistical significance of the term.
-1. p-value: The probability of observing an F-statistic as extreme as the one calculated, assuming the null hypothesis is true.
+1. P-value: The probability of observing an F-statistic as extreme as the one calculated, assuming the null hypothesis is true.
+1. Significant: A binary column specifying whether the term is significant based on the specified confidence level and the calculated P-value.
 
 
 ### Example
@@ -342,7 +344,7 @@ In the input datasheet the requirement is to specify at least two columns  and i
 {: .no_toc }
 A table analyzing the variance/covariance of each term in the formula is outputted in the output spreadsheet.
 <div style="text-align: center;">
-<img src="images/ANOVA/ANCOVA_output.png" alt="ancova-output" width="400" height="300" class="img-responsive">
+<img src="images/ANOVA/ANCOVA_output.png" alt="ancova-output" width="600" height="300" class="img-responsive">
 </div>
 
 ---
@@ -376,14 +378,14 @@ Numerical values should be specified in the input datasheet. The MANOVA design r
 ### Output
 {: .no_toc }
 The output includes a table summarizing the analysis of variance/covariance. For each term specified in the model formula — including factors and interaction terms — the following information is provided:
-1. Source: The name of the factor or interaction term.
+1. Source: The name of the factor, covariate, or interaction term.
 1. Dependent Variable: Indicates the name of the outcome variable being analyzed in the current test.
 1. Degrees of Freedom (DF): The number of degrees of freedom associated with the term.
 1. Sum of Squares (SS): The variation attributed to the term, either adjusted (Type III) or sequential (Type I), depending on the method used.
 1. Mean Square (MS): The sum of squares divided by the degrees of freedom for the term.
 1. F-statistic: The ratio of the mean square of the term to the mean square of the residuals, used to test the statistical significance of the term.
-1. Sig: The probability of observing an F-statistic as extreme as the one calculated, assuming the null hypothesis is true.
-1. Significant: Provides a quick interpretation of the Sig column by displaying "Yes" if the p-value indicates statistical significance (typically Sig < 0.05), and "No" otherwise.
+1. P-value: The probability of observing an F-statistic as extreme as the one calculated, assuming the null hypothesis is true.
+1. Significant: A binary column specifying whether the term is significant based on the specified confidence level and the calculated P-value.
 
 
 ### Example
@@ -417,7 +419,7 @@ In the input datasheet the requirement is to specify three columns  and insert t
 {: .no_toc }
 A table analyzing the variance/covariance of each term in the formula is outputted in the output spreadsheet.
 <div style="text-align: center;">
-<img src="images/ANOVA/MANOVA_output.png" alt="manova-output" width="400" height="300" class="img-responsive">
+<img src="images/ANOVA/MANOVA_output.png" alt="manova-output" width="600" height="300" class="img-responsive">
 </div>
 
 ---
@@ -451,14 +453,14 @@ Numerical values should be specified in the input datasheet. To perform a valid 
 ### Output
 {: .no_toc }
 The output includes a table summarizing the analysis of variance/covariance. For each term specified in the model formula — including factors, covariates and interaction terms — the following information is provided:
-1. Source: The name of the factor, covariates or interaction term.
+1. Source: The name of the factor, covariate, or interaction term.
 1. Dependent Variable: Indicates the name of the outcome variable being analyzed in the current test.
 1. Degrees of Freedom (DF): The number of degrees of freedom associated with the term.
 1. Sum of Squares (SS): The variation attributed to the term, either adjusted (Type III) or sequential (Type I), depending on the method used.
 1. Mean Square (MS): The sum of squares divided by the degrees of freedom for the term.
 1. F-statistic: The ratio of the mean square of the term to the mean square of the residuals, used to test the statistical significance of the term.
-1. Sig: The probability of observing an F-statistic as extreme as the one calculated, assuming the null hypothesis is true.
-1. Significant: Provides a quick interpretation of the Sig column by displaying "Yes" if the p-value indicates statistical significance (typically Sig < 0.05), and "No" otherwise.
+1. P-value: The probability of observing an F-statistic as extreme as the one calculated, assuming the null hypothesis is true.
+1. Significant: A binary column specifying whether the term is significant based on the specified confidence level and the calculated P-value.
 
 
 ### Example
@@ -493,7 +495,7 @@ In the input datasheet the requirement is to specify three columns  and insert t
 {: .no_toc }
 A table analyzing the variance/covariance of each term in the formula is outputted in the output spreadsheet.
 <div style="text-align: center;">
-<img src="images/ANOVA/MANCOVA_output.png" alt="mancova-output" width="400" height="300" class="img-responsive">
+<img src="images/ANOVA/MANCOVA_output.png" alt="mancova-output" width="600" height="300" class="img-responsive">
 </div>
 ---
 
@@ -528,12 +530,13 @@ Numerical values should be specified in the input datasheet. The Repeated Measur
 {: .no_toc }
 The output includes two tables summarizing the analysis of variance for within-subjects and  between-subjects effects.
 For each effect tested — including within-subjects factors, polynomial contrasts (e.g., linear, quadratic), interactions, and between-subjects variables — the following information is provided:
-1. Source: The name of the factor, interaction, or trend component (e.g., linear, quadratic) being tested.
-1. Degrees of Freedom (DF): The number of degrees of freedom associated with the term. Separate degrees of freedom are shown for the effect and its associated error term.
-1. Sum of Squares (SS): A measure of the variance attributable to the effect.
-1. Mean Square (MS): The sum of squares divided by the degrees of freedom for the effect
-1. F-statistic: The ratio of the mean square of the effect to the mean square of the corresponding error term. 
-1. p-value (Sig.): The probability that the observed F-statistic could occur under the null hypothesis (i.e., assuming the factor has no effect). 
+1. Source: The name of the factor, covariate, or interaction term.
+1. Degrees of Freedom (DF): The number of degrees of freedom associated with the term.
+1. Sum of Squares (SS): The variation attributed to the term, either adjusted (Type III) or sequential (Type I), depending on the method used.
+1. Mean Square (MS): The sum of squares divided by the degrees of freedom for the term.
+1. F-statistic: The ratio of the mean square of the term to the mean square of the residuals, used to test the statistical significance of the term.
+1. P-value: The probability of observing an F-statistic as extreme as the one calculated, assuming the null hypothesis is true.
+1. Significant: A binary column specifying whether the term is significant based on the specified confidence level and the calculated P-value.
 
 
 ### Example
@@ -566,7 +569,7 @@ In the input datasheet the requirement is to specify three columns  and insert t
 The two tables analyzing the within-subject effects and the between-subject effects are shown in the output spreadsheet.
 
 <div style="text-align: center;">
-<img src="images/ANOVA/RM_output.png" alt="rm-output" width="400" height="300" class="img-responsive">
+<img src="images/ANOVA/RM_output.png" alt="rm-output" width="600" height="300" class="img-responsive">
 </div>
 ---
 
@@ -616,11 +619,12 @@ Numerical values should be specified in the input datasheet. The Mixed ANOVA des
 The output includes two tables summarizing the analysis of variance for within-subjects and  between-subjects effects.
 For each effect tested — including within-subjects factors, polynomial contrasts (e.g., linear, quadratic), interactions, and between-subjects variables — the following information is provided:
 1. Source: The name of the factor, interaction, or trend component (e.g., linear, quadratic) being tested.
-1. Degrees of Freedom (DF): The number of degrees of freedom associated with the term. Separate degrees of freedom are shown for the effect and its associated error term.
-1. Sum of Squares (SS): A measure of the variance attributable to the effect.
-1. Mean Square (MS): The sum of squares divided by the degrees of freedom for the effect
-1. F-statistic: The ratio of the mean square of the effect to the mean square of the corresponding error term. 
-1. p-value (Sig.): The probability that the observed F-statistic could occur under the null hypothesis (i.e., assuming the factor has no effect). 
+1. Degrees of Freedom (DF): The number of degrees of freedom associated with the term.
+1. Sum of Squares (SS): The variation attributed to the term, either adjusted (Type III) or sequential (Type I), depending on the method used.
+1. Mean Square (MS): The sum of squares divided by the degrees of freedom for the term.
+1. F-statistic: The ratio of the mean square of the term to the mean square of the residuals, used to test the statistical significance of the term.
+1. P-value: The probability of observing an F-statistic as extreme as the one calculated, assuming the null hypothesis is true.
+1. Significant: A binary column specifying whether the term is significant based on the specified confidence level and the calculated P-value.
 
 
 
@@ -656,7 +660,7 @@ In the input datasheet the requirement is to specify four columns  and insert th
 {: .no_toc }
 The two tables analyzing the within-subject effects and the between-subject effects are shown in the output spreadsheet.
 <div style="text-align: center;">
-<img src="images/ANOVA/MixedANOVA_output.png" alt="MixedANOVA-output" width="400" height="300" class="img-responsive">
+<img src="images/ANOVA/MixedANOVA_output.png" alt="MixedANOVA-output" width="600" height="300" class="img-responsive">
 </div>
 
 ---
