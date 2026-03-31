@@ -42,5 +42,5 @@ description: "Healthcare analytics case studies using Isalos for clinical data r
 
 #### Heart Disease
 {: .no_toc }
-* [Isalos workflow](files\Classification\Heart Disease\Heart_Disease_v201.iap)
-* [Report](files\Classification\Heart Disease\Heart_Disease_Manual_en.pdf)
+* [Isalos workflow](files/Classification/Heart Disease/Heart_Disease_v202.iap)
+* [Report](files/Classification/Heart Disease/Heart_Disease_Manual_en.pdf)
