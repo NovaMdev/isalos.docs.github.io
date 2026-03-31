@@ -161,7 +161,7 @@ From this, the standard error can be derived, allowing the construction of confi
 
 The results of the Kaplan–Meier estimator are visualized using the Kaplan–Meier survival curve, which displays the estimated survival probability over time and confidence intervals, shown as bands around the curve. The median survival time is can be derived directly from the curve as the time at which $$S(t) \leq 0.5$$. Optionally the user can select to visualize the estimated hazard function and the estimated cumulative probability of failure.
 
-Use Kaplan Meier Estimator method by browsing in the top ribbon: 
+Use the Kaplan Meier Estimator method by browsing in the top ribbon: 
 
 
 | `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Non-Parametric` $$\rightarrow$$ `Kaplan Meier Estimator` |
@@ -246,7 +246,7 @@ The Life Table method produces a structured tabular output in which each row cor
 
 The results are typically visualized using plots of the survival function, and optionally the hazard function and cumulative probability of failure, providing a graphical representation of the interval-based estimates.
 
-Use Life Table Analysis method by browsing in the top ribbon: 
+Use the Life Table Analysis method by browsing in the top ribbon: 
 
 
 | `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Non-Parametric` $$\rightarrow$$ `Life Table Analysis` |
@@ -301,11 +301,105 @@ In addition, a pop-up window displays the Life Table survival curve, showing the
 
 ---
 
+### Nelson-Aalen Method
+The Nelson–Aalen estimator is a non-parametric method used to estimate the cumulative hazard function from time-to-event data. Unlike the Kaplan–Meier estimator, which directly estimates the survival function, the Nelson–Aalen method focuses on estimating the cumulative hazard and then derives the survival function from it.
+
+The method operates on the ordered distinct event times. For each time point $$t_i$$, the number of individuals at risk just prior to that time and the number of events occurring at that time are determined. Observations may contribute with frequency weights if a frequency column is provided, and optional censoring indicators, threshold censoring, and event mode filtering are incorporated in the same manner as in other survival methods.
+
+At each event time $$t_i$$, the hazard increment is estimated as
+
+<div style="text-align: center;"> $$ \frac{d_i}{n_i} $$ </div>
+
+where $$d_i$$ is the number of events occurring at time $$t_i$$ and $$n_i$$ is the number of individuals at risk just prior to that time.
+
+The cumulative hazard function is then obtained by summing these increments over time:
+
+<div style="text-align: center;"> $$ \hat{H}(t) = \sum_{t_i \leq t} \frac{d_i}{n_i} $$ </div>
+
+The estimate is initialized at $$H(0)=0$$ and increases in a stepwise manner at observed event times.
+
+Right-censored observations are incorporated by contributing to the risk set up until their censoring time. At each time point, the number at risk includes all individuals who have not yet experienced the event or been censored prior to that time. After their censoring time, these observations are removed from the risk set and no longer contribute to subsequent calculations. As with other non-parametric methods, censored observations do not count as events and therefore do not directly affect the hazard increments, but they influence the estimates through their effect on the number at risk.
+
+The Nelson–Aalen estimator produces a cumulative hazard function that is a non-decreasing step function, with jumps occurring only at observed event times. The size of each jump corresponds to the ratio of the number of events to the number at risk at that time.
+
+The variability of the cumulative hazard estimate is assessed using the variance estimator
+
+<div style="text-align: center;"> $$ \text{Var}(\hat{H}(t)) = \sum_{t_i \leq t} \frac{d_i}{n_i^2} $$ </div>
+
+from which the standard error can be derived. Confidence intervals for the cumulative hazard are constructed using a normal approximation based on the selected confidence level.
+
+The survival function is obtained from the cumulative hazard through the transformation
+
+<div style="text-align: center;"> $$ \hat{S}(t) = \exp(-\hat{H}(t)) $$ </div>
+
+and the cumulative probability of failure is computed as
+
+<div style="text-align: center;"> $$ \hat{F}(t) = 1 - \hat{S}(t) $$ </div>
+
+Confidence intervals for the survival function and cumulative probability of failure are derived by transforming the confidence bounds of the cumulative hazard estimate.
+
+The Nelson–Aalen method produces a tabular output in which each row corresponds to a time point at which at least one event occurs. For each such time, the table reports the number at risk, the number of events, the hazard increment, the cumulative hazard estimate, and its standard error, together with the corresponding confidence interval bounds. In addition, the table includes the derived survival probability and cumulative probability of failure, along with their associated confidence intervals.
+
+The results are typically visualized using stepwise plots of the the survival function, and optionally the cumulative probability of failure and the cumulative hazard function, providing a comprehensive view of the event dynamics over time.
+
+Use the Nelson-Aalen Method by browsing in the top ribbon: 
+
+
+| `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Non-Parametric` $$\rightarrow$$ `Nelson-Aalen Method` |
+
+#### Input
+{: .no_toc }
+The Nelson-Aalen Method requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a binary variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. Finally, a grouping column can be specidied as a categorical variable, either numerical or textual, indicating the group membership of each observation. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
+
+#### Configuration
+{: .no_toc }
+
+| **Time Column** | Select the column corresponding to the observed time-to-event or time-to-censoring for each subject. This column must be numerical and contain non-negative values. |
+|**Configure Event Mode Options**| Use this button to open the `Configure Event Mode Options` window |
+|**Event Mode Column**| Within the `Configure Event Mode Options` window, specify the column containing event mode information. |
+|**Levels not Considered as Event/Levels Considered as Event**| Manually select which levels should be treated as events from the available levels of the Event Mode Column. Use the arrow buttons to move levels between the two lists. Single-arrow buttons move selected levels, while double-arrow buttons move all levels. At least one level must be selected as an event. |
+|**Clear Event Mode Options**| Use this button to clear all selections related to event mode configuration. |
+| **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
+| **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
+| **Use a Censoring  Column** | Enable this option to include a censoring column in the analysis. |
+| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be binary (contain exactly two levels) and may be either numerical or textual. |
+| **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
+| **Censor times at or above a value** | Enable this option to treat all time values greater than or equal to a specified threshold as censored. |
+| **Censoring Threshold Value** | If the `Censor times at or above a value` option is enabled, specify the value above or equal to which observations will be treated as censored. |
+| **Use a Grouping Column** | Enable this option to include a grouping column in the analysis, allowing comparison of survival across different groups in the population. |
+| **Grouping Column** |  If the `Use a Grouping Column` option is enabled, select the column containing grouping information for each observation. This column must be categorical. |
+| **Confidence Level (%)** | Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. Default value is set to 95. |
+| **Confidence Interval Type** | Select the type of confidence interval to compute. Available options include: `Two-sided`, `Lower Bound`, `Upper Bound`. |
+| **Cumulative Hazard Function Plot** | Enable this option to generate a plot of the estimated cumulative hazard function over time. |
+| **Cumulative Probability of Failure Plot** | Enable this option to generate a plot of the estimated cumulative probability of failure over time. |
+
+
+#### Output
+{: .no_toc }
+The output spreadsheet contains a table summarizing the survival analysis results at each observed time point. This includes the number of subjects at risk, the number of events, the estimated survival probability, its standard error, and the corresponding confidence interval bounds at the selected confidence level. If a grouping column is specified, the spreadsheet first presents the overall results for the full sample, followed by separate tables for each group.
+
+In addition, a pop-up window displays the Kaplan–Meier survival curve, showing the stepwise estimate of survival probability over time along with the associated confidence interval bounds. When grouping is enabled, the plot includes the overall survival curve as well as separate curves with confidence bounds for each group. Similarly, if selected, the cumulative hazard function and cumulative probability of failure plots are generated and display both the overall estimates and the corresponding group-specific curves.
+
+#### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+---
+
 
 ## References {#references-survivalAnalysis}
 1. Emmert-Streib, Frank, and Matthias Dehmer. "Introduction to survival analysis in practice." Machine Learning and Knowledge Extraction 1, no. 3 (2019): 1013-1038. [doi.org/10.3390/make1030058](https://doi.org/10.3390/make1030058).
 1. Jenkins, Stephen P. "Survival analysis." Unpublished manuscript, Institute for Social and Economic Research, University of Essex, Colchester, UK 42, no. 54-56 (2005): 1.
 1. Guo, Shenyang. Survival analysis. Oxford University Press, 2010.
+1. Hosmer Jr, D.W., Lemeshow, S. and May, S., 2008. Applied survival analysis: regression modeling of time-to-event data. John Wiley & Sons. 
 
 ---
 
