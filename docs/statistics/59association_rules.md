@@ -274,25 +274,26 @@ If Association Rules are selected, each rule is presented alongside its correspo
 
 
 ## Tips
+<div class="tip-box">
+  <div class="tip-title">💡Apriori:</div>
+  <ul>
+    <li>It works well for small to medium-sized datasets; performance drops significantly for very large datasets due to candidate generation overhead.</li>
+    <li>Setting the minimum support too low can lead to an exponential increase in candidate itemsets and memory usage.</li>
+  </ul>
 
+  <div class="tip-title">💡Eclat:</div>
+  <ul>
+    <li>Efficient for dense datasets and larger itemsets due to its vertical representation of transactions.</li>
+    <li>Memory usage can become high if many itemsets have large transaction ID lists.</li>
+  </ul>
 
-Apriori:
+  <div class="tip-title">💡FP-Growth:</div>
+  <ul>
+    <li>Highly efficient for large datasets compared to Apriori, as it avoids candidate generation.</li>
+    <li>Extremely long or frequent patterns can still increase memory usage; consider limiting maximum pattern length.</li>
+  </ul>
+</div>
 
-•	It works well for small to medium-sized datasets; performance drops significantly for very large datasets due to candidate generation overhead.
-
-•	Setting the minimum support too low can lead to an exponential increase in candidate itemsets and memory usage.
-
-Eclat:
-
-•	Efficient for dense datasets and larger itemsets due to its vertical representation of transactions.
-
-•	Memory usage can become high if many itemsets have large transaction ID lists.
-
-FP-Growth:
-
-•	Highly efficient for large datasets compared to Apriori, as it avoids candidate generation.
-
-•	Extremely long or frequent patterns can still increase memory usage; consider limiting maximum pattern length.
 
 ## References {#references-association}
 1.	Agrawal R, Imieliński T, Swami A. Mining Association Rules Between Sets of Items in Large Databases. In: Proceedings of the ACM SIGMOD International Conference on Management of Data. ACM; 1993:207–216. [https://dl.acm.org/doi/pdf/10.1145/170035.170072](https://dl.acm.org/doi/pdf/10.1145/170035.170072)

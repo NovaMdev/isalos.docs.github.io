@@ -97,6 +97,11 @@ description: "Design of Experiments case studies in Isalos featuring screening, 
 * [Isalos workflow](files\DoE\Analytical chemistry\2016_Terzic\2016_Terzic.iap)
 * [Report](files\DoE\Analytical chemistry\2016_Terzic\2016_Terzic.pdf)
 
+#### PFAS ENVIRONMENTAL FATE ([`Plackett Burman`](https://www.docs.isalos.novamechanics.com//screening.html) & [`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
+{: .no_toc }
+* [Isalos workflow](files/DoE/Environmental/PFAS Fate/PFAS_Fate_v202.iap)
+* [Report](files/DoE/Environmental/PFAS Fate/PFAS_Fate_Manual_en.pdf)
+
 
 ## Isalos Publications
 

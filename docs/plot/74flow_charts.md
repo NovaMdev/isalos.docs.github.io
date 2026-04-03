@@ -308,10 +308,12 @@ The downloadable, customized arc chart is presented below.
 </div>
 ---
 
-## Tips
-Chord Diagram, Sankey Plot and Arc Chart
--	Consider removing or aggregating weaker relationships for simpler, more interpretable charts.
-
+<div class="tip-box">
+  <div class="tip-title">💡 Chord Diagram, Sankey Plot, and Arc Chart:</div>
+  <ul>
+    <li>Consider removing or aggregating weaker relationships for simpler, more interpretable charts.</li>
+  </ul>
+</div>
 
 
 ---

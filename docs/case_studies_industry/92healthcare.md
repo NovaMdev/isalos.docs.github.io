@@ -39,3 +39,8 @@ description: "Healthcare analytics case studies using Isalos for clinical data r
 {: .no_toc }
 * [Isalos workflow](files\Classification\Pima Indians Diabetes\pima_indians_diabetes_v206.iap)
 * [Report](files\Classification\Pima Indians Diabetes\pima_indians_diabetes.pdf)
+
+#### Heart Disease
+{: .no_toc }
+* [Isalos workflow](files/Classification/Heart Disease/Heart_Disease_v202.iap)
+* [Report](files/Classification/Heart Disease/Heart_Disease_Manual_en.pdf)

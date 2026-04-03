@@ -17,6 +17,11 @@ description: "Education analytics case studies in Isalos for predicting student 
 * [Isalos workflow](files\Regression\Student performance\student_performance_v206.iap)
 * [Report](files\Regression\Student performance\student_performance.pdf)
 
+#### Graduate Admission
+{: .no_toc }
+* [Isalos workflow](files/Regression/Graduate admission/GraduateAdmission_v202.iap)
+* [Report](files/Regression/Graduate admission/Graduate_Admission_Manual_en.pdf)
+
 
 ## Classification
 
