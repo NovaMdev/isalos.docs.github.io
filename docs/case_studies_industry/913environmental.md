@@ -15,6 +15,6 @@ description: "Environmental case studies in Isalos."
 #### PFAS ENVIRONMENTAL FATE ([`Plackett Burman`](https://www.docs.isalos.novamechanics.com//screening.html) & [`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
 * [Isalos workflow](files/DoE/Environmental/PFAS Fate/PFAS_Fate_v202.iap)
-* [Report](files/DoE/Environmental/PFAS Fate/PFAS_Fate_Manual_en.pdf)
+* [Report](files\DoE\Environmental\PFAS Fate\PFAS_Fate_Manual_en.pdf)
 
 
