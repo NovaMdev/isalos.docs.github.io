@@ -216,7 +216,7 @@ In addition, a pop-up window displays the Kaplan–Meier survival curve, showing
 ### Life Table Analysis
 The Life Table method (also known as the Actuarial method) is a non-parametric approach used to estimate survival characteristics from time-to-event data by grouping observations into time intervals. Unlike the Kaplan–Meier estimator, which updates the survival estimate at each distinct event time, the Life Table method summarizes the data within predefined intervals and computes the relevant quantities at the interval level.
 
-The time axis is partitioned into consecutive intervals of the form $$[0,e_0), [e_0,e_1), ... , [e_{k-1},e_k), [e_k,\inf)$$. These intervals may either be specified explicitly through user-defined endpoints or generated automatically using a given end time and interval width.
+The time axis is partitioned into consecutive intervals of the form $$[0,e_0), [e_0,e_1), ... , [e_{k-1},e_k), [e_k,\infty)$$. These intervals may either be specified explicitly through user-defined endpoints or generated automatically using a given end time and interval width.
 
 For each interval $$i$$, the method determines the number of subjects entering the interval, the number of events occurring within the interval, and the number of censored observations. If a frequency column is provided, observations contribute according to their specified frequencies. Optional censoring indicators and threshold censoring are also incorporated, and event mode filtering allows only selected event types to be considered.
 
@@ -394,12 +394,88 @@ In addition, a pop-up window displays the Kaplan–Meier survival curve, showing
 
 ---
 
+### Turnbull Estimator
+The Turnbull estimator is a non-parametric method used to estimate the survival function from interval-censored time-to-event data, where the exact event time is not observed but is known to lie within a time interval. This method generalizes the Kaplan–Meier estimator by allowing each observation to be represented as an interval $$(l_i,r_i]$$, where the event is known to occur after time $$l_i$$ and at or before time $$r_i$$.
+
+The input data consists of two columns specifying the lower and upper bounds of the observation intervals. These bounds may be partially specified; in particular, the lower bound may be missing to indicate left-censoring, and the upper bound may be missing to indicate right-censoring. However, both bounds cannot be missing simultaneously for the same observation. All interval bounds must be non-negative, and the lower bound must not exceed the upper bound.
+
+The Turnbull estimator constructs a set of disjoint intervals by collecting and sorting all distinct interval endpoints present in the data. These intervals define the support over which the probability distribution of event times is estimated. Each observation contributes to all intervals that lie entirely within its corresponding censoring interval.
+
+The method estimates the probability mass assigned to each interval using an iterative procedure based on the Expectation–Maximization (EM) algorithm. Starting from an initial distribution over the admissible intervals, the algorithm repeatedly updates the estimated probability masses by redistributing the observed data across intervals in a manner consistent with the censoring constraints. At each iteration, the expected number of events in each interval is computed and used to update the probability masses until convergence is achieved within a specified tolerance or until a maximum number of iterations is reached.
+
+The resulting estimates define a discrete probability distribution over the constructed intervals. From this distribution, the survival function is obtained as the complement of the cumulative distribution function:
+
+<div style="text-align: center;"> $$ \hat{S}(t) = 1 - \sum_{j: \tau_j \leq t} p_j $$ </div>
+
+where $$p_j$$ is the estimated probability mass assigned to interval $$j$$. The cumulative probability of failure is correspondingly given by
+
+<div style="text-align: center;"> $$ \hat{F}(t) = 1 - \hat{S}(t) $$ </div>
+
+The Turnbull estimator produces a stepwise survival function, with changes occurring at the boundaries of the constructed intervals. Unlike methods based on exact event times, the resolution of the estimate depends on the structure of the observed censoring intervals.
+
+The variability of the estimated probability masses is assessed using a likelihood-based covariance approach. The observed information matrix is constructed based on the fitted model, and the covariance of the interval probabilities is obtained under the constraint that the total probability sums to one. From this covariance matrix, standard errors are derived for both the interval probability masses and the cumulative quantities. In cases where the information matrix is singular or numerically unstable, an approximate variance calculation is used as a fallback.
+
+The Turnbull method produces a tabular output in which each row corresponds to an interval with positive estimated probability mass. For each interval, the table reports the number of subjects entering the interval, the estimated number of events, the probability mass assigned to the interval, and the associated standard error and confidence interval bounds. In addition, the table includes the estimated survival probability and cumulative probability of failure at the end of each interval, together with their corresponding uncertainty measures. The final interval, which may extend to infinity, is reported separately, and quantities that depend on finite support are omitted where appropriate.
+
+The results are typically visualized using stepwise plots of the survival function and cumulative probability of failure, providing a graphical representation of the distribution of event times under interval censoring.
+
+Use the Turnbull Estimator by browsing in the top ribbon: 
+
+
+| `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Non-Parametric` $$\rightarrow$$ `Turnbull Estimator` |
+
+#### Input
+{: .no_toc }
+The Turnbull method requires two columns of numerical data to be specified in the input datasheet. The required inputs are a lower bound column and an upper bound column, representing the interval within which the event is known to occur for each observation. These columns must contain non-negative numerical values. Empty cells are allowed in either the lower bound column or the upper bound column to represent left-censored or right-censored observations respectively; however, both values cannot be empty in the same row. In addition, when both bounds are specified, the lower bound must not exceed the upper bound. In addition to the interval bounds, several optional inputs may be provided to extend the functionality of the analysis. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. Finally, a grouping column can be specified as a categorical variable, either numerical or textual, indicating the group membership of each observation. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
+
+#### Configuration
+{: .no_toc }
+
+| **Interval Start (Lower Bound)** | Select the column corresponding to the lower bound of the interval for each subject. This column must be numerical and contain non-negative values. |
+| **Interval End (Upper Bound)** | Select the column corresponding to the upper bound of the interval for each subject. This column must be numerical and contain non-negative values. For each row the upper bound should be larger or equal to the lower bound.|
+|**Event Mode Column**| Within the `Configure Event Mode Options` window, specify the column containing event mode information. |
+|**Levels not Considered as Event/Levels Considered as Event**| Manually select which levels should be treated as events from the available levels of the Event Mode Column. Use the arrow buttons to move levels between the two lists. Single-arrow buttons move selected levels, while double-arrow buttons move all levels. At least one level must be selected as an event. |
+|**Clear Event Mode Options**| Use this button to clear all selections related to event mode configuration. |
+| **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
+| **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
+| **Use a Grouping Column** | Enable this option to include a grouping column in the analysis, allowing comparison of survival across different groups in the population. |
+| **Grouping Column** |  If the `Use a Grouping Column` option is enabled, select the column containing grouping information for each observation. This column must be categorical. |
+| **Confidence Level (%)** | Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. Default value is set to 95. |
+| **Confidence Interval Type** | Select the type of confidence interval to compute. Available options include: `Two-sided`, `Lower Bound`, `Upper Bound`. |
+| **Cumulative Probability of Failure Plot** | Enable this option to generate a plot of the estimated cumulative probability of failure over time. |
+| **Max Iterations** | Specify the maximum number of iterations for the EM algorithm. The default value is 1000. |
+| **Convergence Tolerance** | Specify the convergence tolerance for the EM algorithm. The default value is $$10^{-7}$$ |
+
+
+#### Output
+{: .no_toc }
+The output spreadsheet contains a table summarizing the survival analysis results at each interval. This includes the number entering the interval, the number of events during the interval, the estimated probability mass for the interval, the estimated survival probability and the cumulative probability of failure, along with their standard errors, and the corresponding confidence interval bounds at the selected confidence level. If a grouping column is specified, the spreadsheet first presents the overall results for the full sample, followed by separate tables for each group.
+
+In addition, a pop-up window displays the Kaplan–Meier survival curve, showing the stepwise estimate of survival probability over time along with the associated confidence interval bounds. When grouping is enabled, the plot includes the overall survival curve as well as separate curves with confidence bounds for each group. Similarly, if selected, cumulative probability of failure plot is generated and displays both the overall estimates and the corresponding group-specific curves.
+
+#### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+---
+
 
 ## References {#references-survivalAnalysis}
 1. Emmert-Streib, Frank, and Matthias Dehmer. "Introduction to survival analysis in practice." Machine Learning and Knowledge Extraction 1, no. 3 (2019): 1013-1038. [doi.org/10.3390/make1030058](https://doi.org/10.3390/make1030058).
 1. Jenkins, Stephen P. "Survival analysis." Unpublished manuscript, Institute for Social and Economic Research, University of Essex, Colchester, UK 42, no. 54-56 (2005): 1.
 1. Guo, Shenyang. Survival analysis. Oxford University Press, 2010.
 1. Hosmer Jr, D.W., Lemeshow, S. and May, S., 2008. Applied survival analysis: regression modeling of time-to-event data. John Wiley & Sons. 
+1. Turnbull, Bruce W. "The empirical distribution function with arbitrarily grouped, censored and truncated data." Journal of the Royal Statistical Society: Series B (Methodological) 38, no. 3 (1976): 290-295. [doi.org/10.1111/j.2517-6161.1976.tb01597.x]( https://doi.org/10.1111/j.2517-6161.1976.tb01597.x) 
+1. Turnbull, Bruce W. "Nonparametric estimation of a survivorship function with doubly censored data." Journal of the American statistical association 69, no. 345 (1974): 169-173. [doi.org/10.1080/01621459.1974.10480146](https://doi.org/10.1080/01621459.1974.10480146)
+
 
 ---
 
