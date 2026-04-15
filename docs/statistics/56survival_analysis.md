@@ -467,6 +467,161 @@ In addition, a pop-up window displays the Kaplan–Meier survival curve, showing
 
 ---
 
+### Survival Curve Comparison Tests
+Survival curve comparison tests are non-parametric statistical procedures used to assess whether two or more groups share the same underlying hazard function over time. These tests are based on weighted comparisons between the observed number of events in each group and the number expected under the null hypothesis of equal hazard rates.
+
+The general null hypothesis tested is
+
+<div style="text-align: center;"> $$ H_0: h_1(t) = h_2(t) = \cdots = h_K(t), \quad \text{for all } t $$ </div>
+
+against the alternative that at least one group differs at some point in time.
+
+These methods operate on the ordered distinct event times in the pooled sample. At each event time $$t_i$$, the following quantities are defined:
+1. $$d_{ij}$$: number of events in group j at time $$t_i$$.
+1. $$Y_{ij}$$: number of individuals at risk in group j just prior to $$t_i$$.
+1. $$d_i = \sum_{j=1}^Kd_{ij}$$: total number of events at time $$t_i$$.
+1. $$Y_i = \sum_{j=1}^KY_{ij}$$: total number at risk at time $$t_i$$.
+
+Observations may contribute with frequency weights if a frequency column is provided. Censoring is handled in the same manner as in other non-parametric methods: censored observations contribute to the risk set up to their censoring time and are removed thereafter.
+
+#### Test Statistic
+{: .no_toc }
+All available tests belong to the class of weighted log-rank tests. For each group j, a test statistic is constructed as
+
+<div style="text-align: center;"> $$ Z_j = \sum_{t_i} W(t_i) \left( d_{ij} - Y_{ij} \frac{d_i}{Y_i} \right) $$ </div>
+where:
+
+1. $$W(t_i)$$ is a non-negative weight function
+1. $$d_{ij}$$ the observed number of events
+1. $$Y_{ij} \frac{d_i}{Y_i}$$ is the expected number of events under $$H_0$$. 
+
+Thus, each test compares the observed and expected number of events at each time point, with differences weighted according to $$W(t_i)$$
+
+#### Variance and Covariance
+{: .no_toc }
+The variance of the statistic for group j is estimated as
+
+<div style="text-align: center;"> $$ \widehat{\text{Var}}(Z_j) = \sum_{t_i} W(t_i)^2 \cdot \frac{Y_{ij}}{Y_i} \left(1 - \frac{Y_{ij}}{Y_i} \right) \cdot \frac{Y_i - d_i}{Y_i - 1} \cdot d_i $$ </div>
+
+and the covariance between groups j and g is
+
+<div style="text-align: center;"> $$ \widehat{\text{Cov}}(Z_j, Z_g) = - \sum_{t_i} W(t_i)^2 \cdot \frac{Y_{ij}}{Y_i} \cdot \frac{Y_{ig}}{Y_i} \cdot \frac{Y_i - d_i}{Y_i - 1} \cdot d_i, \quad j \neq g $$ </div>
+
+These expressions account for ties through the factor $$\frac{Y_i-d_i}{Y_i-1}$$.
+
+
+#### Overall Test Statistic
+{: .no_toc }
+Since the group-specific statistics are linearly dependent, the overall test is based on K−1 independent components. The test statistic is
+
+<div style="text-align: center;"> $$ \chi^2 = Z^\top \Sigma^{-1} Z $$ </div>
+
+which asymptotically follows a chi-square distribution with K−1 degrees of freedom.
+
+#### Weight Functions and Available Tests
+The different tests arise from different choices of the weight function $$W(t_i)$$, which determine how deviations between observed and expected events are emphasized over time.
+
+##### Log-Rank Test
+<div style="text-align: center;"> $$ W(t_i) = 1 $$ </div>
+
+The log-rank test assigns equal weight to all event times. It is most powerful when the hazard functions of the groups are proportional over time and differences are consistent throughout the study period.
+
+##### Log-Rank Test
+<div style="text-align: center;"> $$ W(t_i) = 1 $$ </div>
+
+The log-rank test assigns equal weight to all event times. It is most powerful when the hazard functions of the groups are proportional over time and differences are consistent throughout the study period.
+
+##### Wilcoxon (Breslow) Test
+<div style="text-align: center;"> $$ W(t_i) = Y_i $$ </div>
+
+This test gives more weight to early event times, where the number at risk is largest. As a result, it is more sensitive to differences that occur early in time.
+
+##### Peto–Peto Test
+The Peto–Peto test uses a modified estimate of the pooled survival function
+
+<div style="text-align: center;"> $$ \tilde{S}(t_i) = \prod_{t_\ell \leq t_i} \left(1 - \frac{d_\ell}{Y_\ell + 1} \right) $$ </div>
+
+and defines the weight function as
+
+<div style="text-align: center;"> $$ W(t_i) = \tilde{S}(t_i) $$ </div>
+
+This approach retains the early-time emphasis of the Wilcoxon test but adjusts for censoring, making it more robust when censoring patterns differ between groups.
+
+##### Tarone–Ware Test
+<div style="text-align: center;"> $$ W(t_i) = \sqrt{Y_i} $$ </div>
+
+The Tarone–Ware test provides an intermediate weighting scheme between the log-rank and Wilcoxon tests. It balances sensitivity across early and later time points, giving moderate emphasis to the middle range of the follow-up period.
+
+##### Fleming–Harrington Test
+The Fleming–Harrington class of tests uses a flexible weight function based on the pooled Kaplan–Meier survival estimate $$\hat{S}(t)$$
+
+<div style="text-align: center;"> $$ W_{p,q}(t_i) = \hat{S}(t_{i-1})^p \left(1 - \hat{S}(t_{i-1}) \right)^q, \quad p \ge 0,\ q \ge 0 $$ </div>
+
+The parameters p and q control the emphasis:
+1. $$p>0$$ increases sensitivity to early differences
+1. $$q>0$$ increases sensitivity to late differences
+1. $$(p,q)=(0,0)$$ reduces to the log-rank test
+
+This class provides a flexible framework for targeting specific types of departures from the null hypothesis.
+
+All tests assess whether the observed number of events in each group deviates significantly from what would be expected under equal hazard rates. The choice of weight function determines the sensitivity of the test to differences occurring at different parts of the time axis:
+1. Early differences → Wilcoxon, Peto–Peto, Fleming–Harrington with p>0
+1. Late differences → Fleming–Harrington with q>0
+1. Consistent differences → Log-rank
+1. Balanced sensitivity → Tarone–Ware
+
+Use the Survival Curve Comparison Tests by browsing in the top ribbon: 
+
+
+| `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Non-Parametric` $$\rightarrow$$ `Survival Curve Comparison Tests` |
+
+#### Input
+{: .no_toc }
+The Survival Curve Comparison Tests require at least two columns, one of numerical data and one with categorical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject and a grouping column indicating the group membership of each observation. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a binary variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
+
+#### Configuration
+{: .no_toc }
+
+| **Time Column** | Select the column corresponding to the observed time-to-event or time-to-censoring for each subject. This column must be numerical and contain non-negative values. |
+|**Configure Event Mode Options**| Use this button to open the `Configure Event Mode Options` window |
+|**Event Mode Column**| Within the `Configure Event Mode Options` window, specify the column containing event mode information. |
+|**Levels not Considered as Event/Levels Considered as Event**| Manually select which levels should be treated as events from the available levels of the Event Mode Column. Use the arrow buttons to move levels between the two lists. Single-arrow buttons move selected levels, while double-arrow buttons move all levels. At least one level must be selected as an event. |
+|**Clear Event Mode Options**| Use this button to clear all selections related to event mode configuration. |
+| **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
+| **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
+| **Use a Censoring  Column** | Enable this option to include a censoring column in the analysis. |
+| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be binary (contain exactly two levels) and may be either numerical or textual. |
+| **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
+| **Censor times at or above a value** | Enable this option to treat all time values greater than or equal to a specified threshold as censored. |
+| **Censoring Threshold Value** | If the `Censor times at or above a value` option is enabled, specify the value above or equal to which observations will be treated as censored. |
+| **Grouping Column** |  Select the column containing grouping information for each observation. This column must be categorical. At least two distinct groups are required to perform the comparison tests.|
+| **Log-Rank Test** | Enable this option to calculate the Log-Rank test |
+| **Wilcoxon Test** | Enable this option to calculate the Wilcoxon test |
+| **Peto-Peto Test** | Enable this option to calculate the Peto-Peto test. |
+| **Tarone-Ware Test** | Enable this option to calculate the Tarone-Ware test |
+| **Fleming-Harrington Test** | Enable this option to calculate the Fleming-Harrington test. |
+| **Fleming-Harrington Parameters** | If the `Fleming-Harrington Test` option is enabled, specify the values for the two parameters (p, q) of the test. |
+
+
+#### Output
+{: .no_toc }
+The output spreadsheet contains a table summarizing the non-parametric comparison tests that were selected. For each selected test this included the name of the test, the test statistic, the degrees of freedom and the calculated p-value of the test.
+
+
+#### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+---
+
 
 ## References {#references-survivalAnalysis}
 1. Emmert-Streib, Frank, and Matthias Dehmer. "Introduction to survival analysis in practice." Machine Learning and Knowledge Extraction 1, no. 3 (2019): 1013-1038. [doi.org/10.3390/make1030058](https://doi.org/10.3390/make1030058).
