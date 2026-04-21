@@ -181,9 +181,9 @@ In case that the inserted lower limit is higher than the inserted upper limit th
 
 ---
 
-## Tips
+## ✧ Tips
 <div class="tip-box">
-  <div class="tip-title">💡 The <code>Random Number Generator</code> is:</div>
+  <div class="tip-title">The <code>Random Number Generator</code> is:</div>
   <ul>
     <li>Useful for creating unbiased samples or subgroups from uniform populations.</li>
     <li>Required as input for stochastic methods and Monte Carlo calculations.</li>

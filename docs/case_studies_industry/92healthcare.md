@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 9.2 Healthcare
-parent: 9. Case Studies per Industry
+parent: 9. Use Cases per Industry
 nav_order: 2
 permalink: /case_studies_industry_healthcare.html
 description: "Healthcare analytics case studies using Isalos for clinical data regression and classification modelling."
@@ -9,6 +9,12 @@ description: "Healthcare analytics case studies using Isalos for clinical data r
 
 # Healthcare
 {: .no_toc }
+
+Below are some use cases of Isalos Analytics Platform in healthcare applications. Each case study is accompanied by:
+* A **Manual User Guide report**, providing a detailed, step-by-step description of the methodology and results, and
+* the corresponding **Isalos workflow file**, enabling full reproducibility and hands-on execution of the analysis within the platform.
+
+---
 
 ## Regression
 

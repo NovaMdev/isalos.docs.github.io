@@ -10,6 +10,11 @@ description: "Automated machine learning use cases for classification and regres
 # AutoML
 {: .no_toc }
 
+Below are some use cases of Isalos Analytics Platform in applications including automatic optimization of machine learning algorithms via the AutoML functionality. Each case study is accompanied by:
+* A **Manual User Guide report**, providing a detailed, step-by-step description of the methodology and results, and
+* the corresponding **Isalos workflow file**, enabling full reproducibility and hands-on execution of the analysis within the platform.
+
+---
 
 ## Classification
 

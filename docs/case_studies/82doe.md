@@ -10,6 +10,11 @@ description: "Design of Experiments case studies in Isalos featuring screening, 
 # Design of Experiments (DOE)
 {: .no_toc }
 
+Below are some use cases of Isalos Analytics Platform in DOE applications. Each case study is accompanied by:
+* A **Manual User Guide report**, providing a detailed, step-by-step description of the methodology and results, and
+* the corresponding **Isalos workflow file**, enabling full reproducibility and hands-on execution of the analysis within the platform.
+
+---
 
 ## Screening Designs 
 

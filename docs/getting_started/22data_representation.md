@@ -112,9 +112,9 @@ Each tab functions as a node in the data analysis workflow. These nodes are repr
 <img src="images/Data representation/workflow.svg" alt="workflow" width="600" class="img-responsive">
 </div>
 
-## Tips
+## ✧ Tips
 <div class="tip-box">
-  <div class="tip-title">💡 Recommendations</div>
+  <div class="tip-title">Recommendations</div>
   <ul>
     <li>
       You can periodically save the intermediate results of your data analysis or modelling using the

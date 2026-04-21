@@ -213,7 +213,7 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 
 ---
 
-## Tips
+## ✧ Tips
 
 <div class="tip-box">
   <ul>

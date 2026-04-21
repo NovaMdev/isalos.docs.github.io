@@ -273,21 +273,21 @@ If Association Rules are selected, each rule is presented alongside its correspo
 </div>
 
 
-## Tips
+## ✧ Tips
 <div class="tip-box">
-  <div class="tip-title">💡Apriori:</div>
+  <div class="tip-title">Apriori:</div>
   <ul>
     <li>It works well for small to medium-sized datasets; performance drops significantly for very large datasets due to candidate generation overhead.</li>
     <li>Setting the minimum support too low can lead to an exponential increase in candidate itemsets and memory usage.</li>
   </ul>
 
-  <div class="tip-title">💡Eclat:</div>
+  <div class="tip-title">Eclat:</div>
   <ul>
     <li>Efficient for dense datasets and larger itemsets due to its vertical representation of transactions.</li>
     <li>Memory usage can become high if many itemsets have large transaction ID lists.</li>
   </ul>
 
-  <div class="tip-title">💡FP-Growth:</div>
+  <div class="tip-title">FP-Growth:</div>
   <ul>
     <li>Highly efficient for large datasets compared to Apriori, as it avoids candidate generation.</li>
     <li>Extremely long or frequent patterns can still increase memory usage; consider limiting maximum pattern length.</li>

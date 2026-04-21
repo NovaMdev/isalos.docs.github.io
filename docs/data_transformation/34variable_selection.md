@@ -304,7 +304,7 @@ At a significance level of 0.05, the p-values of the coefficients indicate that 
 
 
 
-## Tips
+## ✧ Tips
 <div class="tip-box">
   <ul>
     <li>

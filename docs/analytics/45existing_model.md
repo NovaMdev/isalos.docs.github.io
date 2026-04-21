@@ -73,7 +73,7 @@ In the right-hand spreadsheet of the tab the output data matrix with the normali
 
 ---
 
-## Tips
+## ✧ Tips
 
 <div class="tip-box">
   <ul>

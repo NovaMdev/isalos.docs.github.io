@@ -100,7 +100,7 @@ body.dark-mode .site-title {
 body.dark-mode hr,
 body.dark-mode .main-header {
   border-color: var(--dm-text-primary) !important;
-  background-color: var(--dm-bg) !important;
+  background-color: var(--dm-border) !important;
 }
 
 /* Dark mode headers */
@@ -611,22 +611,22 @@ body {
 
 
 .top-nav-links .isalos-icon-link img {
-  height: 30px;
+  height: 50px;
   width: auto;
 }
 
 .top-nav-links .novaM-icon-link img {
-  height: 30px;
+  height: 60px;
   width: auto;
 }
 
 .top-nav-links .yt-icon-link img {
-  height: 35px;
+  height: 50px;
   width: auto;
 }
 
 .top-nav-links .linkedin-icon-link img {
-  height: 55px;
+  height: 50px;
   width: auto;
 }
 
@@ -636,7 +636,7 @@ body.dark-mode .top-nav-links .isalos-icon-link img {
 }
 
 body.dark-mode .top-nav-links .novaM-icon-link img {
-  height: 30px; /* adjust until it visually matches */
+  height: 60px; /* adjust until it visually matches */
   width:auto;
 }
 
@@ -646,17 +646,17 @@ body.dark-mode .top-nav-links .yt-icon-link img {
 }
 
 body.dark-mode .top-nav-links .linkedin-icon-link img {
-  height: 55px; /* adjust until it visually matches */
+  height: 50px; /* adjust until it visually matches */
   width: auto;
 }
 
 body.dark-mode .top-nav-links .yt-icon-link .icon-dark-default-hover {
-  height: 30px; /* ← set your desired dark hover size */
+  height: 50px; 
   width: auto;
 }
 
 body.dark-mode .top-nav-links .yt-icon-link .icon-dark-default-hover {
-  height: 32px; /* ← set your desired size here */
+  height: 50px; 
   width: auto;
 }
 
@@ -1221,6 +1221,20 @@ body.dark-mode .main-content .anchor-heading svg {
   margin-left: -1em;
 }
 
+.tip-box a {
+  font-weight: bold;
+  text-decoration-color: #d6c8b3;
+}
+
+.tip-box code {
+  color: #7a3f00;
+  background-color: #ead9c2;
+  border-color: #d8b78b;
+}
+
+.tip-box a:hover {
+  text-decoration-color: var(--isalos-darkblue);
+}
 
 /* Dark mode version */
 body.dark-mode .tip-box {
@@ -1240,6 +1254,20 @@ body.dark-mode .tip-box ul li::before {
   color: #c18f1c;
 }
 
+body.dark-mode .tip-box a {
+  font-weight: bold;
+  text-decoration-color: #774802;
+}
+
+body.dark-mode .tip-box a:hover {
+  text-decoration-color: var(--isalos-lightblue);
+}
+
+body.dark-mode .tip-box code {
+  color: #c4af89 !important;
+  background-color: #5a3600 !important;
+  border-color: #774802 !important;
+}
 
 /* =============================================================================
    5. SEARCH BAR

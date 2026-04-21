@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 9.1 Pharmaceutical
-parent: 9. Case Studies per Industry
+parent: 9. Use Cases per Industry
 nav_order: 1
 permalink: /case_studies_industry_pharmaceutical.html
 description: "Pharmaceutical analytics case studies in Isalos for drug delivery optimisation and formulation design."
@@ -9,6 +9,12 @@ description: "Pharmaceutical analytics case studies in Isalos for drug delivery 
 
 # Pharmaceutical
 {: .no_toc }
+
+Below are some use cases of Isalos Analytics Platform in pharmaceutical applications. Each case study is accompanied by:
+* A **Manual User Guide report**, providing a detailed, step-by-step description of the methodology and results, and
+* the corresponding **Isalos workflow file**, enabling full reproducibility and hands-on execution of the analysis within the platform.
+
+---
 
 ## Design of Experiments
 
