@@ -16,6 +16,13 @@ Below are some use cases of Isalos Analytics Platform in analytical chemistry ap
 
 ---
 
+## Curve Fitting
+
+#### Liquid Chromatography-High Resolution Mass Spectromentry ([`Gaussian Distribution`](https://www.docs.isalos.novamechanics.com/curvefitting.html#gaussian-distribution))
+* [Isalos workflow](files\Curve Fitting\2025_Zou\2025_Zou.iap)
+* [Report](files\Curve Fitting\2025_Zou\2025_Zou.pdf)
+
+
 ## Design of Experiments
 
 #### Development of hydrophilic interaction LC method ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))

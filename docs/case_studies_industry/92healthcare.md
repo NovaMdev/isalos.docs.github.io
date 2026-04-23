@@ -16,6 +16,17 @@ Below are some use cases of Isalos Analytics Platform in healthcare applications
 
 ---
 
+## Curve Fitting
+
+#### Johns Hopkins University ([`Exponential Growth`](https://www.docs.isalos.novamechanics.com/curvefitting.html#exponential-growth))
+* [Isalos workflow](files\Curve Fitting\2022_Dong\2022_Dong.iap)
+* [Report](files\Curve Fitting\2022_Dong\2022_Dong.pdf)
+
+#### Physical Performance Across the Adult Life Span ([`Polynomial Models - Order 2`](https://www.docs.isalos.novamechanics.com/curvefitting.html#polynomial-models-order-1-6))
+* [Isalos workflow](files\Curve Fitting\2017_Hall\2017_Hall.iap)
+* [Report](files\Curve Fitting\2017_Hall\2017_Hall.pdf)
+
+
 ## Regression
 
 #### Bodyfat

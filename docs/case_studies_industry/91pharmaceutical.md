@@ -16,6 +16,22 @@ Below are some use cases of Isalos Analytics Platform in pharmaceutical applicat
 
 ---
 
+## Curve Fitting
+
+#### Guinea Pig Ileum Tissue ([`log10(Agonist) – Sigmoidal 4P – Normalized 0–100% response`](https://www.docs.isalos.novamechanics.com/curvefitting.html#log10agonist--sigmoidal-4p--normalized-0100-response))
+{: .no_toc }
+* [Isalos workflow](files\Curve Fitting\2024_Wilfred\2024_Wilfred.iap)
+* [Report](files\Curve Fitting\2024_Wilfred\2024_Wilfred.pdf)
+
+#### Plasma Cimetidine in Beagle Dog ([`One Phase Association`](https://www.docs.isalos.novamechanics.com/curvefitting.html#one-phase-association))
+* [Isalos workflow](files\Curve Fitting\2017_Yu\2017_Yu.iap)
+* [Report](files\Curve Fitting\2017_Yu\2017_Yu.pdf)
+
+#### Guinea Pig Liver Membrane ([`One Site - Specific Binding`](https://www.docs.isalos.novamechanics.com/curvefitting.html#one-site--specific-binding))
+* [Isalos workflow](files\Curve Fitting\2015_Chu\2015_Chu.iap)
+* [Report](files\Curve Fitting\2015_Chu\2015_Chu.pdf)
+
+
 ## Design of Experiments
 
 #### Opthalmic Drug Delivery System ([`Fractional Factorial`](https://www.docs.isalos.novamechanics.com//screening.html))

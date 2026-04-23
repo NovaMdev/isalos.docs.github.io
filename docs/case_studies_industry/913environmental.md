@@ -16,6 +16,13 @@ Below are some use cases of Isalos Analytics Platform in environmental applicati
 
 ---
 
+## Curve Fitting
+
+#### Tide - Gauge Water Level  ([`Sine Wave with Non-Zero Baseline`](https://www.docs.isalos.novamechanics.com/curvefitting.html#sine-wave-with-nonzero-baseline))
+* [Isalos workflow](files\Curve Fitting\2016_Woodworth\2016_Woodworth.iap)
+* [Report](files\Curve Fitting\2016_Woodworth\2016_Woodworth.pdf)
+
+
 ## Design of Experiments
 
 #### PFAS ENVIRONMENTAL FATE ([`Plackett Burman`](https://www.docs.isalos.novamechanics.com//screening.html) & [`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))

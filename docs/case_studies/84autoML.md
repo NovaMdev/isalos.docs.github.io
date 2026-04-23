@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 8.3 AutoML
+title: 8.4 AutoML
 parent: 8. Knowledge Base
-nav_order: 3
+nav_order: 4
 permalink: /knowledge_base_autoML.html
 description: "Automated machine learning use cases for classification and regression problems."
 ---

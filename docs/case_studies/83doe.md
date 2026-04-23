@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 8.2 Design of Experiments (DOE)
+title: 8.3 Design of Experiments (DOE)
 parent: 8. Knowledge Base
-nav_order: 2
+nav_order: 3
 permalink: /knowledge_base_doe.html
 description: "Design of Experiments case studies in Isalos featuring screening, factorial, and response surface examples."
 ---
