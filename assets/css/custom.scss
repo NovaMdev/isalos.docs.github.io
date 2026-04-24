@@ -1696,3 +1696,15 @@ body {
 .main-content > hr {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .main-content > footer {
+    margin-left: -2rem;
+    width: calc(100% + 4rem);
+    z-index: 996;
+  }
+
+  .main-content-wrap {
+    min-height: calc(100vh - 1.5rem);
+  }
+}
