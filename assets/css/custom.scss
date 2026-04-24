@@ -852,6 +852,7 @@ body.dark-mode .sidebar-mobile-links .icon-link:hover .icon-hover { opacity: 0; 
   .side-bar {
     top: 60px;
     height: calc(100vh - 60px);
+    padding-bottom: 60px; 
   }
 }
 
@@ -952,11 +953,15 @@ body.dark-mode .sidebar-mobile-links .icon-link:hover .icon-hover { opacity: 0; 
   width: 250px;
   max-height: none;
   overflow-y: auto;
-  padding: 3rem 1rem 0 1.5rem;
+  padding: 3rem 1rem 100px 1.5rem;
   border-left: 1px solid var(--color-border);
   background-color: var(--color-bg);
 }
-
+.page-toc nav::after {
+  content: '';
+  display: block;
+  height: 60px;
+}
 .page-toc-heading {
   font-size: 0.75rem;
   font-weight: 600;
@@ -1077,8 +1082,8 @@ html.search-active .page-toc {
 /* Back to top button */
 .toc-back-to-top {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  bottom: calc(1.5rem + 40px);
+  right: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1592,110 +1597,102 @@ html {
 
 /* =============================================================================
    8. FOOTER
-   ============================================================================= 
-
-html,
-body {
+   ============================================================================= */
+html, body {
   height: 100%;
   margin: 0;
+}
+
+body {
   overflow-x: clip;
 }
 
 .main-content-wrap {
-  min-height: calc(100dvh - 60px);
+  min-height: calc(100vh - 60px); /* 60px = nav bar height */
   display: flex;
   flex-direction: column;
+  padding-bottom: 0 !important;
 }
 
 .main-content {
-  flex: 1 0 auto;
+  flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
 }
 
 .main-content > main {
-  flex: 1 0 auto;
+  flex: 1;
 }
-
 
 .main-content > footer {
-  margin-top: auto;
   margin-bottom: 0 !important;
-  flex-shrink: 0;
+  padding-bottom: 0 !important;
   position: relative;
-  z-index: 1002;
-
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  z-index: 999;
   width: 100vw;
-  max-width: 100vw;
-
-  padding: 0 !important;
-  border: 0 !important;
-  background: var(--color-border);
   box-sizing: border-box;
-  overflow-x: clip;
+  margin-left: -1rem;
+  width: calc(100% + 2rem);
 }
-
 
 .site-footer-custom {
   width: 100%;
-  display: block;
-  margin: 0;
-  background: var(--color-border);
-}
-
-
-.footer-bottom {
-  margin: 0;
-  padding: 0.45rem 2.5rem;
+  height: 60px;
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  box-shadow: 0 -1px 3px var(--color-shadow);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  min-height: auto;
-  background: var(--color-border);
-  box-sizing: border-box;
+  justify-content: center;
+}
+
+.footer-copyright {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: 10px;
 }
 
 .footer-bottom p {
-  margin: 0;
-  color: var(--color-text-muted);
-  font-size: 13px;
-  align-self: right;
+  font-size: 14px; 
 }
 
-.footer-socials {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.footer-socials a {
-  color: #ffffff !important;
-  text-decoration: none !important;
-}
-
-
-.statcounter,
-noscript .statcounter {
-  display: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  height: 0 !important;
-  line-height: 0 !important;
-}
-
-@media (max-width: 65.99rem) {
-  .footer-bottom {
-    padding: 0.45rem 2rem;
+@media (min-width: 50rem) {
+  .main-content > footer {
+    margin-left: -16.5rem; /* counteracts .main's left margin at this breakpoint */
   }
 }
 
-@media (max-width: 768px) {
-  .footer-bottom {
-    padding: 0.4rem 1.25rem;
+@media (min-width: 66.5rem) {
+  .main-content > footer {
+    margin-left: -17rem; /* counteracts the custom sidebar width */
   }
-}*/
+}
+
+/* ≥50rem: sidebar appears (15.5rem) + content-wrap padding-left (2rem) */
+@media (min-width: 50rem) {
+  .main-content > footer {
+    margin-left: -17.5rem;
+    width: 100vw;
+  }
+}
+
+/* ≥66rem: content-wrap padding-left increases to 3rem */
+@media (min-width: 66rem) {
+  .main-content > footer {
+    margin-left: -18.5rem;
+    width: 100vw;
+  }
+}
+
+/* ≥66.5rem: sidebar increases to 17rem */
+@media (min-width: 66.5rem) {
+  .main-content > footer {
+    margin-left: -20rem;
+    width: 100vw;
+  }
+}
+
+/* Last separator line hidden */
+.main-content > hr {
+  display: none;
+}
