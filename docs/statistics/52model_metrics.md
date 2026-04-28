@@ -220,7 +220,7 @@ In the right-hand spreadsheet of the tab the confusion matrix is depicted [7], f
 
 ---
 
-## Tips
+## ✧ Tips
 <div class="tip-box">
   <ul>
     <li>

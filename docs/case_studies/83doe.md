@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 8.2 Design of Experiments (DOE)
+title: 8.3 Design of Experiments (DOE)
 parent: 8. Knowledge Base
-nav_order: 2
+nav_order: 3
 permalink: /knowledge_base_doe.html
 description: "Design of Experiments case studies in Isalos featuring screening, factorial, and response surface examples."
 ---
@@ -10,6 +10,11 @@ description: "Design of Experiments case studies in Isalos featuring screening, 
 # Design of Experiments (DOE)
 {: .no_toc }
 
+Below are some use cases of Isalos Analytics Platform in DOE applications. Each case study is accompanied by:
+* A **Manual User Guide report**, providing a detailed, step-by-step description of the methodology and results, and
+* the corresponding **Isalos workflow file**, enabling full reproducibility and hands-on execution of the analysis within the platform.
+
+---
 
 ## Screening Designs 
 
