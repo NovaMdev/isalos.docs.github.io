@@ -162,7 +162,7 @@ In the right-hand spreadsheet of the tab the output data matrix with the  cluste
 </div>
 
 
-## Tips
+## ✧ Tips
 
 <div class="tip-box">
   <ul>

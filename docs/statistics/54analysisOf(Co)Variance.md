@@ -199,8 +199,8 @@ Use Factorial ANOVA by browsing in the top ribbon:
 | **Coding for Factors** | Select the type of coding used to code categorical factors from the two options provided: (-1,0,+1), (1,0) |
 | **Factors/ Exclude Columns** | Select manually the columns that correspond to factors through the dialog window. Use the buttons to move columns between the “Excluded Columns” list and the “Factors” list. Single-arrow buttons will move only the selected columns, while double-arrow buttons will move all available columns. At least two categorical columns should be selected as factors, along with one numerical dependent variable. |
 |**Specify Reference Levels**| If the (1,0) coding is selected, specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected.  Include all variables listed under Factors, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated. |
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ### Output
 {: .no_toc }
@@ -234,8 +234,8 @@ In the input datasheet the requirement is to specify at least two columns  and i
 1. Select `Coding for Factors` [4].
 1. Select the columns by clicking on the arrow buttons [7] and moving columns between the `Excluded Columns` [5] and `Factors`[6] lists.
 1. If the (1,0) coding is selected, `Specify Reference Levels` [8] for the categorical factors.
-1. Select your preferred option to define the model you want to analyze [9].
-1. Specify the `Formula` [10] for the analysis if `Custom` option is selected. 
+1. Select the prefered `Formula Type`[9].
+1. `Specify Custom Model Formula` [10] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1. Click on the Execute button [11] to perform the Factorial ANOVA method.
 
 
@@ -297,8 +297,8 @@ Numerical values should be specified in the input datasheet. The ANCOVA design s
 | **Coding for Factors** | Select the type of coding used to code categorical factors from the two options provided: (-1,0,+1), (1,0) |
 | **Factors/ Covariates / exclude columns** | Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate column should be specified. |
 |**Specify Reference Levels**| If the (1,0) coding is selected, specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected.  Include all variables listed under Factors and Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated. |
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ### Output
 {: .no_toc }
@@ -331,8 +331,8 @@ In the input datasheet the requirement is to specify at least two columns  and i
 1. Select `Coding for Factors` [4].
 1. Select the columns by clicking on the arrow buttons [8] and moving columns between the `Excluded Columns` [5] and `Factors`[6] and `Covariates` [7] lists.
 1. If the (1,0) coding is selected, `Specify Reference Levels` [9] for the categorical factors.
-1. Select your preferred option to define the model you want to analyze [10].
-1. Specify the `Formula` [11] for the analysis if `Custom` option is selected. 
+1. Select the prefered `Formula Type`[10].
+1. `Specify Custom Model Formula` [11] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1. Click on the `Execute` button [12] to perform the ANCOVA method.
 
 
@@ -372,8 +372,8 @@ Numerical values should be specified in the input datasheet. The MANOVA design r
 | **Coding for Factors** | Select the type of coding used to code categorical factors from the two options provided: (-1,0,+1), (1,0) |
 |**Factors/ Dependent Variables / exclude columns**| Select manually the columns that correspond to factors and the columns that correspond to dependent variables through the dialog window. Use the arrow buttons to move columns between the Excluded Columns list and the Factors or Dependent Variables fields. The single-arrow buttons move selected columns. For a valid MANOVA design, you must specify at least one factor and two or more dependent variables. |
 |**Specify Reference Levels**| If the (1,0) coding is selected, specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected.  Include all variables listed under Factors, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated. |
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ### Output
 {: .no_toc }
@@ -406,8 +406,8 @@ In the input datasheet the requirement is to specify three columns  and insert t
 1. Select `Coding for Factors` [3].
 1. Select the columns by clicking on the arrow buttons [7] and moving columns between the `Excluded Columns` [4] and `Dependent Variables`[5] and  `Factors`[6] lists.
 1. If the (1,0) coding is selected, `Specify Reference Levels` [8] for the categorical factors.
-1. Select your preferred option to define the model you want to analyze [9].
-1. Specify the `Formula` [10] for the analysis if `Custom` option is selected. 
+1. Select the prefered `Formula Type`[9].
+1. `Specify Custom Model Formula` [10] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1. Click on the `Execute` button [11] to perform the MANOVA method.
 
 
@@ -447,8 +447,8 @@ Numerical values should be specified in the input datasheet. To perform a valid 
 | **Coding for Factors** | Select the type of coding used to code categorical factors from the two options provided: (-1,0,+1), (1,0) |
 |**Dependent Variables / Covariate/ Factor/ Exclude columns**| Select manually the columns that correspond to factors, columns that correspond to covariates and the columns that correspond to dependent variables through the dialog window. Use the arrow buttons to move columns between the Excluded Columns list and the Factors, Covariates or Dependent Variables fields. The single-arrow buttons move selected columns. For a valid MANCOVA design, you must specify at least one factor , one or more covariates and two or more dependent variables. |
 |**Specify Reference Levels**| If the (1,0) coding is selected, specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected.  Include all variables listed under Factors and Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated. |
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ### Output
 {: .no_toc }
@@ -481,8 +481,8 @@ In the input datasheet the requirement is to specify three columns  and insert t
 1. Select `Coding for Factors` [3].
 1. Select the columns by clicking on the arrow buttons [8] and moving columns between the `Excluded Columns` [4], `Dependent Variables` [5], `Factors`[6] and `Covariates`[7]   lists.
 1. If the (1,0) coding is selected, `Specify Reference Levels` [9] for the categorical factors.
-1. Select your preferred option to define the model you want to analyze [10].
-1. Specify the `Formula` [11] for the analysis if `Custom` option is selected. 
+1. Select the prefered `Formula Type`[10].
+1. `Specify Custom Model Formula` [11] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1. Click on the `Execute` button [12] to perform the MANCOVA method.
 
 <div style="text-align: center;">
@@ -611,8 +611,8 @@ Numerical values should be specified in the input datasheet. The Mixed ANOVA des
 | **Dependent Variable** | Select the column that corresponds to values of the dependent variable. |
 |**Between-Subjects Factors/ Covariates / exclude columns**| Select manually the columns that correspond to between-subject factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Between-Subjects Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one between-subject or one covariate column should be specified. |
 |**Specify Reference Levels**| If the (1,0) coding is selected, specify the reference level for each of the categorical between-subjects factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Between-Subjects Factors and Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ### Output
 {: .no_toc }
@@ -647,9 +647,9 @@ In the input datasheet the requirement is to specify four columns  and insert th
 1. Select the `Within Column` [4]. 
 1. Select the `Dependent Variable` [5]. 
 1. Select the columns by clicking on the arrow buttons [10] and moving columns between the `Excluded Columns` [7] and `Between-Subjects Factors`[8] and `Covariates` [9] lists.
-1. Select your preferred option to define the model you want to analyze [11]. 
-1. If the (1,0) coding is selected, `Specify Reference Levels` [12] for the categorical factors.
-1. Specify the `Formula` [13] for the analysis if `Custom` option is selected.
+1. If the (1,0) coding is selected, `Specify Reference Levels` [11] for the categorical factors.
+1. Select the prefered `Formula Type`[12].
+1. `Specify Custom Model Formula` [13] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1. Click on the `Execute` button [14] to perform Mixed ANOVA. 
 
 <div style="text-align: center;">
@@ -662,6 +662,29 @@ The two tables analyzing the within-subject effects and the between-subject effe
 <div style="text-align: center;">
 <img src="images/ANOVA/MixedANOVA_output.png" alt="MixedANOVA-output" width="600" height="300" class="img-responsive">
 </div>
+
+---
+
+
+## Specify Custom Model Formula
+The Custom formula option allows the user to define the exact model terms to be included in the analysis. This is useful when a specific combination of main effects and interaction terms is required, instead of using the predefined Main Effects or Full Factorial options.
+
+The custom formula is specified through the Custom Formula Creation dialog window. This window is used to construct the model by selecting factors and covariates and adding terms and interactions up to the desired order. The resulting formula is shown automatically in the formula display area at the bottom of the dialog.
+
+Only factors and covariates are used in this dialog window. Main effects are always included for the columns present in the Included Columns list and cannot be excluded. Therefore, a valid custom formula always contains at least one main effect.
+
+### Dialog window components
+{: .no_toc }
+
+|**Included Columns**| Displays the factors and covariates available for the custom formula. If a column appears in this list, its main effect is included by default in the model. |
+|**Included Terms**| Displays the terms currently included in the model formula, including main effects and interaction terms. |
+|**Add interactions (up to order)**| Adds all possible interaction terms among the selected columns up to the specified order. |
+|**Add terms (up to order)**| Adds all terms up to the specified order for the selected columns. This includes the main effects and all interaction terms up to that order. |
+|**Add Custom Interaction**| Adds only the specific interaction defined by the selected columns. |
+|**Delete Selected**| Removes the selected interaction term or terms from the Included Terms list. Main effects cannot be removed. |
+|**Reset Selections**| Restores the formula to its initial state. |
+|**Move up / Move down**| Changes the order of the terms in the Included Terms list. This is important when Sequential (Type I) sum of squares is selected, since the order of terms affects the results. |
+|**Formula display area**| Displays the custom model formula exactly as it will be used in the analysis. |
 
 ---
 

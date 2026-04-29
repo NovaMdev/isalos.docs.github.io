@@ -3498,6 +3498,31 @@ The independent variable (X) must be on a linear scale (often time or distance).
 ---
 
 #### Growth Equations
+
+##### Exponential Growth
+The Exponential growth model describes processes that increase at a rate proportional to their current value. This produces growth with a constant doubling time. It is commonly used for population growth, cell proliferation, bacterial expansion, or compound accumulation under first-order kinetics.
+
+###### Equation
+{: .no_toc }
+<div id="exponential-growth"> \[ \begin{equation} Y = Y_0\, e^{KX} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/exponential_growth.png" alt="Exponential growth" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response at $$X=0$$ (same units as $$Y$$).
+
+1. $$K$$: Growth rate constant (units: inverse time). Larger $$K$$ produces faster growth.
+
+---
+
 ##### Log of exponential growth
 The Log of exponential growth model is used when the response has already been logarithm-transformed. If the underlying process follows exponential growth, then plotting the logarithm of the population (or signal) versus time yields a straight line. Fitting this model is often more appropriate when measurement scatter increases with the magnitude of the response on the original scale, since the log transform can stabilize variance. For correct interpretation of doubling time, the Y values should be the natural logarithm of the population (or signal).
 

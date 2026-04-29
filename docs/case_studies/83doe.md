@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 8.2 Design of Experiments (DOE)
+title: 8.3 Design of Experiments (DOE)
 parent: 8. Knowledge Base
-nav_order: 2
+nav_order: 3
 permalink: /knowledge_base_doe.html
 description: "Design of Experiments case studies in Isalos featuring screening, factorial, and response surface examples."
 ---
@@ -10,6 +10,11 @@ description: "Design of Experiments case studies in Isalos featuring screening, 
 # Design of Experiments (DOE)
 {: .no_toc }
 
+Below are some use cases of Isalos Analytics Platform in DOE applications. Each case study is accompanied by:
+* A **Manual User Guide report**, providing a detailed, step-by-step description of the methodology and results, and
+* the corresponding **Isalos workflow file**, enabling full reproducibility and hands-on execution of the analysis within the platform.
+
+---
 
 ## Screening Designs 
 
@@ -99,14 +104,14 @@ description: "Design of Experiments case studies in Isalos featuring screening, 
 
 #### PFAS ENVIRONMENTAL FATE ([`Plackett Burman`](https://www.docs.isalos.novamechanics.com//screening.html) & [`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
-* [Isalos workflow](files/DoE/Environmental/PFAS Fate/PFAS_Fate_v202.iap)
-* [Report](files/DoE/Environmental/PFAS Fate/PFAS_Fate_Manual_en.pdf)
+* [Isalos workflow](files\DoE\Environmental\PFAS Fate\PFAS_Fate_v202.iap)
+* [Report](files\DoE\Environmental\PFAS Fate\PFAS_Fate_Manual_en.pdf)
 
 
 ## Isalos Publications
 
 #### Ammonia borane catalytic hydrolysis for H<sub>2</sub> generation ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Catalysis\2025_Michael\2025_Michael_Isalos.iap)
-* [Report](files\DoE\Catalysis\2025_Michael\2025_Michael.pdf)
+* [Isalos workflow](files\DoE\Catalysis\2025_Michael\2025_Michael_v202.iap)
+* [Report](files\DoE\Catalysis\2025_Michael\2025_Michael_v202.pdf)
 
