@@ -282,7 +282,7 @@ The optimal factor settings, the predicted values and the individual and overall
 
 ## References {#references-design-of-experiments}
 1. Alkiayat, M., A practical guide to creating a Pareto chart as a quality improvement tool. Global Journal on Quality and Safety in Healthcare, 2021. 4(2): p. 83–84. [doi.org/10.36401/JQSH-21-X1](https://doi.org/10.36401/JQSH-21-X1).
-1. Derringer, G., & Suich, R. (1980). Simultaneous Optimization of Several Response Variables. Journal of Quality Technology, 12(4), 214–219. [doi.org/10.1080/00224065.1980.11980968] (https://doi.org/10.1080/00224065.1980.11980968)
+1. Derringer, G., & Suich, R. (1980). Simultaneous Optimization of Several Response Variables. Journal of Quality Technology, 12(4), 214–219. [doi.org/10.1080/00224065.1980.11980968](https://doi.org/10.1080/00224065.1980.11980968)
 
 ---
 
