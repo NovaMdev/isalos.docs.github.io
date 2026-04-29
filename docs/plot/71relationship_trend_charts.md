@@ -549,9 +549,9 @@ The downloadable, customized polar chart is presented below.
 </div>
 ---
 
-## Tips
+## ✧ Tips
 <div class="tip-box">
-  <div class="tip-title">💡 Line and Scatter Chart:</div>
+  <div class="tip-title">Line and Scatter Chart:</div>
   <ul>
     <li>They are commonly used to visualize linear relationships between two variables, but other patterns can also be detected, e.g. sine, cosine, or quadratic relationships.</li>
     <li>Avoid including a vast number of observations on the scatter plot (oversampling), as it can lead to overlapping data points.</li>
@@ -559,12 +559,12 @@ The downloadable, customized polar chart is presented below.
     <li>For time series line charts, ensure time intervals are consistent to avoid misleading slopes.</li>
   </ul>
 
-  <div class="tip-title">💡 Polar Chart:</div>
+  <div class="tip-title">Polar Chart:</div>
   <ul>
     <li>It is ideal for representing the relationships between periodical or cyclical data.</li>
   </ul>
 
-  <div class="tip-title">💡 Stream Chart:</div>
+  <div class="tip-title">Stream Chart:</div>
   <ul>
     <li>A stream chart cannot simultaneously represent both positive and negative values, as the central axis is not a true zero baseline but rather a visual balancing point.</li>
     <li>Usually, it is difficult to accurately compare or subtract layer heights, so this type of chart should not be used to visualize quantitative information, but rather patterns and trends in an intuitive and engaging way.</li>

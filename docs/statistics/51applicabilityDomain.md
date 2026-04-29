@@ -99,7 +99,7 @@ You can apply the generated Domain – APD model to any external data using the 
 </div>
 ---
 
-## Tips
+## ✧ Tips
 <div class="tip-box">
   <ul>
     <li>
