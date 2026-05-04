@@ -202,12 +202,42 @@ The output spreadsheet contains a table summarizing the survival analysis result
 
 ##### Input
 {: .no_toc }
+In the input datasheet the requirement is to specify at least one numerical column and insert the appropriate data, as shown below.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_input.png" alt="KaplanMeier-input" width="800" height="600" class="img-responsive">
+</div>
 
 ##### Configuration
 {: .no_toc }
+1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Kaplan-Meier Estimator`.
+1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
+1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `LEvels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
+1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [8] button to erase any selections made.
+1. Select/tick to `Use a Frequency Column` [9]. 
+1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[10]. This column should contain non-negative numeric values.
+1. Select/tick to `Use a Censoring Column` [11]. 
+1. If the `Use a Censoring Column` option is selected, specify a `Censoring Column`[12] and the value of this column that should be the `Censored Indicator Value` [13].
+1. Select/tick to `Censor times at or above a value` [14]. 
+1. If the ``Censor times at or above a value` option is selected, specify a `Censoring Thresholdd Value`[15] above which events are considered censored.
+1. Select/tick to `Use a Grouping Column` [16]. 
+1. If the `Use a Grouping Column` option is selected, specify a `Grouping Column`[17]. This column should be categorical, either textual or numerical.
+1. Specify the `Confidence Level` (%) [18] for Confidence Intervals and the desired `Confidence Interval Type` [19].
+1. Optionally select/tick to calculate and present the `Hazard Function Plot` [20] and the `Cumulative Probability of Failure Plot` [21].
+1. Click on the `Execute` button [22] to perform the Kaplan-Meier Estimator. 
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_configuration.png" alt="KaplanMeier-configuration" width="600" height="600" class="img-responsive">
+</div>
 
 ##### Output
 {: .no_toc }
+The tables summarizing the survival analysis results for the non grouped dataset and each grouping level are shown in the output spreadsheet.
+In addition, a pop-up window displays the Kaplan–Meier survival curve and, if selected, the hazard function and cumulative probability of failure plots.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_output.png" alt="KaplanMeier-output" width="800" height="600" class="img-responsive">
+</div>
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_chart.png" alt="KaplanMeier-chart" width="800" height="600" class="img-responsive">
+</div>
 
 ---
 
@@ -261,7 +291,7 @@ The Life Table method requires at least one column of numerical data to be speci
 |**Event Mode Column**| Within the `Configure Event Mode Options` window, specify the column containing event mode information. |
 |**Levels not Considered as Event/Levels Considered as Event**| Manually select which levels should be treated as events from the available levels of the Event Mode Column. Use the arrow buttons to move levels between the two lists. Single-arrow buttons move selected levels, while double-arrow buttons move all levels. At least one level must be selected as an event. |
 |**Clear Event Mode Options**| Use this button to clear all selections related to event mode configuration. |
-|**Specify End Time and Time Steps / Use a column to specify end points**| SSelect whether to define the intervals automatically by specifying an end time and interval width, or to provide a column containing the endpoints of each interval. |
+|**Specify End Time and Time Steps / Use a column to specify end points**| Select whether to define the intervals automatically by specifying an end time and interval width, or to provide a column containing the endpoints of each interval. |
 |**Intervals through / by**| Specify the end time and the width of each interval when automatic interval generation is selected. |
 |**End Points Column**|  If the option to use a column is selected, choose the column containing the endpoints of the intervals. This column must be numerical and contain non-negative values. |
 | **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
@@ -290,12 +320,46 @@ In addition, a pop-up window displays the Life Table survival curve, showing the
 
 ##### Input
 {: .no_toc }
+In the input datasheet the requirement is to specify at least one numerical column and insert the appropriate data, as shown below.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/LifeTable_input.png" alt="LifeTable-input" width="800" height="600" class="img-responsive">
+</div>
 
 ##### Configuration
 {: .no_toc }
+1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Kaplan-Meier Estimator`.
+1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
+1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `LEvels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
+1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [8] button to erase any selections made.
+1. Select whether to `Specify End Time and Time Steps` or `Use a column to specify end points` for the Interval Creation [9].
+1. If you choose to `Specify End Time and Time Steps` then specify the end time[10] and the time steps [11], otherwise select the `End Points Column`[12]
+1. Select/tick to `Use a Frequency Column` [13]. 
+1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[14]. This column should contain non-negative numeric values.
+1. Select/tick to `Use a Censoring Column` [15]. 
+1. If the `Use a Censoring Column` option is selected, specify a `Censoring Column`[16] and the value of this column that should be the `Censored Indicator Value` [17].
+1. Select/tick to `Censor times at or above a value` [18]. 
+1. If the ``Censor times at or above a value` option is selected, specify a `Censoring Thresholdd Value`[19] above which events are considered censored.
+1. Select/tick to `Use a Grouping Column` [20]. 
+1. If the `Use a Grouping Column` option is selected, specify a `Grouping Column`[21]. This column should be categorical, either textual or numerical.
+1. Specify the `Confidence Level` (%) [22] for Confidence Intervals and the desired `Confidence Interval Type` [23].
+1. Optionally select/tick to calculate and present the `Hazard Function Plot` [24] and the `Cumulative Probability of Failure Plot` [25].
+1. Click on the `Execute` button [26] to perform the Life-table analysis. 
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/LifeTable_configuration.png" alt="LifeTable-configuration" width="600" height="600" class="img-responsive">
+</div>
 
 ##### Output
 {: .no_toc }
+The tables summarizing the survival analysis results for the non grouped dataset and each grouping level are shown in the output spreadsheet.
+In addition, a pop-up window displays the Life-table survival curve and, if selected, the hazard function and cumulative probability of failure plots.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/LifeTable_output.png" alt="LifeTable-output" width="800" height="600" class="img-responsive">
+</div>
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/LifeTable_chart.png" alt="LifeTable-chart" width="800" height="600" class="img-responsive">
+</div>
+
+---
 
 ---
 
@@ -383,12 +447,44 @@ In addition, a pop-up window displays the Kaplan–Meier survival curve, showing
 
 ##### Input
 {: .no_toc }
+In the input datasheet the requirement is to specify at least one numerical column and insert the appropriate data, as shown below.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_input.png" alt="NelsonAalen-input" width="800" height="600" class="img-responsive">
+</div>
 
 ##### Configuration
 {: .no_toc }
+1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Nelson-Aalen Method`.
+1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
+1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `LEvels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
+1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [8] button to erase any selections made.
+1. Select/tick to `Use a Frequency Column` [9]. 
+1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[10]. This column should contain non-negative numeric values.
+1. Select/tick to `Use a Censoring Column` [11]. 
+1. If the `Use a Censoring Column` option is selected, specify a `Censoring Column`[12] and the value of this column that should be the `Censored Indicator Value` [13].
+1. Select/tick to `Censor times at or above a value` [14]. 
+1. If the ``Censor times at or above a value` option is selected, specify a `Censoring Thresholdd Value`[15] above which events are considered censored.
+1. Select/tick to `Use a Grouping Column` [16]. 
+1. If the `Use a Grouping Column` option is selected, specify a `Grouping Column`[17]. This column should be categorical, either textual or numerical.
+1. Specify the `Confidence Level` (%) [18] for Confidence Intervals and the desired `Confidence Interval Type` [19].
+1. Optionally select/tick to calculate and present the `Cumulative Hazard Function Plot` [20] and the `Cumulative Probability of Failure Plot` [21].
+1. Click on the `Execute` button [22] to perform the Nelson-Aalen Method. 
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/NelsonAalen_configuration.png" alt="NelsonAalen-configuration" width="600" height="600" class="img-responsive">
+</div>
 
 ##### Output
 {: .no_toc }
+The tables summarizing the survival analysis results for the non grouped dataset and each grouping level are shown in the output spreadsheet.
+In addition, a pop-up window displays the Nelson-Aalen survival curve and, if selected, the cumulative hazard function and cumulative probability of failure plots.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/NelsonAalen_output.png" alt="NelsonAalen-output" width="800" height="600" class="img-responsive">
+</div>
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/NelsonAalen_chart.png" alt="NelsonAalen-chart" width="800" height="600" class="img-responsive">
+</div>
+
+---
 
 ---
 
@@ -456,12 +552,44 @@ In addition, a pop-up window displays the Kaplan–Meier survival curve, showing
 
 ##### Input
 {: .no_toc }
+In the input datasheet the requirement is to specify at least one numerical column and insert the appropriate data, as shown below.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_input.png" alt="KaplanMeier-input" width="800" height="600" class="img-responsive">
+</div>
 
 ##### Configuration
 {: .no_toc }
+1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Kaplan-Meier Estimator`.
+1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
+1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `LEvels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
+1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [8] button to erase any selections made.
+1. Select/tick to `Use a Frequency Column` [9]. 
+1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[10]. This column should contain non-negative numeric values.
+1. Select/tick to `Use a Censoring Column` [11]. 
+1. If the `Use a Censoring Column` option is selected, specify a `Censoring Column`[12] and the value of this column that should be the `Censored Indicator Value` [13].
+1. Select/tick to `Censor times at or above a value` [14]. 
+1. If the ``Censor times at or above a value` option is selected, specify a `Censoring Thresholdd Value`[15] above which events are considered censored.
+1. Select/tick to `Use a Grouping Column` [16]. 
+1. If the `Use a Grouping Column` option is selected, specify a `Grouping Column`[17]. This column should be categorical, either textual or numerical.
+1. Specify the `Confidence Level` (%) [18] for Confidence Intervals and the desired `Confidence Interval Type` [19].
+1. Optionally select/tick to calculate and present the `Hazard Function Plot` [20] and the `Cumulative Probability of Failure Plot` [21].
+1. Click on the `Execute` button [22] to perform the Kaplan-Meier Estimator. 
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_configuration.png" alt="KaplanMeier-configuration" width="600" height="600" class="img-responsive">
+</div>
 
 ##### Output
 {: .no_toc }
+The tables summarizing the survival analysis results for the non grouped dataset and each grouping level are shown in the output spreadsheet.
+In addition, a pop-up window displays the Kaplan–Meier survival curve and, if selected, the hazard function and cumulative probability of failure plots.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_output.png" alt="KaplanMeier-output" width="800" height="600" class="img-responsive">
+</div>
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_chart.png" alt="KaplanMeier-chart" width="800" height="600" class="img-responsive">
+</div>
+
+---
 
 ---
 
@@ -611,12 +739,42 @@ The output spreadsheet contains a table summarizing the non-parametric compariso
 
 ##### Input
 {: .no_toc }
+In the input datasheet the requirement is to specify at least one numerical column and insert the appropriate data, as shown below.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_input.png" alt="KaplanMeier-input" width="800" height="600" class="img-responsive">
+</div>
 
 ##### Configuration
 {: .no_toc }
+1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Kaplan-Meier Estimator`.
+1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
+1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `LEvels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
+1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [8] button to erase any selections made.
+1. Select/tick to `Use a Frequency Column` [9]. 
+1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[10]. This column should contain non-negative numeric values.
+1. Select/tick to `Use a Censoring Column` [11]. 
+1. If the `Use a Censoring Column` option is selected, specify a `Censoring Column`[12] and the value of this column that should be the `Censored Indicator Value` [13].
+1. Select/tick to `Censor times at or above a value` [14]. 
+1. If the ``Censor times at or above a value` option is selected, specify a `Censoring Thresholdd Value`[15] above which events are considered censored.
+1. Select/tick to `Use a Grouping Column` [16]. 
+1. If the `Use a Grouping Column` option is selected, specify a `Grouping Column`[17]. This column should be categorical, either textual or numerical.
+1. Specify the `Confidence Level` (%) [18] for Confidence Intervals and the desired `Confidence Interval Type` [19].
+1. Optionally select/tick to calculate and present the `Hazard Function Plot` [20] and the `Cumulative Probability of Failure Plot` [21].
+1. Click on the `Execute` button [22] to perform the Kaplan-Meier Estimator. 
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_configuration.png" alt="KaplanMeier-configuration" width="600" height="600" class="img-responsive">
+</div>
 
 ##### Output
 {: .no_toc }
+The tables summarizing the survival analysis results for the non grouped dataset and each grouping level are shown in the output spreadsheet.
+In addition, a pop-up window displays the Kaplan–Meier survival curve and, if selected, the hazard function and cumulative probability of failure plots.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_output.png" alt="KaplanMeier-output" width="800" height="600" class="img-responsive">
+</div>
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_chart.png" alt="KaplanMeier-chart" width="800" height="600" class="img-responsive">
+</div>
 
 ---
 
