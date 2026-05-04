@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 5.6 Survival Analysis
+title: 5.6 Survival Analysis (Under Development)
 parent: 5. Statistics
 nav_order: 6
 permalink: /survival-analysis.html
 description: "Analyze time-to-event data with different methods in Isalos"
 ---
 
-# Survival Analysis
+# Survival Analysis (Under Development)
 {: .no_toc }
 Survival Analysis, also known as "Time-to-Event" data analysis, is a collectuib of statistical methods that are used for analyzing data mesauring time until an event of interest occurs. Typical examples of such events include death, onset of disease, system failure, or arrival times. These methods are particularly useful when the timing of the event is as important as whether the event occurs.
 
@@ -211,7 +211,7 @@ In the input datasheet the requirement is to specify at least one numerical colu
 {: .no_toc }
 1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Kaplan-Meier Estimator`.
 1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
-1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `LEvels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
+1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
 1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [8] button to erase any selections made.
 1. Select/tick to `Use a Frequency Column` [9]. 
 1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[10]. This column should contain non-negative numeric values.
@@ -329,7 +329,7 @@ In the input datasheet the requirement is to specify at least one numerical colu
 {: .no_toc }
 1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Kaplan-Meier Estimator`.
 1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
-1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `LEvels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
+1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
 1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [8] button to erase any selections made.
 1. Select whether to `Specify End Time and Time Steps` or `Use a column to specify end points` for the Interval Creation [9].
 1. If you choose to `Specify End Time and Time Steps` then specify the end time[10] and the time steps [11], otherwise select the `End Points Column`[12]
@@ -456,7 +456,7 @@ In the input datasheet the requirement is to specify at least one numerical colu
 {: .no_toc }
 1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Nelson-Aalen Method`.
 1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
-1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `LEvels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
+1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
 1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [8] button to erase any selections made.
 1. Select/tick to `Use a Frequency Column` [9]. 
 1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[10]. This column should contain non-negative numeric values.
@@ -483,8 +483,6 @@ In addition, a pop-up window displays the Nelson-Aalen survival curve and, if se
 <div style="text-align: center;">
 <img src="images/SurvivalAnalysis/NelsonAalen_chart.png" alt="NelsonAalen-chart" width="800" height="600" class="img-responsive">
 </div>
-
----
 
 ---
 
@@ -552,41 +550,38 @@ In addition, a pop-up window displays the Kaplan–Meier survival curve, showing
 
 ##### Input
 {: .no_toc }
-In the input datasheet the requirement is to specify at least one numerical column and insert the appropriate data, as shown below.
+In the input datasheet the requirement is to specify at least two numerical column and insert the appropriate data, as shown below.
 <div style="text-align: center;">
-<img src="images/SurvivalAnalysis/KaplanMeier_input.png" alt="KaplanMeier-input" width="800" height="600" class="img-responsive">
+<img src="images/SurvivalAnalysis/Turnbull_input.png" alt="Turnbull-input" width="800" height="600" class="img-responsive">
 </div>
 
 ##### Configuration
 {: .no_toc }
-1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Kaplan-Meier Estimator`.
-1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
-1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `LEvels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
-1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [8] button to erase any selections made.
-1. Select/tick to `Use a Frequency Column` [9]. 
-1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[10]. This column should contain non-negative numeric values.
-1. Select/tick to `Use a Censoring Column` [11]. 
-1. If the `Use a Censoring Column` option is selected, specify a `Censoring Column`[12] and the value of this column that should be the `Censored Indicator Value` [13].
-1. Select/tick to `Censor times at or above a value` [14]. 
-1. If the ``Censor times at or above a value` option is selected, specify a `Censoring Thresholdd Value`[15] above which events are considered censored.
-1. Select/tick to `Use a Grouping Column` [16]. 
-1. If the `Use a Grouping Column` option is selected, specify a `Grouping Column`[17]. This column should be categorical, either textual or numerical.
-1. Specify the `Confidence Level` (%) [18] for Confidence Intervals and the desired `Confidence Interval Type` [19].
-1. Optionally select/tick to calculate and present the `Hazard Function Plot` [20] and the `Cumulative Probability of Failure Plot` [21].
-1. Click on the `Execute` button [22] to perform the Kaplan-Meier Estimator. 
+1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Turnbull Estimator`.
+1. Select the column that contains the `Interval Start (Lower Bound)`[1] andd the column that contains the `Interval End (Upper Bound)`[2] for each subject. These columns should contain non-negative numeric values.
+1. Optionally click on the `Configure Event Mode Options` [3] button to select an `Event Mode Column` [4] and use the arrow buttons [5] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[6] and `Levels Considered as Event`[7] lists. `Save` or `Cancel` any changes made using the appropriate buttons [8].
+1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [9] button to erase any selections made.
+1. Select/tick to `Use a Frequency Column` [10]. 
+1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[11]. This column should contain non-negative numeric values.
+1. Select/tick to `Use a Grouping Column` [12]. 
+1. If the `Use a Grouping Column` option is selected, specify a `Grouping Column`[13]. This column should be categorical, either textual or numerical.
+1. Specify the `Confidence Level` (%) [14] for Confidence Intervals and the desired `Confidence Interval Type` [15].
+1. Optionally select/tick to calculate and present the `Cumulative Probability of Failure Plot` [16].
+1. Specify the `Max Iterations` [17] of the iterative algorithm to perform and the `Convergence Tolerance` [18].
+1. Click on the `Execute` button [19] to perform the Turnbull Estimator. 
 <div style="text-align: center;">
-<img src="images/SurvivalAnalysis/KaplanMeier_configuration.png" alt="KaplanMeier-configuration" width="600" height="600" class="img-responsive">
+<img src="images/SurvivalAnalysis/Turnbull_configuration.png" alt="Turnbull-configuration" width="600" height="600" class="img-responsive">
 </div>
 
 ##### Output
 {: .no_toc }
 The tables summarizing the survival analysis results for the non grouped dataset and each grouping level are shown in the output spreadsheet.
-In addition, a pop-up window displays the Kaplan–Meier survival curve and, if selected, the hazard function and cumulative probability of failure plots.
+In addition, a pop-up window displays the Turnbull survival curve and, if selected, the cumulative probability of failure plot.
 <div style="text-align: center;">
-<img src="images/SurvivalAnalysis/KaplanMeier_output.png" alt="KaplanMeier-output" width="800" height="600" class="img-responsive">
+<img src="images/SurvivalAnalysis/Turnbull_output.png" alt="Turnbull-output" width="800" height="600" class="img-responsive">
 </div>
 <div style="text-align: center;">
-<img src="images/SurvivalAnalysis/KaplanMeier_chart.png" alt="KaplanMeier-chart" width="800" height="600" class="img-responsive">
+<img src="images/SurvivalAnalysis/Turnbull_chart.png" alt="Turnbull-chart" width="800" height="600" class="img-responsive">
 </div>
 
 ---
@@ -741,14 +736,14 @@ The output spreadsheet contains a table summarizing the non-parametric compariso
 {: .no_toc }
 In the input datasheet the requirement is to specify at least one numerical column and insert the appropriate data, as shown below.
 <div style="text-align: center;">
-<img src="images/SurvivalAnalysis/KaplanMeier_input.png" alt="KaplanMeier-input" width="800" height="600" class="img-responsive">
+<img src="images/SurvivalAnalysis/KaplanMeier_input.png" alt="SurvivalComparisons-input" width="800" height="600" class="img-responsive">
 </div>
 
 ##### Configuration
 {: .no_toc }
-1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Kaplan-Meier Estimator`.
+1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Survival Curve Comparison Tests`.
 1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
-1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `LEvels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
+1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [3] and use the arrow buttons [4] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[5] and `Levels Considered as Event`[6] lists. `Save` or `Cancel` any changes made using the appropriate buttons [7].
 1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [8] button to erase any selections made.
 1. Select/tick to `Use a Frequency Column` [9]. 
 1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[10]. This column should contain non-negative numeric values.
@@ -756,24 +751,22 @@ In the input datasheet the requirement is to specify at least one numerical colu
 1. If the `Use a Censoring Column` option is selected, specify a `Censoring Column`[12] and the value of this column that should be the `Censored Indicator Value` [13].
 1. Select/tick to `Censor times at or above a value` [14]. 
 1. If the ``Censor times at or above a value` option is selected, specify a `Censoring Thresholdd Value`[15] above which events are considered censored.
-1. Select/tick to `Use a Grouping Column` [16]. 
-1. If the `Use a Grouping Column` option is selected, specify a `Grouping Column`[17]. This column should be categorical, either textual or numerical.
-1. Specify the `Confidence Level` (%) [18] for Confidence Intervals and the desired `Confidence Interval Type` [19].
-1. Optionally select/tick to calculate and present the `Hazard Function Plot` [20] and the `Cumulative Probability of Failure Plot` [21].
-1. Click on the `Execute` button [22] to perform the Kaplan-Meier Estimator. 
+1. Specify a `Grouping Column`[16]. This column should be categorical, either textual or numerical.
+1. Select/tick to perform a `Log-Rank Test` [17]. 
+1. Select/tick to perform a `Wilcoxon Test` [18]. 
+1. Select/tick to perform a `Peto-Peto Test` [19]. 
+1. Select/tick to perform a `Tarone-Ware Test` [20]. 
+1. Select/tick to perform a `Fleming-Harrington Test` [21]. If you select to perform such test, specify the  `Fleming-Harrington Parameters` [22] : `p` and `q`.
+1. Click on the `Execute` button [23] to perform Survival Curve Comparison Tests. 
 <div style="text-align: center;">
-<img src="images/SurvivalAnalysis/KaplanMeier_configuration.png" alt="KaplanMeier-configuration" width="600" height="600" class="img-responsive">
+<img src="images/SurvivalAnalysis/SurvivalComparisons_configuration.png" alt="SurvivalComparisons-configuration" width="600" height="600" class="img-responsive">
 </div>
 
 ##### Output
 {: .no_toc }
-The tables summarizing the survival analysis results for the non grouped dataset and each grouping level are shown in the output spreadsheet.
-In addition, a pop-up window displays the Kaplan–Meier survival curve and, if selected, the hazard function and cumulative probability of failure plots.
+The tables summarizing the survival curve comparison tests results is shown in the output spreadsheet.
 <div style="text-align: center;">
-<img src="images/SurvivalAnalysis/KaplanMeier_output.png" alt="KaplanMeier-output" width="800" height="600" class="img-responsive">
-</div>
-<div style="text-align: center;">
-<img src="images/SurvivalAnalysis/KaplanMeier_chart.png" alt="KaplanMeier-chart" width="800" height="600" class="img-responsive">
+<img src="images/SurvivalAnalysis/SurvivalComparisons_output.png" alt="SurvivalComparisons-output" width="800" height="600" class="img-responsive">
 </div>
 
 ---
@@ -786,7 +779,7 @@ The most prominent semi-parametric framework is the Cox Proportional Hazards Mod
 Two key variants of this method are included:
 
 1. Fixed Covariates Model: Assumes that covariates remain constant over time for each subject. The model evaluates how these baseline characteristics proportionally affect the hazard.
-1. Time-Varying Covariates Model: Allows covariates to change over time, enabling more realistic modeling of dynamic systems where subject characteristics evolve during the observation period.
+1. Time-Dependent Covariates Model: Allows covariates to change over time, enabling more realistic modeling of dynamic systems where subject characteristics evolve during the observation period.
 
 Semi-parametric methods are primarily used to:
 
@@ -895,17 +888,60 @@ In addition to the tabular output, a pop-up window displays the predicted surviv
 
 ##### Input
 {: .no_toc }
+In the input datasheet the requirement is to specify at least two columns, from which at least one should be numerical and insert the appropriate data, as shown below.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/CoxFixedCovariates_input.png" alt="CoxFixedCovariates-input" width="800" height="600" class="img-responsive">
+</div>
 
 ##### Configuration
 {: .no_toc }
+1. Select  `Statistics` → `Survival Analysis` → `Semi-Parametric` → `Cox Proportional Hazards with Fixed Covariates`.
+1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
+1. Optionally click on the `Configure Response Options` [2] button to specify various response options including Event Mode, Frequency, Censoring and Entry Time. Within the `Survival Response Options` window:
+    1. Select/tick to `Use an Event Mode Column` [3]. 
+    1. If the `Use an Event Mode Column` option is selected, specify an `Event Mode Column` [4] and use the arrow buttons [5] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[6] and `Levels Considered as Event`[7] lists.
+    1. Select/tick to `Use an Entry Time Column` [8]. 
+    1. If the `Use an Entry Time Column` option is selected, specify an `Entry Time Column`[9]. This column should contain non-negative numeric values.
+    1. Select/tick to `Use a Frequency Column` [10]. 
+    1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[11]. This column should contain non-negative numeric values.
+    1. Select/tick to `Use a Censoring Column` [12]. 
+    1. If the `Use a Censoring Column` option is selected, specify a `Censoring Column`[13] and the value of this column that should be the `Censored Indicator Value` [14].
+    1. Select/tick to `Censor times at or above a value` [15]. 
+    1. If the ``Censor times at or above a value` option is selected, specify a `Censoring Thresholdd Value`[16] above which events are considered censored.
+    1. `Save` or `Cancel` any changes made using the appropriate buttons [17].
+1. Once you have configured some Response Options you can optionally use the `Clear Response Options` [18] button to erase any selections made.
+1. Select/tick to `Stratify baseline hazard by a column` [19]. 
+1. If the `Stratify baseline hazard by a column` option is selected, specify a `Stratification Column`[20]. This column should be categorical, either textual or numerical.
+1. Specify the `Confidence Level` (%) [21] for Confidence Intervals and the desired `Confidence Interval Type` [22].
+1. Select between the two available `Tie handling methods`[23].
+1. Select whether to use a Model-based or a Robust `Variance/Covariance Type` [24].
+1. If the Robust `Variance/Covariance Type` is selected, optionally select a `Cluster ID Column` [25]. 
+1. Specify the `Max Iterations` [26] of the iterative algorithm to perform and the `Minimum Change in Parameter Estimates` [27].
+1. Select the columns by clicking on the arrow buttons [28] and moving columns between the `Excluded Columns` [29] and `Factors`[30] and `Covariates` [31] lists.
+1. Optionally, specify `Specify Reference Levels` [32] for the categorical factors.
+1. Select the prefered `Formula Type`[33].
+1. `Specify Custom Model Formula` [34] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
+1. Select/tick to `Use default predictor variable values for plots` [35], otherwise `Specify Predictor Variable Values for the plots`[36]. 
+1. Click on the `Execute` button [37] to perform the Cox Proportional Hazards Model with Fixed Covariates. 
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/CoxFixedCovariates_configuration.png" alt="CoxFixedCovariates-configuration" width="1000" height="800" class="img-responsive">
+</div>
 
 ##### Output
 {: .no_toc }
+The tables summarizing the survival analysis results for the cox proportional hazards model with fixed covariates are shown in the output spreadsheet.
+In addition, a pop-up window displays the survival curve for each of the selected sets of covariate settings.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/CoxFixedCovariates_output.png" alt="CoxFixedCovariates-output" width="800" height="600" class="img-responsive">
+</div>
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/CoxFixedCovariates_chart.png" alt="CoxFixedCovariates-chart" width="500" height="500" class="img-responsive">
+</div>
 
 ---
 
-### Cox Proportional Hazards with Time-Varying Covariates
-The Cox Proportional Hazards Model with Time-Varying Covariates is a semi-parametric survival regression method used when predictor values may change over the observation period. Instead of representing each subject with a single row, the data are organized into intervals, where each row describes the covariate values that apply during a specific time interval.
+### Cox Proportional Hazards with Time-Dependent Covariates
+The Cox Proportional Hazards Model with Time-Dependent Covariates is a semi-parametric survival regression method used when predictor values may change over the observation period. Instead of representing each subject with a single row, the data are organized into intervals, where each row describes the covariate values that apply during a specific time interval.
 
 The model does not assume a specific distribution for survival times. It estimates covariate effects through the Cox partial likelihood while leaving the baseline hazard function unspecified. The hazard function is modeled as:
 The hazard function is modeled as:
@@ -930,12 +966,13 @@ This method supports:
 
 Each subject may contribute multiple rows, provided that their time intervals do not overlap. If a subject ID column is specified, the method checks that each subject has non-overlapping intervals, no more than one event, and that any event occurs only in the subject’s final interval.
 
-Use the Cox Proportional Hazards Model with Time-Varying Covariates by browsing in the top ribbon: 
+Use the Cox Proportional Hazards Model with Time-Dependent Covariates by browsing in the top ribbon: 
 
-| `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Semi-Parametric` $$\rightarrow$$ `Cox Proportional Hazards Model with Time-Varying Covariates` |
+| `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Semi-Parametric` $$\rightarrow$$ `Cox Proportional Hazards Model with Time-Dependent Covariates` |
 
 #### Input
 {: .no_toc }
+The Cox Proportional Hazards Model with Time-Dependent Covariates requires at least three columns to be specified in the input datasheet: an interval start column, an interval end column, and at least one predictor variable.The Interval Start column represents the lower bound of each observation interval, while the Interval End column represents the upper bound of the interval. These columns must contain non-negative numerical values. Together, they define the time interval during which the covariate values in that row are assumed to apply. Predictor variables may be specified as categorical factors or numerical covariates. Because this method supports time-dependent covariates, the same subject may appear in multiple rows with different predictor values across intervals. Several optional inputs may also be provided. A censoring column may be specified as a binary numerical or textual variable indicating whether each interval ends in an event or censoring. A frequency column may be included to represent the number of identical observations associated with each row; if omitted, each row is treated as a single observation. An event mode column may be used to distinguish between different event types and include only selected event modes in the analysis. A subject ID column may also be specified. When provided, it is used to validate repeated rows belonging to the same subject. The method checks that subject intervals do not overlap, that each subject has at most one event, and that an event does not occur before the subject’s final interval. The method may also include a stratification column, which defines groups with separate baseline hazard functions while keeping the same covariate effects across strata. If robust variance estimation is selected, a cluster ID column may optionally be specified to compute cluster-adjusted standard errors. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
 
 
 #### Configuration
@@ -965,7 +1002,7 @@ Use the Cox Proportional Hazards Model with Time-Varying Covariates by browsing 
 
 #### Output
 {: .no_toc }
-The output of the Cox Proportional Hazards Model with Time-Varying Covariates is presented in a structured spreadsheet containing multiple tables that summarize the fitted model, statistical inference, and overall model performance.
+The output of the Cox Proportional Hazards Model with Time-Dependent Covariates is presented in a structured spreadsheet containing multiple tables that summarize the fitted model, statistical inference, and overall model performance.
 
 The main output includes a Parameter Estimates table, which reports the estimated regression coefficients for each covariate, along with their corresponding standard errors, confidence interval bounds at the selected confidence level, test statistics, degrees of freedom, and p-values. 
 
@@ -984,12 +1021,53 @@ In addition to the tabular output, a pop-up window displays the predicted surviv
 
 ##### Input
 {: .no_toc }
+In the input datasheet the requirement is to specify at least three columns, from which at least two should be numerical and insert the appropriate data, as shown below.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/CoxVaryingCovariates_input.png" alt="CoxVaryingCovariates-input" width="800" height="600" class="img-responsive">
+</div>
 
 ##### Configuration
 {: .no_toc }
+1. Select  `Statistics` → `Survival Analysis` → `Semi-Parametric` → `Cox Proportional Hazards with Time-Dependent Covariates`.
+1. Select the column that contains the `Interval Start (Lower Bound)`[1] andd the column that contains the `Interval End (Upper Bound)`[2] for each subject. These columns should contain non-negative numeric values.
+1. Optionally click on the `Configure Response Options` [3] button to specify various response options including Event Mode, Frequency, Censoring and Subject ID. Within the `Survival Response Options` window:
+    1. Select/tick to `Use an Event Mode Column` [4]. 
+    1. If the `Use an Event Mode Column` option is selected, specify an `Event Mode Column` [5] and use the arrow buttons [6] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[7] and `Levels Considered as Event`[8] lists.
+    1. Select/tick to `Use a Subject Column` [9]. 
+    1. If the `Use a Subject Column` option is selected, specify a `Subject Column`[10]. This column should contain non-negative numeric values.
+    1. Select/tick to `Use a Frequency Column` [11]. 
+    1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[12]. This column should contain non-negative numeric values.
+    1. Select/tick to `Use a Censoring Column` [13]. 
+    1. If the `Use a Censoring Column` option is selected, specify a `Censoring Column`[14] and the value of this column that should be the `Censored Indicator Value` [15].
+    1. `Save` or `Cancel` any changes made using the appropriate buttons [16].
+1. Once you have configured some Response Options you can optionally use the `Clear Response Options` [17] button to erase any selections made.
+1. Select/tick to `Stratify baseline hazard by a column` [18]. 
+1. If the `Stratify baseline hazard by a column` option is selected, specify a `Stratification Column`[19]. This column should be categorical, either textual or numerical.
+1. Specify the `Confidence Level` (%) [20] for Confidence Intervals and the desired `Confidence Interval Type` [21].
+1. Select between the two available `Tie handling methods`[22].
+1. Select whether to use a Model-based or a Robust `Variance/Covariance Type` [23].
+1. If the Robust `Variance/Covariance Type` is selected, optionally select a `Cluster ID Column` [24]. 
+1. Specify the `Max Iterations` [25] of the iterative algorithm to perform and the `Minimum Change in Parameter Estimates` [26].
+1. Select the columns by clicking on the arrow buttons [27] and moving columns between the `Excluded Columns` [28] and `Factors`[29] and `Covariates` [30] lists.
+1. Optionally, specify `Specify Reference Levels` [31] for the categorical factors.
+1. Select the prefered `Formula Type`[32].
+1. `Specify Custom Model Formula` [33] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
+1. Select/tick to `Use default predictor variable values for plots` [34], otherwise `Specify Predictor Variable Values for the plots`[35]. 
+1. Click on the `Execute` button [36] to perform the Cox Proportional Hazards Model with Time-Dependent Covariates. 
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/CoxVaryingCovariates_configuration.png" alt="CoxVaryingCovariates-configuration" width="1000" height="800" class="img-responsive">
+</div>
 
 ##### Output
 {: .no_toc }
+The tables summarizing the survival analysis results for the cox proportional hazards model with time-dependent covariates are shown in the output spreadsheet.
+In addition, a pop-up window displays the survival curve for each of the selected sets of covariate settings.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/CoxVaryingCovariates_output.png" alt="CoxVaryingCovariates-output" width="800" height="600" class="img-responsive">
+</div>
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/CoxVaryingCovariates_chart.png" alt="CoxVaryingCovariates-chart" width="500" height="500" class="img-responsive">
+</div>
 
 ---
 
@@ -1026,19 +1104,321 @@ These options are optional. If they are not configured, the model assumes that a
 | **Censor times at or above a value** | Enable this option to treat all time values greater than or equal to a specified threshold as censored. |
 | **Censoring Threshold Value** | If the `Censor times at or above a value` option is enabled, specify the value above or equal to which observations will be treated as censored. |
 
-#### Dialog window components (Time-Varying Covariates Model)
+#### Dialog window components (Time-Dependent Covariates Model)
 {: .no_toc }
 
 |**Use an Event Mode Column**| Enable this option to include an event  mode column in the analysis. |
 |**Event Mode Column**|  If the `Use an Event Mode Column` option is enabled, specify the column containing event mode information. |
 |**Levels not Considered as Event/Levels Considered as Event**| Manually select which levels should be treated as events from the available levels of the Event Mode Column. Use the arrow buttons to move levels between the two lists. Single-arrow buttons move selected levels, while double-arrow buttons move all levels. At least one level must be selected as an event. |
-| **Use a Subject Column** | Enable this option to include a subject identifier column in the analysis. This option is used only in the time-varying covariates model to link multiple rows belonging to the same subject. |
+| **Use a Subject Column** | Enable this option to include a subject identifier column in the analysis. This option is used only in the time-dependent covariates model to link multiple rows belonging to the same subject. |
 | **Subject Column** | If the `Use a Subject Column` option is enabled, select the column identifying subjects. This column is used to validate that intervals for each subject do not overlap, that each subject has at most one event, and that any event occurs only in the subject’s final interval. |
 | **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
 | **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
 | **Use a Censoring  Column** | Enable this option to include a censoring column in the analysis. |
 | **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be categorical and may be either numerical or textual. |
 | **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
+
+---
+
+## Parametric Methods
+Parametric methods in survival analysis are statistical techniques that assume a specific probability distribution for the time-to-event data. Common choices include exponential, Weibull, log-normal, and log-logistic distributions. By imposing a functional form on the survival distribution, these methods enable fully specified models for the survival, hazard, and cumulative hazard functions.
+
+Because the underlying distribution is explicitly defined, parametric methods can provide more efficient and precise estimates when the chosen distribution adequately represents the data. However, they are more sensitive to model misspecification; incorrect distributional assumptions may lead to biased results and misleading inference.
+
+Parametric methods are primarily used to:
+
+1. Estimate survival and hazard functions under an assumed distribution
+1. Provide smooth, continuous representations of survival behavior
+1. Extrapolate survival beyond the observed time range
+1. Incorporate censored observations within a likelihood-based framework (MLE)
+1. Compare candidate distributions to identify the best-fitting model
+
+These methods are typically applied when there is theoretical or empirical justification for a specific distribution, or when smooth estimation and extrapolation are required beyond the observed data range. 
+
+### Univariate Parametric Analysis (Right-Censoring)
+The Univariate Parametric Analysis method is a parametric survival analysis technique used to estimate survival characteristics from right-censored time-to-event data by assuming that the observed survival times follow a specified probability distribution. Unlike non-parametric methods, which estimate the survival function directly from the data, this method fits a smooth mathematical distribution to the observed survival times and uses the fitted distribution to estimate survival, hazard, and failure behavior.
+
+This method is univariate, meaning that it models the distribution of the time variable itself without including predictor variables or covariate effects. It is useful when the goal is to describe the survival pattern of a sample, compare survival behavior across groups, or obtain smooth fitted survival and hazard curves under a chosen distributional assumption.
+
+The user specifies a Time Column containing non-negative numerical values representing the observed event or censoring time for each subject. The user also selects an Expected Distribution, which defines the assumed parametric form of the survival model. Available distributions include Weibull, 3-Parameter Weibull, Exponential, 2-Parameter Exponential, Normal, Lognormal, 3-Parameter Lognormal, Logistic, Loglogistic, 3-Parameter LogLogistic, and Smallest Extreme Value. [More on Available Distributions](https://www.docs/survival-analysis.html#distribution-equations-and-estimated-parameters)
+
+For a fitted parametric distribution, the survival function is expressed as:
+
+<div style="text-align: center;"> <span id="eq.Parametric Survival Function"> $$ \begin{equation} S(t) = 1 - F(t) \end{equation} $$ </span> </div>
+
+where $$F(t)$$ is the cumulative distribution function of the selected distribution. The corresponding probability of failure by time $$t$$ is:
+
+<div style="text-align: center;"> <span id="eq.Parametric Failure Function"> $$ \begin{equation} F(t) = P(T \leq t) \end{equation} $$ </span> </div>
+
+The hazard function describes the instantaneous event rate at time t, conditional on survival up to that time:
+
+<div style="text-align: center;"> <span id="eq.Parametric Hazard Function"> $$ \begin{equation} h(t) = \frac{f(t)}{S(t)} \end{equation} $$ </span> </div>
+
+where $$f(t)$$ is the probability density function of the selected distribution and $$S(t)$$ is the survival function.
+
+Right-censored observations are incorporated by identifying observations for which the event has not occurred by the recorded time. These observations contribute information that the true event time exceeds the censoring time. If a censoring column is specified, the selected censoring indicator value determines which rows are treated as censored. The user may also choose to censor all observations with time values greater than or equal to a specified threshold value. Observations not marked as censored are treated as event observations.
+
+The method supports two estimation approaches: Maximum Likelihood Estimation and Least Squares. Maximum Likelihood Estimation is the default method and estimates the distribution parameters by maximizing the likelihood of the observed event and censored data. Under right-censoring, uncensored observations contribute through the density function, while censored observations contribute through the survival function. The likelihood can be expressed as:
+
+<div style="text-align: center;"> <span id="eq.Parametric MLE Right Censoring"> $$ \begin{equation} L(\theta) = \prod_{i=1}^{n} \left[f(t_i;\theta)\right]^{\delta_i} \left[S(t_i;\theta)\right]^{1-\delta_i} \end{equation} $$ </span> </div>
+
+where θ represents the distribution parameters, $$t_i$$ is the observed time, and $$\delta_i$$ indicates whether the observation is an event.
+
+The Least Squares option estimates the distribution parameters by fitting the selected distribution to transformed empirical survival information. This approach provides an alternative to likelihood-based estimation, although it may be less appropriate when censoring is substantial.
+
+Optional frequency weights may be included to represent repeated identical observations. If no frequency column is selected, each row is treated as one observation. An event mode column may also be specified when different event types are present; only the selected event levels are considered in the analysis. In addition, a grouping column may be used to fit the selected parametric model separately for each group, while also producing results for the full sample.
+
+The output includes a Parameter Estimates Table, which reports the fitted distribution parameters. When Maximum Likelihood Estimation is used, standard errors and confidence interval bounds are also reported according to the selected confidence level and confidence interval type. The output also includes estimated distribution characteristics derived from the fitted model.
+
+The results are visualized using a fitted parametric survival probability plot. Unlike the Kaplan–Meier curve, which is stepwise, the parametric survival curve is smooth because it is generated from the selected fitted distribution. Optionally, the user may also generate the fitted hazard function plot and the cumulative probability of failure plot. When grouping is enabled, the method produces corresponding fitted curves for the full sample and for each group separately.
+
+Use the Univariate Parametric Analysis (Right-Censoring) method when the survival data can reasonably be described by a known distribution, when smooth survival and hazard estimates are desired, or when extrapolation beyond the observed event times is needed.
+
+Use the Univariate Parametric Analyis (Right-Censoring) method by browsing in the top ribbon: 
+
+
+| `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Parametric` $$\rightarrow$$ `Univariate Parametric Analyis (Right-Censoring)` |
+
+#### Input
+{: .no_toc }
+TheUnivariate Parametric Analyis (Right-Censoring) requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. Finally, a grouping column can be specidied as a categorical variable, either numerical or textual, indicating the group membership of each observation. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
+
+#### Configuration
+{: .no_toc }
+
+| **Time Column** | Select the column corresponding to the observed time-to-event or time-to-censoring for each subject. This column must be numerical and contain non-negative values. |
+| **Expected Distribution** | Select the expected distribution of the time column. Available options include: Weibull, Smallest Extreme Value, 3-Parameter Weibull, Exponential, 2-Parameter Exponential, Normal, Lognormal, 3-Parameter Lognormal, Logistic, LogLogistic, 3-Parameter LogLogistic.  |
+|**Configure Event Mode Options**| Use this button to open the `Configure Event Mode Options` window |
+|**Event Mode Column**| Within the `Configure Event Mode Options` window, specify the column containing event mode information. |
+|**Levels not Considered as Event/Levels Considered as Event**| Manually select which levels should be treated as events from the available levels of the Event Mode Column. Use the arrow buttons to move levels between the two lists. Single-arrow buttons move selected levels, while double-arrow buttons move all levels. At least one level must be selected as an event. |
+|**Clear Event Mode Options**| Use this button to clear all selections related to event mode configuration. |
+| **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
+| **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
+| **Use a Censoring  Column** | Enable this option to include a censoring column in the analysis. |
+| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be categorical and may be either numerical or textual. |
+| **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
+| **Censor times at or above a value** | Enable this option to treat all time values greater than or equal to a specified threshold as censored. |
+| **Censoring Threshold Value** | If the `Censor times at or above a value` option is enabled, specify the value above or equal to which observations will be treated as censored. |
+| **Use a Grouping Column** | Enable this option to include a grouping column in the analysis, allowing comparison of survival across different groups in the population. |
+| **Grouping Column** |  If the `Use a Grouping Column` option is enabled, select the column containing grouping information for each observation. This column must be categorical. |
+| **Estimation Method** | Select the method used to estimate the distribution parameters. Available options include Maximum Likelihood and Least Squares. Maximum Likelihood is the default method and supports censored observations and confidence interval estimation. The Least Squares method estimates parameters by fitting the selected distribution to empirical survival information and does not allow computation of confidence intervals. |
+| **Max Iterations** | Specify the maximum number of iterations allowed for the optimization algorithm when Maximum Likelihood estimation is selected. Higher values may be required for difficult convergence cases. Default value is 25. |
+| **Minimum Change in Estimates** | Define the convergence threshold for the optimization algorithm when Maximum Likelihood estimation is selected. The algorithm stops when the change in parameter estimates between iterations falls below this value. Default value is 1e−6. |
+| **Confidence Level (%)** | Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. Default value is set to 95. |
+| **Confidence Interval Type** | Select the type of confidence interval to compute. Available options include: `Two-sided`, `Lower Bound`, `Upper Bound`. |
+| **Hazard Function Plot** | Enable this option to generate a plot of the estimated hazard function over time. |
+| **Cumulative Probability of Failure Plot** | Enable this option to generate a plot of the estimated cumulative probability of failure over time. |
+
+
+#### Output
+{: .no_toc }
+The output of the Univariate Parametric Analysis is presented in a structured spreadsheet containing summary tables of the fitted distribution parameters and derived survival characteristics. The spreadsheet includes a Parameter Estimates Table, which reports the estimated parameters of the selected distribution (e.g., shape, scale, location, or threshold depending on the distribution). When the Maximum Likelihood Estimation (MLE) method is used, the table also includes standard errors and confidence interval bounds at the selected confidence level. If the Least Squares method is selected, only the parameter estimates are reported, as confidence intervals and standard errors are not computed. In addition, the output includes a Characteristics Table, which provides derived quantities from the fitted distribution, such as measures related to survival behavior (e.g., quantiles or other distribution-specific characteristics), along with confidence intervals when available. If a grouping column is specified, the spreadsheet first presents the results for the full sample, followed by separate parameter and characteristics tables for each group.
+
+A pop-up window displays the fitted survival probability curve, which is a smooth curve derived from the selected parametric distribution. Confidence interval bounds are shown when available (i.e., under MLE). Unlike the Non-Parametric and Semi-Parametric methods, this curve is continuous and defined over the entire time range.Optionally, the user may also generate the hazard function plot and the cumulative probability of failure plot, both derived from the fitted distribution. When grouping is enabled, the plots include the overall fitted curve as well as separate curves for each group, allowing comparison of survival behavior across groups under the assumed distribution.
+
+#### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+In the input datasheet the requirement is to specify at least one numerical column and insert the appropriate data, as shown below.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_input.png" alt="UnivariateRightCensoring-input" width="800" height="600" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc }
+1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Univariate Parametric Analysis (Right-Censoring)`.
+1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
+1. Select the `Expected Distribution`[2] of the time column from the available options.
+1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [4] and use the arrow buttons [5] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[6] and `Levels Considered as Event`[7] lists. `Save` or `Cancel` any changes made using the appropriate buttons [8].
+1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [9] button to erase any selections made.
+1. Select/tick to `Use a Frequency Column` [10]. 
+1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[11]. This column should contain non-negative numeric values.
+1. Select/tick to `Use a Censoring Column` [12]. 
+1. If the `Use a Censoring Column` option is selected, specify a `Censoring Column`[13] and the value of this column that should be the `Censored Indicator Value` [14].
+1. Select/tick to `Censor times at or above a value` [15]. 
+1. If the ``Censor times at or above a value` option is selected, specify a `Censoring Thresholdd Value`[16] above which events are considered censored.
+1. Select/tick to `Use a Grouping Column` [17]. 
+1. If the `Use a Grouping Column` option is selected, specify a `Grouping Column`[18]. This column should be categorical, either textual or numerical.
+1. Select the desired `Estimation Method` [19].
+1. Specify the `Max Iterations` [20] of the iterative algorithm to perform and the `Minimum Change in Parameter Estimates` [21].
+1. If the Maximum Likelihood `Estimation Method` is selected, specify the `Confidence Level` (%) [22] for Confidence Intervals and the desired `Confidence Interval Type` [23].
+1. Optionally select/tick to calculate and present the `Hazard Function Plot` [24] and the `Cumulative Probability of Failure Plot` [25].
+1. Click on the `Execute` button [26] to perform the Univariate Parametric Analysis (Right-Censoring) method. 
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/UnivariateRightCensoring_configuration.png" alt="UnivariateRightCensoring-configuration" width="600" height="600" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc }
+The tables summarizing the survival analysis results for the non grouped dataset and each grouping level are shown in the output spreadsheet.
+In addition, a pop-up window displays the survival curve and, if selected, the hazard function and cumulative probability of failure plots.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/UnivariateRightCensoring_output.png" alt="UnivariateRightCensoring-output" width="800" height="600" class="img-responsive">
+</div>
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/UnivariateRightCensoring_chart.png" alt="UnivariateRightCensoring-chart" width="800" height="600" class="img-responsive">
+</div>
+
+---
+
+### Distribution Equations and Estimated Parameters
+
+The Univariate Parametric Analysis fits one of the selected probability distributions to the observed time-to-event data. Each distribution is defined by its probability density function $$f(t)$$, and the method estimates the unknown distribution parameters from the data.
+
+---
+
+#### Weibull Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.Weibull pdf"> $$ \begin{equation}  
+f(t)=\frac{\alpha}{\lambda}\left(\frac{t}{\lambda}\right)^{\alpha-1}
+\exp\left[-\left(\frac{t}{\lambda}\right)^\alpha\right], \quad t \geq 0
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\alpha$$: Shape  
+2. $$\lambda$$: Scale  
+
+---
+
+#### 3-Parameter Weibull Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.3P Weibull pdf"> $$ \begin{equation} 
+f(t)=\frac{\alpha}{\lambda}
+\left(\frac{t-\gamma}{\lambda}\right)^{\alpha-1}
+\exp\left[-\left(\frac{t-\gamma}{\lambda}\right)^\alpha\right], \quad t > \gamma
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\alpha$$: Shape  
+2. $$\lambda$$: Scale  
+3. $$\gamma$$: Threshold  
+
+---
+
+#### Exponential Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.Exponential pdf"> $$ \begin{equation} 
+f(t)=\lambda \exp(-\lambda t), \quad t \geq 0
+\end{equation} $$ </span> </div>
+
+Estimated parameter:
+1. $$\lambda$$: Rate  
+
+---
+
+#### 2-Parameter Exponential Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.2P Exponential pdf"> $$ \begin{equation} 
+f(t)=\lambda \exp[-\lambda(t-\gamma)], \quad t \geq \gamma
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\lambda$$: Rate  
+2. $$\gamma$$: Threshold  
+
+---
+
+#### Normal Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.Normal pdf"> $$ \begin{equation} 
+f(t)=\frac{1}{\sigma\sqrt{2\pi}}
+\exp\left[-\frac{1}{2}\left(\frac{t-\mu}{\sigma}\right)^2\right]
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\mu$$: Mean  
+2. $$\sigma$$: Standard Deviation  
+
+---
+
+#### Lognormal Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.LogNormal pdf"> $$ \begin{equation} 
+f(t)=\frac{1}{t\sigma\sqrt{2\pi}}
+\exp\left[-\frac{1}{2}\left(\frac{\ln(t)-\mu}{\sigma}\right)^2\right], \quad t > 0
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\mu$$: Log Mean  
+2. $$\sigma$$: Log Standard Deviation  
+
+---
+
+#### 3-Parameter Lognormal Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.3P LogNormal pdf"> $$ \begin{equation} 
+f(t)=\frac{1}{(t-\gamma)\sigma\sqrt{2\pi}}
+\exp\left[-\frac{1}{2}\left(\frac{\ln(t-\gamma)-\mu}{\sigma}\right)^2\right], \quad t > \gamma
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\mu$$: Log Mean  
+2. $$\sigma$$: Log Standard Deviation  
+3. $$\gamma$$: Threshold  
+
+---
+
+#### Logistic Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.Logistic pdf"> $$ \begin{equation} 
+f(t)=
+\frac{\exp\left[-\frac{t-\mu}{s}\right]}
+{s\left(1+\exp\left[-\frac{t-\mu}{s}\right]\right)^2}
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\mu$$: Location  
+2. $$s$$: Scale  
+
+---
+
+#### Loglogistic Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.LogLogistic pdf"> $$ \begin{equation} 
+f(t)=
+\frac{\alpha}{\lambda}
+\left(\frac{t}{\lambda}\right)^{\alpha-1}
+\left[1+\left(\frac{t}{\lambda}\right)^\alpha\right]^{-2}, \quad t > 0
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\alpha$$: Shape  
+2. $$\lambda$$: Scale  
+
+---
+
+#### 3-Parameter Loglogistic Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.3P LogLogistic pdf"> $$ \begin{equation} 
+f(t)=
+\frac{\alpha}{\lambda}
+\left(\frac{t-\gamma}{\lambda}\right)^{\alpha-1}
+\left[1+\left(\frac{t-\gamma}{\lambda}\right)^\alpha\right]^{-2}, \quad t > \gamma
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\alpha$$: Shape  
+2. $$\lambda$$: Scale  
+3. $$\gamma$$: Threshold  
+
+---
+
+#### Smallest Extreme Value Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.SEV pdf"> $$ \begin{equation} 
+f(t)=\frac{1}{\sigma}
+\exp\left[
+\frac{t-\mu}{\sigma}
+-
+\exp\left(\frac{t-\mu}{\sigma}\right)
+\right]
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\mu$$: Location  
+2. $$\sigma$$: Scale  
 
 ---
 
@@ -1049,6 +1429,9 @@ These options are optional. If they are not configured, the model assumes that a
 1. Hosmer Jr, D.W., Lemeshow, S. and May, S., 2008. Applied survival analysis: regression modeling of time-to-event data. John Wiley & Sons. 
 1. Turnbull, Bruce W. "The empirical distribution function with arbitrarily grouped, censored and truncated data." Journal of the Royal Statistical Society: Series B (Methodological) 38, no. 3 (1976): 290-295. [doi.org/10.1111/j.2517-6161.1976.tb01597.x]( https://doi.org/10.1111/j.2517-6161.1976.tb01597.x) 
 1. Turnbull, Bruce W. "Nonparametric estimation of a survivorship function with doubly censored data." Journal of the American statistical association 69, no. 345 (1974): 169-173. [doi.org/10.1080/01621459.1974.10480146](https://doi.org/10.1080/01621459.1974.10480146)
+1. Lin, Danyu Y., and Lee-Jen Wei. "The robust inference for the Cox proportional hazards model." Journal of the American statistical Association 84, no. 408 (1989): 1074-1078.
+1. Andersen, Per Kragh, and Richard D. Gill. "Cox's regression model for counting processes: a large sample study." The annals of statistics (1982): 1100-1120.
+1. Genschel, U. and Meeker, W.Q. (2010). A Comparison of Maximum Likelihood and Median-Rank Regression for Weibull Estimation. Quality Engineering, 22(4): 236–255.
 
 
 ---
