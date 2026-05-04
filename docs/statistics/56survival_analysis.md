@@ -168,7 +168,7 @@ Use the Kaplan Meier Estimator method by browsing in the top ribbon:
 
 #### Input
 {: .no_toc }
-The Kaplan–Meier estimator requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a binary variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. Finally, a grouping column can be specidied as a categorical variable, either numerical or textual, indicating the group membership of each observation. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
+The Kaplan–Meier estimator requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. Finally, a grouping column can be specidied as a categorical variable, either numerical or textual, indicating the group membership of each observation. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
 
 #### Configuration
 {: .no_toc }
@@ -181,7 +181,7 @@ The Kaplan–Meier estimator requires at least one column of numerical data to b
 | **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
 | **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
 | **Use a Censoring  Column** | Enable this option to include a censoring column in the analysis. |
-| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be binary (contain exactly two levels) and may be either numerical or textual. |
+| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be categorical and may be either numerical or textual. |
 | **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
 | **Censor times at or above a value** | Enable this option to treat all time values greater than or equal to a specified threshold as censored. |
 | **Censoring Threshold Value** | If the `Censor times at or above a value` option is enabled, specify the value above or equal to which observations will be treated as censored. |
@@ -195,9 +195,7 @@ The Kaplan–Meier estimator requires at least one column of numerical data to b
 
 #### Output
 {: .no_toc }
-The output spreadsheet contains a table summarizing the survival analysis results at each observed time point. This includes the number of subjects at risk, the number of events, the estimated survival probability, its standard error, and the corresponding confidence interval bounds at the selected confidence level. If a grouping column is specified, the spreadsheet first presents the overall results for the full sample, followed by separate tables for each group.
-
-In addition, a pop-up window displays the Kaplan–Meier survival curve, showing the stepwise estimate of survival probability over time along with the associated confidence interval bounds. When grouping is enabled, the plot includes the overall survival curve as well as separate curves with confidence bounds for each group. Similarly, if selected, the hazard function and cumulative probability of failure plots are generated and display both the overall estimates and the corresponding group-specific curves.
+The output spreadsheet contains a table summarizing the survival analysis results at each observed time point. This includes the number of subjects at risk, the number of events, the estimated survival probability, its standard error, and the corresponding confidence interval bounds at the selected confidence level. If a grouping column is specified, the spreadsheet first presents the overall results for the full sample, followed by separate tables for each group. In addition, a pop-up window displays the Kaplan–Meier survival curve, showing the stepwise estimate of survival probability over time along with the associated confidence interval bounds. When grouping is enabled, the plot includes the overall survival curve as well as separate curves with confidence bounds for each group. Similarly, if selected, the hazard function and cumulative probability of failure plots are generated and display both the overall estimates and the corresponding group-specific curves.
 
 #### Example
 {: .no_toc }
@@ -253,7 +251,7 @@ Use the Life Table Analysis method by browsing in the top ribbon:
 
 #### Input
 {: .no_toc }
-The Life Table method requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a binary variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. A grouping column may also be specified as a categorical variable, either numerical or textual, indicating the group membership of each observation. An additional optional column may be provided to specify the endpoints of the intervals used in the analysis; if this is not specified, the intervals are generated automatically based on the chosen end time and interval width. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
+The Life Table method requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a categorical variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. A grouping column may also be specified as a categorical variable, either numerical or textual, indicating the group membership of each observation. An additional optional column may be provided to specify the endpoints of the intervals used in the analysis; if this is not specified, the intervals are generated automatically based on the chosen end time and interval width. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
 
 #### Configuration
 {: .no_toc }
@@ -269,7 +267,7 @@ The Life Table method requires at least one column of numerical data to be speci
 | **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
 | **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
 | **Use a Censoring  Column** | Enable this option to include a censoring column in the analysis. |
-| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be binary (contain exactly two levels) and may be either numerical or textual. |
+| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be categorical and may be either numerical or textual. |
 | **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
 | **Censor times at or above a value** | Enable this option to treat all time values greater than or equal to a specified threshold as censored. |
 | **Censoring Threshold Value** | If the `Censor times at or above a value` option is enabled, specify the value above or equal to which observations will be treated as censored. |
@@ -349,7 +347,7 @@ Use the Nelson-Aalen Method by browsing in the top ribbon:
 
 #### Input
 {: .no_toc }
-The Nelson-Aalen Method requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a binary variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. Finally, a grouping column can be specidied as a categorical variable, either numerical or textual, indicating the group membership of each observation. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
+The Nelson-Aalen Method requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a categorical variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. Finally, a grouping column can be specidied as a categorical variable, either numerical or textual, indicating the group membership of each observation. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
 
 #### Configuration
 {: .no_toc }
@@ -362,7 +360,7 @@ The Nelson-Aalen Method requires at least one column of numerical data to be spe
 | **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
 | **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
 | **Use a Censoring  Column** | Enable this option to include a censoring column in the analysis. |
-| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be binary (contain exactly two levels) and may be either numerical or textual. |
+| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be categorical and may be either numerical or textual. |
 | **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
 | **Censor times at or above a value** | Enable this option to treat all time values greater than or equal to a specified threshold as censored. |
 | **Censoring Threshold Value** | If the `Censor times at or above a value` option is enabled, specify the value above or equal to which observations will be treated as censored. |
@@ -577,7 +575,7 @@ Use the Survival Curve Comparison Tests by browsing in the top ribbon:
 
 #### Input
 {: .no_toc }
-The Survival Curve Comparison Tests require at least two columns, one of numerical data and one with categorical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject and a grouping column indicating the group membership of each observation. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a binary variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
+The Survival Curve Comparison Tests require at least two columns, one of numerical data and one with categorical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject and a grouping column indicating the group membership of each observation. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a categorical variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
 
 #### Configuration
 {: .no_toc }
@@ -590,7 +588,7 @@ The Survival Curve Comparison Tests require at least two columns, one of numeric
 | **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
 | **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
 | **Use a Censoring  Column** | Enable this option to include a censoring column in the analysis. |
-| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be binary (contain exactly two levels) and may be either numerical or textual. |
+| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be categorical and may be either numerical or textual. |
 | **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
 | **Censor times at or above a value** | Enable this option to treat all time values greater than or equal to a specified threshold as censored. |
 | **Censoring Threshold Value** | If the `Censor times at or above a value` option is enabled, specify the value above or equal to which observations will be treated as censored. |
@@ -622,6 +620,269 @@ The output spreadsheet contains a table summarizing the non-parametric compariso
 
 ---
 
+## Semi-Parametric Methods
+Semi-parametric methods in survival analysis combine elements of both parametric and non-parametric approaches. They avoid making strict assumptions about the baseline distribution of survival times, while still incorporating a structured model to assess the effect of covariates on the hazard function. This balance provides flexibility alongside inferential power, making these methods central to modern survival analysis.
+
+The most prominent semi-parametric framework is the Cox Proportional Hazards Model, which models the hazard function as a product of an unspecified baseline hazard and a parametric component driven by covariates. This allows estimation of relative risk effects without requiring explicit specification of the underlying time-to-event distribution.
+
+Two key variants of this method are included:
+
+1. Fixed Covariates Model: Assumes that covariates remain constant over time for each subject. The model evaluates how these baseline characteristics proportionally affect the hazard.
+1. Time-Varying Covariates Model: Allows covariates to change over time, enabling more realistic modeling of dynamic systems where subject characteristics evolve during the observation period.
+
+Semi-parametric methods are primarily used to:
+
+1. Estimate the effect of covariates on the hazard function without specifying the baseline hazard
+1. Handle censored data naturally within the partial likelihood framework
+1. Model relative risks through hazard ratios, enabling interpretation of covariate impact
+1. Incorporate both static and time-dependent covariates for more flexible modeling
+1. Provide a bridge between exploratory non-parametric methods and fully specified parametric models
+
+These methods are typically applied after initial exploratory analysis, offering a robust and interpretable way to quantify relationships between predictors and survival outcomes without imposing restrictive distributional assumptions.
+
+An important aspect of model specification in Cox regression is the handling of tied event times and the choice of variance–covariance estimation method.
+
+When multiple events occur at the same observed time, a tie-handling method must be specified. Common approaches include the Breslow and Efron methods. The Breslow method provides a simpler approximation and is computationally efficient, but may be less accurate when there are many tied events. The Efron method offers a more refined approximation by accounting for the ordering of tied events within a risk set and generally provides better accuracy in moderate to large samples. However, it requires that frequency values (if used) are integers, as it relies on discrete event counts.
+
+The variance–covariance type determines how uncertainty in the estimated coefficients is quantified. The model-based (naïve) variance estimator assumes that the model is correctly specified and that observations are independent, providing efficient estimates under these assumptions. In contrast, the robust (sandwich) variance estimator relaxes these assumptions and provides standard errors that are consistent even in the presence of model misspecification or correlated observations (e.g., clustered or repeated measures data). When the robust estimator is used, certain likelihood-based inference procedures—such as likelihood ratio tests and related ANOVA components—are not valid and therefore cannot be estimated, while Wald and robust score tests remain applicable.
+
+### Cox Proportional Hazards with Fixed Covariates
+The Cox Proportional Hazards Model with fixed covariates is a semi-parametric survival regression method used to evaluate how predictor variables affect the risk of an event occurring over time. The model does not require a specific distribution for survival times. Instead, it estimates covariate effects through the partial likelihood while leaving the baseline hazard function unspecified.
+
+In this model, each subject has one fixed set of predictor values throughout the observation period. These predictors may include continuous covariates, categorical factors, interaction terms, or custom formula terms. The model estimates regression coefficients that describe how each predictor changes the hazard relative to a baseline risk.
+
+The hazard function is modeled as:
+<div style="text-align: center;"> $$ h(t|x) = h_0(t) exp (x^T \beta) $$ </div>
+where $$h_0(t)$$ is the unspecified baseline hazard, x is the vector of fixed covariates, and $$\beta$$ is the vector of estimated coefficients.
+
+This method supports:
+
+1. Right-censored survival data
+1. Optional frequency weights
+1. Optional event-mode filtering
+1. Optional administrative censoring at a specified censoring value
+1. Optional entry times for delayed entry / left truncation
+1. Optional stratification of the baseline hazard
+1. Continuous covariates and categorical factors
+1. Custom model formulas, main-effects models, and full factorial models
+1. Model-based or robust variance estimation
+1. Cluster-adjusted robust standard errors
+1. Multiple tie-handling methods, including Breslow
+1. Predicted survival curves for user-specified covariate patterns
+
+The model output includes coefficient estimates, standard errors, confidence intervals, Wald statistics, degrees of freedom, and p-values for each fitted parameter. Coefficients are usually interpreted through hazard ratios, where positive coefficients increase the hazard and negative coefficients decrease the hazard.
+
+The method also provides model-level summaries, including the partial log-likelihood, pseudo $$R_2$$, AIC, AICc, BIC, and CAIC. Goodness-of-fit tests may include Wald, likelihood ratio, and score tests when model-based variance estimation is used. When robust variance estimation is selected, Wald and robust score tests are reported.
+
+Stratification may be used when different groups are expected to have different baseline hazard functions but the same covariate effects. In that case, the baseline cumulative hazard is estimated separately for each stratum, while the regression coefficients remain common across strata.
+
+This model is useful when the primary goal is to quantify the association between predictors and survival outcomes while avoiding strong assumptions about the shape of the underlying survival distribution.
+
+Use the Cox Proportional Hazards Model with Fixed Covariates by browsing in the top ribbon: 
+
+| `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Semi-Parametric` $$\rightarrow$$ `Cox Proportional Hazards Model with Fixed Covariates` |
+
+#### Input
+{: .no_toc }
+The Cox Proportional Hazards Model with Fixed Covariates requires at least two columns to be specified in the input datasheet: one numerical time column and at least one predictor variable. The time column must contain non-negative numerical values representing the observed time-to-event or time-to-censoring for each subject. Predictor variables may be specified either as categorical factors or numerical covariates and are used to model their effect on the hazard of the event occurring.
+
+In addition to the time variable and predictor variables, several optional inputs may be provided to extend the analysis. A censoring column may be specified as a  numerical or textual variable indicating whether each observation corresponds to an event or a censored case. A frequency column may be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. An event mode column may also be defined, using numerical or textual values to distinguish between different event types and determine which observations should be included in the analysis. An entry time column may be provided to account for delayed entry or left-truncated observations, where subjects enter the risk set after time zero.
+
+The method may also include a stratification column, which defines groups with separate baseline hazard functions while keeping the same covariate effects across strata. If robust variance estimation is selected, a cluster ID column may be specified to compute cluster-adjusted standard errors.
+
+Categorical factors may require reference levels, while numerical covariates are entered directly into the model. The selected predictors may be combined using a custom model formula, main-effects model, or full factorial model. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
+
+#### Configuration
+{: .no_toc }
+
+| **Time Column** | Select the column corresponding to the observed time-to-event or time-to-censoring for each subject. This column must be numerical and contain non-negative values. |
+|**Configure Response Options**| Use this button to open the `Configure Response Options` window to configure Event Mode, Frequency, Censoring and Entry Time Options [More on Response Options](https://www.docs/survival-analysis.html#configure-response-options)|
+| **Clear Response Options** | Use this button to clear all selections related to the response configuration. |
+| **Stratify baseline hazard by a column** | Enable this option to allow different baseline hazard functions across groups defined by a stratification column, while keeping the same covariate effects across all strata. |
+| **Stratification Column** |  Select the categorical column used to define strata. Each level will have its own baseline hazard function. This option is only available when stratification is enabled. |
+| **Confidence Level (%)** | Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. Default value is set to 95. |
+| **Confidence Interval Type** | Select the type of confidence interval to compute. Available options include: `Two-sided`, `Lower Bound`, `Upper Bound`. |
+| **Tie Handling Method** | Specify the method used to handle tied event times. Available options include methods such as Breslow and Efron. The Efron method can only be used when frequency values are integers, as it relies on discrete event counts.  |
+| **Variance/Covariance Type** | Select the method used to estimate the variance-covariance matrix of the coefficients. Options include Model-based and Robust. The robust option provides sandwich (cluster-adjusted) standard errors that are less sensitive to model misspecification.  |
+| **Cluster ID Column** | Select the column identifying clusters of observations. This option is optional and is only available when the robust variance option is selected. It is used to compute cluster-adjusted standard errors.  |
+| **Max Iterations** |  Specify the maximum number of iterations allowed for the optimization algorithm (Newton-Raphson). Higher values may be required for complex models but will increase computation time. Default value is set to 25. |
+| **Minimum Change in Estimates** | Define the convergence threshold for the optimization algorithm. The algorithm stops when the change in parameter estimates between iterations falls below this value. Default value is set to 1e-6.  |
+| **Factors/ Covariates / exclude columns** | Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate column should be specified. |
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
+|**Use default prefictor variable values for plots**| When enabled, predicted survival curves are generated using default values for predictors. These defaults are the reference levels for categorical factors and the midpoints of the observed ranges for numerical covariates.|
+|**Specify Predictor Variable Values for the plot**| Define custom values for predictors to generate predicted survival curves. The user may specify up to 10 different sets of predictor values, and a separate survival curve will be produced for each set. |
+
+
+
+#### Output
+{: .no_toc }
+The output of the Cox Proportional Hazards Model with Fixed Covariates is presented in a structured spreadsheet containing multiple tables that summarize the fitted model, statistical inference, and overall model performance.
+
+The main output includes a Parameter Estimates table, which reports the estimated regression coefficients for each covariate, along with their corresponding standard errors, confidence interval bounds at the selected confidence level, test statistics, degrees of freedom, and p-values. 
+
+A Goodness-of-Fit table is also provided, summarizing key model diagnostics including the partial log-likelihood, pseudo $$R^2$$, Akaike Information Criterion (AIC), finite-sample corrected AIC (AICc), Bayesian Information Criterion (BIC), and Consistent AIC (CAIC). These measures allow for assessment of model fit and comparison between competing models.
+
+In addition, a Goodness-of-Fit Tests table is included, presenting global hypothesis tests for the model. When model-based variance estimation is selected, this table includes Wald, likelihood ratio, and score tests, each with their associated degrees of freedom, test statistics, and p-values. If the robust variance estimator is selected, the likelihood ratio test cannot be estimated.
+
+An ANOVA table is also generated, providing term-wise inference for each predictor (and interaction terms, if specified). This table includes Wald, likelihood ratio, and score test statistics and p-values for each model term when model-based variance estimation is used. If the robust variance estimator is selected, the likelihood ratio and score ANOVA tests cannot be estimated, and only Wald-based results are reported.
+
+In addition to the tabular output, a pop-up window displays the predicted survival probability curves based on the fitted model. These curves are computed using the estimated coefficients and the baseline cumulative hazard function. Confidence interval bounds are displayed according to the selected confidence interval type. When multiple sets of predictor values are specified, a separate survival curve (with confidence bounds) is plotted for each set, allowing direct comparison of survival profiles under different covariate configurations.
+
+
+
+#### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+---
+
+### Cox Proportional Hazards with Time-Varying Covariates
+The Cox Proportional Hazards Model with Time-Varying Covariates is a semi-parametric survival regression method used when predictor values may change over the observation period. Instead of representing each subject with a single row, the data are organized into intervals, where each row describes the covariate values that apply during a specific time interval.
+
+The model does not assume a specific distribution for survival times. It estimates covariate effects through the Cox partial likelihood while leaving the baseline hazard function unspecified. The hazard function is modeled as:
+The hazard function is modeled as:
+<div style="text-align: center;"> $$ h(t|x) = h_0(t) exp (x(t)^T \beta) $$ </div>
+where $$h_0(t)$$ is the unspecified baseline hazard, $$x(t)$$ is the vector of covariates at time t, and $$\beta$$ is the vector of estimated coefficients.
+
+This method supports:
+
+1. Start–stop interval survival data
+1. Time-dependent covariates
+1. Right-censored observations
+1. Optional subject ID validation
+1. Optional frequency weights
+1. Optional event-mode filtering
+1. Optional stratification of the baseline hazard
+1. Continuous covariates and categorical factors
+1. Custom model formulas, main-effects models, and full factorial models
+1. Model-based or robust variance estimation
+1. Optional cluster-adjusted robust standard errors
+1. Multiple tie-handling methods
+1. Predicted survival curves for user-specified covariate profiles
+
+Each subject may contribute multiple rows, provided that their time intervals do not overlap. If a subject ID column is specified, the method checks that each subject has non-overlapping intervals, no more than one event, and that any event occurs only in the subject’s final interval.
+
+Use the Cox Proportional Hazards Model with Time-Varying Covariates by browsing in the top ribbon: 
+
+| `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Semi-Parametric` $$\rightarrow$$ `Cox Proportional Hazards Model with Time-Varying Covariates` |
+
+#### Input
+{: .no_toc }
+
+
+#### Configuration
+{: .no_toc }
+
+| **Interval Start (Lower Bound)** | Select the numerical column containing the lower bound of each observation interval. Values must be non-negative. |
+| **Interval End (Upper Bound)** | Select the numerical column containing the upper bound of each observation interval. Values must be non-negative and should define the end of the interval over which the row’s covariate values apply. |
+|**Configure Response Options**| Use this button to open the `Configure Response Options` window to configure Event Mode, Frequency, Censoring and Subject ID Options [More on Response Options](https://www.docs/survival-analysis.html#configure-response-options)|
+| **Clear Response Options** | Use this button to clear all selections related to the response configuration. |
+| **Stratify baseline hazard by a column** | Enable this option to allow different baseline hazard functions across groups defined by a stratification column, while keeping the same covariate effects across all strata. |
+| **Stratification Column** |  Select the categorical column used to define strata. Each level will have its own baseline hazard function. This option is only available when stratification is enabled. |
+| **Confidence Level (%)** | Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. Default value is set to 95. |
+| **Confidence Interval Type** | Select the type of confidence interval to compute. Available options include: `Two-sided`, `Lower Bound`, `Upper Bound`. |
+| **Tie Handling Method** | Specify the method used to handle tied event times. Available options include methods such as Breslow and Efron. The Efron method can only be used when frequency values are integers, as it relies on discrete event counts.  |
+| **Variance/Covariance Type** | Select the method used to estimate the variance-covariance matrix of the coefficients. Options include Model-based and Robust. The robust option provides sandwich (cluster-adjusted) standard errors that are less sensitive to model misspecification.  |
+| **Cluster ID Column** | Select the column identifying clusters of observations. This option is optional and is only available when the robust variance option is selected. It is used to compute cluster-adjusted standard errors.  |
+| **Max Iterations** |  Specify the maximum number of iterations allowed for the optimization algorithm (Newton-Raphson). Higher values may be required for complex models but will increase computation time. Default value is set to 25. |
+| **Minimum Change in Estimates** | Define the convergence threshold for the optimization algorithm. The algorithm stops when the change in parameter estimates between iterations falls below this value. Default value is set to 1e-6.  |
+| **Factors/ Covariates / exclude columns** | Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate column should be specified. |
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
+|**Use default prefictor variable values for plots**| When enabled, predicted survival curves are generated using default values for predictors. These defaults are the reference levels for categorical factors and the midpoints of the observed ranges for numerical covariates.|
+|**Specify Predictor Variable Values for the plot**| Define custom values for predictors to generate predicted survival curves. The user may specify up to 10 different sets of predictor values, and a separate survival curve will be produced for each set. |
+
+
+
+#### Output
+{: .no_toc }
+The output of the Cox Proportional Hazards Model with Time-Varying Covariates is presented in a structured spreadsheet containing multiple tables that summarize the fitted model, statistical inference, and overall model performance.
+
+The main output includes a Parameter Estimates table, which reports the estimated regression coefficients for each covariate, along with their corresponding standard errors, confidence interval bounds at the selected confidence level, test statistics, degrees of freedom, and p-values. 
+
+A Goodness-of-Fit table is also provided, summarizing key model diagnostics including the partial log-likelihood, pseudo $$R^2$$, Akaike Information Criterion (AIC), finite-sample corrected AIC (AICc), Bayesian Information Criterion (BIC), and Consistent AIC (CAIC). These measures allow for assessment of model fit and comparison between competing models.
+
+In addition, a Goodness-of-Fit Tests table is included, presenting global hypothesis tests for the model. When model-based variance estimation is selected, this table includes Wald, likelihood ratio, and score tests, each with their associated degrees of freedom, test statistics, and p-values. If the robust variance estimator is selected, the likelihood ratio test cannot be estimated.
+
+An ANOVA table is also generated, providing term-wise inference for each predictor (and interaction terms, if specified). This table includes Wald, likelihood ratio, and score test statistics and p-values for each model term when model-based variance estimation is used. If the robust variance estimator is selected, the likelihood ratio and score ANOVA tests cannot be estimated, and only Wald-based results are reported.
+
+In addition to the tabular output, a pop-up window displays the predicted survival probability curves based on the fitted model. These curves are computed using the estimated coefficients and the baseline cumulative hazard function. Confidence interval bounds are displayed according to the selected confidence interval type. When multiple sets of predictor values are specified, a separate survival curve (with confidence bounds) is plotted for each set, allowing direct comparison of survival profiles under different covariate configurations.
+
+
+
+#### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+
+##### Configuration
+{: .no_toc }
+
+##### Output
+{: .no_toc }
+
+---
+
+### Configure Response Options
+The Response Options dialog window allows the user to configure optional information related to how survival outcomes are interpreted and processed before fitting the Cox model. These options extend the basic time input by defining event types, censoring behavior, frequency weights, and model-specific time structure.
+
+There are two variants of this dialog window: one for the fixed covariates model and one for the time-varying covariates model.
+
+1. For the Cox model with fixed covariates, the dialog includes Event Mode Options, Entry Time Options, Frequency Options, and Censoring Options. The entry time option allows the user to specify delayed entry or left truncation, where subjects enter the risk set after time zero. The censoring options also allow the user to censor observations at or above a specified threshold value.
+
+1. For the Cox model with time-varying covariates, the dialog includes Event Mode Options, Subject Options, Frequency Options, and Censoring Options. The subject option allows the user to specify a subject ID column, which is used to identify repeated intervals belonging to the same subject. When provided, the method checks that intervals for each subject do not overlap, that each subject has no more than one event, and that any event occurs only in the final interval for that subject.
+
+The Event Mode Options section allows the user to specify an event mode column when the dataset contains different types of events. The levels of this column can be moved between the “Levels not Considered as Event” and “Levels Considered as Event” lists. Only observations with selected event levels are included as events according to the analysis configuration.
+
+The Frequency Options section allows the user to specify a frequency column containing non-negative numerical values. This column represents the number of identical observations associated with each row. If no frequency column is selected, each row is treated as one observation.
+
+The Censoring Options section allows the user to specify a censoring column and the value that identifies censored observations. The censoring column may be numerical or textual. In the fixed covariates variant, the user may also choose to censor times at or above a specified threshold value.
+
+These options are optional. If they are not configured, the model assumes that all rows represent single observations, all included rows correspond to the selected event structure, and no additional censoring, frequency weighting, entry-time adjustment, or subject-level validation is applied.
+
+#### Dialog window components (Fixed Covariates Model)
+{: .no_toc }
+
+|**Use an Event Mode Column**| Enable this option to include an event  mode column in the analysis. |
+|**Event Mode Column**|  If the `Use an Event Mode Column` option is enabled, specify the column containing event mode information. |
+|**Levels not Considered as Event/Levels Considered as Event**| Manually select which levels should be treated as events from the available levels of the Event Mode Column. Use the arrow buttons to move levels between the two lists. Single-arrow buttons move selected levels, while double-arrow buttons move all levels. At least one level must be selected as an event. |
+| **Use an Entry Time Column** | Enable this option to include an entry time column in the analysis. This is used only in the fixed covariates model to account for delayed entry (left truncation), where subjects enter the risk set after time zero. |
+| **Entry Time Column** | If the `Use an Entry Time Column` option is enabled, select the column containing entry time values for each observation. This column must be numerical, contain non-negative values, and each entry time must be less than or equal to the corresponding event or censoring time. |
+| **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
+| **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
+| **Use a Censoring  Column** | Enable this option to include a censoring column in the analysis. |
+| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be categorical and may be either numerical or textual. |
+| **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
+| **Censor times at or above a value** | Enable this option to treat all time values greater than or equal to a specified threshold as censored. |
+| **Censoring Threshold Value** | If the `Censor times at or above a value` option is enabled, specify the value above or equal to which observations will be treated as censored. |
+
+#### Dialog window components (Time-Varying Covariates Model)
+{: .no_toc }
+
+|**Use an Event Mode Column**| Enable this option to include an event  mode column in the analysis. |
+|**Event Mode Column**|  If the `Use an Event Mode Column` option is enabled, specify the column containing event mode information. |
+|**Levels not Considered as Event/Levels Considered as Event**| Manually select which levels should be treated as events from the available levels of the Event Mode Column. Use the arrow buttons to move levels between the two lists. Single-arrow buttons move selected levels, while double-arrow buttons move all levels. At least one level must be selected as an event. |
+| **Use a Subject Column** | Enable this option to include a subject identifier column in the analysis. This option is used only in the time-varying covariates model to link multiple rows belonging to the same subject. |
+| **Subject Column** | If the `Use a Subject Column` option is enabled, select the column identifying subjects. This column is used to validate that intervals for each subject do not overlap, that each subject has at most one event, and that any event occurs only in the subject’s final interval. |
+| **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
+| **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
+| **Use a Censoring  Column** | Enable this option to include a censoring column in the analysis. |
+| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be categorical and may be either numerical or textual. |
+| **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
+
+---
 
 ## References {#references-survivalAnalysis}
 1. Emmert-Streib, Frank, and Matthias Dehmer. "Introduction to survival analysis in practice." Machine Learning and Knowledge Extraction 1, no. 3 (2019): 1013-1038. [doi.org/10.3390/make1030058](https://doi.org/10.3390/make1030058).
