@@ -1,18 +1,29 @@
 ---
 layout: default
 title: 9.3 Analytical Chemistry
-parent: 9. Case Studies per Industry
+parent: 9. Use Cases per Industry
 nav_order: 3
 permalink: /case_studies_industry_analytical_chemistry.html
+description: "Analytical chemistry case studies in Isalos for method development and optimisation using DoE."
 ---
 
-## Table of contents
-{: .no_toc .text-delta }
+# Analytical Chemistry
+{: .no_toc }
 
-1. TOC
-{:toc}
+Below are some use cases of Isalos Analytics Platform in analytical chemistry applications. Each case study is accompanied by:
+* A **Manual User Guide report**, providing a detailed, step-by-step description of the methodology and results, and
+* the corresponding **Isalos workflow file**, enabling full reproducibility and hands-on execution of the analysis within the platform.
 
-# Design of Experiments
+---
+
+## Curve Fitting
+
+#### Liquid Chromatography-High Resolution Mass Spectromentry ([`Gaussian Distribution`](https://www.docs.isalos.novamechanics.com/curvefitting.html#gaussian-distribution))
+* [Isalos workflow](files\Curve Fitting\2025_Zou\2025_Zou.iap)
+* [Report](files\Curve Fitting\2025_Zou\2025_Zou.pdf)
+
+
+## Design of Experiments
 
 #### Development of hydrophilic interaction LC method ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }

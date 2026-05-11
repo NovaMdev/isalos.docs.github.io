@@ -4,6 +4,7 @@ title: 6. DOE
 nav_order: 6
 has_children: true
 permalink: /doe.html
+description: "Design of Experiments (DoE) tools in Isalos for planning, conducting, and analysing controlled experiments."
 ---
 
 # Design of Experiments

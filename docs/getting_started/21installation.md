@@ -4,19 +4,15 @@ title: 2.1 Installation and Configuration
 parent: 2. Getting Started
 nav_order: 1
 permalink: /installation.html
+description: "Install and configure the Isalos Analytics Platform on Windows or macOS. Plug-and-play setup with no external dependencies."
 ---
 
 # Installation and Configuration
 {: .no_toc }
 Getting started with Isalos is a straightforward process thanks to its plug-and-play setup. The platform comes pre-packaged with everything necessary to run it and get started with your workflows, ensuring a seamless installation with no external dependencies.
 
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
 ---
+
 ## Install Isalos
 Visit [the official download page of NovaMechanics’s Isalos installers](https://enaloscloud.novamechanics.com/novamechanicssystem/userregistration/) to download the appropriate installer for your OS.
 

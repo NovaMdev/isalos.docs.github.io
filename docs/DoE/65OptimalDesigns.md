@@ -4,12 +4,14 @@ title: 6.5 Optimal Designs
 parent: 6. DOE
 nav_order: 5
 permalink: /optimal-designs.html
+description: "Construct D-optimal, A-optimal, and other optimal experimental designs in Isalos using the Fedorov algorithm."
 ---
 # Optimal Designs
 The theory of  optimal designs centers around the problems of characterization and construction of designs which are optimal in some sense from a number of alternative experiments in a given design set-up. The objective in these methods is to choose n points to include in the design from a finite set of N candidate points so that the resulting is optimal in some sense. Different criteria reflect different experimental goals—for example, minimizing the average variance of parameter estimates (A-optimality), maximizing the determinant of the information matrix (D-optimality), maximizing the smallest eigenvalue (E-optimality), or minimizing the worst prediction variance over the candidate set (G-optimality). The choice of criterion guides how designs are evaluated. 
 
 To construct optimal (or near-optimal) designs we use the modified Fedorov point-exchange algorithm (Cook & Nachtsheim, 1980). Starting from an initial design of  randomly selected candidate points, the algorithm iteratively seeks swaps—replacing one design point with a candidate not in the design—that improve the objective (e.g., D, A, E, or G). Swaps are accepted greedily, and the process continues until no improving exchange exists, at which point the algorithm has converged to a locally optimal design. Multiple trials can be done to hedge against local optima and further improve the final result.
 
+---
 
 ## D-Optimal Design
 D-Optimal designs are a subcategory of Optimal Designs where the criterion based on which we compare designs focuses on the minimization of the generalized variance of the estimated regression coefficients. Equivalently, they maximize the determinant of the information matrix $$M=X^{'}X$$ (Where $$X$$ is the design matrix of the multiple linear regression). Thus, for a design of size q, the objective for our algorithm is:

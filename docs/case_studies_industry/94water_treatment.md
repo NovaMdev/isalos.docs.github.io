@@ -1,18 +1,22 @@
 ---
 layout: default
 title: 9.4 Water Treatment
-parent: 9. Case Studies per Industry
+parent: 9. Use Cases per Industry
 nav_order: 4
 permalink: /case_studies_industry_water.html
+description: "Water treatment case studies in Isalos applying response surface methods to purification process optimisation."
 ---
 
-## Table of contents
-{: .no_toc .text-delta }
+# Water Treatment
+{: .no_toc }
 
-1. TOC
-{:toc}
+Below are some use cases of Isalos Analytics Platform in water treatment applications. Each case study is accompanied by:
+* A **Manual User Guide report**, providing a detailed, step-by-step description of the methodology and results, and
+* the corresponding **Isalos workflow file**, enabling full reproducibility and hands-on execution of the analysis within the platform.
 
-# Design of Experiments
+---
+
+## Design of Experiments
 
 #### Removal of humic substances using coconut copra ([`Central Composite - CCI`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }

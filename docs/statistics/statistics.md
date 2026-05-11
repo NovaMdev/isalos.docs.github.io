@@ -4,6 +4,7 @@ title: 5. Statistics
 nav_order: 5
 has_children: true
 permalink: /statistics.html
+description: "Statistical tools in Isalos for model validation, metrics, hypothesis testing, and descriptive statistics."
 ---
 
 # Statistics

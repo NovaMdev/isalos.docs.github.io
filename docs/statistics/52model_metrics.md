@@ -4,17 +4,12 @@ title: 5.2 Model Metrics
 parent: 5. Statistics
 nav_order: 2
 permalink: /model-metrics.html
+description: "Evaluate machine learning model performance in Isalos using regression and classification accuracy metrics."
 ---
 
 # Model Metrics
 {: .no_toc }
 The assessment of a machine learning model’s performance can be achieved using statistical metrics that quantify the accuracy of the model’s predictions (how closely the predictions match their true values) and identify possible underfitting or overfitting. A regression model’s performance is assessed based on how close the actual ($$y_i$$) and the predicted ($$\widehat{y_i}$$) values of the target are, usually by calculating the differences (residuals) between actual and predicted values. The performance of classification models is evaluated based on the number of correct predictions and the number of misclassifications.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 
@@ -225,60 +220,20 @@ In the right-hand spreadsheet of the tab the confusion matrix is depicted [7], f
 
 ---
 
-## Tips
-*  In model development, the abovementioned statistical measures can be calculated for both training set predictions (to assess model fit and potential overfitting) and external/test set predictions (to assess generalization and predictive performance).
-*  In classification, the following metrics: precision, recall/sensitivity, specificity, F<sub>1</sub> score, and F<sub>$$\mathrm{\beta}$$</sub> score, are calculated for all classes. This approach is crucial when dealing with imbalanced class distributions, where one class might be much more frequent than the other(s). By calculating these statistics for both the positive and negative classes, you can better understand how well the developed model performs across both common and rare events. This comprehensive evaluation provides a complete performance picture of the model.
+## ✧ Tips
+<div class="tip-box">
+  <ul>
+    <li>
+      In model development, the abovementioned statistical measures can be calculated for both training set predictions (to assess model fit and potential overfitting) and external/test set predictions (to assess generalization and predictive performance).
+    </li>
+    <li>
+      In classification, the following metrics &mdash; precision, recall/sensitivity, specificity, F<sub>1</sub> score, and F<sub>&beta;</sub> score &mdash; are calculated for all classes. This approach is crucial when dealing with imbalanced class distributions, where one class might be much more frequent than the other(s). By calculating these statistics for both the positive and negative classes, you can better understand how well the developed model performs across both common and rare events. This comprehensive evaluation provides a complete performance picture of the model.
+    </li>
+  </ul>
+</div>
 
 ## See also
 For the development of regression models refer to the [`Regression`](https://www.docs.isalos.novamechanics.com/regression.html) functions and for the development of classification models refer to the [`Classification`](https://www.docs.isalos.novamechanics.com/classification.html) functions.
-
-### Workflows
-{: .no_toc }
-
-#### Bodyfat prediction case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Bodyfat prediction/body_fat.iap)
-* [Report](files/Regression/Bodyfat prediction/Bodyfat Prediction.pdf)
-
-#### House pricing case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Housing prices/house_pricing.iap)
-* [Report](files/Regression/Housing prices/Housing Prices.pdf)
-
-#### Insurance charges case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Insurance charges/insurance_charges.iap)
-* [Report](files/Regression/Insurance charges/Insurance Charges.pdf)
-
-#### MA score case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/MA score/ma_score_data.iap)
-* [Report](files/Regression/MA score/MA score Data.pdf)
-
-#### Salary prediction case study
-{: .no_toc }
-* [Isalos workflow](files/Regression/Salary prediction/salary_prediction.iap)
-* [Report](files/Regression/Salary prediction/Salary Prediction.pdf)
-
-#### Breast cancer case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Breast cancer/breast_cancer.iap)
-* [Report](files/Classification/Breast cancer/Breast Cancer.pdf)
-
-#### Credit card case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Credit card/credit_card.iap)
-* [Report](files/Classification/Credit card/Credit Card.pdf)
-
-#### Parkinson's disease case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Parkinson's disease/parkinsons_disease.iap)
-* [Report](files/Classification/Parkinson's disease/Parkinson's Disease.pdf)
-
-#### Students' performance case study
-{: .no_toc }
-* [Isalos workflow](files/Classification/Student's performance/students_performance.iap)
-* [Report](files/Classification/Student's performance/Students' Performance.pdf)
 
 ## References 
 1. Naser MZ, Alavi AH. Error Metrics and Performance Fitness Indicators for Artificial Intelligence and Machine Learning in Engineering and Sciences. Archit Struct Constr 2021. [doi.org/10.1007/s44150-021-00015-8](https://doi.org/10.1007/s44150-021-00015-8).

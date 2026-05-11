@@ -1,26 +1,36 @@
 document.addEventListener('DOMContentLoaded', (event) => {
   const storedTheme = localStorage.getItem('theme');
-  const toggleDarkMode = document.querySelector('.js-toggle-dark-mode');
+  const toggleButtons = document.querySelectorAll('.js-toggle-dark-mode');
 
-  if (storedTheme) {
-      jtd.setTheme(storedTheme);
-      toggleDarkMode.textContent = storedTheme === 'dark' ? '🌞' : '🌜';
-      toggleDarkMode.setAttribute('aria-label', storedTheme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  function setTheme(isDark) {
+    if (isDark) {
+      document.body.classList.add('dark-mode');
+      toggleButtons.forEach(btn => {
+        btn.setAttribute('aria-label', 'Switch to light mode');
+      });
+    } else {
+      document.body.classList.remove('dark-mode');
+      toggleButtons.forEach(btn => {
+        btn.setAttribute('aria-label', 'Switch to dark mode');
+      });
+    }
   }
 
-  toggleDarkMode.style.fontSize = '1.5em';
 
-  toggleDarkMode.addEventListener('click', function() {
-      if (jtd.getTheme() === 'dark') {
-          jtd.setTheme('light');
-          toggleDarkMode.textContent = '🌜';
-          toggleDarkMode.setAttribute('aria-label', 'Switch to dark mode');
-          localStorage.setItem('theme', 'light');
-      } else {
-          jtd.setTheme('dark');
-          toggleDarkMode.textContent = '🌞';
-          toggleDarkMode.setAttribute('aria-label', 'Switch to light mode');
-          localStorage.setItem('theme', 'dark');
-      }
+  // Restore saved theme on page load
+  if (storedTheme === 'dark') {
+    setTheme(true);
+  } else {
+    setTheme(false);
+  }
+
+  toggleButtons.forEach(btn => {
+    btn.style.fontSize = '1.5em';
+    btn.addEventListener('click', function() {
+      const isDark = document.body.classList.contains('dark-mode');
+      setTheme(!isDark);
+      localStorage.setItem('theme', !isDark ? 'dark' : 'light');
+    });
   });
 });
+

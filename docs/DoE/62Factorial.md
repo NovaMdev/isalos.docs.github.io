@@ -4,17 +4,11 @@ title: 6.2 Factorial
 parent: 6. DOE
 nav_order: 2
 permalink: /factorial.html
+description: "Generate full and fractional factorial designs in Isalos to study factor effects and interactions systematically."
 ---
 
 # Factorial
 {: .no_toc }
-
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 
@@ -46,13 +40,12 @@ Use the `Full Factorial` function by browsing in the top ribbon:
 
 ### Input
 {: .no_toc}
-
-Numerical values should be specified in the input datasheet. The minimum requirement is to specify 2 columns (factors) along with two levels (values/rows) each representing min and max levels, respectively.
+Factor values must be specified in the input datasheet. The Full Factorial design is applied when at least three factors (columns) are provided. Factors may be either numerical or categorical. Categorical factors must contain exactly two distinct levels. Numerical factors may contain more than two values; in this case, the algorithm automatically determines the factor levels by taking the minimum and maximum values observed in the column.
 
 ### Configuration
 {: .no_toc}
 
-| **Number of Center Points per Block** | Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+| **Number of Center Points per Block** | Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. When categorical factors are included in the analysis, the total number of center points is equal to the user-specified value multiplied by the number of possible combinations of categorical factor levels.|
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
 |**Number of Blocks**|Select from the list of available options the Number of Blocks. Available options depend on the selected number of factors and the specified number of replicates.|
 | **Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
@@ -70,8 +63,7 @@ A list of experiments (combinations) is generated in the output datasheet along 
 
 ##### Input
 {: .no_toc}
-
-In the input datasheet minimum requirement is to specify two factors (columns) and insert minimum two levels (values) for each factor (column), as shown below.
+In the input datasheet minimum requirement is to specify two factors (columns) and insert exactly/minimum two levels (values) for each categorical/numerical factor (column), as shown below.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/full-factorial-input.png" alt="Full Factorial input" width="350" height="400" class="img-responsive">

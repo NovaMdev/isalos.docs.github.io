@@ -4,17 +4,12 @@ title: 4.5 Existing Model Utilization
 parent: 4. Analytics
 nav_order: 5
 permalink: /existing-model-utilization.html
+description: "Apply existing models to new data in Isalos. Reuse normalization, regression, classification, and clustering models."
 ---
 
 # Existing Model Utilization
 {: .no_toc }
 This function treats or transforms the input data according to the parameters of an existing model (typically a normalization, a regression, a classification, a clustering model or an applicability domain model). The applied mathematical transformation is applied to all columns in the input data that are contained in the existing model. This model is either generated within the project or imported from the user’s Isalos models library.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 
@@ -78,15 +73,21 @@ In the right-hand spreadsheet of the tab the output data matrix with the normali
 
 ---
 
-## Tips
+## ✧ Tips
 
-The `Existing Model Utilization` function is useful in cases when test/external data shall be transformed the same as way as training data has been processed, or when predictions shall be generated for a dataset using an already developed machine learning model.
+<div class="tip-box">
+  <ul>
+    <li>
+      The <code>Existing Model Utilization</code> function is useful in cases where test or external data should be transformed in the same way as the training data has been processed, or when predictions need to be generated for a dataset using an already developed machine learning model.
+    </li>
+  </ul>
+</div>
 
 ## See also
 Different types of models can be applied on data including [`Normalizers`](https://www.docs.isalos.novamechanics.com/normalizers.html), [`Regression`](https://www.docs.isalos.novamechanics.com/regression.html), [`Classification`](https://www.docs.isalos.novamechanics.com/classification.html) and [`Clustering`](https://www.docs.isalos.novamechanics.com/clustering.html) models, and the applicability [`Domain – APD limits`](https://www.docs.isalos.novamechanics.com/domain-apd.html).
 
 For model import from a library of existing models refer to [`Import Model from`](https://www.docs.isalos.novamechanics.com/save_import.html#importing-projectsmodels) and [`Export Model from`](https://www.docs.isalos.novamechanics.com/save_import.html#exporting-models) options.
----
+
 
 ## Version History
 Introduced in Isalos Analytics Platform v0.1.18

@@ -4,17 +4,12 @@ title: 3.2 Data Manipulation
 parent: 3. Data Transformation
 nav_order: 2
 permalink: /data-manipulation.html
+description: "Manipulate data in Isalos with filtering, sorting, missing value handling, column removal, and matrix transpose operations."
 ---
 
 # Data Manipulation
 {: .no_toc }
 This menu includes functionalities that enable the users to prepare their data for modelling and analysis. These functions correspond to standard pre-processing steps for the development of data analysis and machine learning workflows, such as data filtering, missing values filling, sorting and matrix transpose.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 
@@ -167,6 +162,64 @@ The transposed input data table. In all columns the column type is changed to st
 
 ---
 
+## Wide to Long Format
+**Wide to long format** transformation is the process of restructuring a data table so that the values originally spread across multiple columns, are stacked into fewer columns and represented across multiple rows. In a wide table, repeated measurements or related variables are stored in separate columns, while in a long table these values are reorganized so that each row corresponds to one observation-variable combination. This transformation is especially useful when subsequent statistical analysis, visualization, or workflow steps require data in long format rather than in a multi-column wide structure.
+
+Use the Wide to Long Format function by browsing in the top ribbon:
+
+| Data Transformation $$\rightarrow$$ Data Manipulation $$\rightarrow$$ Wide to Long Format |
+
+### Input
+{: .no_toc }
+Data table containing one or more identifier columns and multiple columns with values that will be stacked into long format.
+
+### Configuration
+{: .no_toc }
+
+|**Value Columns (Convert to Rows)**| Select the wide-format columns whose values will be converted from separate columns into stacked rows in the long-format output. |
+|**Identifier Columns (Keep the same)**| Select the column or columns that will remain unchanged in the output table and will be repeated as needed after the transformation, so that each long-format row can still be linked back to the original observation. |
+|**New Variable column name**| Specify the name of the output column that will contain the original column headers of the transformed wide-format columns. |
+|**New Value column name**| Specify the name of the output column that will contain the corresponding values taken from the transformed wide-format columns. |
+
+### Output
+{: .no_toc }
+Data table in long format, where the selected wide-format columns are reshaped into a variable column and a value column, while the identifier columns are preserved. This type of structure is necessary when categorical labels and numerical values must be provided in long-form input tables.
+
+### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+In the left-hand spreadsheet of the tab import the data table that is going to be transformed from wide to long format.
+
+<div style="text-align: center;">
+<img src="images/Data manipulation/widetolong-input.png" alt="sort-input" width="500" height="300" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc }
+
+1.	Select `Data Transformation` $$\rightarrow$$ `Data Manipulation` $$\rightarrow$$ `Wide to Long Format`.
+1.	Select the columns by clicking on the arrow buttons [4] and moving columns between the Value Columns [2] and Identifier Columns [3] lists.
+1.	Specify the name [5] of the output column that will store the original column labels of the transformed variables, for example “Day”.
+1.	Specify the name [6] of the output column that will store the corresponding values, for example “Measurement”.
+1.	Click on the `Execute` [7] button to perform the transformation.
+
+
+<div style="text-align: center;">
+<img src="images/Data manipulation/widetolong-config.png" alt="sort-input" width="500" height="300" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc }
+The output table is converted to long format, while preserving identifier columns and stacking the selected columns into variable-value pairs.
+
+<div style="text-align: center;">
+<img src="images/Data manipulation/widetolong-output.png" alt="sort-output" width="500" height="300" class="img-responsive">
+</div>
+
+---
+
 ## Sort by Column
 This function sorts the input data table according to a user-selected column.
 
@@ -295,10 +348,94 @@ In the right-hand spreadsheet of the tab, the missing values of the input table 
 
 ---
 
-## Tips
-Fill Missing Column(s) Values:
+## Mathematical Calculations
+**Mathematical Calculations** is a data manipulation tool that allows the user to apply mathematical, trigonometric, inverse trigonometric, rounding, and statistical operations to numeric columns and constants in a dataset. It can be used either to transform values row by row or to obtain summary measures such as the mean, standard deviation, minimum, and maximum of selected data.
 
-* The use of the methods `Mean of Nearby Points`, `Median of Nearby Points`, and `Linear Trend at point` is recommended when the missing values are part of a time series, but they can also be used in other cases non-restrictively.
+Use the Mathematical Calculations function by browsing in the top ribbon:
+
+| Data Transformation $$\rightarrow$$ Data Manipulation $$\rightarrow$$ Mathematical Calculations |
+
+### Input
+{: .no_toc }
+Data table containing numeric columns that will be used in the mathematical expression or calculation.
+
+### Configuration
+{: .no_toc }
+
+|**Existing Columns**| Displays the numeric columns already present in the imported dataset, so they can be selected and inserted into the calculation expression. |
+|**clear**| Clears the current mathematical expression from the calculator window. |
+|**ln**| Calculates the natural logarithm of the selected value or column. |
+|**log**| Applies a logarithmic transformation to the selected value or column. |
+|**√x**| Calculates the square root of the selected value. |
+|**x**| Raises the selected value to a power. |
+|**abs**| Returns the absolute value of the selected number or expression. |
+|**mod**| Returns the remainder after division. |
+|**π**| Inserts the mathematical constant pi into the expression. |
+|**e**| Inserts Euler’s number, which is the base of the natural logarithm. |
+|**tan(°)**| Calculates the tangent of the selected value. |
+|**sin(°)**| Calculates the sine of the selected value. |
+|**cos(°)**| Calculates the cosine of the selected value. |
+|**atan**| Returns the inverse tangent, meaning the angle whose tangent is the selected value. |
+|**asin**| Returns the inverse sine, meaning the angle whose sine is the selected value. |
+|**acos**| Returns the inverse cosine, meaning the angle whose cosine is the selected value. |
+|**floor**| Rounds the selected value down to the nearest integer. |
+|**ceiling**| Rounds the selected value up to the nearest integer. |
+|**round**| Rounds the selected value to the nearest integer. |
+|**Σ(x)**| Calculates the sum of the selected values. |
+|**x̄**| Calculates the arithmetic mean of the selected values. |
+|**Std**| Calculates the standard deviation of the selected values. |
+|**min**| Returns the minimum value from the selected data. |
+|**max**| Returns the maximum value from the selected data. |
+
+### Output
+{: .no_toc }
+Calculated results based on the mathematical expression defined by the user. When row-wise functions are applied to a column, the output corresponds to transformed values for each observation, while summary operators return an overall descriptive result for the selected data.
+
+### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+In the left-hand spreadsheet of the tab import the data table that is going to be used in the calculation.
+
+<div style="text-align: center;">
+<img src="images/Data manipulation/math-input.png" alt="sort-input" width="500" height="300" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc }
+
+1.	Select `Data Transformation` $$\rightarrow$$ `Data Manipulation` $$\rightarrow$$ `Mathematical Calculations`.
+1.	Click on the `ln` [2] button to calculate the natural logarithm of the selected column.
+1.	In the `Existing Columns` [3] panel select the column “Day1” to use it in the expression.
+1.	The expression is inserted into the calculator area [4] and can be edited further by adding additional operators or functions available in the panel.
+1.	Click on the `Execute` [5] button to perform the calculation.
+
+
+
+<div style="text-align: center;">
+<img src="images/Data manipulation/math-config.png" alt="sort-input" width="500" height="300" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc }
+The output is presented as transformed or summarized values that can be used in subsequent analysis steps.
+
+<div style="text-align: center;">
+<img src="images/Data manipulation/math-output.png" alt="sort-output" width="500" height="300" class="img-responsive">
+</div>
+
+---
+
+## ✧ Tips
+<div class="tip-box">
+  <div class="tip-title">Fill Missing Column(s) Values:</div>
+  <ul>
+    <li>
+      The use of the methods <code>Mean of Nearby Points</code>, <code>Median of Nearby Points</code>, and <code>Linear Trend at point</code> is recommended when the missing values are part of a time series, but they can also be used in other cases non-restrictively.
+    </li>
+  </ul>
+</div>
 
 ---
 ## Version History

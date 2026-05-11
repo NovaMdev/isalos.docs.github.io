@@ -4,17 +4,12 @@ title: 4.4 Anomaly Detection
 parent: 4. Analytics
 nav_order: 4
 permalink: /anomaly-detection.html
+description: "Detect anomalies and outliers in datasets using Isalos for fraud detection, fault diagnosis, and quality control."
 ---
 
 # Anomaly Detection
 {: .no_toc }
 Anomaly detection is an important technique in data analytics that involves identifying unusual patterns or outliers in datasets. It is widely used in various applications like fraud detection, network security, and fault diagnosis. Anomalies in these datasets can indicate critical incidents such as breaches, failing components, or fraudulent transactions. To identify these anomalies, statistical, machine learning, or other data-driven methods are used to analyze data in real-time or in batches. This helps in identifying data points that deviate significantly from the expected behavior. By detecting and flagging these anomalies, organizations can proactively address potential issues, leading to improved operational efficiency and security.<sup>[1](#anomaly-detection-references)</sup>
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 
