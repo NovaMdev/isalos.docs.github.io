@@ -125,14 +125,14 @@ Use the `Definitive Screening` designs by browsing in the top ribbon:
 
 ### Input
 {: .no_toc}
-Factor values must be specified in the input datasheet. The Plackett–Burman design is applied when at least two factors (columns) are provided. Factors may be either numerical or categorical. Categorical factors must contain exactly two distinct levels. Numerical factors may contain more than two values; in this case, the algorithm automatically determines the factor levels by taking the minimum and maximum values observed in the column.
+Factor values must be specified in the input datasheet. The Definitive Screening design is applied when at least two factors (columns) are provided. Factors may be either numerical or categorical. Categorical factors must contain exactly two distinct levels. Numerical factors may contain more than two values; in this case, the algorithm automatically determines the factor levels by taking the minimum and maximum values observed in the column.
 
 ### Configuration
 {: .no_toc}
 
 |**Number of Center Points per Block**| Specify the Number of Center Points per Block to be included in the generated list of experiments. There is no minimum requirement or upper limitation. For Definitive Screening Designs, center points are generated using the midpoint of all numerical factors, while categorical factors are set simultaneously to either their low level or their high level. Therefore, the number of center points is exactly equal to the user-specified value and is not multiplied by the number of categorical level combinations. |
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
-|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Plackett Burman designs can only be blocked on replicates, meaning each replicate defines a block, otherwise all points are put into a single block.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Definitive Screening designs can only be blocked on replicates, meaning each replicate defines a block, otherwise all points are put into a single block.|
 |**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
 |**Time-based RNG Seed**|If the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.|
 |**RNG Seed**|Select manually the random generated number seed if required.|
@@ -163,7 +163,7 @@ In the input datasheet minimum requirement is to specify two factors (columns) a
 1. Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
 1. If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
 1. Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
-1. Click on the `Execute` button [10] to perform Plackett-Burman design method.
+1. Click on the `Execute` button [10] to perform the Definitive Screening Design method.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/Definitive-Screening-config.png" alt="Definitive-Screening Configuration" width="400" height="400" class="img-responsive">
