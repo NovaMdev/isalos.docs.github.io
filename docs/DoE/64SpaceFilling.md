@@ -359,7 +359,7 @@ To make `even coverage` measurable, Uniform Design uses a quantitative uniformit
 
 ### Centered $$L_2$$ discrepancy
 {: .no_toc}
-Let $$P_n=\{x_1,…,x_n\}$$ be the set of ndesign points in sdimensions, with coordinates $$x_{kj} ∈ \[0,1\]$$(i.e., factor levels scaled to the unit interval). The squared centered $$L_2$$ discrepancy is:
+Let $$P_n=\{x_1,…,x_n\}$$ be the set of ndesign points in sdimensions, with coordinates $$x_{kj} ∈ [0,1]$$(i.e., factor levels scaled to the unit interval). The squared centered $$L_2$$ discrepancy is:
 <div id="L2 discrepancy">
 \begin{equation}
 (CL_2(P_n))^2
