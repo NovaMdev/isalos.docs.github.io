@@ -455,7 +455,7 @@ The Shapiro-Wilk (S-W) is the most popular and powerful test for normality, espe
 <div id="eq. sw-statistic">
 $$
 \begin{equation}
-W=\frac{\left(\sum _{i=1}^{n}a_{i}x_{(i)}\right)^{2}}{\sum _{i=1}^{n}(x_{i}-\={x})^{2}}, {\qquad [19] \qquad}
+W=\frac{\left(\sum _{i=1}^{n}a_{i}x_{(i)}\right)^{2}}{\sum _{i=1}^{n}(x_{i}-\bar{x})^{2}}, {\qquad [19] \qquad}
 \end{equation} 
 $$
 </div>
@@ -518,6 +518,7 @@ A Quantile-Quantile (Q-Q) plot is a graphical tool for assessing whether a datas
 Upon executing the Q-Q Plot, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
 
 Customization
+
 | **Show Legend**       | Display a legend consisting of the curves' names.  |  |
 | **Show Grid**         | Display grid lines in the background. |   |
 | **X axis ticks**      | Select the number of horizontal grid line ticks from the drop-down menu.  |   |
@@ -530,6 +531,7 @@ Customization
 | **Background**        | Select the background color.  |   |
 
 Settings
+
 | **Plotting Positions Method** | Select the method for generating the plotting positions (cumulative probabilities).  | | |
 |                               | **Hazen**     | $P = \frac{i - 0.5}{n}$ | Popular in engineering; provides the median of the plotting distribution. |
 |                               | **Blom**      | $P = \frac{i - 0.375}{n + 0.25}$ | Designed to yield approximately normal quantiles. |
@@ -548,6 +550,7 @@ A Histogram is a bar chart-based visualization used to show the frequency distri
 Upon executing the Histogram, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
 
 Customization
+
 | **Show Legend**       | Display a legend consisting of the curves' names.  |  |
 | **Show Grid**         | Display grid lines in the background. |   |
 | **X axis ticks**      | Select the number of horizontal grid line ticks from the drop-down menu.  |   |
@@ -558,6 +561,7 @@ Customization
 | **Background**        | Select the background color.  |   |
 
 Settings
+
 | **Numbers of Bins** | Select the number of bins to split the data into.  |
 
 ###### Box Plot
@@ -575,6 +579,7 @@ It visualises data distributions through these quantities:
 Upon executing the Box Plot, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
 
 Customization
+
 | **Show Legend**               | Display a legend consisting of the curves' names.  |  |
 | **Show Grid**                 | Display grid lines in the background. |   |
 |                               | **Vertical**      | Select the orientation of the box plot to be vertical.      |
@@ -596,6 +601,7 @@ A Violin Plot is a data visualization tool used for comparing probability distri
 Upon executing the Violin Plot, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
 
 Customization
+
 | **Show Legend**       | Display a legend consisting of the curves' names.  |  |
 | **Show Grid**         | Display grid lines in the background. |   |
 | **Show Box Plot**     | Display the box plot inside the violin plot. |   |
@@ -606,6 +612,7 @@ Customization
 | **Background**        | Select the background color.  |   |
 
 Settings
+
 | **Smoothness** | Select the level of smoothness to apply.  |
 
 #### Input
