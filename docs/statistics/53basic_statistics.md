@@ -19,31 +19,31 @@ Descriptive statistics is a collection of analytical methods used to effectively
 
 The available statistical measures in Isalos, applicable to both the population and to a sample of the population, include: 
 
-###### Minimum
+##### 1. Sample Size & Counts
 {: .no_toc}
-The minimum (min) is the smallest value in a dataset, defining the lower boundary of the data range. There is no distinction in calculation between a sample and a population for this measure.
+This section covers the foundational counting measures of a dataset, including the total number of observations, how frequently individual values appear, their sum, and the sum of squared deviations from the mean.
 
-###### Maximum
+###### Size/Count (n)
 {: .no_toc}
-The maximum (max) is the largest value in a dataset, defining the upper boundary of the data range. Like the minimum, the calculation does not vary between a sample and a population.
+The size or count is the total number of data points in the dataset, denoted as $n$. It is used as the denominator in many statistical formulas to calculate averages and variations. Both population and sample datasets use the same method for counting data points.
 
-###### Range
+###### Frequency
 {: .no_toc}
-The range is a measure of the spread between the maximum and minimum values in the dataset, calculated as:
+Frequency ($f_{i}$) refers to the number of times a particular data point or value appears in a dataset. It is a simple yet fundamental measure used to describe the distribution of data values. The basic formula for frequency is: 
 
-<div id="eq. range">
+<div id="eq. f1-sample">
 $$
 \begin{equation}
-R = x_{\text{max}} - x_{\text{min}} {\qquad [1] \qquad}
+f_{i} = \text{Number of occurrences of value } \times x_{i} {\qquad [1] \qquad}
 \end{equation}
 $$
 </div>
 
-This measure does not differ between population and sample data.
+where $f_{i}$ represents the frequency of the $i$-th value $x_{i}$.
 
-###### Size/Count
-{: .no_toc}
-The size or count is the total number of data points in the dataset, denoted as $n$. It is used as the denominator in many statistical formulas to calculate averages and variations. Both population and sample datasets use the same method for counting data points.
+Use the `Descriptive Statistics` function by browsing in the top ribbon: 
+
+| Statistics $$\rightarrow$$ Basic Statistics $$\rightarrow$$ Descriptive Statistics |
 
 ###### Sum
 {: .no_toc}
@@ -59,6 +59,56 @@ $$
 
 Here, $x_{i}$ represents each value in the dataset. The calculation is identical whether dealing with a sample or a population. 
 
+###### Sum of Squares
+{: .no_toc}
+The sum of squares (SS) is the sum of squared differences from the mean. 
+
+For populations:
+<div id="eq. ss-population">
+$$
+\begin{equation}
+SS = \sum_{i=1}^{n} (x_{i} - \mu)^{2} {\qquad [3a] \qquad}
+\end{equation}
+$$
+</div>
+
+For samples:
+<div id="eq. ss-sample">
+$$
+\begin{equation}
+SS = \sum_{i=1}^{n} (x_{i} - \overline{x})^{2} {\qquad [3b] \qquad}
+\end{equation}
+$$
+</div>
+
+This foundational calculation underpins variance and standard deviation.
+
+##### 2. Central Tendency
+{: .no_toc}
+This section describes measures that identify the centre of a distribution, with the mean, median, mode, and midrange, each offering a different perspective on where data values tend to cluster.
+
+###### Mean
+{: .no_toc}
+The mean, often referred to as the average, is a measure of central tendency that sums all the numerical values in a dataset and divides by the count of the values. The equation for calculating the mean is:
+
+For populations: 
+<div id="eq. mean-population">
+$$
+\begin{equation}
+\mu = \frac{1}{n} \sum_{i=1}^{n} x_{i} {\qquad [4a] \qquad}
+\end{equation}
+$$
+</div>
+
+For samples:
+<div id="eq. mean-sample">
+$$
+\begin{equation}
+\overline{x} = \frac{1}{n} \sum_{i=1}^{n} x_{i} {\qquad [4b] \qquad}
+\end{equation}
+$$
+</div>
+
 ###### Median
 {: .no_toc}
 The median is the middle value of a dataset when ordered. The method does not vary between sample and population datasets.
@@ -68,7 +118,7 @@ If $n$ is odd, the median is the middle number calculated at position $p$ (where
 <div id="eq. median-odd">
 $$
 \begin{equation}
-\tilde{x} = x_{p} {\qquad [3a] \qquad}
+\tilde{x} = x_{p} {\qquad [5a] \qquad}
 \end{equation}
 $$
 </div>
@@ -78,7 +128,7 @@ If $n$ is even, it is the average of the two middle numbers at positions $p$ and
 <div id="eq. median-even">
 $$
 \begin{equation}
-\tilde{x} = \frac{x_{p} + x_{p+1}}{2} {\qquad [3b] \qquad}
+\tilde{x} = \frac{x_{p} + x_{p+1}}{2} {\qquad [5b] \qquad}
 \end{equation}
 $$
 </div>
@@ -94,70 +144,16 @@ The midrange (MR) is the average of the maximum and minimum values of the datase
 <div id="eq. midrange">
 $$
 \begin{equation}
-MR = \frac{x_{\text{min}} + x_{\text{max}}}{2} {\qquad [4] \qquad}
+MR = \frac{x_{\text{min}} + x_{\text{max}}}{2} {\qquad [6] \qquad}
 \end{equation}
 $$
 </div>
 
 This calculation is the same for both sample and population data.
 
-###### Root Mean Square
+##### 3. Dispersion / Spread
 {: .no_toc}
-The root mean square (RMS) provides a measure of the magnitude of a set of numbers, typically used to calculate the standard deviation. It is calculated by taking the square root of the average of the squares of the numbers:
-
-<div id="eq. RMS">
-$$
-\begin{equation}
-RMS = \sqrt{\frac{1}{n} \sum_{i=1}^{n} x_{i}^{2}} {\qquad [5] \qquad}
-\end{equation}
-$$
-</div>
-
-This formula is consistent for both population and sample datasets.
-
-###### Mean
-{: .no_toc}
-The mean, often referred to as the average, is a measure of central tendency that sums all the numerical values in a dataset and divides by the count of the values. The equation for calculating the mean is:
-
-For populations: 
-<div id="eq. mean-population">
-$$
-\begin{equation}
-\mu = \frac{1}{n} \sum_{i=1}^{n} x_{i} {\qquad [6a] \qquad}
-\end{equation}
-$$
-</div>
-
-For samples:
-<div id="eq. mean-sample">
-$$
-\begin{equation}
-\overline{x} = \frac{1}{n} \sum_{i=1}^{n} x_{i} {\qquad [6b] \qquad}
-\end{equation}
-$$
-</div>
-
-###### Mean Absolute Deviation
-{: .no_toc}
-The mean absolute deviation (MAD) is the average of absolute deviations from the mean, providing a measure of variability. 
-
-For populations:
-<div id="eq. mad-population">
-$$
-\begin{equation}
-MAD = \frac{1}{n} \sum_{i=1}^{n} |x_{i} - \mu| {\qquad [7a] \qquad}
-\end{equation}
-$$
-</div>
-
-For samples:
-<div id="eq. mad-sample">
-$$
-\begin{equation}
-MAD = \frac{1}{n} \sum_{i=1}^{n} |x_{i} - \overline{x}| {\qquad [7b] \qquad}
-\end{equation}
-$$
-</div>
+This section quantifies how spread out the data values are around the centre, through measures including standard deviation, variance, range, and mean absolute deviation, with distinctions made between population and sample calculations where relevant.
 
 ###### Standard Deviation
 {: .no_toc}
@@ -167,7 +163,7 @@ For populations:
 <div id="eq. sd-population">
 $$
 \begin{equation}
-\sigma = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (x_{i} - \mu)^{2}} {\qquad [8a] \qquad}
+\sigma = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (x_{i} - \mu)^{2}} {\qquad [7a] \qquad}
 \end{equation}
 $$
 </div>
@@ -176,7 +172,7 @@ For samples:
 <div id="eq. sd-sample">
 $$
 \begin{equation}
-s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2}} {\qquad [8b] \qquad}
+s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2}} {\qquad [7b] \qquad}
 \end{equation}
 $$
 </div>
@@ -191,7 +187,7 @@ For populations:
 <div id="eq. sd-population">
 $$
 \begin{equation}
-\sigma^2 = \frac{1}{n} \sum_{i=1}^{n} (x_{i} - \mu)^{2} {\qquad [9a] \qquad}
+\sigma^2 = \frac{1}{n} \sum_{i=1}^{n} (x_{i} - \mu)^{2} {\qquad [8a] \qquad}
 \end{equation}
 $$
 </div>
@@ -200,16 +196,89 @@ For samples:
 <div id="eq. sd-sample">
 $$
 \begin{equation}
-s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2} {\qquad [9b] \qquad}
+s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_{i} - \overline{x})^{2} {\qquad [8b] \qquad}
 \end{equation}
 $$
 </div>
 
 The distinction is similar to that of standard deviation.
 
+###### Range
+{: .no_toc}
+The range is a measure of the spread between the maximum and minimum values in the dataset, calculated as:
+
+<div id="eq. range">
+$$
+\begin{equation}
+R = x_{\text{max}} - x_{\text{min}} {\qquad [9] \qquad}
+\end{equation}
+$$
+</div>
+
+This measure does not differ between population and sample data.
+
+###### Mean Absolute Deviation
+{: .no_toc}
+The mean absolute deviation (MAD) is the average of absolute deviations from the mean, providing a measure of variability. 
+
+For populations:
+<div id="eq. mad-population">
+$$
+\begin{equation}
+MAD = \frac{1}{n} \sum_{i=1}^{n} |x_{i} - \mu| {\qquad [10a] \qquad}
+\end{equation}
+$$
+</div>
+
+For samples:
+<div id="eq. mad-sample">
+$$
+\begin{equation}
+MAD = \frac{1}{n} \sum_{i=1}^{n} |x_{i} - \overline{x}| {\qquad [10b] \qquad}
+\end{equation}
+$$
+</div>
+
+###### Minimum
+{: .no_toc}
+The minimum (min) is the smallest value in a dataset, defining the lower boundary of the data range. There is no distinction in calculation between a sample and a population for this measure.
+
+###### Maximum
+{: .no_toc}
+The maximum (max) is the largest value in a dataset, defining the upper boundary of the data range. Like the minimum, the calculation does not vary between a sample and a population.
+
+##### 4. Quartiles, UQR & Outliers
+{: .no_toc}
+This section explains how data can be divided into four equal parts to understand its spread, and how the interquartile range is used to identify data points that fall unusually far from the bulk of observations. 
+
+Available methods:
+* Inclusive: Quartiles are calculated by assuming that the minimum and maximum of the sample correspond to the $0\%$ and $100\%$ percentiles respectively. The position of the quartile is determined by the formula:
+
+<div id="eq. inclusive">
+$$
+\begin{equation}
+r = 1 + (n - 1) p, {\qquad [11a] \qquad}
+\end{equation}
+$$
+</div>
+
+where $p$ is the corresponding percentile ($0.25$, $0.50$, or $0.75$). If the position is not an integer, linear interpolation is used between the two adjacent observations. 
+
+* Exclusive: Quartiles are calculated by theoretically excluding the extremes of the sample from the estimation process. The position is given by the formula:
+
+<div id="eq. exclusive">
+$$
+\begin{equation}
+r = (n + 1) p. {\qquad [11b] \qquad}
+\end{equation}
+$$
+</div>
+
+When the position is not an integer, linear interpolation is applied here as well.
+
 ###### Quartiles
 {: .no_toc}
-Quartiles divide the data into four equal parts. $Q1$ is the median of the lower half, $Q2$ is the median of the dataset, and $Q3$ is the median of the upper half. The method for calculating quartiles is consistent across sample and population data.
+Quartiles divide the data into four equal parts. $Q1$ is the median of the lower half, $Q2$ is the median of the dataset, and $Q3$ is the median of the upper half. The method for calculating quartiles is consistent across sample and population data. 
 
 ###### Interquartile Range
 {: .no_toc}
@@ -219,119 +288,11 @@ The interquartile Range (IQR) is the difference between the third and first quar
 {: .no_toc}
 Outliers are data points significantly distant from other observations. They are typically identified using the IQR; values below $Q1 - 1.5 \times IQR$ or above $Q3 + 1.5 \times IQR$ are considered outliers. This identification method applies equally to sample and population data.
 
-###### Sum of Squares
+##### 5. Relative / Advanced Measures
 {: .no_toc}
-The sum of squares (SS) is the sum of squared differences from the mean. 
+This section presents normalised measures of variability, with the coefficient of variation, relative standard deviation, root mean square, and standard error of the mean, which are particularly useful for comparing dispersion across datasets with different scales or units. 
 
-For populations:
-<div id="eq. ss-population">
-$$
-\begin{equation}
-SS = \sum_{i=1}^{n} (x_{i} - \mu)^{2} {\qquad [10a] \qquad}
-\end{equation}
-$$
-</div>
-
-For samples:
-<div id="eq. ss-sample">
-$$
-\begin{equation}
-SS = \sum_{i=1}^{n} (x_{i} - \overline{x})^{2} {\qquad [10b] \qquad}
-\end{equation}
-$$
-</div>
-
-This foundational calculation underpins variance and standard deviation.
-
-###### Standard Error of the Mean
-{: .no_toc}
-The standard error of the mean (SEM) measures the accuracy with which a sample represents a population. 
-
-For populations:
-<div id="eq. sem-population">
-$$
-\begin{equation}
-SEM = \frac{\sigma}{\sqrt{n}} {\qquad [11a] \qquad}
-\end{equation}
-$$
-</div>
-
-For samples:
-<div id="eq. sem-sample">
-$$
-\begin{equation}
-SEM = \frac{s}{\sqrt{n}} {\qquad [11b] \qquad}
-\end{equation}
-$$
-</div>
-
-###### Skewness
-{: .no_toc}
-Skewness ($\gamma_1$) is a measure of the asymmetry of the probability distribution of a real-valued random variable. Positive skewness indicates a distribution with an asymmetric tail extending towards more positive values, and negative skewness indicates a tail that extends towards more negative values. 
-
-For populations:
-<div id="eq. gamma-population">
-$$
-\begin{equation}
-\gamma_{1} = \frac{ \sum_{i=1}^{n} (x_{i} - \mu)^{3}}{n\sigma^{3}} {\qquad [12a] \qquad}
-\end{equation}
-$$
-</div>
-
-For samples:
-<div id="eq. gamma-sample">
-$$
-\begin{equation}
-\gamma_{1} = \frac{n}{(n-1)(n-2)} \sum_{i=1}^{n} \left( \frac{x_{i} - \overline{x}}{s} \right)^{3} {\qquad [12b] \qquad}
-\end{equation}
-$$
-</div>
-
-###### Kurtosis
-{: .no_toc}
-Kurtosis ($\beta_2$) measures the "tailedness" of the probability distribution of a real-valued random variable. High kurtosis in a data set is an indicator of substantial outliers. 
-
-For populations:
-<div id="eq. beta-population">
-$$
-\begin{equation}
-\beta_{2} = \frac{ \sum_{i=1}^{n} (x_{i} - \mu)^{4}}{n\sigma^{4}} {\qquad [13a] \qquad}
-\end{equation}
-$$
-</div>
-
-For samples:
-<div id="eq. beta-sample">
-$$
-\begin{equation}
-\beta_{2} = \frac{n(n+1)}{(n-1)(n-2)(n-3)} \frac{\sum_{i=1}^{n} (x_{i} - \overline{x})^{4}}{s^{4}} {\qquad [13b] \qquad}
-\end{equation}
-$$
-</div>
-
-###### Kurtosis Excess
-{: .no_toc}
-Excess kurtosis ($\alpha_4$) is calculated by subtracting 3 from the standard kurtosis measurement. This adjustment helps to compare the tails of the distribution to those of a normal distribution, which has a kurtosis of 3.
-
-For populations:
-<div id="eq. alpha-population">
-$$
-\begin{equation}
-\alpha_{4} = \frac{ \sum_{i=1}^{n} (x_{i} - \mu)^{4}}{n\sigma^{4}} - 3 {\qquad [14a] \qquad}
-\end{equation}
-$$
-</div>
-
-For samples:
-<div id="eq. alpha-sample">
-$$
-\begin{equation}
-\alpha_{4} = \frac{n(n+1)}{(n-1)(n-2)(n-3)} \frac{\sum_{i=1}^{n} (x_{i} - \overline{x})^{4}}{s^{4}} - \frac{3(n-1)^{2}}{(n-2)(n-3)} {\qquad [14b] \qquad}
-\end{equation}
-$$
-</div>
-
-###### Coefficient of Variation
+###### Coefficient of Variation 
 {: .no_toc}
 The coefficient of variation (CV) is a standardized measure of dispersion of a probability distribution or frequency distribution. 
   
@@ -339,7 +300,7 @@ For populations:
 <div id="eq. cv-population">
 $$
 \begin{equation}
-CV = \frac{\sigma}{\mu} {\qquad [15a] \qquad}
+CV = \frac{\sigma}{\mu} {\qquad [12a] \qquad}
 \end{equation}
 $$
 </div>
@@ -348,7 +309,7 @@ For samples:
 <div id="eq. cv-sample">
 $$
 \begin{equation}
-CV = \frac{s}{\overline{x}} {\qquad [15b] \qquad}
+CV = \frac{s}{\overline{x}} {\qquad [12b] \qquad}
 \end{equation}
 $$
 </div>  
@@ -363,7 +324,7 @@ For populations:
 <div id="eq. rsd-population">
 $$
 \begin{equation}
-RSD = \left[ \frac{100 \times \sigma}{\mu} \right]\% {\qquad [16a] \qquad}
+RSD = \left[ \frac{100 \times \sigma}{\mu} \right]\% {\qquad [13a] \qquad}
 \end{equation}
 $$
 </div>
@@ -372,28 +333,280 @@ For samples:
 <div id="eq. rsd-sample">
 $$
 \begin{equation}
-RSD = \left[ \frac{100 \times s}{\overline{x}} \right]\% {\qquad [16b] \qquad}
+RSD = \left[ \frac{100 \times s}{\overline{x}} \right]\% {\qquad [13b] \qquad}
 \end{equation}
 $$
 </div> 
 
-###### Frequency
+###### Root Mean Square
 {: .no_toc}
-Frequency ($f_1$) refers to the number of times a particular data point or value appears in a dataset. It is a simple yet fundamental measure used to describe the distribution of data values. The basic formula for frequency is: 
+The root mean square (RMS) provides a measure of the magnitude of a set of numbers, typically used to calculate the standard deviation. It is calculated by taking the square root of the average of the squares of the numbers:
 
-<div id="eq. f1-sample">
+<div id="eq. RMS">
 $$
 \begin{equation}
-f_{i} = \text{Number of occurrences of value } \times x_{i} {\qquad [17] \qquad}
+RMS = \sqrt{\frac{1}{n} \sum_{i=1}^{n} x_{i}^{2}} {\qquad [14] \qquad}
 \end{equation}
 $$
 </div>
 
-where $f_{i}$ represents the frequency of the $i$-th value $x_{i}$.
+###### Standard Error of the Mean
+{: .no_toc}
+The standard error of the mean (SEM) measures the accuracy with which a sample represents a population. 
 
-Use the `Descriptive Statistics` function by browsing in the top ribbon: 
+For populations:
+<div id="eq. sem-population">
+$$
+\begin{equation}
+SEM = \frac{\sigma}{\sqrt{n}} {\qquad [15a] \qquad}
+\end{equation}
+$$
+</div>
 
-| Statistics $$\rightarrow$$ Basic Statistics $$\rightarrow$$ Descriptive Statistics |
+For samples:
+<div id="eq. sem-sample">
+$$
+\begin{equation}
+SEM = \frac{s}{\sqrt{n}} {\qquad [15b] \qquad}
+\end{equation}
+$$
+</div>
+
+This formula is consistent for both population and sample datasets.
+
+##### 6. Distribution Shape
+{: .no_toc}
+This section covers skewness and kurtosis, which describe the asymmetry and tail heaviness of a distribution respectively, with separate formulas provided for population and sample data. 
+
+###### Skewness
+{: .no_toc}
+Skewness ($\gamma_1$) is a measure of the asymmetry of the probability distribution of a real-valued random variable. Positive skewness indicates a distribution with an asymmetric tail extending towards more positive values, and negative skewness indicates a tail that extends towards more negative values. 
+
+For populations:
+<div id="eq. gamma-population">
+$$
+\begin{equation}
+\gamma_{1} = \frac{ \sum_{i=1}^{n} (x_{i} - \mu)^{3}}{n\sigma^{3}} {\qquad [16a] \qquad}
+\end{equation}
+$$
+</div>
+
+For samples:
+<div id="eq. gamma-sample">
+$$
+\begin{equation}
+\gamma_{1} = \frac{n}{(n-1)(n-2)} \sum_{i=1}^{n} \left( \frac{x_{i} - \overline{x}}{s} \right)^{3} {\qquad [16b] \qquad}
+\end{equation}
+$$
+</div>
+
+###### Kurtosis
+{: .no_toc}
+Kurtosis ($\beta_2$) measures the "tailedness" of the probability distribution of a real-valued random variable. High kurtosis in a data set is an indicator of substantial outliers. 
+
+For populations:
+<div id="eq. beta-population">
+$$
+\begin{equation}
+\beta_{2} = \frac{ \sum_{i=1}^{n} (x_{i} - \mu)^{4}}{n\sigma^{4}} {\qquad [17a] \qquad}
+\end{equation}
+$$
+</div>
+
+For samples:
+<div id="eq. beta-sample">
+$$
+\begin{equation}
+\beta_{2} = \frac{n(n+1)}{(n-1)(n-2)(n-3)} \frac{\sum_{i=1}^{n} (x_{i} - \overline{x})^{4}}{s^{4}} {\qquad [17b] \qquad}
+\end{equation}
+$$
+</div>
+
+###### Kurtosis Excess
+{: .no_toc}
+Excess kurtosis ($\alpha_4$) is calculated by subtracting 3 from the standard kurtosis measurement. This adjustment helps to compare the tails of the distribution to those of a normal distribution, which has a kurtosis of 3.
+
+For populations:
+<div id="eq. alpha-population">
+$$
+\begin{equation}
+\alpha_{4} = \frac{ \sum_{i=1}^{n} (x_{i} - \mu)^{4}}{n\sigma^{4}} - 3 {\qquad [18a] \qquad}
+\end{equation}
+$$
+</div>
+
+For samples:
+<div id="eq. alpha-sample">
+$$
+\begin{equation}
+\alpha_{4} = \frac{n(n+1)}{(n-1)(n-2)(n-3)} \frac{\sum_{i=1}^{n} (x_{i} - \overline{x})^{4}}{s^{4}} - \frac{3(n-1)^{2}}{(n-2)(n-3)} {\qquad [18b] \qquad}
+\end{equation}
+$$
+</div>
+
+##### 7. Normality Tests
+{: .no_toc}
+Normality Tests are inferential statistical methods, used to determine whether the sample data is modeled by a normal (Gaussian) distribution. In general, two competing hypotheses are formulated, the null hypothesis ($H_0$) and the alternative hypothesis ($H_\alpha$). Under the null hypothesis ($H_0$), it is assumed that the data follow a normal distribution. In contrast, the alternative hypothesis ($H_\alpha$) rejects this assumption, suggesting that the data exhibit significant deviations from normality. To reach an objective decision, these tests rely on p-values as a measure of evidence against or in support of the null hypothesis. This section covers three stastistical tests to assess whether sample data follow a normal distribution, each suited to different sample sizes and sensitivity requirements.
+
+###### Shapiro-Wilk
+{: .no_toc}
+The Shapiro-Wilk (S-W) is the most popular and powerful test for normality, especially for small to medium datasets (usually $n < 50$ to $n < 2000$). The test statistic ($W$) calculates the ratio of the best linear unbiased estimate of the variance to the usual corrected sum of squares estimate. In simpler terms, it compares the actual sample data to a perfectly normal distribution. A value of $W = 1$ indicates that the sample data perfectly match a normal distribution. The further $W$ is from $1$ (with $W < 1$), the more the data significantly deviate from a normal distribution.
+
+<div id="eq. sw-statistic">
+$$
+\begin{equation}
+W=\frac{\left(\sum _{i=1}^{n}a_{i}x_{(i)}\right)^{2}}{\sum _{i=1}^{n}(x_{i}-\={x})^{2}}, {\qquad [19] \qquad}
+\end{equation} 
+$$
+</div>
+
+where 
+* $x_{(i)}$: The $i$-th smallest number in the sample (ordered data points).
+* $x_{i}$: Individual sample values.
+* $\overline{x}$: The sample mean.
+* $a_{i}$: Constants generated from the means, variances, and covariances of standard normal order statistics.
+
+###### Kolmogorov-Smirnov
+{: .no_toc}
+The Kolmogorov-Smirnov (K-S) test is better suited for larger datasets (usually $n > 2000$). However, it tends to be very sensitive with very large samples, often detecting minor, insignificant deviations. This test uses the Lilliefors Correction, adjusting the K-S test for when also estimating the mean and variance from the data. The test statistic ($D$) measures the maximum absolute vertical distance between the sample's empirical cumulative distribution function (ECDF) and the cumulative distribution function (CDF) of a theoretical normal distribution. A smaller $D$ value indicates that the sample data closely match a perfect normal distribution. A larger $D$ value represents a larger deviation from normality.
+
+<div id="eq. ks-statistic">
+$$
+\begin{equation}
+D = \sup_x \vert{}F_n(x) - F(x)\vert{}, {\qquad [20] \qquad}
+\end{equation}
+$$
+</div>
+
+where 
+* $\sup_{x}$: The supremum (the greatest) of the set of absolute differences.
+* $F_n(x)$: The empirical cumulative distribution function (ECDF) of your sample data, which represents the proportion of data points less than or equal to $x$.
+* $F(x)$: The cumulative distribution function (CDF) of a theoretical normal distribution (with the same mean and standard deviation as your sample).
+
+###### Anderson-Darling
+{: .no_toc}
+The Anderson-Darling (A-D) test is a variation of the K-S test that puts more weight on the tails of the distribution. It is useful when detecting heavy or light tails is important, since it is highly sensitive to outliers and deviations at the extremes. The test statistic ($A^2$) is calculated based on the squared differences between the sample's empirical cumulative distribution function (ECDF) and the expected normal distribution's cumulative distribution function (CDF). It measures how closely the sample data follow the theoretical normal curve. A small $A^2$ value indicates that the sample data closely follow a normal distribution. A large $A^2$ value indicates that the sample data deviate significantly from a normal distribution. 
+
+<div id="eq. ad-statistic">
+$$
+\begin{equation}
+A^2 = -n - \frac{1}{n} \sum_{i=1}^{n} (2i - 1) \left[ \ln F(X_i) + \ln \left( 1 - F(X_{n+1-i}) \right) \right], {\qquad [21] \qquad}
+\end{equation}
+$$
+</div>
+
+where 
+* $n$: The sample size.
+* $X_{i}$: The ordered data points (sorted from smallest to largest).
+* $F$: The cumulative distribution function of the normal distribution
+
+##### 8. Plots
+{: .no_toc}
+This section presents four visualisation tools along with their customisation options, for graphically exploring data distributions and identifying patterns and outliers.
+
+###### Q-Q Plot
+{: .no_toc}
+A Quantile-Quantile (Q-Q) plot is a graphical tool for assessing whether a dataset might have been drawn from a particular theoretical distribution (e.g. normal or Weibull). The method plots the ordered values (quantiles or percentiles) of the observed data against the equivalent (theoretical) quantiles of a reference distribution. When the data aligns with the chosen theoretical distribution, the points on the plot will generally fall along an approximate straight diagonal line. To choose the theoretical distribution, select from the dropdown list next to the Q-Q Plot the corresponding option. 
+
+* Straight line: The data match the theoretical distribution.
+* S-Shape (Curve): The data has "heavy tails" (outliers on both ends) or "light tails" than the theoretical distribution.
+* Bending at one end: If the points curve away from the straight line only at the top or bottom, it indicates that the data is skewed (asymmetrical).
+* Stray points: Points that drift away at the very ends of the line often point to the presence of outliers in the dataset.
+
+###### Chart customization 
+{: .no_toc}
+Upon executing the Q-Q Plot, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
+
+Customization
+| **Show Legend**       | Display a legend consisting of the curves' names.  |  |
+| **Show Grid**         | Display grid lines in the background. |   |
+| **X axis ticks**      | Select the number of horizontal grid line ticks from the drop-down menu.  |   |
+| **Y axis ticks**      | Select the number of vertical grid line ticks from the drop-down menu.    |   |
+| **Series Properties** | Select the desired properties for each series of data plotted on the chart.   |   |
+|                       | **Series Color**  | Select series color.  |
+|                       | **Line**          | Show a line connecting the data points. |
+|                       | **Point**         | Show data points. |
+|                       | **Area**          | Show the area between the confidence bands. |
+| **Background**        | Select the background color.  |   |
+
+Settings
+| **Plotting Positions Method** | Select the method for generating the plotting positions (cumulative probabilities).  | | |
+|                               | **Hazen**     | $P = \frac{i - 0.5}{n}$ | Popular in engineering; provides the median of the plotting distribution. |
+|                               | **Blom**      | $P = \frac{i - 0.375}{n + 0.25}$ | Designed to yield approximately normal quantiles. |
+|                               | **Weibull**   | $P = \frac{i}{n + 1}$ | Most common for general applications; unbiased for uniformly distributed data. |
+| **Confidence Bands Method**   | Select the method for calculating the confidence bands.   | | |
+|                               | **Pointwise**             | Calculates the standard error of the sample order statistics individually at each quantile, then computes intervals at each point. | Good for checking the variability of individual quantiles. |
+|                               | **Kolmogorov-Smirnov**    | Based on the inversion of the Kolmogorov-Smirnov test. Calculates simultaneous bands that are proportional to the K-S critical value around the theoretical line. | Recommended for testing overall goodness-of-fit. |
+|                               | **Beta**                  | Calculates exact, simultaneous bands using the order statistics of a sample. By leveraging the Beta distribution, it estimates a probability interval for each ordered data point. | Best for identifying deviations, extreme skew, or heavy tails. |
+
+###### Histogram
+{: .no_toc}
+A Histogram is a bar chart-based visualization used to show the frequency distribution of continuous numerical data. It groups the data into equally sized, continuous intervals knows as bins, where the height of each bar indicates the number of observations that fall within that particular interval. 
+
+###### Chart customization 
+{: .no_toc}
+Upon executing the Histogram, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
+
+Customization
+| **Show Legend**       | Display a legend consisting of the curves' names.  |  |
+| **Show Grid**         | Display grid lines in the background. |   |
+| **X axis ticks**      | Select the number of horizontal grid line ticks from the drop-down menu.  |   |
+| **Y axis ticks**      | Select the number of vertical grid line ticks from the drop-down menu.    |   |
+| **Series Properties** | Select the desired properties for each series of data plotted on the chart.   |   |
+|                       | **Series Color**  | Select series color.  |
+|                       | **Visible**       | Show a line connecting the data points. |
+| **Background**        | Select the background color.  |   |
+
+Settings
+| **Numbers of Bins** | Select the number of bins to split the data into.  |
+
+###### Box Plot
+{: .no_toc}
+A Box Plot is a standardized graphical method for displaying the distribution of numerical data based on a five-number summary: the minimum, first quartile, median, third quartile, and maximum. It is especially useful for identifying data skewness, spread, and outliers. 
+
+It visualises data distributions through these quantities:
+* Median ($Q_{2}$): The middle value of the dataset, represented by a line inside the box. Half of the data is above this value, and half is below.
+* The Box (Interquartile Range - $IQR$): Represents the middle $50\%$ of your data. The bottom of the box is the first quartile ($Q_{1}$) and the top is the third quartile ($Q_{3}$).
+* Whiskers: Lines extending from the box to the minimum and maximum non-outlier values, showing the variability outside the middle $50\%$.
+* Outliers: Individual points plotted beyond the whiskers, representing data points that significantly differ from the rest of the dataset.
+
+###### Chart customization 
+{: .no_toc}
+Upon executing the Box Plot, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
+
+Customization
+| **Show Legend**               | Display a legend consisting of the curves' names.  |  |
+| **Show Grid**                 | Display grid lines in the background. |   |
+|                               | **Vertical**      | Select the orientation of the box plot to be vertical.      |
+|                               | **Horizontal**    | Select the orientation of the box plot to be horizontal.   |
+| **Show Mean**                 | Display the mean of the dataset. |   |
+| **Show Outliers**             | Display the outliers of the dataset. |   |
+| **Show Data Points**          | Display the data points. |   |
+|                               | **Point Spread**    | Select the spread of the data with respect to each other.|
+| **Numerical Axis Controls**   | Select the number of grid line ticks from the drop-down menu.  |   |
+| **Category Colors**           | Select the color of the box plot.   |   |
+| **Background**                | Select the background color.  |   |
+
+###### Violin Plot
+{: .no_toc}
+A Violin Plot is a data visualization tool used for comparing probability distributions across datasets. Similarly to a box plot, it summarizes data characteristics but it enhances the display by incorporating the probability density at different values. While a box plot shows summary statistics (such as the median and the interquartile range), it does not give information about the clusters of the data within those ranges. A violin plot overcomes this by adding a smoothed, symmetrical outer shape that indicates where the values are more dense, offering a clearer view of the overall distribution shape. 
+
+###### Chart customization 
+{: .no_toc}
+Upon executing the Violin Plot, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
+
+Customization
+| **Show Legend**       | Display a legend consisting of the curves' names.  |  |
+| **Show Grid**         | Display grid lines in the background. |   |
+| **Show Box Plot**     | Display the box plot inside the violin plot. |   |
+| **Show Data Points**  | Display the data points. |   |
+|                       | **Point Spread**    | Select the spread of the data with respect to each other.|
+| **Numerical Axis Controls**   | Select the number of grid line ticks from the drop-down menu.  |   |
+| **Category Colors**           | Select the color of the violin plot.   |   |
+| **Background**        | Select the background color.  |   |
+
+Settings
+| **Smoothness** | Select the level of smoothness to apply.  |
 
 #### Input
 {: .no_toc }
@@ -403,7 +616,7 @@ The input spreadsheet consists of multiple columns, each representing a distinct
 {: .no_toc }
 
 |**List of statistics**| Select the appropriate methods for conducting descriptive statistics analysis by clicking on the corresponding radio buttons. The available statistics are described above. |
-|**Select Type**| Select from the dropdown list the option that describes wether the data represents a sample or population. |
+|**Select Type**| Select from the dropdown list the option that describes whether the data represents a sample or population. |
 
 #### Output
 {: .no_toc }
@@ -424,7 +637,7 @@ The input sheet on the left hand-side is organized with individual columns repre
 {: .no_toc }
 
 1. Select `Statistics` $$\rightarrow$$ `Basic Statistics` $$\rightarrow$$ `Descriptive Statistics`.
-1. Click on the statistics that you wish to calculate for the input data [1] and determine whether the data correspond to `Population` or `Sample` [2]. 
+1. Determine whether the data correspond to `Population` or `Sample` [1] and click on the statistics that you wish to calculate for the input data [2]. 
 1. Click on the `Execute` button [3] to calculate the selected statistics.
 
 <div style="text-align: center;">
@@ -448,7 +661,7 @@ A confidence interval (CI) is a statistical tool used to estimate the range with
 
 To calculate a confidence interval, you typically need the sample mean (which provides a central estimate), the standard deviation (which measures the spread of the data), and the sample size (the number of data points). For proportions, you use the sample proportion instead of the mean. The formula for a confidence interval generally involves the sample statistic plus or minus a margin of error ([Eq. 1](#eq. confidence1)), which is derived from the standard deviation and the sample size, adjusted by a factor from a statistical distribution (like the Z-score in large samples or the t-score in smaller samples)<sup>[1,2](#references-confidence)</sup>.
 
-The confidence interval when considering sample data is calculated based on below formula:
+The confidence interval when considering sample data is calculated based on the formula below:
 
 <div id="eq. confidence1">
 $$
@@ -732,7 +945,7 @@ t = \frac{\bar{x} - \mu_0}{\frac{s}{\sqrt{n}}} {\qquad [2] \qquad}
 $$
 </div>
 
-Where $\bar{x}$ is the sample mean, $\sigma$ and $s$ are the population and sample standard deviation repsectively, $n$ is the sample size and $\mu_0$ is the assumed mean of the population under the null hypothesis.
+Where $\bar{x}$ is the sample mean, $\sigma$ and $s$ are the population and sample standard deviation respectively, $n$ is the sample size and $\mu_0$ is the assumed mean of the population under the null hypothesis.
 
 After computing the test statistic, we follow up by either calculating the p-value or comparing the test statistic with a critical value. The p-value measures the probability of obtaining a test statistic at least as extreme as the one computed, assuming the null hypothesis is true. If the p-value is less than the chosen significance level ($a$), we reject $H_0$. In some cases, you compare the test statistic directly to a critical value derived from a statistical distribution ($Z$ or $t$). If the test statistic exceeds the critical value, reject $H_0$.
 
@@ -1024,4 +1237,4 @@ In the right-hand spreadsheet of the tab the output data displays the count (ins
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on July 2024_
+_Instructions last updated on June 2026_
