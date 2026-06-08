@@ -647,11 +647,6 @@ The different tests arise from different choices of the weight function $$W(t_i)
 
 The log-rank test assigns equal weight to all event times. It is most powerful when the hazard functions of the groups are proportional over time and differences are consistent throughout the study period.
 
-##### Log-Rank Test
-<div style="text-align: center;"> $$ W(t_i) = 1 $$ </div>
-
-The log-rank test assigns equal weight to all event times. It is most powerful when the hazard functions of the groups are proportional over time and differences are consistent throughout the study period.
-
 ##### Wilcoxon (Breslow) Test
 <div style="text-align: center;"> $$ W(t_i) = Y_i $$ </div>
 

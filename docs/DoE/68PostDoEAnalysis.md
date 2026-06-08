@@ -279,14 +279,210 @@ The optimal factor settings, the predicted values and the individual and overall
 
 ---
 
+## Mixture Analysis
+Mixture Analysis is used to model the relationship between a response variable and the proportions of the components in a mixture and optionally any process variables present in the experiment. Unlike ordinary regression, mixture experiments are subject to the constraint
+
+<div style="text-align: center;"> $$ \sum_{i=1}^{q} x_i = 1 $$ </div>
+
+where $$x_i$$ represents the proportion of component $$i$$.
+
+Because of this dependency, standard polynomial regression models cannot be used directly. Instead, Mixture Analysis employs Scheffé canonical polynomials, which are specifically designed for mixture experiments.
+
+The software supports Linear, Quadratic, Special Cubic, Full Cubic, Special Quartic and Full Quartic mixture models. Binary process variables may also be included to investigate whether external operating conditions influence the mixture response.
+
+### Supported Mixture Models
+{: .no_toc}
+
+#### Linear Model
+{: .no_toc}
+
+The linear model estimates only the individual contribution of each component.
+<div style="text-align: center;"> $$ \eta = \sum_{i=1}^{q}\beta_i x_i $$ </div>
+where:
+
+1. $$x_i$$ = proportion of component $$i$$.
+1. $$\beta_i$$ = expected response when the mixture consists entirely of component $$i$$.
+
+
+#### Quadratic Model
+{: .no_toc}
+
+The quadratic model additionally captures pairwise blending effects between components.
+<div style="text-align: center;"> $$ \eta = \sum_{i=1}^{q}\beta_i x_i + \sum_{i<j}\beta_{ij}x_i x_j $$ </div>
+The interaction coefficient $$\beta_{ij}$$ describes whether the combination of components i and j produces a response different from what would be expected based on their individual effects alone.
+
+
+#### Special Cubic Model
+{: .no_toc}
+
+The special cubic model includes three-component blending effects.
+<div style="text-align: center;"> $$ \eta = \sum_{i=1}^{q}\beta_i x_i + \sum_{i<j}\beta_{ij}x_i x_j + \sum_{i<j<k}\beta_{ijk}x_i x_j x_k $$ </div>
+
+The coefficients $$\beta_{ijk}$$ represent interactions among three components simultaneously.
+
+
+#### Full Cubic Model
+{: .no_toc}
+
+The full cubic model extends the special cubic model by including asymmetry terms.
+<div style="text-align: center;"> $$ \eta = \sum_{i=1}^{q}\beta_i x_i + \sum_{i<j}\beta_{ij}x_i x_j + \sum_{i<j}\delta_{ij}x_i x_j(x_i-x_j) + \sum_{i<j<k}\beta_{ijk}x_i x_j x_k $$ </div>
+
+The terms $$x_ix_j(x_i-x_j)$$ allow the model to distinguish situations where component i dominates component j from situations where the reverse occurs.
+
+
+#### Special Quartic Model
+{: .no_toc}
+
+The special quartic model introduces fourth-order blending effects.
+<div style="text-align: center;"> $$ \eta = \sum_{i=1}^{q}\beta_i x_i + \sum_{i<j}\beta_{ij}x_i x_j + \sum_{i<j<k}\beta_{iijk}x_i^2x_jx_k + \sum_{i<j<k}\beta_{ijjk}x_ix_j^2x_k + \sum_{i<j<k}\beta_{ijkk}x_ix_jx_k^2 $$ </div>
+
+#### Full Quartic Model
+{: .no_toc}
+The full quartic model is the most flexible mixture model available and includes all quartic terms.
+
+<div style="text-align: center;"> $$ \eta = \sum_{i=1}^{q}\beta_i x_i + \sum_{i<j}\beta_{ij}x_i x_j + \sum_{i<j}\delta_{ij}x_i x_j(x_i-x_j) + \sum_{i<j}\gamma_{ij}x_i x_j(x_i-x_j)^2 $$ </div>
+<div style="text-align: center;"> $$ + \sum_{i<j<k}\beta_{iijk}x_i^2x_jx_k + \sum_{i<j<k}\beta_{ijjk}x_ix_j^2x_k + \sum_{i<j<k}\beta_{ijkk}x_ix_jx_k^2 $$ </div>
+<div style="text-align: center;"> $$ + \sum_{i<j<k<l}\beta_{ijkl}x_ix_jx_kx_l $$ </div>
+
+### Process Variables
+{: .no_toc}
+Binary process variables may be included in the analysis.
+Categorical process variables are internally coded using effect coding:
+<div style="text-align: center;"> $$ \text{Low Level} = -1 $$ </div>
+<div style="text-align: center;"> $$ \text{High Level} = +1 $$ </div>
+
+For each process variable, interaction terms with all mixture model terms are automatically generated. This allows the software to determine whether the process condition changes the effect of individual components or component combinations.
+
+For example, if temperature is included as a process variable T, interaction terms such as $$x_A T, x_Ax_BT$$ may be added to the model.
+
+### Inverse Terms
+{: .no_toc}
+
+Optionally, inverse mixture terms may be included:
+<div style="text-align: center;"> $$ \frac{1}{x_i} $$ </div>
+These terms can be useful when the response increases rapidly as the proportion of a component approaches zero.
+
+Inverse terms cannot be estimated when any component contains zero values.
+
+### Model Estimation
+{: .no_toc}
+The model is fitted using ordinary least squares regression.
+
+The parameter estimates are obtained by solving
+<div style="text-align: center;"> $$ \hat{\beta} = (X^TX)^{-1} X^Ty $$ </div>
+where:
+
+1. $$X$$ is the design matrix
+1. $$y$$ is the response vector
+
+Terms that are linearly dependent due to the mixture constraint are automatically detected and removed from the model.
+
+### Variance Inflation Factor (VIF)
+{: .no_toc}
+
+The Variance Inflation Factor measures the degree of multicollinearity among the model terms.
+
+For each predictor, an auxiliary regression is fitted where the predictor is regressed against all remaining predictors.
+
+The coefficient of determination from this auxiliary model is $$R_i^2$$. The VIF is then calculated as: 
+<div style="text-align: center;"> $$  VIF_i = \frac{1}{1-R_i^2} $$ </div>
+
+Interpreatation: 
+
+| **VIF** | **Interpretation** |
+| 1 | No collinearity | 
+| 1-5 | Mild collinearity | 
+| 5-10 | Moderate collinearity | 
+| >10 | Severe collinearity | 
+
+Large VIF values indicate that a model term is highly correlated with other terms and its coefficient may be unstable.
+
+### Handling Non-Estimable Terms
+{: .no_toc}
+
+Because mixture models are subject to the sum-to-one constraint certain model terms may become perfectly collinear and therefore cannot be estimated.
+
+The software automatically identifies these terms using collinearity checks and removes them from the analysis. Any excluded terms are reported to the user as warnings.
+
+Use the `Mixture Analysis` tool by browsing in the top ribbon: 
+
+|DOE $$\rightarrow$$ Post DoE Analysis $$\rightarrow$$ Mixture Analysis|
+
+### Input
+{: .no_toc}
+
+All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Mixture Design of Experiment (DoE) method, with the addition of the response calculated for each experimental run. The response variable must be strictly numerical. Experimental factors/ Components must also be numerical while process variables can be either numerical or cateforical and should contain exactly two levels.
+
+### Configuration
+{: .no_toc}
+
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable.|
+|**Analysis Type**| Select the desired analysis type for the analysis. Available options include: Linear, Quadratic, Special Cubic, Full Cubic, Special Quartic, Full Quartic.|
+|**Include inverse component terms**| Use this option to include inverse component terms. This option is only allowed when no component has a zero value in the input data. |
+|**Confidence Level(%)**| Specify the confidence level for the analysis. Values should range from 0 to 100 with the default value being 95. |
+|**Components/Process Variables/Excluded Columns**| Select manually the columns that correspond to components and the columns that correspond to process variables through the dialog window: Use the buttons to move columns between the Components and Process Variables list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least two Component column should be specified. Process Variables must be binary. |
+|**Specify Process Variables Values**| Use this buttton to specify the reference level for each process variable, that will internally be encoded as -1. If this option is not modified, then the last level for each variable will automatically be chosen.|
+
+### Output
+{: .no_toc}
+The output spreadsheet contains the parameter estimate table with the following information.
+1. Variable: Model term being estimated
+1. Coefficient: Estimated regression coefficient
+1. Std Error: Standard error of the coefficient
+1. Lower CI: Lower confidence interval limit
+1. Upper CI: Upper confidence interval limit
+1. Test Statistic: Student's t-statistic
+1. df: Degrees of freedom used in the test
+1. p-value: Significance level for the coefficient
+1. VIF: Variance Inflation Factor
+
+
+### Example
+{: .no_toc}
+
+#### Input
+{: .no_toc}
+In the input datasheet minimum requirement is to specify three columns, two components and one dependent variable, as shown below.
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-mixture-input.png" alt="Mixture Analysis input" width="400" height="400" class="img-responsive">
+</div> 
+
+#### Configuration
+{: .no_toc}
+
+1.  Select `DOE` → `Post DoE Analysis` →`Mixture Analysis`.
+1.  Select the `Dependent Variable`[1] from the list of available options. This column should only contain numerical values.
+1.  Select the `Analysis Type` [2] from the list of available options : `Linear`, `Quadratic`, `Special Qubic`, `Full Cubic`, `Special Quartic`, `Full Quartic`
+1.  Select/tic to `Include inverse proportion terms` [3] in the analysis. To be able to use this option, no zero values should be present in the input for any component.
+1.  Specify the `Confidence Level (%)`[4] used to calculate confidence intervals. Default value is 0.95.
+1.  Select the columns by clicking on the arrow buttons [7] and moving columns between the `Excluded Columns` [5] , the `Components` [6]  and `Process Variables`[7] lists.
+1.  Optionally `Specify Process Variables Values` [9].
+1.  Click on the `Execute` button [10] to perform Mixture Analysis
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-mixture-config.png" alt="Mixture config" width="400" height="400" class="img-responsive">
+</div> 
+
+
+
+#### Output
+{: .no_toc}
+The parameter estimates table with all information about the estimated coefficients is shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-mixture-output.png" alt="Mixture output" width="800" height="600" class="img-responsive">
+</div> 
+
+---
+
 
 ## References {#references-design-of-experiments}
 1. Alkiayat, M., A practical guide to creating a Pareto chart as a quality improvement tool. Global Journal on Quality and Safety in Healthcare, 2021. 4(2): p. 83–84. [doi.org/10.36401/JQSH-21-X1](https://doi.org/10.36401/JQSH-21-X1).
 1. Derringer, G., & Suich, R. (1980). Simultaneous Optimization of Several Response Variables. Journal of Quality Technology, 12(4), 214–219. [doi.org/10.1080/00224065.1980.11980968](https://doi.org/10.1080/00224065.1980.11980968)
+1. Cornell, J. (2002) Experiments with Mixtures: Designs, Models, and the Analysis of Mixture. 3rd Edition, John Wiley & Sons, Inc., New York. [doi.org/10.1002/9781118204221](http://dx.doi.org/10.1002/9781118204221)
+
 
 ---
 
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on November 2025_
+_Instructions last updated on June 2026_
