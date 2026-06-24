@@ -473,6 +473,226 @@ The parameter estimates table with all information about the estimated coefficie
 
 ---
 
+## Post-Robust Parameter Analysis
+Post Robust Analysis is used to analyse the results of a Robust Parameter Design (Taguchi) experiment.
+
+The objective of robust design is not only to optimise the average response, but also to minimise the effect of uncontrollable sources of variation. To achieve this, experimental factors are divided into:
+1. Control Factors : which can be adjusted by the experimenter.
+1. Noise Factors : which represent sources of variability that cannot be controlled during normal operation.
+
+The analysis evaluates how the control factors influence the response mean, variability and robustness.
+
+Isalos supports modelling of:
+
+1. Mean Response
+1. Standard Deviation
+1. Logarithm of the Standard Deviation
+1. Signal-to-Noise Ratio (SNR)
+
+Each selected response is analysed independently using a linear model.
+
+### Mean Model
+{: .no_toc}
+The Mean Model investigates how the control factors influence the average value of the response.
+
+For each combination of control factor levels, the mean response is calculated across all noise factor settings.
+
+<div style="text-align: center;"> $$ \bar{y} = \frac{1}{n}\sum_{i=1}^{n} y_i $$ </div>
+
+where:
+1. $$y_i$$ = observed response
+1. $$n$$ = number of observations associated with the control factor combination
+
+This model is useful when the primary objective is to maximise or minimise the average response.
+
+### Standard Deviation Model
+{: .no_toc}
+The Standard Deviation Model evaluates how the control factors influence response variability.
+
+For each control factor combination, the standard deviation is calculated across all noise factor settings.
+
+<div style="text-align: center;"> $$ s = \sqrt{\frac{\sum_{i=1}^{n}(y_i-\bar y)^2}{n-1}} $$ </div>
+
+Smaller standard deviation values indicate greater robustness to noise factors.
+
+
+### Log(Standard Deviation) Model
+{: .no_toc}
+The Log(Standard Deviation) Model analyses the logarithm of the standard deviation.
+
+<div style="text-align: center;"> $$ \ln(s) $$ </div>
+
+This transformation is commonly used when variability changes multiplicatively rather than additively.
+
+The logarithmic transformation often stabilises variance and improves the suitability of linear modelling.
+
+### Signal-to-Noise Ratio (SNR)
+{: .no_toc}
+
+The Signal-to-Noise Ratio combines information about both the mean response and its variability into a single performance metric.
+
+Higher SNR values indicate more robust performance.
+
+The following SNR definitions are supported.
+
+#### Larger is Better
+{: .no_toc}
+Used when the response should be maximised.
+
+<div style="text-align: center;"> $$ SNR = -10 \log_{10}\left(\frac{1}{n}\sum_{i=1}^{n}\frac{1}{y_i^2}\right) $$ </div>
+
+#### Smaller is Better
+{: .no_toc}
+
+Used when the response should be minimised.
+
+<div style="text-align: center;"> $$ SNR = -10 \log_{10}\left(\frac{1}{n}\sum_{i=1}^{n}y_i^2\right) $$ </div>
+
+#### Nominal is Best
+{: .no_toc}
+
+Used when the response should be as close as possible to a target value.
+
+<div style="text-align: center;"> $$ SNR = 10\log_{10}\left(\frac{\bar y^2}{s^2}\right) $$ </div>
+
+This formulation rewards a large mean response relative to its variability.
+
+#### Nominal is Best (Adjusted)
+{: .no_toc}
+An alternative formulation that adjusts for sample size effects while balancing accuracy and variability.
+
+#### Nominal is Best (Variance Only)
+{: .no_toc}
+This formulation evaluates robustness based exclusively on variability.
+
+<div style="text-align: center;"> $$ SNR = -10\log_{10}(s^2) $$ </div>
+
+This option is useful when the mean response is already acceptable and the objective is solely to reduce variation.
+
+### Model Estimation
+{: .no_toc}
+For each selected response, a linear regression model is fitted using ordinary least squares.
+
+<div style="text-align: center;"> $$ \hat{\beta} = (X^TX)^{-1}X^Ty $$ </div>
+
+where:
+1. $$X$$ = design matrix
+1. $$y$$ = response vector
+1. $$\hat{\beta}$$ = vector of estimated coefficients
+The resulting model can be used to identify which control factors have the greatest influence on the selected robustness metric.
+
+### Analysis of Variance (ANOVA)
+{: .no_toc}
+An Analysis of Variance table is produced for every fitted model.
+
+The ANOVA table partitions the variation in the response into:
+1. Variation explained by the model
+1. Residual variation
+1. Total variation
+F-tests are used to determine whether the effects included in the model explain a statistically significant proportion of the observed variation.
+
+
+### Main Effects Plots
+{: .no_toc}
+Main Effects Plots display the predicted response for each level of every control factor.
+
+These plots allow identification of factor settings that:
+
+1. maximise the mean response,
+1. minimise variability,
+1. maximise the signal-to-noise ratio.
+
+All plots within the same response model are displayed using a common y-axis scale to facilitate comparison.
+
+### Interaction Plots
+{: .no_toc}
+Interaction Plots are used to investigate whether the effect of one control factor depends on the level of another factor.
+
+Parallel lines indicate little or no interaction.
+
+Non-parallel or crossing lines suggest the presence of interaction effects.
+
+Strong interactions imply that factor optimisation should consider combinations of factor settings rather than factors individually.
+
+Use the `Post-Robust Parameter Analysis` tool by browsing in the top ribbon: 
+
+|DOE $$\rightarrow$$ Post DoE Analysis $$\rightarrow$$ Post-Robust Parameter Analysis|
+
+### Input
+{: .no_toc}
+All variables must be specified in the datasheet. The input consists of the results of a Robust Design of Experiment (DoE) together with the measured response values. The response variable must be numerical. At least two Control Factors and one Noise Factor must be specified. Noise Factors may be numerical or categorical and represent sources of variability used to assess robustness.
+
+### Configuration
+{: .no_toc}
+
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable.|
+|**Analysis Type**| Select the desired analysis type for the analysis. Available options include: Main Effects, Main Effects + Two-Factor, Main Effects + Two-Factor + Three-Factor, Full Factorial.|
+|**Confidence Level(%)**| Specify the confidence level for the analysis. Values should range from 0 to 100 with the default value being 95. |
+|**Fit a model for**| Select the statistics you want to fit a model for. At least one option should be selected. |
+|**Signal to Noise Ratio Type**| If the Signal to Noise Ratio model is selected, specify the type of SNR to fit. Available options include: Larger is better, Smaller is better, Nominal is best, Nominal is best (Adjusted), Nominal is best (Variance Only) |
+|**Find Optimal Settings**| Select this button to calculate optimal settings (settings that maximize/minimize the objective) for each of the selected models.|
+|**Optimization Objective for Mean**| If the mean model and the optimization option are selected, select whether the objective is to maximize or minimize the mean.|
+|**Control Factors/Noise Factors/Excluded Columns**| Select manually the columns that correspond to control factors and the columns that correspond to noise factors through the dialog window: Use the buttons to move columns between the Control Factors and Noise Factors lists and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least two Conrol Factors and one Noise Factor should be specified.|
+|**Specify Reference Levels**| Use this buttton to specify the reference level for each control factor. If this option is not modified, then the last level for each variable will automatically be chosen.|
+
+### Output
+{: .no_toc}
+For each selected model, the output spreadsheet contains: 
+1. Response Table : contains the average fitted response for each factor level, delta values and factor rankings
+1. ANOVA Table : Source, Degrees of Freedom, Sum of Squares, Mean Square, F Statistic, p-value
+1. Coefficients Table : Variable, Coefficient, Std Error, Lower CI, Upper CI, Test Statistic, df, p-value
+
+In addition, Main Effects Plots and Interaction Plots are generated for each selected robustness metric. 
+Optionally, if the optimization option is selected, the optimal settings and predicted optimal response are shown in the output spreadsheet.
+
+
+### Example
+{: .no_toc}
+
+#### Input
+{: .no_toc}
+In the input datasheet minimum requirement is to specify four columns, one dependent variable, two control factors and one noise factor, as shown below.
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-robust-input.png" alt="Post Robust Parameter Analysis input" width="400" height="400" class="img-responsive">
+</div> 
+
+#### Configuration
+{: .no_toc}
+
+1.  Select `DOE` → `Post DoE Analysis` →`Post-Robust Parameter Analysis`.
+1.  Select the `Dependent Variable`[1] from the list of available options. This column should only contain numerical values.
+1.  Select the `Analysis Type` [2] from the list of available options : `Main Effects`, `Main Effects + Two-Factor`, `Main Effects + Two-Factor + Three-Factor`, `Full Factorial`.
+1.  Specify the `Confidence Level (%)`[3] used to calculate confidence intervals. Default value is 0.95.
+1.  Select/tick the statistics you wish to `Fit a model for` [4]. At least one option must be selected.
+1.  If the `Signal to Noise Ratios` option is selected, select the `Signal to Noise Ratio Type`[5] from the available options: `Larger is better`, `Smaller is better`, `Nominal is best`, `Nominal is best (Variance Only)`, `Nominal is best (Adjusted)`.
+1. Select/tick to `Find Optimal Settings`[6] for each of the fitted models.
+1. If the `Means model` and `Find Optimal Settings` options are selected select the `Optimization Objective for Mean`[7].
+1.  Select the columns by clicking on the arrow buttons [10] and moving columns between the `Excluded Columns` [8] , the `Control Factors` [9]  and `Noise Factors`[7] lists.
+1.  Optionally `Specify Reference Levels` [11] for control factors.
+1.  Click on the `Execute` button [12] to perform Post-Robust Parameter Analysis.
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-robust-config.png" alt="Post Robust Parameter Analysis config" width="400" height="400" class="img-responsive">
+</div> 
+
+
+
+#### Output
+{: .no_toc}
+The parameter estimates table with all information about the estimated coefficients is shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-robust-output.png" alt="Post Robust Parameter Analysis output" width="800" height="600" class="img-responsive">
+</div> 
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-robust-mainEffect-chart.png" alt="Robust main effect chart" width="700" height="400" class="img-responsive">
+</div> 
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-robust-interraction-chart.png" alt="Robust interaction chart" width="900" height="700" class="img-responsive">
+</div> 
+
+---
+
 
 ## References {#references-design-of-experiments}
 1. Alkiayat, M., A practical guide to creating a Pareto chart as a quality improvement tool. Global Journal on Quality and Safety in Healthcare, 2021. 4(2): p. 83–84. [doi.org/10.36401/JQSH-21-X1](https://doi.org/10.36401/JQSH-21-X1).
