@@ -179,6 +179,119 @@ The output list of experiments is generated for the two factors outlining a list
 
 ---
 
+## Doehlert Design
+Doehlert designs are second-order response surface designs intended for quantitative (continuous) factors. Their main objective is to efficiently explore the experimental region while requiring fewer runs than many traditional response surface methodologies such as Central Composite Designs (CCD) or Box–Behnken Designs.
+
+A key characteristic of Doehlert designs is their uniform distribution of experimental points across the experimental space. This property allows the design to provide nearly equal precision in all directions around the center of the design space, making it highly suitable for response surface modeling and sequential experimentation.
+
+Unlike factorial-based response surface designs that rely on combinations of low, center and high levels, Doehlert designs are constructed geometrically using a simplex-based approach. The resulting design points form highly symmetric structures, where each factor has a different number of levels depending on its position in the design matrix.
+
+Doehlert designs possess several important properties:
+1. Efficient estimation of first-order, interaction and quadratic effects.
+1. Uniform shell distribution around the center point.
+1. Sequential expandability without discarding previous experiments.
+1. Reduced number of required runs compared to many classical RSM designs.
+1. Rotatable or near-rotatable prediction variance properties for low-dimensional cases.
+
+The Doehlert design for k factors contains:
+<div style="text-align: center;">
+    <span id="eq. Doehlert Runs">
+        $$
+        \begin{equation}
+            N = k^2 + k + N_c
+        \end{equation}   
+        $$
+    </span>
+</div>
+experimental runs, where $$N_c$$ is the selected number of center points.
+
+The design is generated geometrically from simplex coordinates. The construction begins with an origin point and recursively builds simplex vertices in higher dimensions. Experimental points are then obtained from all pairwise differences between simplex points.
+
+For two factors, the Doehlert design forms a regular hexagon around the center point, producing a highly uniform experimental coverage.
+
+For three or more factors, the design generalizes this concept into hyperspherical shells that maintain balanced geometric spacing between runs.
+
+The recursive simplex construction used in the implementation is based on the coordinates:
+1. First simplex point $$P_0 = (0,0,...,0)$$
+1. Second simplex point $$P_1 = (1,0,...,0)$$
+1. Third simplex point $$P_2 = (\frac{1}{2},\frac{\sqrt{3}}{2},0,...,0)$$
+
+The remaining simplex coordinates are generated recursively so that the simplex remains regular in higher-dimensional space.
+
+After constructing the simplex, the final Doehlert design points are obtained from all pairwise vector differences: $$d_{ij} = P_i - P_j$$, including their symmetric counterparts.
+
+This construction produces a highly uniform experimental distribution and guarantees balanced exploration of the response surface.
+
+Doehlert designs are particularly useful when:
+1. curvature is expected in the response,
+1. optimization is the primary goal,
+1. sequential augmentation of the design may be required,
+1. experimental cost must remain relatively low,
+1. isotropic prediction variance is desirable.
+
+A major advantage of Doehlert designs is that factors can be added sequentially while preserving many of the original runs, making them very attractive for adaptive experimentation and process optimization workflows.
+
+Use the `Doehlert Design` by browsing in the top ribbon: 
+
+|DOE $$\rightarrow$$ Response Surface $$\rightarrow$$ Doehlert Design|
+
+### Input
+{: .no_toc}
+Factor values must be specified in the input datasheet. The Doehlert Design is applied when at least two factors (columns) are provided. Factors must be numerical and may contain more than two values; in this case, the algorithm automatically determines the factor levels by taking the minimum and maximum values observed in the column.
+
+### Configuration
+{: .no_toc}
+
+|**Number of Center Points per Block**| Specify the Number of Center Points per Block to be included in the generated list of experiments. The minimum limitation for these designs is 1 as the center point is needed for the construction of the simplex. |
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Doehlert Designs can only be blocked on replicates, meaning each replicate defines a block, otherwise all points are put into a single block.|
+|**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
+|**Time-based RNG Seed**|If the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.|
+|**RNG Seed**|Select manually the random generated number seed if required.|
+|**Include/exclude columns**|Select manually the columns through the dialog window: Use the buttons to move columns between the `Included Columns` and `Excluded Columns` list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns.|
+
+
+### Output
+{: .no_toc}
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the Doehlert Design.
+
+### Example
+{: .no_toc}
+
+##### Input
+{: .no_toc}
+In the input datasheet minimum requirement is to specify two numerical factors (columns) and insert exactly/minimum two levels (values) for each factor (column), as shown below.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/Doehlert-input.png" alt="Doehlert Input" width="400" height="400" class="img-responsive">
+</div> 
+
+##### Configuration
+{: .no_toc}
+1. Select `DOE` $$\rightarrow$$ `Response Surface` $$\rightarrow$$ `Doehlert Design`.
+1. Select the `Number of Center Points per Block` [1] to be generated in the output list of experiments.
+1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
+1. Select the `Number of Blocks` [3]. 
+1. Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
+1. If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
+1. Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
+1. Click on the `Execute` button [10] to perform the Doehlert Design method.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/Doehlert-config.png" alt="Doehlert Configuration" width="400" height="400" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc}
+A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the Doehlert Design method selected. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/Doehlert-output.png" alt="Doehlert Output" width="600" height="800" class="img-responsive">
+</div>
+
+---
+
+
 ## References {#references-design-of-experiments}
 1. Box, G.E. and Behnken, D.W., Some new three level designs for the study of quantitative variables. Technometrics, 1960. 2(4): p. 455-475. [doi.org/10.1080/00401706.1960.10489912](https://doi.org/10.1080/00401706.1960.10489912).
 
