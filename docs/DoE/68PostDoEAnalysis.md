@@ -38,7 +38,7 @@ Use the `Pareto Analysis` tool by browsing in the top ribbon:
 ### Input
 {: .no_toc}
 
-All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Design of Experiments (DoE) method, with the addition of the response calculated for each experimental run. The response variable must be strictly numerical. Experimental factors may be numerical or categorical. Categorical factors are permitted only when they contain exactly two levels. Additionally, categorical factors can only be included when the model does not contain quadratic terms. Each row corresponds to a single observation from the experiment. 
+All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Design of Experiments (DoE) method, with the addition of the response calculated for each experimental run. The response variable must be strictly numerical. Experimental factors may be numerical or categorical. Categorical factors are permitted only when they contain exactly two levels. Additionally, categorical factors can only be included when the model does not contain quadratic terms. The blocking variable can be either numeric or categorical. Each row corresponds to a single observation from the experiment. 
 
 ### Configuration
 {: .no_toc}
@@ -49,6 +49,8 @@ All variables must be specified in the datasheet. The input to the algorithm con
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one factor column should be specified. |
 |**DOE type**| Select whether you have performed a Factorial/Screening or a Response Surface Design. If categorical factors are selected the only acceptable option is Factorial/Screening. |
 |**Include Center Points**| If you have performed a Factorial/Screening design, select whether to include center points in the analysis.|
+|**Include Blocks**| Select whether to include a blocking term in the fitted model. Blocks are used when experimental runs were performed under different batches, days, operators, machines, or other known conditions that may introduce systematic variation. Including blocks helps adjust the model for this variation, so the effects of the selected factors are estimated more accurately.  |
+|**Blocking Variable**| Select the column that identifies the block membership of each experimental run. This column should contain the block labels, such as batch number, day, operator, or experimental group. The blocking variable is only available when Include Blocks is selected. |
 
 ### Output
 {: .no_toc}
@@ -75,7 +77,9 @@ In the input datasheet minimum requirement is to specify two columns, one factor
 1.  Select the columns by clicking on the arrow buttons [7] and moving columns between the `Excluded Columns` [4] , the `Factors` [5]  and `Covariates`[6] lists.
 1.  Select whether the DoE[8] method used before this step was a `Factorial/Screening` or a `Response Surface` method.
 1.  If the `Factorial/Screening` option is selected, select/tick to `Include Center Points`[9]. 
-1.  Click on the `Execute` button [10] to perform Pareto Analysis
+1.  Select/tick to `Include Blocks`[10]. 
+1.  If the `Include Blocks` option is selected, select the `Blocking Variable`[11] from the list of available options. This column can contain either numerical or categorical data.
+1.  Click on the `Execute` button [12] to perform Pareto Analysis
 <div style="text-align: center;">
 <img src="images/Design of experiments/postDoE-pareto-config.png" alt="Pareto config" width="400" height="400" class="img-responsive">
 </div> 
@@ -125,7 +129,7 @@ Use the `Factorial Plot Analysis` tool by browsing in the top ribbon:
 ### Input
 {: .no_toc}
 
-All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Design of Experiments (DoE) method, with the addition of the response calculated for each experimental run. The response variable must be strictly numerical. Experimental factors may be numerical or categorical. Categorical factors are permitted only when they contain exactly two levels. Additionally, categorical factors can only be included when the model does not contain quadratic terms. Each row corresponds to a single observation from the experiment. 
+All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Design of Experiments (DoE) method, with the addition of the response calculated for each experimental run. The response variable must be strictly numerical. Experimental factors may be numerical or categorical. Categorical factors are permitted only when they contain exactly two levels. Additionally, categorical factors can only be included when the model does not contain quadratic terms. The blocking variable can be either numeric or categorical. Each row corresponds to a single observation from the experiment. 
 
 ### Configuration
 {: .no_toc}
@@ -136,6 +140,8 @@ All variables must be specified in the datasheet. The input to the algorithm con
 |**Specify Factor Values**| Specify the low and high value for each factor to ensure the plots are generated correctly. By default, these values are initialized to the minimum and maximum observed values of each variable. |
 |**DOE type**| Select whether you have performed a Factorial/Screening or a Response Surface Design. If categorical factors are selected the only acceptable option is Factorial/Screening. |
 |**Include Center Points**| If you have performed a Factorial/Screening design, select whether to include center points in the analysis.|
+|**Include Blocks**| Select whether to include a blocking term in the fitted model. Blocks are used when experimental runs were performed under different batches, days, operators, machines, or other known conditions that may introduce systematic variation. Including blocks helps adjust the model for this variation, so the effects of the selected factors are estimated more accurately.  |
+|**Blocking Variable**| Select the column that identifies the block membership of each experimental run. This column should contain the block labels, such as batch number, day, operator, or experimental group. The blocking variable is only available when Include Blocks is selected. |
 
 ### Output
 {: .no_toc}
@@ -165,7 +171,9 @@ In the input datasheet minimum requirement is to specify two columns, one factor
 1.  Click on `Specify Factor Values`[7] to specify the `Min`[8] and `Max`[9] value for each numerical factor, the `Low level`[10] and `High level`[11] value for each categorical factor. Once they are specified click on `OK`[12].
 1.  Select whether the DoE[13] method used before this step was a `Factorial/Screening` or a `Response Surface` method.
 1.  If the `Factorial/Screening` option is selected, select/tick to `Include Center Points`[14]. 
-1.  Click on the `Execute` button [15] to perform Factorial Plot Analysis
+1.  Select/tick to `Include Blocks`[15]. 
+1.  If the `Include Blocks` option is selected, select the `Blocking Variable`[16] from the list of available options. This column can contain either numerical or categorical data.
+1.  Click on the `Execute` button [17] to perform Factorial Plot Analysis
 <div style="text-align: center;">
 <img src="images/Design of experiments/postDoE-factorial-config.png" alt="Factorial Config" width="400" height="400" class="img-responsive">
 </div> 
@@ -218,13 +226,15 @@ Use the `Multi-Objective Optimization` tool by browsing in the top ribbon:
 ### Input
 {: .no_toc}
 
-All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Design of Experiments (DoE) method, with the addition of the response variables calculated for each experimental run. Response variables must be strictly numerical. Experimental factors may be numerical or categorical. Categorical factors are permitted only when they contain exactly two levels. Additionally, categorical factors can only be included when the model does not contain quadratic terms.Each row corresponds to a single observation from the experiment. 
+All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Design of Experiments (DoE) method, with the addition of the response variables calculated for each experimental run. Response variables must be strictly numerical. Experimental factors may be numerical or categorical. Categorical factors are permitted only when they contain exactly two levels. Additionally, categorical factors can only be included when the model does not contain quadratic terms. The blocking variable can be either numeric or categorical. Each row corresponds to a single observation from the experiment. 
 
 ### Configuration
 {: .no_toc}
 
 |**Analysis Type**| Select the desired analysis type for the analysis. Available options include: Main Effects, Main Effects + Two-Factor, Main Effects + Two Factor + Three Factor, Main Effects + Quadratic, Main Effects + Two-Factor + Quadratic, Main Effects + Two Factor + Three Factor + Quadratic, Full Factorial. For screening/factorial designs, it is recommended not to include quadratic terms, while for response surface designs, quadratic terms should typically be included. If there are categorical factors in the analysis then quadratic factors cannot be selected.|
 |**Confidence Level**| Specify the confidence level for the analysis. Values should range from 0 to 100 with the default value being 95 |
+|**Include Blocks**| Select whether to include a blocking term in the fitted model. Blocks are used when experimental runs were performed under different batches, days, operators, machines, or other known conditions that may introduce systematic variation. Including blocks helps adjust the model for this variation, so the effects of the selected factors are estimated more accurately.  |
+|**Blocking Variable**| Select the column that identifies the block membership of each experimental run. This column should contain the block labels, such as batch number, day, operator, or experimental group. The blocking variable is only available when Include Blocks is selected. |
 |**Factors/Dependent Variables/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to dependent variables through the dialog window: Use the buttons to move columns between the Factors and Dependent Variables list and Excluded Columns list.  At least one factor column and one Dependent Variable Column should be specified. |
 |**Specify Factor Values**| Specify the low and high value for each factor to ensure the plots are generated correctly. By default, these values are initialized to the minimum and maximum observed values of each variable. Optionally specify constraints to fix factors to a specific value within the allowed range.|
 |**Specify Dependent Variable Ranges**| Specify the minimum and maximum acceptable value for each dependent variable to correctly set objective goals and compute individual desirabilities. By default, these values are initialized to the minimum and maximum observed values of each variable.|
@@ -254,12 +264,14 @@ In the input datasheet minimum requirement is to specify two columns, one factor
 1.  Select `DOE` → `Post DoE Analysis` →`Multi-Objective Optimization`.
 1.  Select the `Analysis Type` [1] from the list of available options : `Main Effects`, `Main Effects` + `Quadratic`, `Main Effects + Two Factor`, `Main Effects + Two Factor + Quadratic`, `Main Effects + Two Factor + Three Factor`, `Main Effects + Two Factor + Three Factor + Quadratic`, `Full Factorial`
 1.  Specify the `Significance Level`[2] used to calculate the confidence intervals. Default value is 95.
-1.  Select the columns by clicking on the arrow buttons [3],[4] and moving columns between the `Excluded Columns` [5] , the `Factors` [6]  and `Dependent Variables`[7] lists.
-1.  Specify the `Goal` [8], the `Target Value`[9] if the Target goal is selected, the `Scale`[10] and the `Importance`[11] of each dependent variable.
-1.  Click on `Specify Factor Values`[12] to specify the `Min`[14] and `Max`[15] value for each numerical factor, the `Low level`[15] and `High level`[16] value for each categorical factor and optionally constrain factors to a `Fixed Value`[17]. Once they are specified click on `OK`[18].
-1.  Click on `Specify Dependent Variable Ranges`[19] to specify the `Min`[20] and `Max`[21] value for each dependent variable . Once they are specified click on `OK`[22].
-1.  Click on `Optimize on the Discretized Space (Only factor values that appear in the dataset will be considered)` [23] to only optimize on the discretized space.
-1.  Click on the `Execute` button [24] to perform Multi-Objective optimization
+1.  Select/tick to `Include Blocks`[3]. 
+1.  If the `Include Blocks` option is selected, select the `Blocking Variable`[4] from the list of available options. This column can contain either numerical or categorical data.
+1.  Select the columns by clicking on the arrow buttons [5],[6] and moving columns between the `Excluded Columns` [7] , the `Factors` [8]  and `Dependent Variables`[9] lists.
+1.  Specify the `Goal` [10], the `Target Value`[11] if the Target goal is selected, the `Scale`[12] and the `Importance`[13] of each dependent variable.
+1.  Click on `Specify Factor Values`[14] to specify the `Min`[15] and `Max`[16] value for each numerical factor, the `Low level`[17] and `High level`[18] value for each categorical factor and optionally constrain factors to a `Fixed Value`[19]. Once they are specified click on `OK`[20].
+1.  Click on `Specify Dependent Variable Ranges`[21] to specify the `Min`[22] and `Max`[23] value for each dependent variable . Once they are specified click on `OK`[24].
+1.  Click on `Optimize on the Discretized Space (Only factor values that appear in the dataset will be considered)` [25] to only optimize on the discretized space.
+1.  Click on the `Execute` button [26] to perform Multi-Objective optimization
 <div style="text-align: center;">
 <img src="images/Design of experiments/postDoE-multiObjective-config.png" alt="Multi-Objective Optimization config" width="800" height="550" class="img-responsive">
 </div> 
