@@ -20,21 +20,21 @@ Below are some use cases of Isalos Analytics Platform in DOE applications. Each 
 
 #### Opthalmic Drug Delivery System ([`Fractional Factorial`](https://www.docs.isalos.novamechanics.com//screening.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Pharmaceuticals\2013_Achouri\2013_Achouri_NemrodW_2.iap)
-* [Report](files\DoE\Pharmaceuticals\2013_Achouri\2013_Achouri.pdf)
+* [Isalos workflow](files\DoE\Pharmaceuticals\2013_Achouri\2013_Achouri_v210.iap)
+* [Report](files\DoE\Pharmaceuticals\2013_Achouri\2013_Achouri_v210.pdf)
 
 #### Arsenic extraction in rice samples ([`Plackett Burman`](https://www.docs.isalos.novamechanics.com//screening.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Food Chemistry\2016_Ma\2016_Ma_Minitab.iap)
-* [Report](files\DoE\Food Chemistry\2016_Ma\2016_Ma.pdf)
+* [Isalos workflow](files\DoE\Food Chemistry\2016_Ma\2016_Ma_v210.iap)
+* [Report](files\DoE\Food Chemistry\2016_Ma\2016_Ma_v210.pdf)
 
 
 ## Factorial Design
 
 #### Development of pellets for oral lysozyme delivery ([`Full Factorial`](https://www.docs.isalos.novamechanics.com///factorial.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Pharmaceuticals\2016_Sovany\2016_Sovany_Statistica.iap)
-* [Report](files\DoE\Pharmaceuticals\2016_Sovany\2016_Sovany.pdf)
+* [Isalos workflow](files\DoE\Pharmaceuticals\2016_Sovany\2016_Sovany_v210.iap)
+* [Report](files\DoE\Pharmaceuticals\2016_Sovany\2016_Sovany_v210.pdf)
 
 #### Development of nanostructured lipid carriers ([`Full Factorial`](https://www.docs.isalos.novamechanics.com///factorial.html))
 {: .no_toc }
@@ -81,8 +81,8 @@ Below are some use cases of Isalos Analytics Platform in DOE applications. Each 
 
 #### Removal of humic substances using coconut copra ([`Central Composite - CCI`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Water treatment\2015_Lee\2015_Lee.iap)
-* [Report](files\DoE\Water treatment\2015_Lee\2015_Lee.pdf)
+* [Isalos workflow](files\DoE\Water treatment\2015_Lee\2015_Lee_v210.iap)
+* [Report](files\DoE\Water treatment\2015_Lee\2015_Lee_v210.pdf)
 
 #### Biosorption of hexavalent chromium from aqueous media ([`Central Composite - CCC`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
@@ -104,8 +104,8 @@ Below are some use cases of Isalos Analytics Platform in DOE applications. Each 
 
 #### PFAS ENVIRONMENTAL FATE ([`Plackett Burman`](https://www.docs.isalos.novamechanics.com//screening.html) & [`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Environmental\PFAS Fate\PFAS_Fate_v202.iap)
-* [Report](files\DoE\Environmental\PFAS Fate\PFAS_Fate_Manual_en.pdf)
+* [Isalos workflow](files\DoE\Environmental\PFAS Fate\PFAS_Fate_v210.iap)
+* [Report](files\DoE\Environmental\PFAS Fate\Practical_Session-DAY1.pdf)
 
 
 ## Isalos Publications
@@ -113,5 +113,5 @@ Below are some use cases of Isalos Analytics Platform in DOE applications. Each 
 #### Ammonia borane catalytic hydrolysis for H<sub>2</sub> generation ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
 * [Isalos workflow](files\DoE\Catalysis\2025_Michael\2025_Michael_v210.iap)
-* [Report](files\DoE\Catalysis\2025_Michael\2025_Michael_v210.pdf)
+* [Report](files\DoE\Catalysis\2025_Michael\2025_Michael_210.pdf)
 
