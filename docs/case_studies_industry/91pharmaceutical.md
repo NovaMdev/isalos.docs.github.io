@@ -36,8 +36,8 @@ Below are some use cases of Isalos Analytics Platform in pharmaceutical applicat
 
 #### Opthalmic Drug Delivery System ([`Fractional Factorial`](https://www.docs.isalos.novamechanics.com//screening.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Pharmaceuticals\2013_Achouri\2013_Achouri_NemrodW_2.iap)
-* [Report](files\DoE\Pharmaceuticals\2013_Achouri\2013_Achouri.pdf)
+* [Isalos workflow](files\DoE\Pharmaceuticals\2013_Achouri\2013_Achouri_v210.iap)
+* [Report](files\DoE\Pharmaceuticals\2013_Achouri\2013_Achouri_v210.pdf)
 
 #### Formulation of extended release beads ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
@@ -61,8 +61,8 @@ Below are some use cases of Isalos Analytics Platform in pharmaceutical applicat
 
 #### Development of pellets for oral lysozyme delivery ([`Full Factorial`](https://www.docs.isalos.novamechanics.com///factorial.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Pharmaceuticals\2016_Sovany\2016_Sovany_Statistica.iap)
-* [Report](files\DoE\Pharmaceuticals\2016_Sovany\2016_Sovany.pdf)
+* [Isalos workflow](files\DoE\Pharmaceuticals\2016_Sovany\2016_Sovany_v210.iap)
+* [Report](files\DoE\Pharmaceuticals\2016_Sovany\2016_Sovany_v210.pdf)
 
 #### Development of nanostructured lipid carriers ([`Full Factorial`](https://www.docs.isalos.novamechanics.com///factorial.html))
 {: .no_toc }

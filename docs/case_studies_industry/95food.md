@@ -20,8 +20,8 @@ Below are some use cases of Isalos Analytics Platform in food applications. Each
 
 #### Arsenic extraction in rice samples ([`Plackett Burman`](https://www.docs.isalos.novamechanics.com//screening.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Food Chemistry\2016_Ma\2016_Ma_Minitab.iap)
-* [Report](files\DoE\Food Chemistry\2016_Ma\2016_Ma.pdf)
+* [Isalos workflow](files\DoE\Food Chemistry\2016_Ma\2016_Ma_v210.iap)
+* [Report](files\DoE\Food Chemistry\2016_Ma\2016_Ma_v210.pdf)
 
 
 ## Classification
