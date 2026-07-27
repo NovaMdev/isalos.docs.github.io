@@ -27,11 +27,11 @@ Below are some use cases of Isalos Analytics Platform in analytical chemistry ap
 
 #### Development of hydrophilic interaction LC method ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Analytical chemistry\2015_Jovanovic\2015_Jovanovic_DesignExpert_MODDE 10.1.iap)
-* [Report](files\DoE\Analytical chemistry\2015_Jovanovic\2015_Jovanovic.pdf)
+* [Isalos workflow](files\DoE\Analytical chemistry\2015_Jovanovic\2015_Jovanovic_v212.iap)
+* [Report](files\DoE\Analytical chemistry\2015_Jovanovic\2015_Jovanovic_v212.pdf)
 
 #### Bilastine determination by hydrophilic interaction LC ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html) & [`Fractional Factorial`](https://www.docs.isalos.novamechanics.com//screening.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Analytical chemistry\2016_Terzic\2016_Terzic.iap)
-* [Report](files\DoE\Analytical chemistry\2016_Terzic\2016_Terzic.pdf)
+* [Isalos workflow](files\DoE\Analytical chemistry\2016_Terzic\2016_Terzic_v212.iap)
+* [Report](files\DoE\Analytical chemistry\2016_Terzic\2016_Terzic_v212.pdf)
 
