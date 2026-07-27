@@ -27,7 +27,7 @@ Below are some use cases of Isalos Analytics Platform in environmental applicati
 
 #### PFAS ENVIRONMENTAL FATE ([`Plackett Burman`](https://www.docs.isalos.novamechanics.com//screening.html) & [`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Environmental\PFAS Fate\PFAS_Fate_v210.iap)
-* [Report](files\DoE\Environmental\PFAS Fate\Practical_Session-DAY1.pdf)
+* [Isalos workflow](files\DoE\Environmental\PFAS Fate\pfas_env_fate_v212.iap)
+* [Report](files\DoE\Environmental\PFAS Fate\pfas_env_fate_v212.pdf)
 
 
