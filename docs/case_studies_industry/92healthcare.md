@@ -61,3 +61,11 @@ Below are some use cases of Isalos Analytics Platform in healthcare applications
 {: .no_toc }
 * [Isalos workflow](files/Classification/Heart Disease/Heart_Disease_v202.iap)
 * [Report](files/Classification/Heart Disease/Heart_Disease_Manual_en.pdf)
+
+
+## ANOVA
+
+#### BMI Measurement ([`Factorial ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#factorial-anova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\BMI\bmi_v212.iap)
+* [Report](files\ANOVA\BMI\bmi_v212.pdf)

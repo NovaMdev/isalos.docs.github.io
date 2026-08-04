@@ -24,3 +24,9 @@ Below are some use cases of Isalos Analytics Platform in real estate application
 * [Report](files\Regression\Housing prices\housing_prices.pdf)
 
 
+## ANOVA
+
+#### Housing Prices ([`Factorial ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#factorial-anova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Housing\housing_v212.iap)
+* [Report](files\ANOVA\Housing\housing_v212.pdf)

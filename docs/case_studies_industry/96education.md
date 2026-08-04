@@ -35,3 +35,10 @@ Below are some use cases of Isalos Analytics Platform in education applications.
 {: .no_toc }
 * [Isalos workflow](files\Classification\Students performance\student_performance_v206.iap)
 * [Report](files\Classification\Students performance\students_performance.pdf)
+
+## ANOVA
+
+#### Screen Time analysis ([`Two Way ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#two-way-anova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Indian_screen\indian_screen_v212.iap)
+* [Report](files\ANOVA\Indian_screen\indian_screen_v212.pdf)
