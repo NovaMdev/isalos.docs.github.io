@@ -31,3 +31,25 @@ Below are some use cases of Isalos Analytics Platform in environmental applicati
 * [Report](files\DoE\Environmental\PFAS Fate\pfas_env_fate_v212.pdf)
 
 
+## ANOVA
+
+#### Global Surface Temperatures ([`One-Way ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#one-way-anova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Surface_temp\surface_temps_v212.iap)
+* [Report](files\ANOVA\Surface_temp\surface_temps_v212.pdf)
+
+#### Smart Home Energy Consumption ([`One-Way ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#one-way-anova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Smart_home\smart_home_v212.iap)
+* [Report](files\ANOVA\Smart_home\smart_home_v212.pdf)
+
+#### Sepal length ([`One-Way ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#one-way-anova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Iris\iris_v212.iap)
+* [Report](files\ANOVA\Iris\iris_v212.pdf)
+
+#### Apparent Temperatures based on Wind Speed and Humidity ([`Two Way ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#two-way-anova) & [`Factorial ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#factorial-anova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Apparent_temps\apparent_temps_v212.iap)
+* [Report](files\ANOVA\Apparent_temps\apparent_temps_v212.pdf)
+

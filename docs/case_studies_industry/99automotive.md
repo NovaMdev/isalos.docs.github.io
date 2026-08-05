@@ -23,7 +23,12 @@ Below are some use cases of Isalos Analytics Platform in automotive applications
 * [Report](files\Regression\Vehicle\vehicle.pdf)
 
 
+## ANOVA
 
+#### Car Price Prediction ([`ANCOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#ancova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Car_price\car_price_v215.iap)
+* [Report](files\ANOVA\Car_price\car_price_v215.pdf)
 
 
 
