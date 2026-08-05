@@ -69,3 +69,18 @@ Below are some use cases of Isalos Analytics Platform in healthcare applications
 {: .no_toc }
 * [Isalos workflow](files\ANOVA\BMI\bmi_v212.iap)
 * [Report](files\ANOVA\BMI\bmi_v212.pdf)
+
+#### Predicting Chronic Disease Risk ([`MANCOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#mancova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Healthcare\healthcare_v215.iap)
+* [Report](files\ANOVA\Healthcare\healthcare_v215.pdf)
+
+#### Heart Failure Prediction ([`MANCOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#mancova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Heart_failure\heart_failure_v215.iap)
+* [Report](files\ANOVA\Heart_failure\heart_failure_v215.pdf)
+
+#### Parkinson's Disease ([`ANCOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#ancova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Parkinsons\parkinsons_v215.iap)
+* [Report](files\ANOVA\Parkinsons\parkinsons_v215.pdf)

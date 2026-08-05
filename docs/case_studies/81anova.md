@@ -64,3 +64,46 @@ Below are some use cases of Isalos Analytics Platform in ANOVA applications. Eac
 {: .no_toc }
 * [Isalos workflow](files\ANOVA\Housing\housing_v212.iap)
 * [Report](files\ANOVA\Housing\housing_v212.pdf)
+
+#### Advertisement Rating ([`Mixed ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#mixed-anova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Rating_ads\rating_ads_v215.iap)
+* [Report](files\ANOVA\Rating_ads\rating_ads_v215.pdf)
+
+#### California Oceanic Fisheries ([`Repeated Measures ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#repeated-measures))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\CalCOFi\calcofi_v215.iap)
+* [Report](files\ANOVA\CalCOFi\calcofi_v215.pdf)
+
+#### Car Price Prediction ([`ANCOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#ancova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Car_price\car_price_v215.iap)
+* [Report](files\ANOVA\Car_price\car_price_v215.pdf)
+
+#### Predicting Chronic Disease Risk ([`MANCOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#mancova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Healthcare\healthcare_v215.iap)
+* [Report](files\ANOVA\Healthcare\healthcare_v215.pdf)
+
+#### Heart Failure Prediction ([`MANCOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#mancova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Heart_failure\heart_failure_v215.iap)
+* [Report](files\ANOVA\Heart_failure\heart_failure_v215.pdf)
+
+#### Parkinson's Disease ([`ANCOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#ancova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Parkinsons\parkinsons_v215.iap)
+* [Report](files\ANOVA\Parkinsons\parkinsons_v215.pdf)
+
+#### Predicting Academic Performance ([`MANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#manova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Teaching_methods\teaching_methods_v215.iap)
+* [Report](files\ANOVA\Teaching_methods\teaching_methods_v215.pdf)
+
+#### Wine Tasting Ratings ([`Repeated Measures ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#repeated-measures))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Wine\wine_v215.iap)
+* [Report](files\ANOVA\Wine\wine_v215.pdf)
+
+
+

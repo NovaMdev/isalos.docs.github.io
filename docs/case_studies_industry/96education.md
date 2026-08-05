@@ -42,3 +42,8 @@ Below are some use cases of Isalos Analytics Platform in education applications.
 {: .no_toc }
 * [Isalos workflow](files\ANOVA\Indian_screen\indian_screen_v212.iap)
 * [Report](files\ANOVA\Indian_screen\indian_screen_v212.pdf)
+
+#### Predicting Academic Performance ([`MANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#manova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Teaching_methods\teaching_methods_v215.iap)
+* [Report](files\ANOVA\Teaching_methods\teaching_methods_v215.pdf)

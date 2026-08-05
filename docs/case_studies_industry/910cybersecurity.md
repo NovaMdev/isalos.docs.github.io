@@ -31,6 +31,11 @@ Below are some use cases of Isalos Analytics Platform in cybersecurity applicati
 * [Isalos workflow](files\ANOVA\AI\ai_v212.iap)
 * [Report](files\ANOVA\AI\ai_v212.pdf)
 
+#### Advertisement Rating ([`Mixed ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#mixed-anova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Rating_ads\rating_ads_v215.iap)
+* [Report](files\ANOVA\Rating_ads\rating_ads_v215.pdf)
+
 
 
 
