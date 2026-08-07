@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 8.1 Analysis of (Co)Variance
+title: 8.2 Analysis of (Co)Variance
 parent: 8. Knowledge Base
-nav_order: 1
+nav_order: 2
 permalink: /knowledge_base_anova.html
 description: "ANOVA case studies in Isalos with real-world datasets."
 ---
@@ -72,8 +72,8 @@ Below are some use cases of Isalos Analytics Platform in ANOVA applications. Eac
 
 #### California Oceanic Fisheries ([`Repeated Measures ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#repeated-measures))
 {: .no_toc }
-* [Isalos workflow](files\ANOVA\CalCOFi\calcofi_v215.iap)
-* [Report](files\ANOVA\CalCOFi\calcofi_v215.pdf)
+* [Isalos workflow](files\ANOVA\CalCOFi\CalCOFI_anova_v215.iap)
+* [Report](files\ANOVA\CalCOFi\calcofi_anova_v215.pdf)
 
 #### Car Price Prediction ([`ANCOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#ancova))
 {: .no_toc }
@@ -87,13 +87,13 @@ Below are some use cases of Isalos Analytics Platform in ANOVA applications. Eac
 
 #### Heart Failure Prediction ([`MANCOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#mancova))
 {: .no_toc }
-* [Isalos workflow](files\ANOVA\Heart_failure\heart_failure_v215.iap)
-* [Report](files\ANOVA\Heart_failure\heart_failure_v215.pdf)
+* [Isalos workflow](files\ANOVA\Heart_failure\heart_fail_anova_v215.iap)
+* [Report](files\ANOVA\Heart_failure\heart_fail_anova_v215.pdf)
 
 #### Parkinson's Disease ([`ANCOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#ancova))
 {: .no_toc }
-* [Isalos workflow](files\ANOVA\Parkinsons\parkinsons_v215.iap)
-* [Report](files\ANOVA\Parkinsons\parkinsons_v215.pdf)
+* [Isalos workflow](files\ANOVA\Parkinsons\parkinsons_ANCOVA_v215.iap)
+* [Report](files\ANOVA\Parkinsons\parkinsons_ancova_v215.pdf)
 
 #### Predicting Academic Performance ([`MANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#manova))
 {: .no_toc }
