@@ -43,7 +43,9 @@ where $f_{i}$ represents the frequency of the $i$-th value $x_{i}$.
 
 Use the `Descriptive Statistics` function by browsing in the top ribbon: 
 
+
 | Statistics $$\rightarrow$$ Basic Statistics $$\rightarrow$$ Descriptive Statistics |
+
 
 #### Sum
 {: .no_toc}
@@ -350,6 +352,7 @@ RMS = \sqrt{\frac{1}{n} \sum_{i=1}^{n} x_{i}^{2}} {\qquad [14] \qquad}
 $$
 </div>
 
+
 #### Standard Error of the Mean
 {: .no_toc}
 The standard error of the mean (SEM) measures the accuracy with which a sample represents a population. 
@@ -513,7 +516,8 @@ A Quantile-Quantile (Q-Q) plot is a graphical tool for assessing whether a datas
 * Bending at one end: If the points curve away from the straight line only at the top or bottom, it indicates that the data is skewed (asymmetrical).
 * Stray points: Points that drift away at the very ends of the line often point to the presence of outliers in the dataset.
 
-##### Chart customization 
+##### **Chart customization** 
+
 {: .no_toc}
 Upon executing the Q-Q Plot, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
 
@@ -541,9 +545,8 @@ Settings
 |                               | **Kolmogorov-Smirnov**    | Based on the inversion of the Kolmogorov-Smirnov test. Calculates simultaneous bands that are proportional to the K-S critical value around the theoretical line. | Recommended for testing overall goodness-of-fit. |
 |                               | **Beta**                  | Calculates exact, simultaneous bands using the order statistics of a sample. By leveraging the Beta distribution, it estimates a probability interval for each ordered data point. | Best for identifying deviations, extreme skew, or heavy tails. |
 
-##### Example Plot
+##### **Example Plot**
 {: .no_toc}
-
 <div style="text-align: center;">
 <img src="images/Descriptive Statistics/qqplot.png" alt="input" width="400" height="300" class="img-responsive">
 </div>
@@ -552,7 +555,7 @@ Settings
 {: .no_toc}
 A Histogram is a bar chart-based visualization used to show the frequency distribution of continuous numerical data. It groups the data into equally sized, continuous intervals knows as bins, where the height of each bar indicates the number of observations that fall within that particular interval. 
 
-##### Chart customization 
+##### **Chart customization** 
 {: .no_toc}
 Upon executing the Histogram, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
 
@@ -571,9 +574,8 @@ Settings
 
 | **Numbers of Bins** | Select the number of bins to split the data into.  |
 
-##### Example Plot
+##### **Example Plot**
 {: .no_toc}
-
 <div style="text-align: center;">
 <img src="images/Descriptive Statistics/histogram.png" alt="input" width="400" height="300" class="img-responsive">
 </div>
@@ -588,7 +590,7 @@ It visualises data distributions through these quantities:
 * Whiskers: Lines extending from the box to the minimum and maximum non-outlier values, showing the variability outside the middle $50\%$.
 * Outliers: Individual points plotted beyond the whiskers, representing data points that significantly differ from the rest of the dataset.
 
-##### Chart customization 
+##### **Chart customization** 
 {: .no_toc}
 Upon executing the Box Plot, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
 
@@ -606,9 +608,8 @@ Customization
 | **Category Colors**           | Select the color of the box plot.   |   |
 | **Background**                | Select the background color.  |   |
 
-##### Example Plot
+##### **Example Plot**
 {: .no_toc}
-
 <div style="text-align: center;">
 <img src="images/Descriptive Statistics/boxplot.png" alt="input" width="400" height="300" class="img-responsive">
 </div>
@@ -617,7 +618,7 @@ Customization
 {: .no_toc}
 A Violin Plot is a data visualization tool used for comparing probability distributions across datasets. Similarly to a box plot, it summarizes data characteristics but it enhances the display by incorporating the probability density at different values. While a box plot shows summary statistics (such as the median and the interquartile range), it does not give information about the clusters of the data within those ranges. A violin plot overcomes this by adding a smoothed, symmetrical outer shape that indicates where the values are more dense, offering a clearer view of the overall distribution shape. 
 
-##### Chart customization 
+##### **Chart customization** 
 {: .no_toc}
 Upon executing the Violin Plot, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
 
@@ -636,9 +637,8 @@ Settings
 
 | **Smoothness** | Select the level of smoothness to apply.  |
 
-##### Example Plot
+##### **Example Plot**
 {: .no_toc}
-
 <div style="text-align: center;">
 <img src="images/Descriptive Statistics/violinplot.png" alt="input" width="400" height="300" class="img-responsive">
 </div>
@@ -676,7 +676,7 @@ The input sheet on the left hand-side is organized with individual columns repre
 1. Click on the `Execute` button [3] to calculate the selected statistics.
 
 <div style="text-align: center;">
-<img src="images/Descriptive Statistics/configuration.svg" alt="configuration" width="600" height="300" class="img-responsive">
+<img src="images/Descriptive Statistics/configuration.svg" alt="configuration" width="700" height="350" class="img-responsive">
 </div>
 
 #### Output
@@ -791,7 +791,7 @@ The confidence interval is computed for each selected column, and the resulting 
 #### Example
 {: .no_toc}
 
-##### Input
+##### **Input**
 {: .no_toc}
 
 In the left-hand spreadsheet, each column specifies a data set for which we are interested in performing calculations for confidence intervals.
@@ -800,7 +800,7 @@ In the left-hand spreadsheet, each column specifies a data set for which we are 
 <img src="images/Confidence Intervals/raw-data-input.png" alt="Raw Data input" width="300" height="200" class="img-responsive">
 </div>
 
-##### Configuration
+##### **Configuration**
 {: .no_toc}
 
 1.   Select `Statistics` $$\rightarrow$$ `Basic Statistics` $$\rightarrow$$ `Confidence Intervals` $$\rightarrow$$ `Raw Data`. 
@@ -813,7 +813,7 @@ In the left-hand spreadsheet, each column specifies a data set for which we are 
 <img src="images/Confidence Intervals/raw-data.svg" alt="Raw Data" width="400" height="200" class="img-responsive">
 </div>
 
-##### Output
+##### **Output**
 {: .no_toc}
 
 The output data of the calculation is presented in the right-hand spreadsheet of the tab, displaying the "Lower Limit" and "Upper Limit" for each selected column. These values indicate the range of the confidence interval.
@@ -854,7 +854,7 @@ The output datasheet presents the Lower Limit and Upper Limit values in separate
 #### Example
 {: .no_toc}
 
-##### Input
+##### **Input**
 {: .no_toc}
 
 The left-hand spreadsheet contains a column that is populated with the necessary data for calculating the confidence interval.
@@ -863,7 +863,7 @@ The left-hand spreadsheet contains a column that is populated with the necessary
 <img src="images/Confidence Intervals/sample-input.png" alt="Sample input" width="250" height="200" class="img-responsive">
 </div>
 
-##### Configuration
+##### **Configuration**
 {: .no_toc}
 
 1.   Select `Statistics` $$\rightarrow$$ `Basic Statistics` $$\rightarrow$$ `Confidence Intervals` $$\rightarrow$$ `Sample Size, Mean and Standard Deviation`.
@@ -877,7 +877,7 @@ The left-hand spreadsheet contains a column that is populated with the necessary
 <img src="images/Confidence Intervals/sample.svg" alt="Sample" width="400" height="200" class="img-responsive">
 </div>
 
-##### Output
+##### **Output**
 {: .no_toc}
 
 The output data of the calculation is presented in the right-hand spreadsheet of the tab, displaying the Lower Limit and Upper Limit.
@@ -916,7 +916,7 @@ The output datasheet presents the Lower Limit and Upper Limit values in separate
 #### Example
 {: .no_toc}
 
-##### Input
+##### **Input**
 {: .no_toc}
 
 The left-hand spreadsheet contains a column that is populated with the necessary data for calculating confidence intervals for a population proportion.
@@ -926,7 +926,7 @@ The left-hand spreadsheet contains a column that is populated with the necessary
  input" width="250" height="200" class="img-responsive">
 </div>
 
-##### Configuration
+##### **Configuration**
 {: .no_toc}
 
 1.   Select `Statistics` $$\rightarrow$$ `Basic Statistics` $$\rightarrow$$ `Confidence Intervals` $$\rightarrow$$ `Population Proportion`.
@@ -939,7 +939,7 @@ The left-hand spreadsheet contains a column that is populated with the necessary
 <img src="images/Confidence Intervals/population.svg" alt="Population Proportion" width="350" height="200" class="img-responsive">
 </div>
 
-##### Output
+##### **Output**
 {: .no_toc}
 
 The output data of the calculation is presented in the right-hand spreadsheet of the tab, displaying the Lower Limit and Upper Limit. This interval suggests that we are 95% confident that the true proportion of "yes" responses in the population lies between 41.6% and 98.4%.
@@ -1049,11 +1049,11 @@ The hypothesis test is performed, and the output spreadsheet displays the test s
 #### Example
 {: .no_toc }
 
-##### Input
+##### **Input**
 {: .no_toc }
 This method does not require any data to be inputted into the input spreadsheet.
 
-##### Configuration
+##### **Configuration**
 {: .no_toc }
 
 1. Select `Statistics` $$\rightarrow$$ `Basic Statistics` $$\rightarrow$$ `Hypothesis Testing`.
@@ -1071,7 +1071,7 @@ This method does not require any data to be inputted into the input spreadsheet.
 <img src="images/Hypothesis Testing/sample_size_configuration.svg" alt="Sample size configuration" width="500" class="img-responsive">
 </div>
 
-##### Output
+##### **Output**
 {: .no_toc }
 The output data of the calculation is presented in the right-hand spreadsheet of the tab. It shows the value of the test statistic, the critical region, the p-value of the test and the decision which is  whether the null hypothesis was rejected or failed to be rejected.
 
@@ -1109,7 +1109,7 @@ The hypothesis test is performed, and the output spreadsheet displays the test s
 #### Example
 {: .no_toc }
 
-##### Input
+##### **Input**
 {: .no_toc }
 The left-hand spreadsheet contains a column that is populated with the necessary to perform the One Sample T-test on.
 
@@ -1117,7 +1117,7 @@ The left-hand spreadsheet contains a column that is populated with the necessary
 <img src="images/Hypothesis Testing/t-test_input.png" alt="t-test input" width="350" class="img-responsive">
 </div>
 
-##### Configuration
+##### **Configuration**
 {: .no_toc }
 1. Select `Statistics` $$\rightarrow$$ `Basic Statistics` $$\rightarrow$$ `Hypothesis Testing`.      
 1. Select `One Sample T-test` as the desired method [1]. 
@@ -1131,7 +1131,7 @@ The left-hand spreadsheet contains a column that is populated with the necessary
 <img src="images/Hypothesis Testing/t-test_configuration.svg" alt="t-test configuration" width="400" class="img-responsive">
 </div>
 
-##### Output
+##### **Output**
 {: .no_toc }
 The output data of the calculation is presented in the right-hand spreadsheet of the tab. It shows the value of the test statistic, the critical region, the p-value of the test and the decision which is  whether the null hypothesis was rejected or failed to be rejected. 
 
@@ -1170,7 +1170,7 @@ The hypothesis test is performed, and the output spreadsheet displays the test s
 #### Example
 {: .no_toc }
 
-##### Input
+##### **Input**
 {: .no_toc }
 The left-hand spreadsheet contains a column that is populated with the necessary to perform the One Sample Z-test on.
 
@@ -1178,7 +1178,7 @@ The left-hand spreadsheet contains a column that is populated with the necessary
 <img src="images/Hypothesis Testing/z-test_input.png" alt="z-test input" width="150" class="img-responsive">
 </div>
 
-##### Configuration
+##### **Configuration**
 {: .no_toc }
 1. Select `Statistics` $$\rightarrow$$ `Basic Statistics` $$\rightarrow$$ `Hypothesis Testing`.      
 1. Select `One Sample Z-test`  as the desired method [1]. 
@@ -1193,7 +1193,7 @@ The left-hand spreadsheet contains a column that is populated with the necessary
 <img src="images/Hypothesis Testing/z-test_configuration.svg" alt="z-test configuration" width="400" class="img-responsive">
 </div>
 
-##### Output
+##### **Output**
 {: .no_toc }
 The output data of the calculation is presented in the right-hand spreadsheet of the tab. It shows the value of the test statistic, the critical region, the p-value of the test and the decision which is  whether the null hypothesis was rejected or failed to be rejected. 
 
@@ -1228,7 +1228,7 @@ The output displays the frequency and percentage distribution of values for each
 #### Example
 {: .no_toc}
 
-##### Input
+##### **Input**
 {: .no_toc}
 
 In the left-hand spreadsheet, insert the data for each variable you plan to use for weight cases calculations. In this example, this includes entering the values for gender as integers, age and weight directly into their respective columns. Each row should represent a single data point, ensuring the dataset is structured correctly for further analysis and weight calculation.
@@ -1237,7 +1237,7 @@ In the left-hand spreadsheet, insert the data for each variable you plan to use 
 <img src="images/Weight Cases/input.png" alt="Weight Cases input" width="400" height="300" class="img-responsive">
 </div>
 
-##### Configuration
+##### **Configuration**
 {: .no_toc}
 
 *   Select `Statistics` $$\rightarrow$$ `Basic Statistics` $$\rightarrow$$ `Weight Cases`.
@@ -1248,7 +1248,7 @@ In the left-hand spreadsheet, insert the data for each variable you plan to use 
 <img src="images/Weight Cases/weight.svg" alt="Weight Cases" width="450" height="300" class="img-responsive">
 </div>
 
-##### Output
+##### **Output**
 {: .no_toc}
 
 In the right-hand spreadsheet of the tab the output data displays the count (instances) and percentage of the total occurrences (instances %) for each unique value for the selected columns.

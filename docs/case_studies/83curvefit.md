@@ -1,8 +1,8 @@
 ---
 layout: default
-title: 8.2 Curve Fitting
+title: 8.3 Curve Fitting
 parent: 8. Knowledge Base
-nav_order: 2
+nav_order: 3
 permalink: /knowledge_base_curvefit.html
 description: "Curve fitting case studies in Isalos with real-world datasets."
 ---
