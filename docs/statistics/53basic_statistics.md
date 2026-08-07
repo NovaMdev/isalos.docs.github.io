@@ -43,7 +43,9 @@ where $f_{i}$ represents the frequency of the $i$-th value $x_{i}$.
 
 Use the `Descriptive Statistics` function by browsing in the top ribbon: 
 
+
 | Statistics $$\rightarrow$$ Basic Statistics $$\rightarrow$$ Descriptive Statistics |
+
 
 #### Sum
 {: .no_toc}
@@ -350,6 +352,7 @@ RMS = \sqrt{\frac{1}{n} \sum_{i=1}^{n} x_{i}^{2}} {\qquad [14] \qquad}
 $$
 </div>
 
+
 #### Standard Error of the Mean
 {: .no_toc}
 The standard error of the mean (SEM) measures the accuracy with which a sample represents a population. 
@@ -514,6 +517,7 @@ A Quantile-Quantile (Q-Q) plot is a graphical tool for assessing whether a datas
 * Stray points: Points that drift away at the very ends of the line often point to the presence of outliers in the dataset.
 
 ##### **Chart customization** 
+
 {: .no_toc}
 Upon executing the Q-Q Plot, the resulting chart will appear in a separate window. By right-clicking on the plot, the following customization options are available:
 

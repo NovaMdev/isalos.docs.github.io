@@ -28,12 +28,12 @@ Use the `Plackett Burman` designs by browsing in the top ribbon:
 
 ### Input
 {: .no_toc}
-Numerical values should be specified in the input datasheet. Plackett-Burman design is applied when at least three factors (columns) are specified along with exactly two levels/values (rows).
+Factor values must be specified in the input datasheet. The Plackett–Burman design is applied when at least three factors (columns) are provided. Factors may be either numerical or categorical. Categorical factors must contain exactly two distinct levels. Numerical factors may contain more than two values; in this case, the algorithm automatically determines the factor levels by taking the minimum and maximum values observed in the column.
 
 ### Configuration
 {: .no_toc}
 
-|**Number of Center Points per Block**|Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation.|
+| **Number of Center Points per Block** | Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. When categorical factors are included in the analysis, the total number of center points is equal to the user-specified value multiplied by the number of possible combinations of categorical factor levels.|
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
 |**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Plackett Burman designs can only be blocked on replicates, meaning each replicate defines a block, otherwise all points are put into a single block.|
 |**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
@@ -51,7 +51,7 @@ A list of experiments (combinations) is generated in the output datasheet along 
 
 ##### Input
 {: .no_toc}
-In the input datasheet minimum requirement is to specify three factors (columns) and insert minimum two levels (values) for each factor (column), as shown below.
+In the input datasheet minimum requirement is to specify three factors (columns) and insert exactly/minimum two levels (values) for each categorical/numerical factor (column), as shown below.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/Plackett-Burman-input.png" alt="Plackett-Burman Input" width="400" height="400" class="img-responsive">
@@ -79,6 +79,102 @@ A list of experiments (combinations) is generated in the output datasheet along 
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/Plackett-Burman-output.png" alt="Plackett-Burman Output" width="400" height="400" class="img-responsive">
+</div>
+
+---
+
+## Definitive Screening
+Definitive screening designs (DSDs) are a class of three-level screening designs intended for quantitative (continuous) factors when second-order effects (two-factor interactions and/or curvature) may be active. Their goal is to estimate main effects reliably while minimizing aliasing with second-order terms.
+
+Traditional screening designs such as Plackett–Burman and many fractional factorial designs usually confound main effects with one or more two-way interactions. If a confounded effect is active, the experimenter cannot differentiate which of the confounded effects is responsible for the observed change in response. Therefore, it is crucial to have designs with a small number of runs that can be able to estimate main effects and second-order terms with minimal aliasing.
+
+Here is where Definitive Screening Designs come into play. These designs require, in most cases, a number of runs only one more than twice the number of factors, thus making them highly efficient for screening purposes. Moreover, main effects are completely independent of two-factor interactions; two-factor interactions are not completely confounded with one another (although they may be correlated); and quadratic terms are estimable and orthogonal to main effects and not completely confounded with interaction effects.
+
+In a Definitive Screening Design, each odd run has one factor at the mid level and all other factors at their extreme levels. Each even run is the multiplication by −1 (i.e., the reverse) of the previous odd run. This structure is finally enhanced with center points.
+
+As described in [2], definitive screening designs can be constructed easily using conference matrices. For m even, an m*m matrix C is a conference matrix if it satisfies $$ C^{'}C = (m-1)I$$ with $$C_{ii}  = 0$$ and $$C_{ij}  ∈ \{-1,1\}$$ .
+
+When m is even, we can use a conference matrix to construct a definitive screening design as
+$$ D = {C \choose -C}$$, while when m is odd, we delete the last row of an (m+1)*(m+1) conference matrix. If a conference matrix of the required size is not available, we use the next available conference matrix size and apply the same construction, deleting the extra column(s) as necessary to match the number of factors.
+
+A table specifying the produced runs for each number of factors is shown below:
+
+|**Number of Factors**|**Produced Runs (Excluding center points)**|
+| 2- 6  |   12 |
+| 7-8   |	16 |
+| 9-10  |	20 |
+| 11-12 |	24 |
+| 13-14 |	28 |
+| 15-16 |	32 |
+| 17-18 |	36 |
+| 19-20 |	40 |
+| 21-24 |	48 |
+| 25-26 |	52 |
+| 27-30 |	60 |
+| 31-32 |	64 |
+| 33-38 |	76 |
+| 39-42 |	84 |
+| 43-44 |	88 |
+| 45-48 |	96 |
+
+
+
+Use the `Definitive Screening` designs by browsing in the top ribbon: 
+
+|DOE $$\rightarrow$$ Screening $$\rightarrow$$ Definitive Screening|
+
+### Input
+{: .no_toc}
+Factor values must be specified in the input datasheet. The Definitive Screening design is applied when at least two factors (columns) are provided. Factors may be either numerical or categorical. Categorical factors must contain exactly two distinct levels. Numerical factors may contain more than two values; in this case, the algorithm automatically determines the factor levels by taking the minimum and maximum values observed in the column.
+
+### Configuration
+{: .no_toc}
+
+|**Number of Center Points per Block**| Specify the Number of Center Points per Block to be included in the generated list of experiments. There is no minimum requirement or upper limitation. For Definitive Screening Designs, center points are generated using the midpoint of all numerical factors, while categorical factors are set simultaneously to either their low level or their high level. Therefore, the number of center points is exactly equal to the user-specified value and is not multiplied by the number of categorical level combinations. |
+|**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
+|**Number of Blocks**|Select from the list of available options the `Number of Blocks`. Definitive Screening designs can only be blocked on replicates, meaning each replicate defines a block, otherwise all points are put into a single block.|
+|**Random Standard order**|You can tick/select the box if randomness is required in the output list of experiments.|
+|**Time-based RNG Seed**|If the randomness is selected, then you have the option to also tick/select the box to set the random generated number seed based on time.|
+|**RNG Seed**|Select manually the random generated number seed if required.|
+|**Include/exclude columns**|Select manually the columns through the dialog window: Use the buttons to move columns between the `Included Columns` and `Excluded Columns` list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns.|
+
+
+### Output
+{: .no_toc}
+A list of experiments (combinations) is generated in the output datasheet along with the Block number, the Replicate Number, the Standard order  and the Point type of each experiment based on the Definitive Screening design.
+
+### Example
+{: .no_toc}
+
+##### Input
+{: .no_toc}
+In the input datasheet minimum requirement is to specify two factors (columns) and insert exactly/minimum two levels (values) for each categorical/numerical factor (column), as shown below.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/Definitive-Screening-input.png" alt="Definitive-Screening Input" width="400" height="400" class="img-responsive">
+</div> 
+
+##### Configuration
+{: .no_toc}
+1. Select `DOE` $$\rightarrow$$ `Screening` $$\rightarrow$$ `Definitive-Screening`.
+1. Select the `Number of Center Points per Block` [1] to be generated in the output list of experiments.
+1. Select the `Number of Replicates` [2]. The lowest value that can be set is 1.
+1. Select the `Number of Blocks` [3]. 
+1. Select/tick if required the `Random Standard order` [4] to imply randomness in the output list of experiments.
+1. If randomness is selected either select/tick to generate the number seed for randomness based on time [5] or by manually setting a value [6].
+1. Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [7] and `Included Columns` [8] lists.
+1. Click on the `Execute` button [10] to perform the Definitive Screening Design method.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/Definitive-Screening-config.png" alt="Definitive-Screening Configuration" width="400" height="400" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc}
+A list of experiments (combinations) is generated in the output datasheet along with the Block number based on the Definitive Screening design method selected. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/Definitive-Screening-output.png" alt="Definitive-Screening Output" width="400" height="400" class="img-responsive">
 </div>
 
 ---
@@ -161,14 +257,14 @@ Use the `Fractional Factorial` function by browsing in the top ribbon:
 
 ### Input
 {: .no_toc }
-Numerical values should be specified in the input datasheet. Fractional factorial design is applied when at least three factors (columns) are specified along with minimum two levels/values (rows).
+Factor values must be specified in the input datasheet. The Fractional-Factorial design is applied when at least three factors (columns) are provided. Factors may be either numerical or categorical. Categorical factors must contain exactly two distinct levels. Numerical factors may contain more than two values; in this case, the algorithm automatically determines the factor levels by taking the minimum and maximum values observed in the column.
 
 ### Configuration
 {: .no_toc }
 
 |**Available Designs**| Select one of the available design options for the number of factors you have selected. Choices include the fraction of the produced design, while the fraction relationship being used maximizes the resolution of the design. There is also the option to specify a custom design. |
 |**Fraction Relationship** | If the Custom option is selected from the Available Designs, insert manually the Fraction Relationship to define the desired Fractional Factorial design. The kth independent factor(column) corresponds to the kth letter of the alphabet (The letter I is not a special character and should be used for the 9th if that exists). Only alphabetical characters, spaces, '+' and '-' are allowed. |
-|**Number of Center Points per Block** | Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. |
+| **Number of Center Points per Block** | Select manually the `Number of Center Points per Block` to be included in the output list of experiments. There is no minimum requirement or any other limitation. When categorical factors are included in the analysis, the total number of center points is equal to the user-specified value multiplied by the number of possible combinations of categorical factor levels.|
 |**Number of Replicates**|Select manually the `Number of Replicates` which represents the number of times to replicate the entire design. This value should be an integer, and the lowest acceptable value is 1.|
 |**Number of Blocks**| Select from the list of available options the Number of Blocks. Available options depend on the selected number of factors, the selected design and the number of replicates. |
 |**Random Standard order** | You can tick/select the box if randomness is required in the output list of experiments. |
@@ -185,7 +281,7 @@ A list of experiments (combinations) is generated in the output datasheet along 
 
 ##### Input
 {: .no_toc }
-In the input datasheet minimum requirement is to specify three factors (columns) and insert minimum two levels (values) for each factor (column), as shown below.
+In the input datasheet minimum requirement is to specify three factors (columns) and insert exactly/minimum two levels (values) for each categorical/numerical factor (column), as shown below.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/fractional-input.png" alt="Central Composite input" width="400" height="300" class="img-responsive">
@@ -229,6 +325,11 @@ A list of experiments (combinations) is generated in the output datasheet along 
 1. Speed, Terry. Statistics for Experimenters: Design, Innovation, and Discovery. 2006.
 
 1. Wu, CF Jeff, and Michael S. Hamada. Experiments: planning, analysis, and optimization. John Wiley & Sons, 2011.
+
+1. Jones, Bradley, and Christopher J. Nachtsheim. "A class of three-level designs for definitive screening in the presence of second-order effects." Journal of Quality Technology 43, no. 1 (2011): 1-15.
+
+1.	Xiao, Lili, Dennis KJ Lin, and Fengshan Bai. "Constructing definitive screening designs using conference matrices." Journal of Quality Technology 44, no. 1 (2012): 2-8.
+
 
 ---
 

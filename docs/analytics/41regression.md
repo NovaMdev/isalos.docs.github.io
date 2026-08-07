@@ -627,8 +627,8 @@ All variables need to be specified in the datasheet. Numerical values will be us
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -658,8 +658,8 @@ The input datasheet must include one continuous dependent variable, which will s
 1. Specify the `Value` [5] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1. Select the columns by clicking on the arrow buttons [9] and moving columns between the `Excluded Columns` [6] and `Factors` [7] and `Covariates` [8] lists.
 1. `Specify Reference Levels` [10] for the categorical factors.
-1. Select your preferred option to define the model you want to analyze [11].
-1. If the `Custom` option is selected, specify the `Formula` [12] for the analysis.
+1. Select the prefered `Formula Type`[11].
+1. `Specify Custom Model Formula` [12] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1. Click on the `Execute` button [13] to perform the Linear Regression method.
 
 <div style="text-align: center;">
@@ -708,8 +708,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -744,8 +744,8 @@ The input datasheet must include one continuous, non-negative dependent variable
 1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
 1. `Specify Reference Levels` [15] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [16].
-1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
+1.  Select the prefered `Formula Type`[16].
+1. `Specify Custom Model Formula` [17] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [18] to perform the Negative Binomial Regression method.
 <div style="text-align: center;">
 <img src="images/GLM/NegBinGLM_Configuration.png" alt="negbinGLM-config" width="400" height="300" class="img-responsive">
@@ -793,8 +793,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -829,8 +829,8 @@ The output of the Poisson regression procedure is organized into three main sect
 1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
 1. `Specify Reference Levels` [15] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [16].
-1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
+1.  Select the prefered `Formula Type`[16].
+1. `Specify Custom Model Formula` [17] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [18] to perform the Poisson Regression method.
 <div style="text-align: center;">
 <img src="images/GLM/PoissonGLM_Configuration.png" alt="poissonGLM-config" width="400" height="300" class="img-responsive">
@@ -844,22 +844,22 @@ The predictions, Goodness of Fit table and Parameter Estimates table are shown i
 <img src="images/GLM/PoissonGLM_Output.png" alt="poissonGLM-output" width="400" height="300" class="img-responsive">
 </div>
 
-#### Gamma 
-Gamma regression is a type of generalized linear model (GLM) used when the response variable is continuous, strictly positive, and right-skewed behavior. It assumes that the dependent variable follows a Gamma distribution, which is well-suited for modeling non-negative data with a variance that increases with the mean. A common choice for the link function in Gamma regression is the log link, which relates the mean of the response variable to the linear predictors via the natural logarithm.
-<div id="gamma link function" style="text-align: center;">
+#### Gamma with Identity Link
+Gamma regression with Identity Link is a type of generalized linear model (GLM) used when the response variable is continuous, strictly positive, and right-skewed behavior. It assumes that the dependent variable follows a Gamma distribution, which is well-suited for modeling non-negative data with a variance that increases with the mean. The choice for the link function to be the identity link, relates the mean of the response variable to the linear predictors via the identity function.
+<div id="gamma identity link function" style="text-align: center;">
     $$
     \begin{equation}
-    g(\mu) = log(\mu) = x\beta
+    g(\mu) = \mu = x\beta
     \end{equation}
     $$
 </div> 
 Gamma regression is particularly useful in applications such as modeling costs, waiting times, insurance claims, or any scenario where the outcome is positive and skewed. It provides a flexible framework to account for heteroscedasticity and asymmetry in data.
 
-Use the Gamma Regression method by browsing in the top ribbon: 
+Use the Gamma Regression with Identity Link method by browsing in the top ribbon: 
 
 | Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
 
-And then choosing "Gamma" as the `Type`.
+And then choosing "Gamma with Identity Link" as the `Type`.
 
 ##### Input
 {: .no_toc }
@@ -879,12 +879,12 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
-The output of the Gamma regression procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+The output of the Gamma regression with Identity Link procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
 1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values 1. generated by the model for each observation.
 1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
 1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
@@ -897,7 +897,7 @@ The output of the Gamma regression procedure is organized into three main sectio
 {: .no_toc }
 The input datasheet must include one continuous, positive dependent variable, which will serve as the target, and at least one column with a continuous or categorical independent variable.
 <div style="text-align: center;">
-<img src="images/GLM/GammaGLM_Input.png" alt="gammaGLM-input" width="400" height="300" class="img-responsive">
+<img src="images/GLM/GammaIdentityLinkGLM_Input.png" alt="gammaIdentityLinkGLM-input" width="400" height="300" class="img-responsive">
 </div>
 
 ###### Configuration
@@ -905,7 +905,7 @@ The input datasheet must include one continuous, positive dependent variable, wh
 ###### Configuration
 {: .no_toc }
 1.	Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
-1.	Set the `Type` [1] of regression to Gamma.
+1.	Set the `Type` [1] of regression to Gamma with Identity Link.
 1.	Specify the `Confidence Level (%)` [2] for the test.
 1.	Specify `Max Iterations` [3].
 1.	Specify the `Maximum Step-Halving` [4].
@@ -917,18 +917,105 @@ The input datasheet must include one continuous, positive dependent variable, wh
 1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
 1. `Specify Reference Levels` [15] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [16].
-1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
-1.	Click on the `Execute` button [18] to perform the Gamma Regression method.
+1.  Select the prefered `Formula Type`[16].
+1. `Specify Custom Model Formula` [17] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
+1.	Click on the `Execute` button [18] to perform the Gamma Regression with Identity Link method.
 <div style="text-align: center;">
-<img src="images/GLM/GammaGLM_Configuration.png" alt="gammaGLM-config" width="400" height="300" class="img-responsive">
+<img src="images/GLM/GammaIdentityLinkGLM_Configuration.png" alt="gammaIdentityLinkGLM-config" width="400" height="300" class="img-responsive">
 </div>
 
 ###### Output
 {: .no_toc }
 The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
 <div style="text-align: center;">
-<img src="images/GLM/GammaGLM_Output.png" alt="gammaGLM-output" width="400" height="300" class="img-responsive">
+<img src="images/GLM/GammaIdentityLinkGLM_Output.png" alt="gammaIdentityLinkGLM-output" width="400" height="300" class="img-responsive">
+</div>
+
+#### Gamma with Log Link
+Gamma regression with Log Link is a type of generalized linear model (GLM) used when the response variable is continuous, strictly positive, and right-skewed behavior. It assumes that the dependent variable follows a Gamma distribution, which is well-suited for modeling non-negative data with a variance that increases with the mean. The choice for the link function to be the log link, relates the mean of the response variable to the linear predictors via the natural logarithm.
+<div id="gamma log link function" style="text-align: center;">
+    $$
+    \begin{equation}
+    g(\mu) = log(\mu) = x\beta
+    \end{equation}
+    $$
+</div> 
+Gamma regression is particularly useful in applications such as modeling costs, waiting times, insurance claims, or any scenario where the outcome is positive and skewed. It provides a flexible framework to account for heteroscedasticity and asymmetry in data.
+
+Use the Gamma Regression with Log Link method by browsing in the top ribbon: 
+
+| Analytics $$\rightarrow$$ Regression $$\rightarrow$$ Statistical fitting $$\rightarrow$$ Generalized Linear Models |
+
+And then choosing "Gamma with Log Link" as the `Type`.
+
+##### Input
+{: .no_toc }
+All variables must be specified in the datasheet. The dependent variable must be strictly positive continuous numerical variable, as Gamma regression is not defined for zero or negative values. Independent variables may be either numerical or numerical. Categorical factors can be represented as text labels or coded numerically. The input datasheet must include at least two columns: one for the dependent variable and one or more columns for the independent variables. Each row in the datasheet represents a single observation. It is important to check for zero or missing values in the dependent variable, as they may cause the model to fail or produce invalid estimates.
+
+##### Configuration
+{: .no_toc }
+
+|**Confidence Level (%)**| Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. |
+|**Max Iterations**| Defines the maximum number of iterations the model is allowed to perform during the estimation process. If the model fails to converge before reaching this number, the algorithm stops and returns the values of the last iteration.|
+|**Maximum Step-Halving**| Controls how many times the algorithm is allowed to halve the step size during parameter updates when an iteration leads to worse model fit.|
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable. |
+|**Parameter Estimation**| This option lets you choose how the model parameters will be estimated, Newton-Raphson, Fisher Scoring or Hybrid.|
+|**Maximum Scoring Iterations**| The "Maximum Scoring Iterations" parameter is used when the hybrid estimation method is selected, instead of Newton-Raphson or Fisher scoring alone, and specifies the maximum number of iterations to be performed during the scoring phase.|
+|**Minimum Change in Parameter Estimates**| Sets the tolerance level for convergence — the smallest change in parameter estimates between iterations required to continue optimization. If the change in all parameters is below this value, the algorithm assumes convergence has been reached.|
+|**Scale Parameter Method**| Determines how the scale (error variance) parameter is estimated. Options include: Fixed value, Deviance, or Pearson Chi-square. |
+|**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
+|**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
+
+##### Output
+{: .no_toc }
+The output of the Gamma regression with Log Link procedure is organized into three main sections: the Predicted Values Table, the Goodness of Fit Statistics, and the Parameter Estimates Table. 
+1. The Predicted Values Table contains the actual values of the dependent variable and the corresponding predicted values 1. generated by the model for each observation.
+1. The Goodness of Fit Table includes statistical measures that assess how well the model fits the data, such as Deviance, Log-Likelihood, AIC, BIC, and related metrics.
+1. The Parameter Estimates Table displays the estimated coefficients for each variable in the model, along with standard errors, confidence intervals, test statistics, degrees of freedom, and p-values.
+
+
+##### Example
+{: .no_toc }
+
+###### Input
+{: .no_toc }
+The input datasheet must include one continuous, positive dependent variable, which will serve as the target, and at least one column with a continuous or categorical independent variable.
+<div style="text-align: center;">
+<img src="images/GLM/GammaLogLinkGLM_Input.png" alt="gammaLogLinkGLM-input" width="400" height="300" class="img-responsive">
+</div>
+
+###### Configuration
+{: .no_toc }
+###### Configuration
+{: .no_toc }
+1.	Select `Analytics` $$\rightarrow$$ `Regression` $$\rightarrow$$ `Statistical fitting`  $$\rightarrow$$ `Generalized Linear Models`
+1.	Set the `Type` [1] of regression to Gamma with Log Link.
+1.	Specify the `Confidence Level (%)` [2] for the test.
+1.	Specify `Max Iterations` [3].
+1.	Specify the `Maximum Step-Halving` [4].
+1.	Select the `Dependent Variable` [5].
+1.	Select the `Parameter Estimation Method` [6].
+1.	Specify the `Maximum Scoring Iterations` if Hybrid option is selected as the `Parameter Estimation Method`[7].
+1.	Specify the `Minimum Change in Parameter Estimates` [8].
+1.	Select the `Scale Parameter Method` [9].
+1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
+1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
+1. `Specify Reference Levels` [15] for the categorical factors.
+1.  Select the prefered `Formula Type`[16].
+1. `Specify Custom Model Formula` [17] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
+1.	Click on the `Execute` button [18] to perform the Gamma Regression with Log Link method.
+<div style="text-align: center;">
+<img src="images/GLM/GammaLogLinkGLM_Configuration.png" alt="gammaLogLinkGLM-config" width="400" height="300" class="img-responsive">
+</div>
+
+###### Output
+{: .no_toc }
+The predictions, Goodness of Fit table and Parameter Estimates table are shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/GLM/GammaLogLinkGLM_Output.png" alt="gammaLogLinkGLM-output" width="400" height="300" class="img-responsive">
 </div>
 
 #### Tweedie with Identity Link
@@ -970,8 +1057,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1006,8 +1093,8 @@ The input datasheet must include one non-negative continuous dependent variable,
 1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
 1. `Specify Reference Levels` [15] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [16].
-1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
+1.  Select the prefered `Formula Type`[16].
+1. `Specify Custom Model Formula` [17] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [18] to perform the Tweedie Regression with Identity Link method.
 <div style="text-align: center;">
 <img src="images/GLM/TweedieIdentityGLM_Configuration.png" alt="tweedieidentityGLM-config" width="400" height="300" class="img-responsive">
@@ -1054,8 +1141,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1090,8 +1177,8 @@ The input datasheet must include one non-negative continuous dependent variable,
 1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
 1. `Specify Reference Levels` [15] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [16].
-1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
+1.  Select the prefered `Formula Type`[16].
+1. `Specify Custom Model Formula` [17] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [18] to perform the Tweedie Regression with Log Link method.
 <div style="text-align: center;">
 <img src="images/GLM/TweedieLogGLM_Configuration.png" alt="tweedielogGLM-config" width="400" height="300" class="img-responsive">
@@ -1207,8 +1294,8 @@ All variables need to be specified in the data sheet. Numerical values will be u
 |**Do not weight cases/ Weight cases by**|Choose whether each row contributes equally or according to a weight variable. If the “Do not weight cases” option is selected, then each row counts as 1. If the “Weight cases by” option is selected, select a numeric column to be treated as the frequency. For each factor combination, the model uses the sum of that column as the cell frequency. Values must be numerical and non-negative.|
 |**Factors/Cell Covariates/Excluded Columns**|Select manually the columns that correspond to factors and the columns that correspond to cell covariates through the dialog window: Use the buttons to move columns between the Factors and Cell Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Saturated Model/Custom Model**|These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Saturated Model option includes both all main effects and all possible interaction terms to build a full model.Note that the Saturated Model option does not allow the use of a formula.|
-|**Formula**|Specify the model formula used for the analysis if the Custom Model option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the categorical variables involved, i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**|These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Saturated Model option includes both all main effects and all possible interaction terms to build a full model.Note that the Saturated Model option does not allow the use of a formula.|
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 #### Output
 {: .no_toc}
@@ -1238,8 +1325,8 @@ The input datasheet must include at least one factor variable, either numeric or
 1.	Choose whether to `Do not weight cases` or `Weight cases by` [6]. If the `Weight cases by` option is selected, specify the `frequency` column[7].
 1.	Select the columns by clicking on the arrow buttons [11] and moving columns between the `Excluded Columns` [8] and `Factors` [9] and `Cell Covariates `[10] lists.
 1. `Specify Reference Levels` [12] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [13].
-1.	If the `Custom Model` option is selected, specify the `Formula` [14] for the analysis.
+1.  Select the prefered `Formula Type`[13].
+1. `Specify Custom Model Formula` [14] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [15] to perform the Loglinear method.
 <div style="text-align: center;">
 <img src="images/Loglinear/Loglinear_Configuration.png" alt="loglinear-config" width="400" height="300" class="img-responsive">
@@ -1316,8 +1403,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1353,8 +1440,8 @@ The dataset must include a continuous target variable suitable for modeling with
 1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
 1. `Specify Reference Levels` [17] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [18].
-1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.  Select the prefered `Formula Type`[18].
+1. `Specify Custom Model Formula` [19] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [20] to perform the Linear Regression method.
 <div style="text-align: center;">
 <img src="images/GEE/LinearGEE_Configuration.png" alt="linearGEE-config" width="400" height="300" class="img-responsive">
@@ -1394,8 +1481,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1432,8 +1519,8 @@ The dataset must include a count target variable suitable for modeling with nega
 1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
 1. `Specify Reference Levels` [17] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [18].
-1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.  Select the prefered `Formula Type`[18].
+1. `Specify Custom Model Formula` [19] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [20] to perform the Negative Binomial Regression method.
 <div style="text-align: center;">
 <img src="images/GEE/NegBinGEE_Configuration.png" alt="negbinGEE-config" width="400" height="300" class="img-responsive">
@@ -1474,8 +1561,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1511,8 +1598,8 @@ The dataset must include a count outcome variable with non-negative integers sui
 1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
 1. `Specify Reference Levels` [17] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [18].
-1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.  Select the prefered `Formula Type`[18].
+1. `Specify Custom Model Formula` [19] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [20] to perform the Poisson Regression method.
 <div style="text-align: center;">
 <img src="images/GEE/PoissonGEE_Configuration.png" alt="poissonGEE-config" width="400" height="300" class="img-responsive">
@@ -1552,8 +1639,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1589,8 +1676,8 @@ The dataset must include a positive continuous target variable suitable for mode
 1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
 1. `Specify Reference Levels` [17] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [18].
-1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.  Select the prefered `Formula Type`[18].
+1. `Specify Custom Model Formula` [19] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [20] to perform the Gamma Regression method.
 <div style="text-align: center;">
 <img src="images/GEE/GammaGEE_Configuration.png" alt="gammaGEE-config" width="400" height="300" class="img-responsive">
@@ -1633,8 +1720,8 @@ Each row in the dataset must correspond to a single observation. The data struct
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1670,8 +1757,8 @@ The dataset must include a continuous, non-negative outcome variable suitable fo
 1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
 1. `Specify Reference Levels` [17] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [18].
-1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.  Select the prefered `Formula Type`[18].
+1. `Specify Custom Model Formula` [19] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [20] to perform the Tweedie Regression with Identity Link method.
 <div style="text-align: center;">
 <img src="images/GEE/TweedieIdentityGEE_Configuration.png" alt="tweedieidentityGEE-config" width="400" height="300" class="img-responsive">
@@ -1713,8 +1800,8 @@ Each row of the dataset should correspond to single observation. The overall str
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1750,8 +1837,8 @@ The dataset must include a non-negative, continuous outcome variable suitable fo
 1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
 1. `Specify Reference Levels` [17] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [18].
-1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.  Select the prefered `Formula Type`[18].
+1. `Specify Custom Model Formula` [19] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [20] to perform the Tweedie Regression with Log Link method.
 <div style="text-align: center;">
 <img src="images/GEE/TweedieLogGEE_Configuration.png" alt="tweedielogGEE-config" width="400" height="300" class="img-responsive">

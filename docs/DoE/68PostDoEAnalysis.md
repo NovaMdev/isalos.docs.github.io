@@ -4,17 +4,18 @@ title: 6.8 Post DoE Analysis
 parent: 6. DOE
 nav_order: 8
 permalink: /post-doe-analysis.html
-description: "Analyse DoE results in Isalos with Pareto charts, main effects plots, and interaction plots."
+description: "Analyse DoE results in Isalos with Pareto charts, main effects plots, and interaction plots and Multi-Objective Optimization."
 ---
 
 # Post DoE Analysis
 {: .no_toc }
 
-Post DoE Analysis provides a comprehensive set of tools to evaluate and interpret experimental results obtained through Design of Experiments (DoE) methodologies. With this module, users can easily identify the most influential factors, explore the impact of individual variables, and study interactions between them. Available visualization options include:
+Post DoE Analysis provides a comprehensive set of tools to evaluate and interpret experimental results obtained through Design of Experiments (DoE) methodologies. With this module, users can easily identify the most influential factors, explore the impact of individual variables, and study interactions between them and optimize responses based on one or multiple objectives. Available visualization options include:
 1.	Pareto Chart for ranking and visualizing the relative importance of effects.
 1.	Main Effects Plots show how changes in a single factor influence the response and test whether the relationship between the dependent variable and each factor is linear.
 1.	Interaction Plots to illustrate how two factors jointly affect the outcome and test whether there is interaction between two factors.
 1.	Combined Main Effects + Interaction Plots for a holistic view of factor influences.
+1.  Desirability & Response Profiles to visualize how predicted responses and composite desirability change across factor ranges. These profiles support multi-objective optimization by revealing trade-offs between responses and highlighting factor settings that maximize overall desirability.
 
 The tool supports both factorial/screening designs and response surface designs, making it adaptable to a wide variety of experimental setups.
 For screening and factorial designs only, users may choose to include center points in the design. This does not mean the addition of extra experimental points in the design but rather that center points already included in the design will be handled differently. This is done by adding an extra 0/1 indicator variable, where a value of 1 identifies center points. Including this variable allows the algorithm to capture a portion of unexplained variability that is not accounted for by the main effects and interaction terms. This indicator is not included in the Pareto plots or in the main effect and interaction plots; it is only used internally to improve the explanation of variability. In contrast, for response surface designs, this option is not available, since the inclusion of curvature and quadratic terms already incorporates the information provided by center points.
@@ -37,17 +38,19 @@ Use the `Pareto Analysis` tool by browsing in the top ribbon:
 ### Input
 {: .no_toc}
 
-All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Design of Experiments (DoE) method, with the addition of the response calculated for each experimental run. Both the response variable and all factors must be numerical. Each row corresponds to a single observation from the experiment. In addition, the algorithm supports the optional inclusion of a covariate, which should also be numerical and can be used to account for unexplained variability and improve the accuracy of the analysis.
+All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Design of Experiments (DoE) method, with the addition of the response calculated for each experimental run. The response variable must be strictly numerical. Experimental factors may be numerical or categorical. Categorical factors are permitted only when they contain exactly two levels. Additionally, categorical factors can only be included when the model does not contain quadratic terms. The blocking variable can be either numeric or categorical. Each row corresponds to a single observation from the experiment. 
 
 ### Configuration
 {: .no_toc}
 
 |**Dependent Variable**| Select the column that corresponds to values of the dependent variable.|
-|**Analysis Type**| Select the desired analysis type for the analysis. Available options include: Main Effects, Main Effects + Two-Factor, Main Effects + Two Factor + Three Factor, Main Effects + Quadratic, Main Effects + Two-Factor + Quadratic, Main Effects + Two Factor + Three Factor + Quadratic. For screening/factorial designs, it is recommended not to include quadratic terms, while for response surface designs, quadratic terms should typically be included.|
+|**Analysis Type**| Select the desired analysis type for the analysis. Available options include: Main Effects, Main Effects + Two-Factor, Main Effects + Two Factor + Three Factor, Main Effects + Quadratic, Main Effects + Two-Factor + Quadratic, Main Effects + Two Factor + Three Factor + Quadratic. For screening/factorial designs, it is recommended not to include quadratic terms, while for response surface designs, quadratic terms should typically be included. If there are categorical factors in the analysis then quadratic factors cannot be selected.|
 |**Level Of Significance**| Specify the level of significance for the analysis. Values should range from 0 to 1 with the default value being 0.05. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one factor column should be specified. |
-|**DOE type**| Select whether you have performed a Factorial/Screening or a Response Surface Design. |
+|**DOE type**| Select whether you have performed a Factorial/Screening or a Response Surface Design. If categorical factors are selected the only acceptable option is Factorial/Screening. |
 |**Include Center Points**| If you have performed a Factorial/Screening design, select whether to include center points in the analysis.|
+|**Include Blocks**| Select whether to include a blocking term in the fitted model. Blocks are used when experimental runs were performed under different batches, days, operators, machines, or other known conditions that may introduce systematic variation. Including blocks helps adjust the model for this variation, so the effects of the selected factors are estimated more accurately.  |
+|**Blocking Variable**| Select the column that identifies the block membership of each experimental run. This column should contain the block labels, such as batch number, day, operator, or experimental group. The blocking variable is only available when Include Blocks is selected. |
 
 ### Output
 {: .no_toc}
@@ -68,13 +71,15 @@ In the input datasheet minimum requirement is to specify two columns, one factor
 {: .no_toc}
 
 1.  Select `DOE` → `Post DoE Analysis` →`Pareto Analysis`.
-1.  Select the `Dependent Variabl`[1] from the list of available options. This column should only contain numerical values.
+1.  Select the `Dependent Variable`[1] from the list of available options. This column should only contain numerical values.
 1.  Select the `Analysis Type` [2] from the list of available options : `Main Effects`, `Main Effects` + `Quadratic`, `Main Effects + Two Factor`, `Main Effects + Two Factor + Quadratic`, `Main Effects + Two Factor + Three Factor`, `Main Effects + Two Factor + Three Factor + Quadratic`
 1.  Specify the `Level Of Significance`[3] used to calculate the significance threshold. Default value is 0.05.
 1.  Select the columns by clicking on the arrow buttons [7] and moving columns between the `Excluded Columns` [4] , the `Factors` [5]  and `Covariates`[6] lists.
 1.  Select whether the DoE[8] method used before this step was a `Factorial/Screening` or a `Response Surface` method.
 1.  If the `Factorial/Screening` option is selected, select/tick to `Include Center Points`[9]. 
-1.  Click on the `Execute` button [10] to perform Pareto Analysis
+1.  Select/tick to `Include Blocks`[10]. 
+1.  If the `Include Blocks` option is selected, select the `Blocking Variable`[11] from the list of available options. This column can contain either numerical or categorical data.
+1.  Click on the `Execute` button [12] to perform Pareto Analysis
 <div style="text-align: center;">
 <img src="images/Design of experiments/postDoE-pareto-config.png" alt="Pareto config" width="400" height="400" class="img-responsive">
 </div> 
@@ -124,19 +129,21 @@ Use the `Factorial Plot Analysis` tool by browsing in the top ribbon:
 ### Input
 {: .no_toc}
 
-All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Design of Experiments (DoE) method, with the addition of the response calculated for each experimental run. Both the response variable and all factors must be numerical. Each row corresponds to a single observation from the experiment. In addition, the algorithm supports the optional inclusion of a covariate, which should also be numerical and can be used to account for unexplained variability and improve the accuracy of the analysis.
+All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Design of Experiments (DoE) method, with the addition of the response calculated for each experimental run. The response variable must be strictly numerical. Experimental factors may be numerical or categorical. Categorical factors are permitted only when they contain exactly two levels. Additionally, categorical factors can only be included when the model does not contain quadratic terms. The blocking variable can be either numeric or categorical. Each row corresponds to a single observation from the experiment. 
 
-## Configuration
+### Configuration
 {: .no_toc}
 
 |**Dependent Variable**| Select the column that corresponds to values of the dependent variable.|
-|**Analysis Type**| Select the desired analysis type for the analysis. Available options include: Main Effects, Main Effects + Two-Factor, Main Effects + Two Factor + Three Factor, Main Effects + Quadratic, Main Effects + Two-Factor + Quadratic, Main Effects + Two Factor + Three Factor + Quadratic. For screening/factorial designs, it is recommended not to include quadratic terms, while for response surface designs, quadratic terms should typically be included.|
+|**Analysis Type**| Select the desired analysis type for the analysis. Available options include: Main Effects, Main Effects + Two-Factor, Main Effects + Two Factor + Three Factor, Main Effects + Quadratic, Main Effects + Two-Factor + Quadratic, Main Effects + Two Factor + Three Factor + Quadratic, Full Factorial. For screening/factorial designs, it is recommended not to include quadratic terms, while for response surface designs, quadratic terms should typically be included. If there are categorical factors in the analysis then quadratic factors cannot be selected.|
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one factor column should be specified. |
 |**Specify Factor Values**| Specify the low and high value for each factor to ensure the plots are generated correctly. By default, these values are initialized to the minimum and maximum observed values of each variable. |
-|**DOE type**| Select whether you have performed a Factorial/Screening or a Response Surface Design. |
+|**DOE type**| Select whether you have performed a Factorial/Screening or a Response Surface Design. If categorical factors are selected the only acceptable option is Factorial/Screening. |
 |**Include Center Points**| If you have performed a Factorial/Screening design, select whether to include center points in the analysis.|
+|**Include Blocks**| Select whether to include a blocking term in the fitted model. Blocks are used when experimental runs were performed under different batches, days, operators, machines, or other known conditions that may introduce systematic variation. Including blocks helps adjust the model for this variation, so the effects of the selected factors are estimated more accurately.  |
+|**Blocking Variable**| Select the column that identifies the block membership of each experimental run. This column should contain the block labels, such as batch number, day, operator, or experimental group. The blocking variable is only available when Include Blocks is selected. |
 
-## Output
+### Output
 {: .no_toc}
 The output spreadsheet contains the fitted response values used to generate the curves. For each curve, 300 data points are provided, allowing precise plotting and replication of the results. A separate pop-up window is generated for each plot:
 1.  Main Effects Plots: One plot is displayed per factor, showing the fitted response across the specified low and high values, with the center point included when available. The y axis is shared across all main effect plots. 
@@ -144,7 +151,7 @@ The output spreadsheet contains the fitted response values used to generate the 
 
 
 
-## Example
+### Example
 {: .no_toc}
 
 #### Input
@@ -157,14 +164,16 @@ In the input datasheet minimum requirement is to specify two columns, one factor
 #### Configuration
 {: .no_toc}
 
-1.  Select `DOE` → `Post DoE Analysis` →`Pareto Analysis`.
+1.  Select `DOE` → `Post DoE Analysis` →`Factorial Plot Analysis`.
 1.  Select the `Dependent Variabl`[1] from the list of available options. This column should only contain numerical values.
 1.  Select the `Analysis Type` [2] from the list of available options : `Main Effects`, `Main Effects` + `Quadratic`, `Main Effects + Two Factor`, `Main Effects + Two Factor + Quadratic`, `Main Effects + Two Factor + Three Factor`, `Main Effects + Two Factor + Three Factor + Quadratic`
 1.  Select the columns by clicking on the arrow buttons [6] and moving columns between the `Excluded Columns` [3] , the `Factors` [4]  and `Covariates`[5] lists.
-1.  Click on `Specify Factor Values`[7] to specify the `Min`[8] and `Max`[9] value for each factor. Once they are specified click on `OK`[10].
-1.  Select whether the DoE[11] method used before this step was a `Factorial/Screening` or a `Response Surface` method.
-1.  If the `Factorial/Screening` option is selected, select/tick to `Include Center Points`[12]. 
-1.  Click on the `Execute` button [13] to perform Pareto Analysis
+1.  Click on `Specify Factor Values`[7] to specify the `Min`[8] and `Max`[9] value for each numerical factor, the `Low level`[10] and `High level`[11] value for each categorical factor. Once they are specified click on `OK`[12].
+1.  Select whether the DoE[13] method used before this step was a `Factorial/Screening` or a `Response Surface` method.
+1.  If the `Factorial/Screening` option is selected, select/tick to `Include Center Points`[14]. 
+1.  Select/tick to `Include Blocks`[15]. 
+1.  If the `Include Blocks` option is selected, select the `Blocking Variable`[16] from the list of available options. This column can contain either numerical or categorical data.
+1.  Click on the `Execute` button [17] to perform Factorial Plot Analysis
 <div style="text-align: center;">
 <img src="images/Design of experiments/postDoE-factorial-config.png" alt="Factorial Config" width="400" height="400" class="img-responsive">
 </div> 
@@ -186,14 +195,526 @@ The data points for each produced plot are shown in the output spreadsheet and t
 <img src="images/Design of experiments/postDoE-interraction-chart.png" alt="Factorial interaction chart" width="900" height="700" class="img-responsive">
 </div> 
 
+---
+## Multi-Objective Optimization
+
+Multi-Objective Optimization is used to determine factor settings that simultaneously optimize multiple responses. When responses have competing goals (for example, maximizing yield while minimizing reaction time), the algorithm converts each response into a desirability function and combines them into a single composite desirability score. The optimal solution corresponds to the factor settings that maximize this composite desirability.
+
+Isalos supports two optimization strategies:
+1. Continuous optimization, where factor settings are searched across the modeled design space.
+1. Discrete optimization, where optimization is restricted to the observed factor levels present in the dataset. This option ensures that recommended settings correspond to experimentally tested conditions and may be preferred when interpolation between levels is not desired.
+
+Users may also constrain the optimization domain by specifying allowable ranges for each factor, and/or fixing factors to specific values to evaluate constrained operating conditions. To compute predictions used during optimization, users must select the model structure to be fitted. For screening and factorial designs, simpler models are typically preferred, while response surface designs generally require quadratic terms to capture curvature. 
+
+For each response, users define an optimization objective:
+1. Maximize — increases the response toward higher values.
+1. Minimize — drives the response toward lower values.
+1. Target — seeks a specified value while penalizing deviations.
+
+Each response is transformed into an individual desirability value ranging from 0 (undesirable) to 1 (fully desirable). The shape and influence of each desirability function are controlled by two parameters:
+1. Scale controls how quickly desirability changes as the response moves away from its goal. Higher scale values create a steeper penalty near limits or targets, while lower values produce a more gradual transition.
+1. Importance defines the relative priority of each response in the composite desirability calculation. Responses with higher importance exert greater influence on the optimization result.
+
+Together, these settings allow users to balance competing objectives and tailor the optimization to process priorities.
+
+For each predicted response, the model provides both confidence intervals (CI) and prediction intervals (PI) to quantify uncertainty. A confidence interval describes the range within which the true mean response is expected to lie at the specified factor settings and confidence level (e.g., 95%). It reflects uncertainty in estimating the model’s mean prediction. In contrast, a prediction interval represents the range within which a future individual observation is expected to fall under the same conditions. Because prediction intervals account for both model uncertainty and inherent experimental variability, they are always wider than confidence intervals.
+
+Use the `Multi-Objective Optimization` tool by browsing in the top ribbon: 
+
+|DOE $$\rightarrow$$ Post DoE Analysis $$\rightarrow$$ Multi-Objective Optimization|
+
+### Input
+{: .no_toc}
+
+All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Design of Experiments (DoE) method, with the addition of the response variables calculated for each experimental run. Response variables must be strictly numerical. Experimental factors may be numerical or categorical. Categorical factors are permitted only when they contain exactly two levels. Additionally, categorical factors can only be included when the model does not contain quadratic terms. The blocking variable can be either numeric or categorical. Each row corresponds to a single observation from the experiment. 
+
+### Configuration
+{: .no_toc}
+
+|**Analysis Type**| Select the desired analysis type for the analysis. Available options include: Main Effects, Main Effects + Two-Factor, Main Effects + Two Factor + Three Factor, Main Effects + Quadratic, Main Effects + Two-Factor + Quadratic, Main Effects + Two Factor + Three Factor + Quadratic, Full Factorial. For screening/factorial designs, it is recommended not to include quadratic terms, while for response surface designs, quadratic terms should typically be included. If there are categorical factors in the analysis then quadratic factors cannot be selected.|
+|**Confidence Level**| Specify the confidence level for the analysis. Values should range from 0 to 100 with the default value being 95 |
+|**Include Blocks**| Select whether to include a blocking term in the fitted model. Blocks are used when experimental runs were performed under different batches, days, operators, machines, or other known conditions that may introduce systematic variation. Including blocks helps adjust the model for this variation, so the effects of the selected factors are estimated more accurately.  |
+|**Blocking Variable**| Select the column that identifies the block membership of each experimental run. This column should contain the block labels, such as batch number, day, operator, or experimental group. The blocking variable is only available when Include Blocks is selected. |
+|**Factors/Dependent Variables/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to dependent variables through the dialog window: Use the buttons to move columns between the Factors and Dependent Variables list and Excluded Columns list.  At least one factor column and one Dependent Variable Column should be specified. |
+|**Specify Factor Values**| Specify the low and high value for each factor to ensure the plots are generated correctly. By default, these values are initialized to the minimum and maximum observed values of each variable. Optionally specify constraints to fix factors to a specific value within the allowed range.|
+|**Specify Dependent Variable Ranges**| Specify the minimum and maximum acceptable value for each dependent variable to correctly set objective goals and compute individual desirabilities. By default, these values are initialized to the minimum and maximum observed values of each variable.|
+|**Dependent Variable Settings**|For each dependent variable added, specify the goal (Minimize/ Maximize/ Target), the target value if the Target option is selected, the scale and the importance of the dependent variable. The allowed range for scale is [0.01,10] and for importance it is [1,5].|
+|**Optimize on the Discretized Space (Only factor values that appear in the dataset will be considered)**| Use this option to enable discretized optimization, to restrict the optimization to the observed factor levels present in the dataset. |
+
+### Output
+{: .no_toc}
+The output spreadsheet reports the optimal factor settings identified by the optimization routine, along with the predicted values for each response at those settings. For each response, the table includes the predicted value, standard error, confidence intervals, and prediction intervals. Individual desirability values are shown for every response, together with the overall composite desirability score used to rank the solution.
+
+In addition, a pop-up window displays the Desirability & Response Profiles, illustrating how composite desirability and each predicted response vary across the range of each factor while other factors are held constant. Vertical reference lines indicate the optimal factor settings, and horizontal reference lines denote the predicted response or desirability values at the optimum, enabling visual assessment of trade-offs and sensitivity.
+
+
+### Example
+{: .no_toc}
+
+#### Input
+{: .no_toc}
+In the input datasheet minimum requirement is to specify two columns, one factor and one dependent variable, as shown below.
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-multiObjective-input.png" alt="Multi Objective Optimization input" width="600" height="400" class="img-responsive">
+</div> 
+
+#### Configuration
+{: .no_toc}
+
+1.  Select `DOE` → `Post DoE Analysis` →`Multi-Objective Optimization`.
+1.  Select the `Analysis Type` [1] from the list of available options : `Main Effects`, `Main Effects` + `Quadratic`, `Main Effects + Two Factor`, `Main Effects + Two Factor + Quadratic`, `Main Effects + Two Factor + Three Factor`, `Main Effects + Two Factor + Three Factor + Quadratic`, `Full Factorial`
+1.  Specify the `Significance Level`[2] used to calculate the confidence intervals. Default value is 95.
+1.  Select/tick to `Include Blocks`[3]. 
+1.  If the `Include Blocks` option is selected, select the `Blocking Variable`[4] from the list of available options. This column can contain either numerical or categorical data.
+1.  Select the columns by clicking on the arrow buttons [5],[6] and moving columns between the `Excluded Columns` [7] , the `Factors` [8]  and `Dependent Variables`[9] lists.
+1.  Specify the `Goal` [10], the `Target Value`[11] if the Target goal is selected, the `Scale`[12] and the `Importance`[13] of each dependent variable.
+1.  Click on `Specify Factor Values`[14] to specify the `Min`[15] and `Max`[16] value for each numerical factor, the `Low level`[17] and `High level`[18] value for each categorical factor and optionally constrain factors to a `Fixed Value`[19]. Once they are specified click on `OK`[20].
+1.  Click on `Specify Dependent Variable Ranges`[21] to specify the `Min`[22] and `Max`[23] value for each dependent variable . Once they are specified click on `OK`[24].
+1.  Click on `Optimize on the Discretized Space (Only factor values that appear in the dataset will be considered)` [25] to only optimize on the discretized space.
+1.  Click on the `Execute` button [26] to perform Multi-Objective optimization
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-multiObjective-config.png" alt="Multi-Objective Optimization config" width="800" height="550" class="img-responsive">
+</div> 
+
+
+
+#### Output
+{: .no_toc}
+The optimal factor settings, the predicted values and the individual and overall desirabilities are presented in the output spreadsheet and the Desirability & Response Profiles are shown in a separate window.
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-multiObjective-output.png" alt="Multi-Objective Optimization output" width="400" height="400" class="img-responsive">
+</div> 
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-multiObjective-chart.png" alt="Multi-Objective Optimization chart" width="600" height="600" class="img-responsive">
+</div> 
+
+---
+
+## Mixture Analysis
+Mixture Analysis is used to model the relationship between a response variable and the proportions of the components in a mixture and optionally any process variables present in the experiment. Unlike ordinary regression, mixture experiments are subject to the constraint
+
+<div style="text-align: center;"> $$ \sum_{i=1}^{q} x_i = 1 $$ </div>
+
+where $$x_i$$ represents the proportion of component $$i$$.
+
+Because of this dependency, standard polynomial regression models cannot be used directly. Instead, Mixture Analysis employs Scheffé canonical polynomials, which are specifically designed for mixture experiments.
+
+The software supports Linear, Quadratic, Special Cubic, Full Cubic, Special Quartic and Full Quartic mixture models. Binary process variables may also be included to investigate whether external operating conditions influence the mixture response.
+
+### Supported Mixture Models
+{: .no_toc}
+
+#### Linear Model
+{: .no_toc}
+
+The linear model estimates only the individual contribution of each component.
+<div style="text-align: center;"> $$ \eta = \sum_{i=1}^{q}\beta_i x_i $$ </div>
+where:
+
+1. $$x_i$$ = proportion of component $$i$$.
+1. $$\beta_i$$ = expected response when the mixture consists entirely of component $$i$$.
+
+
+#### Quadratic Model
+{: .no_toc}
+
+The quadratic model additionally captures pairwise blending effects between components.
+<div style="text-align: center;"> $$ \eta = \sum_{i=1}^{q}\beta_i x_i + \sum_{i<j}\beta_{ij}x_i x_j $$ </div>
+The interaction coefficient $$\beta_{ij}$$ describes whether the combination of components i and j produces a response different from what would be expected based on their individual effects alone.
+
+
+#### Special Cubic Model
+{: .no_toc}
+
+The special cubic model includes three-component blending effects.
+<div style="text-align: center;"> $$ \eta = \sum_{i=1}^{q}\beta_i x_i + \sum_{i<j}\beta_{ij}x_i x_j + \sum_{i<j<k}\beta_{ijk}x_i x_j x_k $$ </div>
+
+The coefficients $$\beta_{ijk}$$ represent interactions among three components simultaneously.
+
+
+#### Full Cubic Model
+{: .no_toc}
+
+The full cubic model extends the special cubic model by including asymmetry terms.
+<div style="text-align: center;"> $$ \eta = \sum_{i=1}^{q}\beta_i x_i + \sum_{i<j}\beta_{ij}x_i x_j + \sum_{i<j}\delta_{ij}x_i x_j(x_i-x_j) + \sum_{i<j<k}\beta_{ijk}x_i x_j x_k $$ </div>
+
+The terms $$x_ix_j(x_i-x_j)$$ allow the model to distinguish situations where component i dominates component j from situations where the reverse occurs.
+
+
+#### Special Quartic Model
+{: .no_toc}
+
+The special quartic model introduces fourth-order blending effects.
+<div style="text-align: center;"> $$ \eta = \sum_{i=1}^{q}\beta_i x_i + \sum_{i<j}\beta_{ij}x_i x_j + \sum_{i<j<k}\beta_{iijk}x_i^2x_jx_k + \sum_{i<j<k}\beta_{ijjk}x_ix_j^2x_k + \sum_{i<j<k}\beta_{ijkk}x_ix_jx_k^2 $$ </div>
+
+#### Full Quartic Model
+{: .no_toc}
+The full quartic model is the most flexible mixture model available and includes all quartic terms.
+
+<div style="text-align: center;"> $$ \eta = \sum_{i=1}^{q}\beta_i x_i + \sum_{i<j}\beta_{ij}x_i x_j + \sum_{i<j}\delta_{ij}x_i x_j(x_i-x_j) + \sum_{i<j}\gamma_{ij}x_i x_j(x_i-x_j)^2 $$ </div>
+<div style="text-align: center;"> $$ + \sum_{i<j<k}\beta_{iijk}x_i^2x_jx_k + \sum_{i<j<k}\beta_{ijjk}x_ix_j^2x_k + \sum_{i<j<k}\beta_{ijkk}x_ix_jx_k^2 $$ </div>
+<div style="text-align: center;"> $$ + \sum_{i<j<k<l}\beta_{ijkl}x_ix_jx_kx_l $$ </div>
+
+### Process Variables
+{: .no_toc}
+Binary process variables may be included in the analysis.
+Categorical process variables are internally coded using effect coding:
+<div style="text-align: center;"> $$ \text{Low Level} = -1 $$ </div>
+<div style="text-align: center;"> $$ \text{High Level} = +1 $$ </div>
+
+For each process variable, interaction terms with all mixture model terms are automatically generated. This allows the software to determine whether the process condition changes the effect of individual components or component combinations.
+
+For example, if temperature is included as a process variable T, interaction terms such as $$x_A T, x_Ax_BT$$ may be added to the model.
+
+### Inverse Terms
+{: .no_toc}
+
+Optionally, inverse mixture terms may be included:
+<div style="text-align: center;"> $$ \frac{1}{x_i} $$ </div>
+These terms can be useful when the response increases rapidly as the proportion of a component approaches zero.
+
+Inverse terms cannot be estimated when any component contains zero values.
+
+### Model Estimation
+{: .no_toc}
+The model is fitted using ordinary least squares regression.
+
+The parameter estimates are obtained by solving
+<div style="text-align: center;"> $$ \hat{\beta} = (X^TX)^{-1} X^Ty $$ </div>
+where:
+
+1. $$X$$ is the design matrix
+1. $$y$$ is the response vector
+
+Terms that are linearly dependent due to the mixture constraint are automatically detected and removed from the model.
+
+### Variance Inflation Factor (VIF)
+{: .no_toc}
+
+The Variance Inflation Factor measures the degree of multicollinearity among the model terms.
+
+For each predictor, an auxiliary regression is fitted where the predictor is regressed against all remaining predictors.
+
+The coefficient of determination from this auxiliary model is $$R_i^2$$. The VIF is then calculated as: 
+<div style="text-align: center;"> $$  VIF_i = \frac{1}{1-R_i^2} $$ </div>
+
+Interpreatation: 
+
+| **VIF** | **Interpretation** |
+| 1 | No collinearity | 
+| 1-5 | Mild collinearity | 
+| 5-10 | Moderate collinearity | 
+| >10 | Severe collinearity | 
+
+Large VIF values indicate that a model term is highly correlated with other terms and its coefficient may be unstable.
+
+### Handling Non-Estimable Terms
+{: .no_toc}
+
+Because mixture models are subject to the sum-to-one constraint certain model terms may become perfectly collinear and therefore cannot be estimated.
+
+The software automatically identifies these terms using collinearity checks and removes them from the analysis. Any excluded terms are reported to the user as warnings.
+
+Use the `Mixture Analysis` tool by browsing in the top ribbon: 
+
+|DOE $$\rightarrow$$ Post DoE Analysis $$\rightarrow$$ Mixture Analysis|
+
+### Input
+{: .no_toc}
+
+All variables must be specified in the datasheet. The input to the algorithm consists of the results of a Mixture Design of Experiment (DoE) method, with the addition of the response calculated for each experimental run. The response variable must be strictly numerical. Experimental factors/ Components must also be numerical while process variables can be either numerical or cateforical and should contain exactly two levels.
+
+### Configuration
+{: .no_toc}
+
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable.|
+|**Analysis Type**| Select the desired analysis type for the analysis. Available options include: Linear, Quadratic, Special Cubic, Full Cubic, Special Quartic, Full Quartic.|
+|**Include inverse component terms**| Use this option to include inverse component terms. This option is only allowed when no component has a zero value in the input data. |
+|**Confidence Level(%)**| Specify the confidence level for the analysis. Values should range from 0 to 100 with the default value being 95. |
+|**Components/Process Variables/Excluded Columns**| Select manually the columns that correspond to components and the columns that correspond to process variables through the dialog window: Use the buttons to move columns between the Components and Process Variables list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least two Component column should be specified. Process Variables must be binary. |
+|**Specify Process Variables Values**| Use this buttton to specify the reference level for each process variable, that will internally be encoded as -1. If this option is not modified, then the last level for each variable will automatically be chosen.|
+
+### Output
+{: .no_toc}
+The output spreadsheet contains the parameter estimate table with the following information.
+1. Variable: Model term being estimated
+1. Coefficient: Estimated regression coefficient
+1. Std Error: Standard error of the coefficient
+1. Lower CI: Lower confidence interval limit
+1. Upper CI: Upper confidence interval limit
+1. Test Statistic: Student's t-statistic
+1. df: Degrees of freedom used in the test
+1. p-value: Significance level for the coefficient
+1. VIF: Variance Inflation Factor
+
+
+### Example
+{: .no_toc}
+
+#### Input
+{: .no_toc}
+In the input datasheet minimum requirement is to specify three columns, two components and one dependent variable, as shown below.
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-mixture-input.png" alt="Mixture Analysis input" width="400" height="400" class="img-responsive">
+</div> 
+
+#### Configuration
+{: .no_toc}
+
+1.  Select `DOE` → `Post DoE Analysis` →`Mixture Analysis`.
+1.  Select the `Dependent Variable`[1] from the list of available options. This column should only contain numerical values.
+1.  Select the `Analysis Type` [2] from the list of available options : `Linear`, `Quadratic`, `Special Qubic`, `Full Cubic`, `Special Quartic`, `Full Quartic`
+1.  Select/tic to `Include inverse proportion terms` [3] in the analysis. To be able to use this option, no zero values should be present in the input for any component.
+1.  Specify the `Confidence Level (%)`[4] used to calculate confidence intervals. Default value is 0.95.
+1.  Select the columns by clicking on the arrow buttons [7] and moving columns between the `Excluded Columns` [5] , the `Components` [6]  and `Process Variables`[7] lists.
+1.  Optionally `Specify Process Variables Values` [9].
+1.  Click on the `Execute` button [10] to perform Mixture Analysis
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-mixture-config.png" alt="Mixture config" width="400" height="400" class="img-responsive">
+</div> 
+
+
+
+#### Output
+{: .no_toc}
+The parameter estimates table with all information about the estimated coefficients is shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-mixture-output.png" alt="Mixture output" width="800" height="600" class="img-responsive">
+</div> 
+
+---
+
+## Post-Robust Parameter Analysis
+Post Robust Analysis is used to analyse the results of a Robust Parameter Design (Taguchi) experiment.
+
+The objective of robust design is not only to optimise the average response, but also to minimise the effect of uncontrollable sources of variation. To achieve this, experimental factors are divided into:
+1. Control Factors : which can be adjusted by the experimenter.
+1. Noise Factors : which represent sources of variability that cannot be controlled during normal operation.
+
+The analysis evaluates how the control factors influence the response mean, variability and robustness.
+
+Isalos supports modelling of:
+
+1. Mean Response
+1. Standard Deviation
+1. Logarithm of the Standard Deviation
+1. Signal-to-Noise Ratio (SNR)
+
+Each selected response is analysed independently using a linear model.
+
+### Mean Model
+{: .no_toc}
+The Mean Model investigates how the control factors influence the average value of the response.
+
+For each combination of control factor levels, the mean response is calculated across all noise factor settings.
+
+<div style="text-align: center;"> $$ \bar{y} = \frac{1}{n}\sum_{i=1}^{n} y_i $$ </div>
+
+where:
+1. $$y_i$$ = observed response
+1. $$n$$ = number of observations associated with the control factor combination
+
+This model is useful when the primary objective is to maximise or minimise the average response.
+
+### Standard Deviation Model
+{: .no_toc}
+The Standard Deviation Model evaluates how the control factors influence response variability.
+
+For each control factor combination, the standard deviation is calculated across all noise factor settings.
+
+<div style="text-align: center;"> $$ s = \sqrt{\frac{\sum_{i=1}^{n}(y_i-\bar y)^2}{n-1}} $$ </div>
+
+Smaller standard deviation values indicate greater robustness to noise factors.
+
+
+### Log(Standard Deviation) Model
+{: .no_toc}
+The Log(Standard Deviation) Model analyses the logarithm of the standard deviation.
+
+<div style="text-align: center;"> $$ \ln(s) $$ </div>
+
+This transformation is commonly used when variability changes multiplicatively rather than additively.
+
+The logarithmic transformation often stabilises variance and improves the suitability of linear modelling.
+
+### Signal-to-Noise Ratio (SNR)
+{: .no_toc}
+
+The Signal-to-Noise Ratio combines information about both the mean response and its variability into a single performance metric.
+
+Higher SNR values indicate more robust performance.
+
+The following SNR definitions are supported.
+
+#### Larger is Better
+{: .no_toc}
+Used when the response should be maximised.
+
+<div style="text-align: center;"> $$ SNR = -10 \log_{10}\left(\frac{1}{n}\sum_{i=1}^{n}\frac{1}{y_i^2}\right) $$ </div>
+
+#### Smaller is Better
+{: .no_toc}
+
+Used when the response should be minimised.
+
+<div style="text-align: center;"> $$ SNR = -10 \log_{10}\left(\frac{1}{n}\sum_{i=1}^{n}y_i^2\right) $$ </div>
+
+#### Nominal is Best
+{: .no_toc}
+
+Used when the response should be as close as possible to a target value.
+
+<div style="text-align: center;"> $$ SNR = 10\log_{10}\left(\frac{\bar y^2}{s^2}\right) $$ </div>
+
+This formulation rewards a large mean response relative to its variability.
+
+#### Nominal is Best (Adjusted)
+{: .no_toc}
+An alternative formulation that adjusts for sample size effects while balancing accuracy and variability.
+
+#### Nominal is Best (Variance Only)
+{: .no_toc}
+This formulation evaluates robustness based exclusively on variability.
+
+<div style="text-align: center;"> $$ SNR = -10\log_{10}(s^2) $$ </div>
+
+This option is useful when the mean response is already acceptable and the objective is solely to reduce variation.
+
+### Model Estimation
+{: .no_toc}
+For each selected response, a linear regression model is fitted using ordinary least squares.
+
+<div style="text-align: center;"> $$ \hat{\beta} = (X^TX)^{-1}X^Ty $$ </div>
+
+where:
+1. $$X$$ = design matrix
+1. $$y$$ = response vector
+1. $$\hat{\beta}$$ = vector of estimated coefficients
+The resulting model can be used to identify which control factors have the greatest influence on the selected robustness metric.
+
+### Analysis of Variance (ANOVA)
+{: .no_toc}
+An Analysis of Variance table is produced for every fitted model.
+
+The ANOVA table partitions the variation in the response into:
+1. Variation explained by the model
+1. Residual variation
+1. Total variation
+F-tests are used to determine whether the effects included in the model explain a statistically significant proportion of the observed variation.
+
+
+### Main Effects Plots
+{: .no_toc}
+Main Effects Plots display the predicted response for each level of every control factor.
+
+These plots allow identification of factor settings that:
+
+1. maximise the mean response,
+1. minimise variability,
+1. maximise the signal-to-noise ratio.
+
+All plots within the same response model are displayed using a common y-axis scale to facilitate comparison.
+
+### Interaction Plots
+{: .no_toc}
+Interaction Plots are used to investigate whether the effect of one control factor depends on the level of another factor.
+
+Parallel lines indicate little or no interaction.
+
+Non-parallel or crossing lines suggest the presence of interaction effects.
+
+Strong interactions imply that factor optimisation should consider combinations of factor settings rather than factors individually.
+
+Use the `Post-Robust Parameter Analysis` tool by browsing in the top ribbon: 
+
+|DOE $$\rightarrow$$ Post DoE Analysis $$\rightarrow$$ Post-Robust Parameter Analysis|
+
+### Input
+{: .no_toc}
+All variables must be specified in the datasheet. The input consists of the results of a Robust Design of Experiment (DoE) together with the measured response values. The response variable must be numerical. At least two Control Factors and one Noise Factor must be specified. Noise Factors may be numerical or categorical and represent sources of variability used to assess robustness.
+
+### Configuration
+{: .no_toc}
+
+|**Dependent Variable**| Select the column that corresponds to values of the dependent variable.|
+|**Analysis Type**| Select the desired analysis type for the analysis. Available options include: Main Effects, Main Effects + Two-Factor, Main Effects + Two-Factor + Three-Factor, Full Factorial.|
+|**Confidence Level(%)**| Specify the confidence level for the analysis. Values should range from 0 to 100 with the default value being 95. |
+|**Fit a model for**| Select the statistics you want to fit a model for. At least one option should be selected. |
+|**Signal to Noise Ratio Type**| If the Signal to Noise Ratio model is selected, specify the type of SNR to fit. Available options include: Larger is better, Smaller is better, Nominal is best, Nominal is best (Adjusted), Nominal is best (Variance Only) |
+|**Find Optimal Settings**| Select this button to calculate optimal settings (settings that maximize/minimize the objective) for each of the selected models.|
+|**Optimization Objective for Mean**| If the mean model and the optimization option are selected, select whether the objective is to maximize or minimize the mean.|
+|**Control Factors/Noise Factors/Excluded Columns**| Select manually the columns that correspond to control factors and the columns that correspond to noise factors through the dialog window: Use the buttons to move columns between the Control Factors and Noise Factors lists and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least two Conrol Factors and one Noise Factor should be specified.|
+|**Specify Reference Levels**| Use this buttton to specify the reference level for each control factor. If this option is not modified, then the last level for each variable will automatically be chosen.|
+
+### Output
+{: .no_toc}
+For each selected model, the output spreadsheet contains: 
+1. Response Table : contains the average fitted response for each factor level, delta values and factor rankings
+1. ANOVA Table : Source, Degrees of Freedom, Sum of Squares, Mean Square, F Statistic, p-value
+1. Coefficients Table : Variable, Coefficient, Std Error, Lower CI, Upper CI, Test Statistic, df, p-value
+
+In addition, Main Effects Plots and Interaction Plots are generated for each selected robustness metric. 
+Optionally, if the optimization option is selected, the optimal settings and predicted optimal response are shown in the output spreadsheet.
+
+
+### Example
+{: .no_toc}
+
+#### Input
+{: .no_toc}
+In the input datasheet minimum requirement is to specify four columns, one dependent variable, two control factors and one noise factor, as shown below.
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-robust-input.png" alt="Post Robust Parameter Analysis input" width="400" height="400" class="img-responsive">
+</div> 
+
+#### Configuration
+{: .no_toc}
+
+1.  Select `DOE` → `Post DoE Analysis` →`Post-Robust Parameter Analysis`.
+1.  Select the `Dependent Variable`[1] from the list of available options. This column should only contain numerical values.
+1.  Select the `Analysis Type` [2] from the list of available options : `Main Effects`, `Main Effects + Two-Factor`, `Main Effects + Two-Factor + Three-Factor`, `Full Factorial`.
+1.  Specify the `Confidence Level (%)`[3] used to calculate confidence intervals. Default value is 0.95.
+1.  Select/tick the statistics you wish to `Fit a model for` [4]. At least one option must be selected.
+1.  If the `Signal to Noise Ratios` option is selected, select the `Signal to Noise Ratio Type`[5] from the available options: `Larger is better`, `Smaller is better`, `Nominal is best`, `Nominal is best (Variance Only)`, `Nominal is best (Adjusted)`.
+1. Select/tick to `Find Optimal Settings`[6] for each of the fitted models.
+1. If the `Means model` and `Find Optimal Settings` options are selected select the `Optimization Objective for Mean`[7].
+1.  Select the columns by clicking on the arrow buttons [10] and moving columns between the `Excluded Columns` [8] , the `Control Factors` [9]  and `Noise Factors`[7] lists.
+1.  Optionally `Specify Reference Levels` [11] for control factors.
+1.  Click on the `Execute` button [12] to perform Post-Robust Parameter Analysis.
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-robust-config.png" alt="Post Robust Parameter Analysis config" width="400" height="400" class="img-responsive">
+</div> 
+
+
+
+#### Output
+{: .no_toc}
+The parameter estimates table with all information about the estimated coefficients is shown in the output spreadsheet.
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-robust-output.png" alt="Post Robust Parameter Analysis output" width="800" height="600" class="img-responsive">
+</div> 
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-robust-mainEffect-chart.png" alt="Robust main effect chart" width="700" height="400" class="img-responsive">
+</div> 
+
+<div style="text-align: center;">
+<img src="images/Design of experiments/postDoE-robust-interraction-chart.png" alt="Robust interaction chart" width="900" height="700" class="img-responsive">
+</div> 
+
+---
 
 
 ## References {#references-design-of-experiments}
 1. Alkiayat, M., A practical guide to creating a Pareto chart as a quality improvement tool. Global Journal on Quality and Safety in Healthcare, 2021. 4(2): p. 83–84. [doi.org/10.36401/JQSH-21-X1](https://doi.org/10.36401/JQSH-21-X1).
+1. Derringer, G., & Suich, R. (1980). Simultaneous Optimization of Several Response Variables. Journal of Quality Technology, 12(4), 214–219. [doi.org/10.1080/00224065.1980.11980968](https://doi.org/10.1080/00224065.1980.11980968)
+1. Cornell, J. (2002) Experiments with Mixtures: Designs, Models, and the Analysis of Mixture. 3rd Edition, John Wiley & Sons, Inc., New York. [doi.org/10.1002/9781118204221](http://dx.doi.org/10.1002/9781118204221)
+
 
 ---
 
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on November 2025_
+_Instructions last updated on June 2026_

@@ -1842,7 +1842,7 @@ Y = Bmax \frac{X}{K_d+X} + NS*X + Background
 ###### Visualization
 {: .no_toc }
 <div style="text-align: center;">
-<img src="images/Curve Fitting/oneSite_Total.png" alt="One Site -- Total" width="400" height="300" class="img-responsive">
+<img src="images/Curve Fitting/oneSite_total.png" alt="One Site -- Total" width="400" height="300" class="img-responsive">
 </div>
 
 ###### Input 
@@ -2339,6 +2339,1480 @@ The independent variable (X) must be the log10-transformed competitor concentrat
 1. $$NS$$: The nonspecific binding fraction (or proportionality factor) describing the portion of radioligand signal attributable to nonspecific binding sites under this CPM-based formulation.
 
 ---
+
+##### Dissociation Kinetics
+The Dissociation kinetics model describes how receptor–ligand binding decreases over time after conditions are changed to prevent re-binding (e.g., by adding excess unlabeled ligand, washing away radioligand, or strong dilution). Under the assumption of a single dominant dissociation process, the bound complex decays as a one-phase exponential, approaching a constant residual level at long times. The fitted dissociation rate constant ($$k_{off}$$) quantifies how quickly ligand dissociates from the receptor.
+
+###### Equation
+{: .no_toc }
+<div id="dissociation-kinetics"> 
+\[ \begin{equation} 
+\begin{alignedat}{2} Y &= (Y_0-\mathrm{NS})\,e^{-k_{\mathrm{off}}X} + \mathrm{NS} \qquad & 
+\end{alignedat} 
+\end{equation} \] 
+</div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/dissociation_kinetics.png" alt="Dissociation Kinetics" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be on a linear scale and therefore must be strictly positive $$(X>0)$$. Zero or negative X values are not used in the calculations (they are ignored/excluded). The dependent variable ($$Y$$) is the measured binding signal (total or specific, depending on your assay) in consistent units.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_0$$: Binding at time zero (immediately after initiating dissociation), in the same units as $$Υ$$.
+
+1. $$NS$$: The asymptotic binding at very long times (the plateau the curve approaches). This is often interpreted as residual nonspecific binding or incomplete dissociation, in the same units as $$Υ$$.
+
+1. $$k_{off}$$: (must be positive) The dissociation rate constant (units of 1/time). Larger $$k_{off}$$ means faster dissociation. The dissociation half-life is: 
+<div id="dissociation-halfLife"> 
+\[ \begin{equation} 
+\begin{alignedat}{2} t_{1/2} &= \frac{ln(2)}{k_{off}} \qquad & 
+\end{alignedat} 
+\end{equation} \] 
+</div>
+---
+
+##### Association Kinetics – One Ligand
+The Association kinetics (one ligand concentration) model describes how radioligand binding increases over time toward equilibrium at a single fixed ligand concentration. The time course follows a single exponential approach to a maximum, governed by an apparent rate constant that depends on both association and dissociation. In this formulation, you fix the dissociation rate constant (koff) from an independent experiment and estimate the association rate constant (kon) from the binding time course. This model assumes a simple one-site binding process with no ligand depletion and constant ligand concentration throughout the experiment.
+
+###### Equation
+{: .no_toc }
+<div id="association-one-conc"> \[ \begin{equation} \begin{aligned} K_d &= \frac{k_{\text{off}}}{k_{\text{on}}} \\ [L] &= \mathrm{HotNm}\cdot 10^{-9} \\ k_{\text{obs}} &= k_{\text{on}}\,[L] + k_{\text{off}} \\ \mathrm{Occupancy} &= \frac{[L]}{[L]+K_d} \\ Y_{\max} &= \mathrm{Occupancy}\cdot B_{max} \\ Y(t) &= Y_{\max}\left(1-e^{-k_{\text{obs}}\, t}\right) \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/association_one_conc.png" alt="Association kinetics (one concentration)" width="400" height="300" class="img-responsive"> </div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be time  on a linear scale and therefore must be non-negative ($$X≥0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units). This equation also requires the specification of three extra parameters:
+
+1. $$Hotnm$$: The radioligand concentration in nM (a single concentration is used for the entire experiment).
+
+1. $$k_{off}$$: the dissociation rate constant in $$min^{-1}$$ (must be positive).
+
+###### Parameters
+{: .no_toc }
+1. $$k_{on}$$: Association rate constant, in $$min^{-1}$$. Describes how rapidly ligand binds to free receptors.
+
+1. $$Bmax$$: The maximal binding at equilibrium (same units as $$Y$$), extrapolated to maximal radioligand concentration.
+
+---
+
+##### Association Kinetics – Two or More Ligand Concentrations
+This model describes radioligand association measured at two or more fixed ligand concentrations, which allows simultaneous estimation of both $$k_{on}$$ and $$k_{off}$$ from a single global fit. Because the observed association rate depends on both rate constants and ligand concentration, fitting multiple concentrations removes the ambiguity that exists when only one concentration is used. All time courses are assumed to follow a single-exponential approach to equilibrium with a concentration-dependent observed rate constant.
+
+###### Equation
+{: .no_toc }
+<div id="association-two-conc">
+\[
+\begin{equation}
+\begin{aligned}
+K_d &= \frac{k_{\text{off}}}{k_{\text{on}}} \\[4pt]
+[L] &= \mathrm{HotNm}\cdot 10^{-9} \\[4pt]
+k_{\text{obs}} &= k_{\text{on}}\,[L] + k_{\text{off}} \\[4pt]
+\mathrm{Occupancy} &= \frac{[L]}{[L]+K_d} \\[4pt]
+Y_{\max} &= \mathrm{Occupancy}\cdot B_{max} \\[4pt]
+Y(t) &= Y_{\max}\left(1-e^{-k_{\text{obs}}\, t}\right)
+\end{aligned}
+\end{equation}
+\]
+</div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/association_two_conc.png" alt="Association kinetics (two or more concentrations)" width="400" height="300" class="img-responsive"> </div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be time  on a linear scale and therefore must be non-negative ($$X≥0$$).  The model also requires at lease one column containing the dependent variable (Y) response values (in any consistent units). You must provide the radioligand concentration (HotNM) for each curve. 
+
+###### Parameters
+{: .no_toc }
+1. $$k_{on}$$: Association rate constant, in $$min^{-1}$$. 
+
+1. $$k_{off}$$: Dissociation rate constant, in $$min^{-1}$$.
+
+1. $$Bmax$$: The maximal binding at equilibrium (same units as $$Y$$), extrapolated to maximal radioligand concentration.
+
+---
+
+##### Association then Dissociation
+The Association then dissociation model fits a single time-course experiment where binding is first allowed to associate toward equilibrium at a fixed radioligand concentration, and then at a defined time point (Time0) dissociation is initiated (e.g., by adding excess unlabeled ligand or performing a large dilution). The model combines an exponential association phase (governed by $$k_{on}$$ and $$k_{off}$$ through $$k_{obs}$$) with an exponential dissociation phase (governed by $$k_{off}$$ alone). By fitting both phases in one dataset, the model can estimate $$k_{on}$$ and $$k_{off}$$ without requiring multiple ligand concentrations. The predicted response includes the parameter $$NS$$ to capture nonspecific binding or baseline signal.
+
+###### Equation
+{: .no_toc }
+<div id="association-then-dissociation"> \[ \begin{equation} \begin{aligned} \mathrm{Radioligand} &= \mathrm{HotNM}\cdot 10^{-9} \\ k_{\text{obs}} &= \mathrm{Radioligand}\cdot k_{on} + k_{off} \\ K_d &= \frac{k_{off}}{k_{on}} \\ Eq &= B_{max}\cdot \frac{\mathrm{Radioligand}}{\mathrm{Radioligand}+K_d} \\ \mathrm{Association}(X) &= Eq\left(1-e^{-k_{\text{obs}}X}\right) \\ Y_{at\,Time0} &= Eq\left(1-e^{-k_{\text{obs}}\,Time0}\right) \\ \mathrm{Dissociation}(X) &= Y_{at\,Time0}\,e^{-k_{off}(X-Time0)} \\ Y &= \mathrm{IF}(X<Time0,\ \mathrm{Association}(X),\ \mathrm{Dissociation}(X)) + NS \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/association_dissociation.png" alt="Association then Dissociation" width="400" height="300" class="img-responsive"> </div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be time on a linear scale (e.g., minutes) and therefore must be non-negative ($$X≥0$$). The dependent variable (Y) must be binding measured in any consistent units. The model requires the specification of two extra parameters:
+
+1. $$Hotnm$$: The radioligand concentration in nM (a single concentration is used for the entire experiment).
+
+1. $$Time of switch$$$: the time (in the same units as X) at which dissociation is initiated.
+
+###### Parameters
+{: .no_toc }
+1. $$k_{on}$$: The association rate constant, in $$min^{-1}$$ (or inverse time matching X). $$k_{off}$$ must be strictly positive.
+
+1. $$k_{off}$$: The dissociation rate constant, in $$min^{-1}$$ (or inverse time matching X). $$k_{off}$$ must be strictly positive.
+
+1. $$Bmax$$: The maximal binding capacity (same units as $$Y$$), extrapolated to saturation. 
+
+1. $$NS$$: The constant baseline (nonspecific binding/offset) in the units of $$Y$$. It represents the binding level at $$X=0$$ and the residual level approached at long times after dissociation.
+
+---
+
+##### Kinetics - Competitive Binding
+The Kinetics of competitive binding model estimates the association and dissociation rate constants of an unlabeled competitor by measuring how the binding of a labeled radioligand changes over time when both ligands are added together. The kinetic parameters of the labeled ligand are treated as known (constrained from separate kinetic experiments), and the model fits the kinetic parameters of the unlabeled ligand by globally analyzing time courses collected at two or more competitor concentrations. Because the interaction between labeled and unlabeled ligands produces a biexponential time course, the model computes two observed rate constants and combines them to predict the time-dependent specific binding.
+
+###### Equation
+{: .no_toc }
+<div id="kinetics-competitive-binding"> \[ \begin{equation} \begin{aligned} K_A &= k_1\cdot L \cdot 10^{-9} + k_2 \\ K_B &= k_3\cdot I \cdot 10^{-9} + k_4 \\ S &= \sqrt{(K_A-K_B)^2 + 4\,k_1k_3\,I\,L\cdot 10^{-18}} \\ K_F &= \frac{1}{2}\left(K_A+K_B+S\right) \\ K_S &= \frac{1}{2}\left(K_A+K_B-S\right) \\ DIFF &= K_F-K_S \\ Q &= \frac{B_{max}\,k_1\,I\cdot 10^{-9}}{DIFF} \\ Y &= Q\left(\frac{k_4\,DIFF}{K_FK_S} + \frac{K_4-K_F}{K_F}e^{-K_FX} - \frac{K_4-K_S}{K_S}e^{-K_SX}\right) \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/kinetics_competitive_binding.png" alt="Kinetics of competitive binding" width="400" height="300" class="img-responsive"> </div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be time  on a linear scale and therefore must be non-negative ($$X≥0$$).  The model also requires at lease one column containing the dependent variable (Y) response values (in any consistent units). The unlabeled ligand concentrations (in nM) must be provided for each curve.The model requires the specification of three extra parameters:
+1. $$k_1 (1/M*min)$$: The association rate constant of the labeled ligand.
+
+1. $$k_2 (1/min)$$: The dissociation rate constant of the labeled ligand.
+
+1. $$L (nM)$$: The concentration of labeled ligand (radioligand) in nM, treated as constant for the experiment.
+
+###### Parameters
+{: .no_toc }
+1. $$k_3$$: The association rate constant of the unlabeled ligand, in $$(1/M*min)$$.
+.
+
+1. $$k_4$$: Dissociation rate constant, in $$min^{-1}$$.
+
+1. $$Bmax$$: The maximal binding capacity (same units as $$Y$$), representing total receptor binding capacity.
+
+---
+
+#### Enzyme Kinetics
+##### Michaelis-Menten
+The Michaelis–Menten model describes classic steady-state enzyme kinetics when substrate concentration is varied and initial reaction velocity is measured. The model assumes that enzyme–substrate complex formation reaches a quasi-steady state and that product formation is rate-limiting. As substrate concentration increases, velocity rises rapidly at low concentrations and then approaches an asymptotic maximum velocity ($$V_{max}$$). This formulation is appropriate when the concentration of enzyme catalytic sites is unknown or when the primary quantities of interest are ($$V_{max}$$) and ($$K_{m}$$) rather than ($$k_{cat}$$).
+
+###### Equation
+{: .no_toc }
+
+<div id="michaelis-menten"> 
+\[ \begin{equation} 
+Y = \frac{V_{max}\, X}{K_m + X} 
+\end{equation} 
+\] </div>
+
+###### Visualization
+{: .no_toc }
+
+<div style="text-align: center;"> <img src="images/Curve Fitting/michaelis_menten.png" alt="Michaelis–Menten curve" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and must be strictly positive ($$𝑋 > 0$$); zero or negative values are excluded from the fit. The dependent variable (Y) must be initial enzyme velocity expressed in consistent concentration-per-time units (e.g., µM/min, nM/s). No additional fixed parameters are required for this model.
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The maximal enzyme velocity in the same units as $$Y$$. This is the velocity the enzyme would reach at infinitely high substrate concentration and is typically higher than any measured velocity in the experiment.
+
+1. $$K_m$$: The Michaelis–Menten constant, in the same units as $$X$$. It is the substrate concentration required to reach half of $$V_{max}$$. A lower $$K_m$$ indicates higher apparent affinity of the enzyme for the substrate.
+
+---
+
+##### Determine kcat
+The Determine kcat model is a re-parameterized form of the Michaelis–Menten equation used when the concentration of enzyme catalytic sites (Et) is known. Instead of fitting Vmax, the model estimates the turnover number (kcat) — the number of substrate molecules converted to product per catalytic site per unit time. The model assumes classic steady-state Michaelis–Menten kinetics: velocity increases with substrate concentration and asymptotically approaches a maximum rate equal to $$E_t*k_{cat}$$. This formulation is useful when comparing catalytic efficiency across enzymes or conditions because kcat is independent of enzyme concentration, whereas Vmax is not.
+
+###### Equation
+{: .no_toc }
+<div id="determine-kcat"> \[ \begin{equation} Y = \frac{E_t \cdot k_{cat}\, X}{K_m + X} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;">
+<img src="images/Curve Fitting/determine_kcat.png" alt="Determine Kcat" width="400" height="300" class="img-responsive">
+</div>
+
+###### Input 
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and therefore must be strictly positive ($$X>0$$); zero or negative values are excluded. The dependent variable (Y) must be initial enzyme velocity in consistent concentration-per-time units (e.g., µM/min, nM/s). The model requires the specification of one extra parameter:
+
+1. $$E_t$$: the concentration of enzyme catalytic sites, in the same concentration units used for $$Y$$ (time units are defined by kcat).
+
+###### Parameters
+{: .no_toc }
+1. $$k_{cat}$$: The turnover number: the number of substrate molecules converted to product per catalytic site per unit time. Units are the inverse of the time units in 
+$$Y$$ (e.g., $$s^{-1}$$ or $$min^{-1}$$). Larger $$k_{cat}$$ means a faster enzyme.
+
+1. $$K_m$$: The Michaelis–Menten constant (same units as $$X$$). It is the substrate concentration required to reach half of the maximal velocity. Lower $$K_m$$ indicates higher apparent affinity for substrate.
+
+1. $$V_{max}$$: The nonspecific binding fraction (or proportionality factor) describing the portion of radioligand signal attributable to nonspecific binding sites under this CPM-based formulation.
+
+---
+
+##### Allosteric (sigmoidal) enzyme kinetics
+The Allosteric sigmoidal model describes enzyme kinetics when the enzyme displays cooperative substrate binding. In this case, the velocity–substrate curve is not hyperbolic (as in Michaelis–Menten) but sigmoidal. This behavior is captured empirically by adding a Hill coefficient to the Michaelis–Menten form. The model is useful when binding of substrate to one catalytic site alters the affinity of other sites, producing positive cooperativity.
+
+###### Equation
+{: .no_toc }
+<div id="allosteric-sigmoidal"> \[ \begin{equation} Y = \frac{V_{max}\, X^h}{K_{half}^h + X^h} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/allosteric_sigmoidal_kinetics.png" alt="Allosteric (sigmoidal) enzyme kinetics" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and must be strictly positive ($$𝑋 > 0$$); zero or negative values are excluded from the fit. The dependent variable (Y) must be initial enzyme velocity expressed in consistent concentration-per-time units (e.g., µM/min, nM/s). No additional fixed parameters are required for this model.
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The maximal enzyme velocity in the same units as $$Y$$. This is the velocity the enzyme would reach at infinitely high substrate concentration and is typically higher than any measured velocity in the experiment.
+
+1. $$K_{half}$$: The substrate concentration that produces half-maximal velocity. It plays a role analogous to $$K_m$$ in Michaelis–Menten kinetics and is sometimes called the EC50 for enzyme velocity.
+
+1. $$h (Hill slope)$$: An empirical measure of cooperativity and curve steepness. If:
+     1. $$h=1$$, the equation reduces to the standard Michaelis–Menten model.
+     1. $$h>1$$, the curve becomes sigmoidal, indicating positive cooperativity.
+h does not necessarily equal the number of binding sites; it reflects the degree of cooperative behavior rather than a strict mechanistic count.
+
+---
+
+##### Competitive Inhibition
+The Competitive enzyme inhibition model describes enzyme kinetics in the presence of a reversible competitive inhibitor. A competitive inhibitor binds to the same active site as the substrate, so its effect can be overcome by increasing substrate concentration. As a result, $$V_{max}$$ remains unchanged, while the apparent Michaelis–Menten constant increases. By fitting substrate–velocity curves measured at multiple inhibitor concentrations, the model estimates the inhibition constant $$K_i$$ together with the shared kinetic parameters $$V_{max}$$ and $$K_m$$.
+
+###### Equation
+{: .no_toc }
+<div id="competitive-enzyme-inhibition"> \[ \begin{equation} \begin{aligned} K_{m,obs} &= K_m\left(1+\frac{I}{K_i}\right) \\ Y &= \frac{V_{max}\,X}{K_{m,obs}+X} \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/competitive_inhibition.png" alt="Competitive enzyme inhibition" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and therefore must be strictly positive ($$X>0$$). The dependent variables (Y) must be enzyme velocity measured at several inhibitor concentrations. Each Y column represents one inhibitor concentration. The inhibitor concentration $$I$$ (in the same units for all curves, typically µM) must be entered as numeric concentration values (not logarithms). These values are treated as data-set constants during fitting.
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The maximal enzyme velocity in the absence of inhibitor, expressed in the same units as $$Y$$. It is shared across all inhibitor concentrations.
+
+1. $$K_{i}$$: The inhibition constant, expressed in the same units as $$I$$. It quantifies the affinity of the inhibitor for the enzyme. Lower $$K_i$$ indicates stronger inhibition.
+
+1. $$k_m$$: The Michaelis–Menten constant in the absence of inhibitor, expressed in the same units as $$X$$. It represents the substrate concentration required to reach half of $$𝑉_{max}$$ when $$I=0$$.
+
+---
+
+##### Noncompetitive Inhibition
+The Noncompetitive enzyme inhibition model describes enzyme kinetics in the presence of an inhibitor that binds reversibly to both the free enzyme and the enzyme–substrate complex with the same affinity. In this simplified “pure noncompetitive” case, inhibition reduces the effective maximal velocity ($$V_{max}$$) while leaving $$K_m$$ unchanged. By fitting substrate–velocity curves measured at multiple inhibitor concentrations, the model estimates the inhibition constant $$K_i$$ together with the shared parameters $$V_{max}$$ and $$K_m$$. If inhibition does not follow this simplified behavior, a mixed-model inhibition equation is often more appropriate.
+
+###### Equation
+{: .no_toc }
+<div id="noncompetitive-enzyme-inhibition"> \[ \begin{equation} \begin{aligned} V_{max,inh} &= \frac{V_{max}}{1+\frac{I}{K_i}} \\ Y &= \frac{V_{max,inh}\,X}{K_m+X} \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/noncompetitive_inhibition.png" alt="Noncompetitive enzyme inhibition" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and therefore must be strictly positive ($$X>0$$). The dependent variables (Y) must be enzyme velocity measured at multiple inhibitor concentrations. Each Y column represents one inhibitor concentration. The inhibitor concentration $$I$$ (in the same units for all curves, typically µM) must be entered as numeric concentration values (not logarithms). These values are treated as data-set constants during fitting.
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The maximum enzyme velocity in the absence of inhibitor, expressed in the same units as $$Y$$. It is shared across all inhibitor concentrations.
+
+1. $$K_{i}$$: The inhibition constant, expressed in the same units as $$I$$. It quantifies the affinity of the inhibitor for the enzyme. Lower $$K_i$$ indicates stronger inhibition.
+
+1. $$k_m$$: The Michaelis–Menten constant in the absence of inhibitor, expressed in the same units as $$X$$. It represents the substrate concentration required to reach half of $$𝑉_{max}$$ when $$I=0$$.
+
+---
+
+##### Uncompetitive Inhibition
+The Uncompetitive enzyme inhibition model describes inhibition in which the inhibitor binds exclusively to the enzyme–substrate complex, not to the free enzyme. As a result, both the apparent maximal velocity and the apparent Michaelis constant decrease by the same factor. The substrate–velocity curves shift downward and to the left as inhibitor concentration increases. By fitting multiple curves measured at different inhibitor concentrations, the model estimates the inhibition constant together with the shared kinetic parameters of the uninhibited system.
+
+###### Equation
+{: .no_toc }
+<div id="uncompetitive-enzyme-inhibition"> \[ \begin{equation} \begin{aligned} V_{max}^{app} &= \frac{V_{max}}{1+\frac{I}{\alpha K_i}} \\ K_m^{app} &= \frac{K_m}{1+\frac{I}{\alpha K_i}} \\ Y &= \frac{V_{max}^{app}\,X}{K_m^{app}+X} \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/uncompetitive_inhibition.png" alt="Uncompetitive enzyme inhibition" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and therefore must be strictly positive ($$X>0$$). The dependent variables (Y) must be enzyme velocity measured at several inhibitor concentrations. Each Y column represents one inhibitor concentration. The inhibitor concentration $$I$$ (in the same units for all curves, typically µM) must be entered as numeric concentration values (not logarithms). These values are treated as data-set constants during fitting.
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The maximal enzyme velocity in the absence of inhibitor, expressed in the same units as $$Y$$. This parameter is shared across all inhibitor concentrations.
+
+1. $$aK_{i}$$: The effective inhibition constant for binding to the enzyme–substrate complex, expressed in the same units as $$I$$. Only the product $$αK_i$$ can be identified in this formulation.
+
+1. $$k_m$$: The Michaelis–Menten constant in the absence of inhibitor, expressed in the same units as $$X$$. It represents the substrate concentration required to reach half of $$𝑉_{max}$$ when $$I=0$$.
+
+
+---
+
+##### Mixed-model Inhibition
+The Mixed-model enzyme inhibition equation is the most general reversible inhibition model. It includes competitive, uncompetitive, and noncompetitive inhibition as special cases. In this framework, the inhibitor can bind both to the free enzyme and to the enzyme–substrate complex, but with potentially different affinities. The additional parameter $$α$$ quantifies the relative preference of inhibitor binding to these two forms and therefore provides mechanistic insight into the mode of inhibition. By fitting multiple substrate–velocity curves measured at different inhibitor concentrations, the model estimates a single shared set of kinetic and inhibition parameters.
+
+###### Equation
+{: .no_toc }
+<div id="mixed-model-enzyme-inhibition"> \[ \begin{equation} \begin{aligned} V_{max}^{app} &= \frac{V_{max}}{1+\frac{I}{\alpha K_i}} \\ K_m^{app} &= K_m \frac{1+\frac{I}{K_i}}{1+\frac{I}{\alpha K_i}} \\ Y &= \frac{V_{max}^{app}\,X}{K_m^{app}+X} \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/mixed_model_inhibition.png" alt="Mixed-model enzyme inhibition" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and therefore must be strictly positive ($$X>0$$). The dependent variables (Y) must be enzyme velocity measured at several inhibitor concentrations. Each Y column represents one inhibitor concentration. The inhibitor concentration $$I$$ (in the same units for all curves, typically µM) must be entered as numeric concentration values (not logarithms). These values are treated as data-set constants during fitting.
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The maximal enzyme velocity in the absence of inhibitor, expressed in the same units as $$Y$$. Shared across all inhibitor concentrations.
+
+1. $$K_m$$: The Michaelis–Menten constant in the absence of inhibitor, expressed in the same units as $$𝑋$$.
+
+1. $$K_i$$: The inhibition constant for inhibitor binding to the free enzyme, expressed in the same units as $$I$$.​
+
+1. $$a$$: The interaction factor describing how inhibitor binding affects substrate binding affinity. It is dimensionless and must be greater than zero.
+     1. If $$α=1$$, the inhibitor binds equally well to free enzyme and enzyme–substrate complex (pure noncompetitive inhibition).
+     1. If $$α>1$$, the inhibitor preferentially binds to the free enzyme (approaching competitive inhibition as $$α→∞$$).
+     1. If $$α<1$$ (but >0), the inhibitor preferentially binds to the enzyme–substrate complex (approaching uncompetitive inhibition as $$α→0$$).
+
+
+---
+
+##### Substrate Inhibition
+The Substrate inhibition model describes enzyme kinetics in which high substrate concentrations reduce enzyme activity. This occurs when a second substrate molecule binds to the enzyme–substrate complex, forming an inactive ternary complex. As a result, velocity initially increases with substrate concentration following Michaelis–Menten behavior, reaches a maximum, and then decreases at higher substrate levels. This model is appropriate when the rate–substrate curve shows a clear peak followed by a decline.
+
+###### Equation
+{: .no_toc }
+<div id="substrate-inhibition"> \[ \begin{equation} Y = \frac{V_{max}\,X}{K_m + X\left(1+\frac{X}{K_i}\right)} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/substrate_inhibition.png" alt="Substrate inhibition" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be substrate concentration on a linear scale and strictly positive ($$X>0$$). Zero or negative substrate concentrations are excluded.
+The dependent variable (Y) must be enzyme velocity measured in consistent concentration-per-time units (e.g., µM/min, nM/s).
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{max}$$: The theoretical maximum enzyme velocity in the absence of substrate inhibition. Expressed in the same units as $$Y$$.
+
+1. $$K_m$$: The Michaelis–Menten constant (same units as $$X$$). It is the substrate concentration at which velocity reaches half of $$V_{max}$$ when substrate inhibition is negligible.
+
+1. $$K_i$$: The inhibition constant for binding of the second substrate molecule (same units as $$X$$). Smaller $$K_i$$ values indicate stronger substrate inhibition (the decline in velocity begins at lower substrate concentrations).
+
+---
+
+##### Tight inhibition (Morrison equation)
+The Tight inhibition model (Morrison equation) describes enzyme inhibition under conditions where the inhibitor binds with high affinity and its concentration is comparable to the enzyme concentration. In this regime, the free inhibitor concentration cannot be approximated by the total inhibitor concentration because a substantial fraction becomes bound to enzyme. This model explicitly accounts for ligand depletion and is appropriate when $$[I] \sim [E]$$ or when the inhibition curve deviates from standard Michaelis–Menten competitive behavior. Unlike classical inhibition models, this formulation requires independent knowledge of enzyme concentration and substrate conditions, as these cannot be reliably estimated from inhibition data alone.
+
+###### Equation
+{: .no_toc }
+<div id="tight-inhibition-morrison"> \[ \begin{equation} Q = K_i\left(1+\frac{S}{K_m}\right) \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/morrison_tight_binding.png" alt="Tight inhibition Morrison equation" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be the total inhibitor concentration on a linear scale and strictly positive ($$X>0$$). The dependent variable (Y) must be enzyme activity measured in consistent units (e.g., velocity in µM/min, absorbance change per minute, etc.). The following parameters must be provided and constrained to constant values based on independent experiments:
+
+1. $$E_t$$: Total concentration of enzyme catalytic sites (same concentration units as $$X$$).
+
+1. $$S$$: Substrate concentration used in the assay (same units as $$X$$).
+
+1. $$K_m$$: Michaelis–Menten constant determined in the absence of inhibitor (same units as $$X$$).
+
+###### Parameters
+{: .no_toc }
+
+1. $$V_{0}$$: Enzyme velocity in the absence of inhibitor, expressed in the same units as $$Y$$.
+
+1. $$K_i$$: Inhibition constant, expressed in the same units as $$X$$. Smaller $$K_i$$ values indicate tighter binding.
+
+---
+
+#### Exponential
+
+##### One phase decay
+The One phase decay model describes exponential decline processes in which the rate of decrease is proportional to the amount remaining. This behavior is characteristic of first-order kinetics and applies to many biological and chemical systems, including ligand dissociation, radioactive decay, and drug elimination. The model assumes a single homogeneous population decaying toward a stable plateau. The decay rate constant determines how rapidly the response approaches this asymptote.
+
+###### Equation
+{: .no_toc }
+<div id="one-phase-decay"> \[ \begin{equation} Y = (Y_0 - \text{Plateau})\,e^{-KX} + \text{Plateau} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/one_phase_decay.png" alt="One phase decay" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response value at time zero, expressed in the same units as $$Y$$.
+
+1. $$Plateau$$: The response value as time approaches infinity. It represents the asymptotic minimum.
+
+1. $$K$$: The first-order rate constant (units are inverse time, e.g., $$min^{-1}$$ or $$s^{-1}$$). $$K$$ must be positive. Larger $$K$$ values correspond to faster decay.
+
+---
+
+##### Two phase decay
+The Two phase decay model describes processes in which the observed response is the sum of two independent first-order exponential decays: a fast component and a slow component. This situation arises when two kinetically distinct populations or mechanisms contribute to the signal (e.g., two binding states, two compartments, or heterogeneous molecular species). The total response declines toward a plateau as both components decay over time. The model assumes that each component follows first-order kinetics and that their contributions are additive.
+
+###### Equation
+{: .no_toc }
+<div id="two-phase-decay-spans"> \[ \begin{equation} \begin{aligned} \text{Span} &= Y_0 - \text{Plateau} \\ \text{Span}_{\text{Fast}} &= \text{Span}\cdot\frac{\text{PercentFast}}{100} \\ \text{Span}_{\text{Slow}} &= \text{Span}\cdot\frac{100 - \text{PercentFast}}{100} \end{aligned} \end{equation} \] </div>
+<div id="two-phase-decay"> \[ \begin{equation} Y = \text{Plateau} + \text{Span}_{\text{Fast}}\,e^{-K_{\text{Fast}}X} + \text{Span}_{\text{Slow}}\,e^{-K_{\text{Slow}}X} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/two_phase_decay.png" alt="Two phase decay" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response value at time zero, expressed in the same units as $$Y$$.
+
+1. $$Plateau$$: The response value as time approaches infinity. It represents the asymptotic minimum.
+
+1. $$K_{Fast}$$: Rate constant of the fast component (units: inverse time). Must be positive.
+
+1. $$K_{Slow}$$: Rate constant of the slow component (units: inverse time). Must be positive.
+
+1. $$PercentFast$$: Fraction (0–100%) of the total span attributed to the fast-decaying component.
+
+---
+
+##### Three phase decay
+The Three phase decay model describes processes in which the observed response is the sum of three independent first-order exponential decays: fast, intermediate, and slow components. This model is appropriate when the signal arises from three kinetically distinct populations or mechanisms (e.g., multiple binding states or compartments). Each component decays exponentially and independently, and the total response is their sum plus a plateau value. Because this model contains several correlated parameters, reliable fitting requires dense time sampling and low experimental noise.
+
+###### Equation
+{: .no_toc }
+<div id="three-phase-decay"> \[ \begin{equation} Y = \text{Plateau} + \text{Span}_{\text{Fast}}\,e^{-K_{\text{Fast}}X} + \text{Span}_{\text{Medium}}\,e^{-K_{\text{Medium}}X} + \text{Span}_{\text{Slow}}\,e^{-K_{\text{Slow}}X} \end{equation} \] </div> <div id="three-phase-decay-spans"> \[ \begin{equation} \begin{aligned} \text{Span} &= Y_0 - \text{Plateau} \\ \text{Span}_{\text{Fast}} &= \text{Span}\cdot\frac{\text{PercentFast}}{100} \\ \text{Span}_{\text{Slow}} &= \text{Span}\cdot\frac{\text{PercentSlow}}{100} \\ \text{Span}_{\text{Medium}} &= \text{Span} - \text{Span}_{\text{Fast}} - \text{Span}_{\text{Slow}} \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/three_phase_decay.png" alt="Three phase decay" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response value at time zero, expressed in the same units as $$Y$$.
+
+1. $$Plateau$$: The response value as time approaches infinity. It represents the asymptotic minimum.
+
+1. $$K_{Fast}$$: Rate constant of the fast component (units: inverse time). Must be positive.
+
+1. $$K_{Medium}$$: Rate constant of the intermediate component (units: inverse time). Must be positive.
+
+1. $$K_{Slow}$$: Rate constant of the slow component (units: inverse time). Must be positive.
+
+1. $$PercentFast$$: Fraction (0–100%) of the total span attributed to the fast-decaying component.
+
+1. $$PercentSlow$$: Percentage (0–100%) of the total span attributed to the slow component.
+
+---
+
+##### Plateau followed by one phase decay
+The Plateau followed by one phase decay model is a piecewise exponential-decay equation used when the response remains approximately constant for an initial period (baseline/plateau), and then begins to decay only after an intervention at a known (or fitted) start time $$X_0$$. Before $$X_0$$ the response is flat at $$Y_0$$; after $$X_0$$ it decays exponentially toward a final plateau. This is useful for experiments where decay is initiated by a washout, dilution, drug addition, temperature shift, or any trigger applied at a specific time.
+
+###### Equation
+{: .no_toc }
+<div id="plateau-one-phase-decay"> \[ \begin{equation} Y = \begin{cases} Y_0, & X < X_0 \\ \text{Plateau} + (Y_0-\text{Plateau})\,e^{-K\,(X-X_0)}, & X \ge X_0 \end{cases} \end{equation} \] </div> <div id="plateau-one-phase-decay-span"> \[ \begin{equation} \text{Span} = Y_0 - \text{Plateau} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/plateau_one_phase_decay.png" alt="Plateau followed by one phase decay" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$X_0$$: The time at which decay begins (same time units as $$X$$).
+
+1. $$Y_{0}$$: The baseline response level before decay begins (same units as $$Y$$). Conceptually, it is the plateau value for $$X<X_0$$.
+
+1. $$Plateau$$: The response value as time approaches infinity. It represents the asymptotic minimum.
+
+1. $$K$$: The first-order decay rate constant (units: inverse time). $$K$$ must be positive; larger $$K$$ means faster decay after $$X_0$$.
+
+---
+
+##### One phase association
+The One phase association model describes pseudo–first-order association kinetics, where the response increases over time as binding/formation occurs and then approaches a steady-state plateau. Early in the experiment, many binding sites (or reactants) are available, so the response rises quickly; as sites become occupied, the rate of increase slows and the curve asymptotically approaches a maximum. This model is commonly used for simple association processes such as ligand–receptor binding, enzyme–substrate complex formation, or any system with a single dominant association phase.
+
+###### Equation
+{: .no_toc }
+<div id="one-phase-association"> \[ \begin{equation} Y = Y_0 + (\text{Plateau}-Y_0)\left(1-e^{-KX}\right) \end{equation} \] </div> <div id="one-phase-association-span"> \[ \begin{equation} \text{Span} = \text{Plateau} - Y_0 \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/one_phase_association.png" alt="One phase association" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response at time zero (same units as $$Y$$).
+
+1. $$Plateau$$: The response at time zero (same units as $$Y$$). If background-subtracted data start at the origin, this can be fixed to 0.
+
+1. $$K$$: The association rate constant for the one-phase approach (units: inverse time). $$K$$ must be positive; larger $$K$$ means the curve reaches the plateau faster.
+
+---
+
+##### Two phase association
+The Two phase association model describes a response that approaches a plateau through the sum of two independent exponential association processes: a fast component and a slow component. It is used when the measured response reflects two kinetically distinct populations or mechanisms (e.g., two receptor states, two binding sites, or parallel pathways). The curve rises rapidly at early times due to the fast component and then continues more slowly toward the same final plateau.
+
+###### Equation
+{: .no_toc }
+<div id="two-phase-association-main"> \[ \begin{equation} Y = Y_0 + \text{SpanFast}\left(1-e^{-K_{\text{Fast}}X}\right) + \text{SpanSlow}\left(1-e^{-K_{\text{Slow}}X}\right) \end{equation} \] </div> <div id="two-phase-association-spans"> \[ \begin{equation} \text{SpanFast} = (\text{Plateau}-Y_0)\frac{\text{PercentFast}}{100} \end{equation} \] </div> <div id="two-phase-association-span-slow"> \[ \begin{equation} \text{SpanSlow} = (\text{Plateau}-Y_0)\left(1-\frac{\text{PercentFast}}{100}\right) \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/two_phase_association.png" alt="Two phase association" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response at time zero (same units as $$Y$$).
+
+1. $$Plateau$$: The response at time zero (same units as $$Y$$). If background-subtracted data start at the origin, this can be fixed to 0.
+
+1. $$K_{Fast}$$: Rate constant of the fast association phase (units: inverse time). Larger values correspond to a more rapid initial rise.
+
+1. $$K_{Slow}$$: Rate constant of the slow association phase (units: inverse time). 
+
+1. $$PercentFast$$: Percentage of the total span ($$Y_0$$ to Plateau) attributable to the fast component (range 0–100).
+
+---
+
+##### Plateau followed by one phase association
+The Plateau followed by one phase association model describes a system in which the response remains at a baseline level until a defined time point $$X_0$$, after which a first-order association process begins. It is used when an experimental intervention (e.g., ligand addition, mixing, stimulus) initiates association at a known or fitted time rather than at $$X=0$$. After $$X_0$$, the response rises exponentially toward a plateau.
+
+###### Equation
+{: .no_toc }
+<div id="plateau-followed-by-association"> \[ \begin{equation} Y = \begin{cases} Y_0, & X < X_0 \\ Y_0 + (\text{Plateau}-Y_0)\left(1-e^{-K(X-X_0)}\right), & X \ge X_0 \end{cases} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/plateau_one_phase_association.png" alt="Plateau followed by one phase association" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$X_0$$: The time at which association begins (same time units as $$X$$).
+
+1. $$Y_{0}$$: The baseline response level before association begins (same units as $$Y$$). Conceptually, it is the plateau value for $$X<X_0$$.
+
+1. $$Plateau$$: The response value as time approaches infinity. It represents the asymptotic minimum.
+
+1. $$K$$: Association rate constant (units: inverse time). Larger $$K$$ produces a steeper rise.
+
+---
+
+##### Exponential Growth
+The Exponential growth model describes processes that increase at a rate proportional to their current value. This produces growth with a constant doubling time. It is commonly used for population growth, cell proliferation, bacterial expansion, or compound accumulation under first-order kinetics.
+
+###### Equation
+{: .no_toc }
+<div id="exponential-growth"> \[ \begin{equation} Y = Y_0\, e^{KX} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/exponential_growth.png" alt="Exponential growth" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response at $$X=0$$ (same units as $$Y$$).
+
+1. $$K$$: Growth rate constant (units: inverse time). Larger $$K$$ produces faster growth.
+
+---
+
+#### Lines
+##### Simple Line
+The Simple line (nonlinear regression) model fits a linear relationship between an independent variable $$X$$ and a dependent response $$Y$$. Although the equation is linear in form, it is included here because it is fit using the nonlinear regression workflow, which can be useful when you want nonlinear-regression features (e.g., model comparison, weighting, or automatic outlier handling) while still fitting a straight line. The model assumes that changes in $$Y$$ are proportional to changes in $$X$$ across the measured range.
+
+###### Equation
+{: .no_toc }
+<div id="straight-line-nonlinear"> \[ \begin{equation} Y = Y_{\text{Intercept}} + \mathrm{Slope}\cdot X \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/simple_line.png" alt="Simple line (nonlinear regression)" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable column $$X$$ can be any real-valued numeric data (linear scale). The dependent variable column $$Y$$ contains the response values in consistent units.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Intercept$$: The fitted value of $$X=0$$ (the point where the line intersects the $$Y$$-axis). Units are the same as $$Y$$.
+
+1. $$Slope$$: The slope of the fitted line, representing the change in $$Y$$ per unit change in $$X$$. Units are $$Y$$-units divided by $$X$$-units.
+
+---
+
+##### Simple Line through origin
+The Simple Line through origin model fits a straight-line relationship between $$X$$ and $$Y$$ while forcing the intercept to be exactly zero. This is appropriate when theory or experimental design requires that 
+$$Y=0$$ when $$X=0$$ (i.e., the relationship must pass through the origin). Because the intercept is fixed, the only fitted parameter is the slope, which represents the proportionality between $$Y$$ and $$X$$.
+
+###### Equation
+{: .no_toc }
+<div id="line-through-origin"> \[ \begin{equation} Y = \mathrm{Slope}\cdot X \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/simple_line_origin.png" alt="Simple line through origin" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable column $$X$$ can be any real-valued numeric data (linear scale). The dependent variable column $$Y$$ contains the response values in consistent units.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Slope$$: The slope of the fitted line, representing the change in $$Y$$ per unit change in $$X$$. Units are $$Y$$-units divided by $$X$$-units.
+
+---
+
+##### Simple Line through (X0,Y0)
+The Simple line through $$(X_0,Y_0)$$ model fits a straight line while forcing it to pass through a specified point $$(X_0,Y_0)$$. This is useful when you know one exact calibration/reference point that the fitted relationship must satisfy (e.g., a baseline measurement, a normalization anchor, or a physical constraint). The model estimates a single parameter (Slope), while the intercept is implied by the requirement that the line passes through $$(X_0,Y_0)$$.
+
+###### Equation
+{: .no_toc }
+<div id="line-through-x0y0"> \[ \begin{equation} Y = Y_0 + \mathrm{Slope}\,(X - X_0) \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/simple_line_point.png" alt="Simple line through point" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable column $$X$$ can be any real-valued numeric data (linear scale). The dependent variable column $$Y$$ contains the response values in consistent units.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Slope$$: The slope of the fitted line, representing the change in $$Y$$ per unit change in $$X$$. Units are $$Y$$-units divided by $$X$$-units.
+
+---
+
+##### Segmental linear regression (2 segments)
+Segmental linear regression (also called piecewise or segmented regression) fits two straight-line segments with a single breakpoint at $$X_0$$. One line is used for $$X < X_0$$ and a second line is used for $$X≥X_0$$, with continuity enforced so the two segments meet exactly at $$X_0$$. This is useful when the relationship changes slope abruptly at a known or unknown transition point (e.g., an intervention time, a threshold effect, or a regime change).
+
+###### Equation
+{: .no_toc }
+<div id="segmental-linear-regression"> \[ \begin{equation} \begin{aligned} Y_1 &= \mathrm{Intercept}_1 + \mathrm{Slope}_1\,X \\ Y_{\text{at}X_0} &= \mathrm{Intercept}_1 + \mathrm{Slope}_1\,X_0 \\ Y_2 &= Y_{\text{at}X_0} + \mathrm{Slope}_2\,(X - X_0) \\ Y &= \mathrm{IF}(X<X_0,\; Y_1,\; Y_2) \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/segmental2_linear_regression.png" alt="Segmental linear regression" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable column $$X$$ can be any real-valued numeric data (linear scale). The dependent variable column $$Y$$ contains the response values in consistent units. The model requires the sepcification of one extra parameter: 
+1. $$X_0$$:  The breakpoint (the $$X$$ value where the slope changes). This is the X value where the model switches from the first line to the second, with continuity enforced at $$X_0$$.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Intercept$$: The $$Y$$-intercept of the first segment (units: $$Y$$). It is the predicted $$Y$$ value when $$X=0$$ according to the first line.
+
+1. $$Slope_1$$: The slope of the first segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X<X_0$$.
+
+1. $$Slope_2$$: The slope of the second segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X \geq X_0$$.
+
+---
+
+##### Segmental linear regression (3 segments)
+This three-segment (piecewise) linear regression fits three straight-line segments separated by two breakpoints, $$X_0$$ and $$X_1$$. The model uses one line for $$X < X_0$$, a second line for $$X_0 \leq X < X_1$$, and a third line for $$X \geq X_1$$. Continuity is enforced so the segments meet exactly at both breakpoints.
+
+###### Equation
+{: .no_toc }
+<div id="segmental-linear-regression-3"> \[ \begin{equation} \begin{aligned} Y_1 &= \mathrm{Intercept}_1 + \mathrm{Slope}_1\,X \\ Y_{\text{at}X_0} &= \mathrm{Intercept}_1 + \mathrm{Slope}_1\,X_0 \\ Y_2 &= Y_{\text{at}X_0} + \mathrm{Slope}_2\,(X - X_0) \\ Y_{\text{at}X_1} &= Y_{\text{at}X_0} + \mathrm{Slope}_2\,(X_1 - X_0) \\ Y_3 &= Y_{\text{at}X_1} + \mathrm{Slope}_3\,(X - X_1) \\ Y &= \mathrm{IF}(X<X_0,\; Y_1,\; \mathrm{IF}(X<X_1,\; Y_2,\; Y_3)) \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/segmental3_linear_regression.png" alt="Segmental (3 segments) linear regression" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable column $$X$$ can be any real-valued numeric data (linear scale). The dependent variable column $$Y$$ contains the response values in consistent units. The model requires the sepcification of two extra parameters: 
+1. $$X_0$$: The first breakpoint provided by the user (units: $$X$$). The model switches from segment 1 to segment 2 at $$X_0$$.
+1. $$X_1$$: The second breakpoint provided by the user (units: $$X$$). The model switches from segment 2 to segment 3 at $$X_1$$.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Intercept$$: The $$Y$$-intercept of the first segment (units: $$Y$$). It is the predicted $$Y$$ value when $$X=0$$ according to the first line.
+
+1. $$Slope_1$$: The slope of the first segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X<X_0$$.
+
+1. $$Slope_2$$: The slope of the second segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X_0 \leq X < X_1$$.
+
+1. $$Slope_3$$: The slope of the third segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X \geq X_1$$.
+
+---
+
+##### Hinge function 
+The hinge function fits two approximately linear segments joined by a smooth transition rather than a sharp corner. For values of $$X$$ far below the breakpoint $$X_0$$, the curve behaves like a straight line with slope $$Slope_1$$. For values far above $$X_0$$, it approaches a second straight line with slope Slope_2. The transition between these two slopes is controlled by the parameter $$Δ$$, which determines how gradual the bend is. There is also an option to constrain $$Δ$$ using the Hinge function (fixed $$Δ$$ equation.)
+
+When $$Δ→0$$, the model approaches ordinary segmented (piecewise) linear regression with two intersecting straight lines. Larger $$Δ$$ values produce a smoother, more gradual change in slope.
+
+###### Equation
+{: .no_toc }
+<div id="hinge-function"> \[ \begin{equation} Y = \mathrm{Intercept} + \mathrm{Slope}_1 (X - X_0) + (\mathrm{Slope}_2 - \mathrm{Slope}_1)\,\Delta \,\ln\!\left(1 + \exp\!\left(\frac{X - X_0}{\Delta}\right)\right) \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/hinge_function.png" alt="Hinge function" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable column $$X$$ can be any real-valued numeric data (linear scale). The dependent variable column $$Y$$ contains the response values in consistent units. The model requires the sepcification of two extra parameters: 
+1. $$X_0$$: The breakpoint provided by the user (units: $$X$$). The model switches from segment 1 to segment 2 at $$X_0$$.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Intercept$$: The $$Y$$-intercept of the first segment (units: $$Y$$). It is the predicted $$Y$$ value when $$X=0$$ according to the first line.
+
+1. $$Slope_1$$: The slope of the first segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X<X_0$$.
+
+1. $$Slope_2$$: The slope of the second segment (units: $$Y$$ per $$X$$). It describes how $$Y$$ changes with $$X$$ for $$X_0 \leq X $$.
+
+1. $$\Delta$$: The smoothness parameter (units of $$X$$). It controls how sharp or gradual the bend is. It must be strictly positive.
+     1. As $$Δ→0$$, the model approaches two intersecting straight lines.
+     1. Larger $$Δ$$ values produce a more gradual transition.
+
+---
+
+
+#### Polynomial 
+##### Polynomial Models (order 1-6)
+Polynomial models provide a flexible, empirical way to describe the relationship between an independent variable $$X$$ and a response $$Y$$ by expressing $$Y$$ as a finite sum of powers of $$X$$. Increasing the polynomial order adds additional curvature and can improve fit, but higher-order polynomials may also introduce unnecessary “wiggles” and overfit noise. Because polynomial models are typically used for interpolation/smoothing rather than to represent an underlying mechanistic process, the coefficients are often not directly interpretable.
+
+###### Equation
+{: .no_toc }
+<div id="polynomial-models"> \[ \begin{equation} Y = B_0 + B_1X + B_2X^2 + \cdots + B_nX^n \end{equation} \] </div> <div id="polynomial-orders"> \[ \begin{equation} \begin{aligned} \text{First order:}\quad & Y = B_0 + B_1X \\ \text{Second order:}\quad & Y = B_0 + B_1X + B_2X^2 \\ \text{Third order:}\quad & Y = B_0 + B_1X + B_2X^2 + B_3X^3 \\ \text{Fourth order:}\quad & Y = B_0 + B_1X + B_2X^2 + B_3X^3 + B_4X^4 \\ \text{Fifth order:}\quad & Y = B_0 + B_1X + B_2X^2 + B_3X^3 + B_4X^4 + B_5X^5 \\ \text{Sixth order:}\quad & Y = B_0 + B_1X + B_2X^2 + B_3X^3 + B_4X^4 + B_5X^5 + B_6X^6 \end{aligned} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/polynomial.png" alt="Polynomial models" width="600" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale. The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$B_{0}$$: Intercept term (value of the polynomial at $$X=0$$).
+
+1. $$B_1,B_2,...,B_n$$: Polynomial coefficients for the linear, quadratic, …, n-th order terms.
+
+---
+
+##### Centered Polynomial Models (order 1-6)
+Centered polynomial models are algebraically equivalent to ordinary polynomial models, but instead of using $$X$$ directly, they use a centered variable defined as the deviation from the mean of $$X$$. Centering improves numerical stability, reduces parameter covariance, and yields tighter standard errors and confidence intervals — especially for higher-order polynomials or when $$X$$ values are large.
+
+In centered models, the mean of the independent variable is subtracted before fitting:
+<div id="xmean"> \[ \begin{equation} X_{C} = X - X_{mean}  \end{equation} \] </div>
+
+where $$X_{mean}$$ is the mean of all $$X$$ values used in the fit. This quantity is treated as a constant (data-set constant), not as a fitted parameter.
+
+###### Equation
+{: .no_toc }
+<div id="centered-polynomial-orders"> \[ \begin{aligned} \textbf{First order:}\quad & Y = B_0 + B_1(X - X_{\text{mean}}) \\[6pt] \\ \textbf{Second order:}\quad & Y = B_0 + B_1(X - X_{\text{mean}}) + B_2(X - X_{\text{mean}})^2 \\[6pt] \\ \textbf{Third order:}\quad & Y = B_0 + B_1(X - X_{\text{mean}}) + B_2(X - X_{\text{mean}})^2 \\ & \qquad + B_3(X - X_{\text{mean}})^3 \\[6pt] \\ \textbf{Fourth order:}\quad & Y = B_0 + B_1(X - X_{\text{mean}}) + B_2(X - X_{\text{mean}})^2 \\ & \qquad + B_3(X - X_{\text{mean}})^3 + B_4(X - X_{\text{mean}})^4 \\[6pt] \\ \textbf{Fifth order:}\quad & Y = B_0 + B_1(X - X_{\text{mean}}) + B_2(X - X_{\text{mean}})^2 \\ & \qquad + B_3(X - X_{\text{mean}})^3 + B_4(X - X_{\text{mean}})^4 \\ & \qquad + B_5(X - X_{\text{mean}})^5 \\[6pt] \\ \textbf{Sixth order:}\quad & Y = B_0 + B_1(X - X_{\text{mean}}) + B_2(X - X_{\text{mean}})^2 \\ & \qquad + B_3(X - X_{\text{mean}})^3 + B_4(X - X_{\text{mean}})^4 \\ & \qquad + B_5(X - X_{\text{mean}})^5 + B_6(X - X_{\text{mean}})^6 \end{aligned} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/polynomial.png" alt="Centered Polynomial models" width="600" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale. The model also requires a column containing the dependent variable (Y) response values (in any consistent units). The model requires the specification of one extra parameter:
+1. $$X_{mean}$$: The mean of the X values.
+
+###### Parameters
+{: .no_toc }
+
+1. $$B_{0}$$: Intercept term (value of the polynomial at $$X=X_{mean}$$).
+
+1. $$B_1,B_2,...,B_n$$: Polynomial coefficients for the linear, quadratic, …, n-th order terms.
+
+---
+
+#### Gaussian
+##### Gaussian Distribution
+The Gaussian (normal) distribution describes symmetric, bell-shaped frequency distributions that arise when variability is driven by many independent, additive factors. In histogram fitting, the X values represent bin centers and the Y values represent frequencies (counts).
+
+###### Equation
+{: .no_toc }
+<div id="gaussian-distribution"> \[ \begin{equation} Y = \mathrm{Amplitude} \cdot \exp\!\left(-\frac{1}{2}\left(\frac{X - \mathrm{Mean}}{\mathrm{SD}}\right)^2\right) \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/gaussian.png" alt="Gaussian distribution" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be Bin centers of the frequency distribution (linear scale). The model also requires a column containing the dependent variable (Y) as the observed frequency (number of observations) in each bin. 
+
+###### Parameters
+{: .no_toc }
+
+1. $$Amplitude$$: The peak height of the distribution (maximum $$Y$$ value). Units: same as $$Y$$.
+
+1. $$Mean$$: The center of the distribution (location of the peak). Units: same as $$X$$.
+
+1. $$SD$$: The standard deviation, describing the spread (width) of the distribution. Units: same as $$X$$.
+
+---
+
+##### Sum of two Gaussian Distributions
+The Sum of two Gaussian distributions model is used when a frequency distribution (histogram-style XY table) appears to be a mixture of two underlying normal populations. The observed counts are modeled as the sum of two bell-shaped Gaussian components, each with its own center and spread.
+
+###### Equation
+{: .no_toc }
+<div id="sum-two-gaussians"> \[ \begin{aligned} Y &= \mathrm{One} + \mathrm{Two} \\ \mathrm{One} &= \mathrm{Amplitude1}\cdot \exp\!\left(-0.5\left(\frac{X-\mathrm{Mean1}}{\mathrm{SD1}}\right)^2\right) \\ \mathrm{Two} &= \mathrm{Amplitude2}\cdot \exp\!\left(-0.5\left(\frac{X-\mathrm{Mean2}}{\mathrm{SD2}}\right)^2\right) \end{aligned} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/sum_two_gaussians.png" alt="Sum of two Gaussian distributions" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be Bin centers of the frequency distribution (linear scale). The model also requires a column containing the dependent variable (Y) as the observed frequency (number of observations) in each bin. 
+
+###### Parameters
+{: .no_toc }
+
+1. $$Amplitude_1$$: The peak height of the first distribution (maximum $$Y$$ value). Units: same as $$Y$$.
+
+1. $$Mean_1$$: The center of the first distribution (location of the peak). Units: same as $$X$$.
+
+1. $$SD_1$$: The standard deviation, describing the spread (width) of the first distribution. Units: same as $$X$$.
+
+1. $$Amplitude_2$$: The peak height of the second distribution (maximum $$Y$$ value). Units: same as $$Y$$.
+
+1. $$Mean_2$$: The center of the second distribution (location of the peak). Units: same as $$X$$.
+
+1. $$SD_2$$: The standard deviation, describing the spread (width) of the second distribution. Units: same as $$X$$.
+
+---
+
+##### Lognormal Distribution
+The Lognormal distribution model is used to fit frequency distributions when the logarithm of the variable is normally distributed. Such data arise when variability results from the product (rather than the sum) of many independent, positive factors. On a linear X-axis the distribution is right-skewed; on a logarithmic X-axis it appears Gaussian.
+
+###### Equation
+{: .no_toc }
+<div id="lognormal-distribution"> \[ Y = \frac{A}{X}\,\exp\!\left(-\frac{1}{2}\left(\frac{\ln(X/\mathrm{GeoMean})}{\ln(\mathrm{GeoSD})}\right)^2\right) \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/lognormal_distribution.png" alt="Lognormal distribution" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be Bin centers of the frequency distribution (positive values only).Zero or negative X values are not used in the calculations (they are ignored/excluded). The model also requires a column containing the dependent variable (Y) as the observed frequency (number of observations) in each bin. 
+
+###### Parameters
+{: .no_toc }
+
+1. $$A$$: A scaling constant related to the total area under the curve.
+
+1. $$GeoMean$$: The geometric mean of the distribution. Units: same as $$X$$.
+
+1. $$GeoSD$$: The geometric standard deviation factor (dimensionless). It determines the spread of the distribution on a logarithmic scale.
+
+---
+
+##### Cumulative Gaussian distribution
+The Cumulative Gaussian distribution model fits cumulative frequency data derived from an underlying Gaussian (normal) distribution. Instead of plotting the frequency within bins, the cumulative distribution plots the number (or fraction or percentage) of observations less than or equal to each value of $$X$$.
+
+If the underlying data follow a Gaussian distribution, the cumulative plot has a sigmoidal (S-shaped) form.
+
+###### Equation
+{: .no_toc }
+There are three forms of the model, depending on whether $$Y$$ values represent percentages, fractions, or counts.
+1. When $$Y$$ is in percentages (0–100) \[ Y = 100 \cdot \Phi(z) \]:
+<div id="cumulative-gaussian-percent"> \[ z = \frac{X - \mathrm{Mean}}{\mathrm{SD}} \]  </div>
+
+1. When $$Y$$ is in fractions (0–1) $$Y = \Phi(z)$$:
+<div id="cumulative-gaussian-fraction"> \[ z = \frac{X - \mathrm{Mean}}{\mathrm{SD}}  \] </div>
+
+1. When $$Y$$ is counts (number of observations) $$Y = N \cdot \Phi(z)$$:
+<div id="cumulative-gaussian-counts"> \[ z = \frac{X - \mathrm{Mean}}{\mathrm{SD}}  \] </div>
+Where: $$ \Phi(z) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{z} e^{-t^2/2} dt$$ is the cumulative distribution function (CDF) of the standard normal distribution.
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/cumulative_gaussian.png" alt="Cumulative Gaussian distribution" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be Bin centers of the frequency distribution. The model also requires a column containing the dependent variable (Y) as the cumulative percent/fraction or count of observaitions less than or equal to each $$X$$ value. If $$Y$$ contains counts, constrain $$N$$ to a constant equal to the total number of observations.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Mean$$: The mean of the underlying Gaussian distribution (same units as $$X$$).
+
+1. $$SD$$: The standard deviation of the underlying Gaussian distribution (same units as $$X$$).
+
+---
+
+##### Lorentzian Distribution
+The Lorentzian (Cauchy) distribution is a bell-shaped frequency distribution with much heavier tails than a Gaussian distribution. It is often used when extreme values/outliers occur more frequently than a normal model would predict. In curve fitting, it is commonly applied to histogram-style frequency data, where $$X$$ represents bin centers and $$Y$$ is the number of observations in each bin.
+
+###### Equation
+{: .no_toc }
+<div id="lorentzian-distribution"> \[ \begin{equation} Y = \frac{\mathrm{Amplitude}}{1 + \left(\frac{X-\mathrm{Center}}{\mathrm{Width}}\right)^2} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/lorentzian.png" alt="Lorentzian distribution" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be Bin centers of the frequency distribution (linear scale). The model also requires a column containing the dependent variable (Y) as the observed frequency (number of observations) in each bin. 
+
+###### Parameters
+{: .no_toc }
+
+1. $$A$$: Peak height of the distribution (in $$Y$$ units). This is the value of $$Y$$ when $$X=Center$$.
+
+1. $$Center$$: Location of the peak (same units as $$X$$). It is the $$X$$ value at which the distribution is maximal.
+
+1. $$Width$$: A width (scale) parameter (same units as $$X$$). Larger $$Width$$ produces a broader peak with heavier spread.
+
+---
+
+##### Sum of two Lorentzian Distributions
+This model describes data arising from the sum of two Lorentzian (Cauchy) components, each with its own center and width. It is commonly used when a frequency distribution exhibits two overlapping heavy-tailed peaks.
+
+###### Equation
+{: .no_toc }
+<div id="sum-two-lorentzian-distributions"> \[ \begin{equation} Y = \frac{\mathrm{Amplitude1}}{1 + \left(\frac{X-\mathrm{Center1}}{\mathrm{Width1}}\right)^2} + \frac{\mathrm{Amplitude2}}{1 + \left(\frac{X-\mathrm{Center2}}{\mathrm{Width2}}\right)^2} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/sum_two_lorentzian_distributions.png" alt="Sum of two Lorentzian distributions" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be Bin centers of the frequency distribution (linear scale). The model also requires a column containing the dependent variable (Y) as the observed frequency (number of observations) in each bin. 
+
+###### Parameters
+{: .no_toc }
+
+1. $$A_1$$: Peak height of the first distribution (in $$Y$$ units). This is the value of $$Y$$ when $$X=Center$$.
+
+1. $$Center_1$$: Location of the peak of the first distribution (same units as $$X$$). It is the $$X$$ value at which the first distribution is maximal.
+
+1. $$Width_1$$: A width (scale) parameter for the first distribution (same units as $$X$$). Larger $$Width$$ produces a broader peak with heavier spread.
+
+1. $$A_2$$: Peak height of the second distribution (in $$Y$$ units). This is the value of $$Y$$ when $$X=Center$$.
+
+1. $$Center_2$$: Location of the peak of the second distribution (same units as $$X$$). It is the $$X$$ value at which the second distribution is maximal.
+
+1. $$Width_2$$: A width (scale) parameter for the second distribution  (same units as $$X$$). Larger $$Width$$ produces a broader peak with heavier spread.
+
+---
+
+#### Sine Waves
+##### Standard Sine wave
+The Standard sine wave model describes a periodic oscillatory process with constant amplitude and wavelength. The response varies sinusoidally with respect to the independent variable and is defined by three parameters: amplitude (peak magnitude), wavelength (period of oscillation), and phase shift (horizontal displacement of the wave).
+
+###### Equation
+{: .no_toc }
+<div id="standard-sine-wave"> \[ \begin{equation} Y = \mathrm{Amplitude}\,\sin\!\left(\frac{2\pi X}{\mathrm{Wavelength}} + \mathrm{PhaseShift}\right) \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/standard_sine_wave.png" alt="Standard sine wave" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) is typically time, angle, or spatial position and may take positive or negative values. The dependent variable (Y) represents the oscillatory response and can be in any consistent units. X must be on a linear scale.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Amplitude$$: The peak magnitude of the oscillation (in Y units). The wave oscillates between $$+Amplitude$ and $$−Amplitude$$.
+
+1. $$Wavelength$$: The length of one complete cycle (same units as X). It determines how frequently the oscillation repeats.
+
+1. $$PhaseShift$$: The phase offset (in radians). It shifts the waveform horizontally along the X-axis.
+     1. If $$PhaseShift=0$$, then $$Y=0$$ at $$X=0$$.
+     1. If $$PhaseShift=\pi/2$$, the function is at its maximum at  at $$X=0$$.
+
+---
+
+##### Damped Sine wave
+The Damped sine wave model describes oscillatory behavior whose amplitude decreases exponentially over time (or over the X variable). It is appropriate for systems where repeated cycles persist but energy is lost (damping), so peaks shrink as X increases. The oscillation itself is governed by a sine function (with wavelength and phase shift), while the damping envelope is controlled by an exponential decay term with decay constant $$K$$.
+
+###### Equation
+{: .no_toc }
+<div id="damped_sine_wave"> \begin{equation} Y = Amplitude \cdot e^{-KX}\cdot \sin\left(\frac{2\pi X}{Wavelength}\right) + PhaseShift \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/damped_sine_wave.png" alt="Damped sine wave" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) is typically time (or any linear-scale variable along which damping occurs) and may take positive or negative values, though damping is usually interpreted for increasing X. The dependent variable (Y) is the measured oscillatory response in any consistent units. X must be on a linear scale.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Amplitude$$: The peak magnitude of the oscillation (in Y units). As X increases, the effective amplitude decays according to $$Amplitude * e^{−KX}$$.
+
+1. $$Wavelength$$: The length of one complete cycle (same units as X). It determines how frequently the oscillation repeats.
+
+1. $$PhaseShift$$: The phase offset (in radians). It shifts the oscillation horizontally along X (e.g., $$PhaseShift=0$$ implies the sine term is zero at $$X=0$$).
+
+1. $$K$$: The exponential decay (damping) constant (units $$X^{-1}$$). Larger $$K$$ means faster damping. Typically, $$K>0$$ for a decaying envelope.
+     
+---
+
+##### Sinc wave
+The Sinc wave model (also called the sampling function or sine cardinal function) describes an oscillatory signal whose envelope decays as $$1/X$$. It appears frequently in signal and image processing because it is the Fourier transform of a rectangular pulse. The curve oscillates with a characteristic wavelength, while the peak magnitude at $$X=0$$ equals the amplitude.
+
+###### Equation
+{: .no_toc }
+<div id="sinc_wave"> \begin{equation} Y(X)= \begin{cases} Amplitude, & X=0\\[6pt] Amplitude\cdot \dfrac{\sin\!\left(\dfrac{2\pi X}{Wavelength}\right)}{\dfrac{2\pi X}{Wavelength}}, & X\neq 0 \end{cases} \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/sinc_wave.png" alt="Sinc wave" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale (often time or distance). Values may be positive or negative; the model is well-defined at $$X=0$$ by the special-case definition above. The dependent variable (Y) is the measured response in any consistent units.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Amplitude$$: The peak value at the center of the function (in Y units). By definition, $$Y(0)=Amplitude$$.
+
+1. $$Wavelength$$: he characteristic period of the underlying sine term (same units as X). Smaller $$Wavelength$$ produces more closely spaced oscillations.
+     
+---
+
+##### Sine wave with nonzero baseline
+The Sine wave with nonzero baseline model describes periodic oscillations around a constant offset rather than around zero. The waveform has constant amplitude and wavelength, but the entire curve is vertically shifted by a baseline term. This model is appropriate when the oscillatory signal fluctuates around a steady background level rather than zero.
+
+###### Equation
+{: .no_toc }
+<div id="sine_wave_nonzero_baseline"> \begin{equation} Y = Amplitude \cdot \sin\!\left(\frac{2\pi X}{Wavelength} + PhaseShift\right) + Baseline \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/sine_wave_nonzero_baseline.png" alt="Sine wave with nonzero baseline" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale (often time or distance). Values may be positive or negative; the model is well-defined at $$X=0$$ by the special-case definition above. The dependent variable (Y) is the measured response in any consistent units.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Amplitude$$: The peak value at the center of the function (in Y units). By definition, $$Y(0)=Amplitude$$.
+
+1. $$Wavelength$$: The characteristic period of the underlying sine term (same units as X). Smaller $$Wavelength$$ produces more closely spaced oscillations.
+
+1. $$PhaseShift$$: The horizontal phase offset, expressed in radians.
+
+1. $$Baseline$$: The constant vertical offset about which the sine wave oscillates. It is expressed in the same units as Y.
+     
+---
+
+#### Growth Equations
+
+##### Exponential Growth
+The Exponential growth model describes processes that increase at a rate proportional to their current value. This produces growth with a constant doubling time. It is commonly used for population growth, cell proliferation, bacterial expansion, or compound accumulation under first-order kinetics.
+
+###### Equation
+{: .no_toc }
+<div id="exponential-growth"> \[ \begin{equation} Y = Y_0\, e^{KX} \end{equation} \] </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/exponential_growth.png" alt="Exponential growth" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response at $$X=0$$ (same units as $$Y$$).
+
+1. $$K$$: Growth rate constant (units: inverse time). Larger $$K$$ produces faster growth.
+
+---
+
+##### Log of exponential growth
+The Log of exponential growth model is used when the response has already been logarithm-transformed. If the underlying process follows exponential growth, then plotting the logarithm of the population (or signal) versus time yields a straight line. Fitting this model is often more appropriate when measurement scatter increases with the magnitude of the response on the original scale, since the log transform can stabilize variance. For correct interpretation of doubling time, the Y values should be the natural logarithm of the population (or signal).
+
+###### Equation
+{: .no_toc }
+<div id="log_exponential_growth"> \begin{equation} Y = \log(Y_0) + kX \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/log_exponential_growth.png" alt="Log of exponential growth" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) is time on a linear scale (any time units). The dependent variable (Y) must be the logarithm of the measured quantity (e.g., $$Y=ln(population)$$). For meaningful doubling-time interpretation, use the natural log for Y. X values can be any real numbers; Y must be defined by your log transform (so the original, unlogged values must have been strictly positive).
+
+###### Parameters
+{: .no_toc }
+
+1. $$log(Y_0)$$: The intercept of the line, equal to the log of the population (or signal) at $$X=0$$, expressed in the same logarithmic units used for Y (typically ln units).
+
+1. $$k$$: The growth rate constant (slope), in inverse X units. Larger $$k$$ corresponds to faster exponential growth on the original (unlogged) scale.
+     
+---
+
+##### Logistic growth
+The Logistic growth model describes population growth that is initially close to exponential but progressively slows as it approaches a maximum carrying capacity. The growth rate decreases linearly with population size, and at any time the instantaneous growth rate is proportional to $$Y(1-Y/Y_M)$$, where $$Y$$ is the current population and 
+$$Y_M$$ is the maximum (carrying capacity). As $$Y→Y_M$$, growth slows and eventually stops.
+
+###### Equation
+{: .no_toc }
+<div id="logistic_growth"> \begin{equation} Y = \frac{Y_M \, Y_0}{(Y_M - Y_0)e^{-kX} + Y_0} \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/logistic_growth.png" alt="Logistic growth" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) represents time on a linear scale (any consistent time units). The dependent variable (Y) represents population size or another quantity that approaches a finite maximum. X values may be zero or positive. Y values must be non-negative and typically increase toward a plateau.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_0$$: The initial population at $$X=0$$ (same units as Y).
+
+1. $$Y_M$$: The maximum population (carrying capacity), representing the asymptotic upper limit of Y (same units as Y).
+
+1. $$k$$: The logistic growth rate constant (inverse units of X). Larger $$k$$ produces a steeper rise and earlier inflection.
+     
+---
+
+##### Gompertz growth
+The Gompertz growth model describes saturating growth where the relative growth rate decays exponentially as the population approaches its maximum. Compared with the logistic model, Gompertz growth typically rises faster when $$Y$$ is small and slows more strongly near the plateau. The curve approaches an asymptote $$Y_M$$ as time increases, and its inflection occurs at $$X=1/k$$ under this parameterization.
+
+###### Equation
+{: .no_toc }
+<div id="gompertz_growth"> \begin{equation} Y = Y_M\left(\frac{Y_0}{Y_M}\right)^{\exp(-kX)} \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/gompertz_growth.png" alt="Gompertz growth" width="400" height="300" class="img-responsive"> </div>
+
+###### Input
+{: .no_toc }
+The independent variable (X) represents time on a linear scale (any consistent time units). The dependent variable (Y) represents population size (or another strictly non-negative quantity) that approaches a finite maximum. X values may be zero or positive.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_0$$: The initial population at $$X=0$$ (same units as Y).
+
+1. $$Y_M$$: The maximum population (carrying capacity), representing the asymptotic upper limit of Y (same units as Y).
+
+1. $$k$$: The Gompertz rate constant (inverse units of X). In this Prism-style parameterization,1/k is the X-value of the inflection point (often interpreted as a lag-time scale).
+     
+---
+
+##### Exponential Plateau
+The Exponential plateau model describes a response that starts at an initial value $$Y_0$$ and rises (or falls) exponentially toward a limiting value called Plateau. The difference between the current value and the plateau decreases exponentially with rate constant k.
+
+###### Equation
+{: .no_toc }
+<div id="exponential_plateau"> \begin{equation} Y = \text{Plateau} - (\text{Plateau}-Y_0)\exp(-kX) \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/exponential_plateau.png" alt="Exponential plateau" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be on a linear scale and strictly positive ($$X>0$$). The model also requires a column containing the dependent variable (Y) response values (in any consistent units).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_{0}$$: The response at time zero (same units as $$Y$$).
+
+1. $$Plateau$$: The response at time zero (same units as $$Y$$). If background-subtracted data start at the origin, this can be fixed to 0.
+
+1. $$k$$: The rate constant (inverse units of X) that determines how quickly the curve approaches the plateau. Larger k produces a faster approach.
+
+---
+
+##### Beta growth and decline
+The Beta growth and decline model describes a population (or signal) that increases from zero, reaches a single peak, and then declines back to zero by a specified end time. It is a convenient empirical model for “rise-and-fall” trajectories where you know (or can estimate) the time of the peak and the time the response returns to baseline. The curve is parameterized so that the maximum value is $$Y_m$$, it peaks at time $$T_e$$, and its inflection point occurs at time $$T_m$$.
+
+###### Equation
+{: .no_toc }
+<div id="beta-growth-decline"> \begin{equation} Y = Y_m\left(1+\frac{(T_e-X)(T_e-T_m)}{X\,T_e}\right)\left(\frac{X}{T_e}\right)^{\left(\frac{T_e}{T_e-T_m}\right)} \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/beta_growth_decline.png" alt="Beta growth and decline" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) is time on a linear scale. For the model to be well-defined, X values used for fitting must satisfy: $$0<X<T_e$$. The dependent variable (Y) is the measured population/response in consistent units. Because the model starts and ends at zero, it is most appropriate when the response is near zero at the beginning and near zero again by $$X=T_e$$ (or when data have been baseline-corrected).
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_m$$: The peak (maximum) value of the response, in the same units as $$Y$$.
+
+1. $$T_e$$: The time at which the response peaks (and the endpoint that sets the return-to-zero behavior), in the same units as $$X$$. Must be positive.
+
+1. $$T_m$$: The time of the inflection point (where curvature changes sign on the rising phase), in the same units as $$X$$. Must satisfy $$O<T_m<T_e$$.
+
+---
+
+#### Linear–quadratic survival models
+##### Linear Quadratic, Y is Fraction Surviving
+The linear–quadratic (LQ) model describes the fraction of cells surviving after exposure to ionizing radiation. It assumes that cell killing arises from two components: a linear component proportional to dose (single-track events) and a quadratic component proportional to dose squared (interaction of sublethal damage). The model predicts a continuously decreasing survival fraction with increasing radiation dose and is widely used in radiobiology and radiation oncology.
+
+###### Equation
+{: .no_toc }
+<div id="linear_quadratic_fraction_surviving"> \begin{equation} Y = \exp\left[-\left(A X + B X^{2}\right)\right] \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/linear_quadratic_fraction_surviving.png" alt="Linear quadratic - fraction surviving" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) represents radiation dose and must be on a linear scale with $$X \geq 0$$. The dependent variable (Y) represents the fraction of cells surviving and must satisfy $$0 \leq Y \leq 1$$.
+
+###### Parameters
+{: .no_toc }
+
+1. $$A$$: The linear killing coefficient (units of inverse dose). It represents cell death caused by single radiation tracks. Larger A results in steeper initial decline in survival.
+
+1. $$B$$: The quadratic killing coefficient (units of inverse dose squared). It represents cell death from interaction of two sublethal events. Larger B increases curvature at higher doses.
+
+---
+
+##### Linear Quadratic, Y is Percent Surviving
+This linear–quadratic (LQ) variant models percent cell survival after radiation exposure. As in the standard LQ model, survival decreases with dose due to a linear (single-track) and a quadratic (two-track) killing component. The only difference from the “fraction surviving” form is a scaling by 100 so that the predicted response is expressed as a percentage, approaching 100% at dose zero and decreasing toward 0% as dose increases.
+
+###### Equation
+{: .no_toc }
+<div id="linear_quadratic_percent_surviving"> \begin{equation} Y = 100 \, \exp\left[-\left(A X + B X^{2}\right)\right] \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/linear_quadratic_percent_surviving.png" alt="Linear quadratic - percent surviving" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) represents radiation dose and must be on a linear scale with $$X \geq 0$$. The dependent variable (Y) represents the fraction of cells surviving and must satisfy $$0 \leq Y \leq 100$$. Y must be entered as a percentage (not a fraction). If your data are fractions, use the “fraction surviving” form instead.
+
+###### Parameters
+{: .no_toc }
+
+1. $$A$$: The linear killing coefficient (units of inverse dose). It represents cell death caused by single radiation tracks. Larger A results in steeper initial decline in survival.
+
+1. $$B$$: The quadratic killing coefficient (units of inverse dose squared). It represents cell death from interaction of two sublethal events. Larger B increases curvature at higher doses.
+
+---
+
+##### Linear Quadratic, Y is Number Surviving
+This linear–quadratic (LQ) model describes the absolute number of surviving cells after exposure to radiation dose $$X$$. Survival decreases with dose according to a linear (single-event) and quadratic (two-event) killing component. Unlike the fraction or percent forms, this formulation includes an explicit initial population term $$Y_0$$.
+	​
+
+, which represents the number of cells present at zero dose. The model predicts exponential decay of the population size as radiation dose increases.
+
+###### Equation
+{: .no_toc }
+<div id="linear_quadratic_number_surviving"> \begin{equation} Y = Y_0 \, \exp\left[-\left(A X + B X^{2}\right)\right] \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/linear_quadratic_number_surviving.png" alt="Linear quadratic - number surviving" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be radiation dose on a linear scale and must satisfy $$X≥0$$. The dependent variable (Y) must be the number of surviving cells (absolute counts) and should be strictly positive $$Y>0$$. If your data are recorded as fraction surviving or percent surviving, use the corresponding linear–quadratic model variants for those output types instead.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_0$$: The number of cells when $$X=0$$ (initial population size), in the same units as $$Y$$.
+
+1. $$A$$: The linear killing coefficient (units of inverse dose). It represents cell death caused by single radiation tracks. Larger A results in steeper initial decline in survival.
+
+1. $$B$$: The quadratic killing coefficient (units of inverse dose squared). It represents cell death from interaction of two sublethal events. Larger B increases curvature at higher doses.
+
+---
+
+##### Linear Quadratic, Y is Fraction Dead
+The linear–quadratic (LQ) model describes the fraction of cells that are dead after exposure to ionizing radiation. It assumes that cell killing arises from two components: a linear component proportional to dose (single-track events) and a quadratic component proportional to dose squared (interaction of sublethal damage). The model predicts a continuously increasing death fraction with increasing radiation dose and is widely used in radiobiology and radiation oncology.
+
+###### Equation
+{: .no_toc }
+<div id="linear_quadratic_fraction_dead"> \begin{equation} Y = 1.0 - \exp\left[-\left(A X + B X^{2}\right)\right] \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/linear_quadratic_fraction_dead.png" alt="Linear quadratic - fraction dead" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) represents radiation dose and must be on a linear scale with $$X \geq 0$$. The dependent variable (Y) represents the fraction of cells that are dead and must satisfy $$0 \leq Y \leq 1$$.
+
+###### Parameters
+{: .no_toc }
+
+1. $$A$$: The linear killing coefficient (units of inverse dose). It represents cell death caused by single radiation tracks. Larger A results in steeper initial increase in deaths.
+
+1. $$B$$: The quadratic killing coefficient (units of inverse dose squared). It represents cell death from interaction of two sublethal events. Larger B increases curvature at higher doses.
+
+---
+
+##### Linear Quadratic, Y is Percent Dead
+This linear–quadratic (LQ) variant models percent cell that are dead after radiation exposure. As in the standard LQ model, survival decreases with dose due to a linear (single-track) and a quadratic (two-track) killing component. The only difference from the “fraction dead form is a scaling by 100 so that the predicted response is expressed as a percentage, approaching 100% at dose zero and decreasing toward 0% as dose increases.
+
+###### Equation
+{: .no_toc }
+<div id="linear_quadratic_percent_dead"> \begin{equation} Y = 100* (1.0 - \exp\left[-\left(A X + B X^{2}\right)\right]) \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/linear_quadratic_percent_dead.png" alt="Linear quadratic - percent dead" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) represents radiation dose and must be on a linear scale with $$X \geq 0$$. The dependent variable (Y) represents the fraction of cells that are dead and must satisfy $$0 \leq Y \leq 100$$. Y must be entered as a percentage (not a fraction). If your data are fractions, use the “fraction dead form instead.
+
+###### Parameters
+{: .no_toc }
+
+1. $$A$$: The linear killing coefficient (units of inverse dose). It represents cell death caused by single radiation tracks. Larger A results in steeper initial increase in death.
+
+1. $$B$$: The quadratic killing coefficient (units of inverse dose squared). It represents cell death from interaction of two sublethal events. Larger B increases curvature at higher doses.
+
+---
+
+##### Linear Quadratic, Y is Number Dead
+This linear–quadratic (LQ) model describes the absolute number of dead cells after exposure to radiation dose $$X$$. Deaths increase with dose according to a linear (single-event) and quadratic (two-event) killing component. Unlike the fraction or percent forms, this formulation includes an explicit initial population term $$Y_0$$.
+, which represents the number of cells present at zero dose.
+
+###### Equation
+{: .no_toc }
+<div id="linear_quadratic_number_dead"> \begin{equation} Y = Y_0 * (1.0 -  \exp\left[-\left(A X + B X^{2}\right)\right]) \end{equation} </div>
+
+###### Visualization
+{: .no_toc }
+<div style="text-align: center;"> <img src="images/Curve Fitting/linear_quadratic_number_dead.png" alt="Linear quadratic - number dead" width="400" height="300" class="img-responsive"> </div>
+
+
+###### Input
+{: .no_toc }
+The independent variable (X) must be radiation dose on a linear scale and must satisfy $$X≥0$$. The dependent variable (Y) must be the number of dead cells (absolute counts) and should be positive $$Y>=0$$. If your data are recorded as fraction dead or percent dead, use the corresponding linear–quadratic model variants for those output types instead.
+
+###### Parameters
+{: .no_toc }
+
+1. $$Y_0$$: The number of cells when $$X=0$$ (initial population size), in the same units as $$Y$$.
+
+1. $$A$$: The linear killing coefficient (units of inverse dose). It represents cell death caused by single radiation tracks. Larger A results in steeper initial increase in deaths.
+
+1. $$B$$: The quadratic killing coefficient (units of inverse dose squared). It represents cell death from interaction of two sublethal events. Larger B increases curvature at higher doses.
+
+---
+
 
 ## Lethal Concentration/Dose (LCx/LDx)
 In this context, LCx/LDx analysis refers to estimating the concentration (LCx) or dose (LDx) that produces a specified proportion $$x%$$ of “response” (typically mortality) in a population. Unlike the nonlinear least-squares models above, LCx/LDx models are naturally formulated as a binomial-response problem: each observation represents $$y_i$$ affected individuals out of $$n_i$$ tested at a given concentration/dose $$X_i$$. The probability of response, $$p_i$$, is modeled using a generalized linear model (GLM) with a probit link:
