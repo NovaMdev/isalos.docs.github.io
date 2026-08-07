@@ -41,7 +41,7 @@ Below are some use cases of Isalos Analytics Platform in food applications. Each
 
 #### California Oceanic Fisheries ([`Repeated Measures ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#repeated-measures))
 {: .no_toc }
-* [Isalos workflow](files\ANOVA\CalCOFi\calcofi_v215.iap)
+* [Isalos workflow](files\ANOVA\CalCOFi\CalCOFI_whole_v215.iap)
 * [Report](files\ANOVA\CalCOFi\calcofi_v215.pdf)
 
 #### Wine Tasting Ratings ([`Repeated Measures ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#repeated-measures))
