@@ -672,7 +672,7 @@ The input sheet on the left hand-side is organized with individual columns repre
 1. Click on the `Execute` button [3] to calculate the selected statistics.
 
 <div style="text-align: center;">
-<img src="images/Descriptive Statistics/configuration.svg" alt="configuration" width="300" height="150" class="img-responsive">
+<img src="images/Descriptive Statistics/configuration.svg" alt="configuration" width="700" height="350" class="img-responsive">
 </div>
 
 #### Output
