@@ -4,6 +4,7 @@ title: 3. Data Transformation
 nav_order: 3
 has_children: true
 permalink: /data-transformation.html
+description: "Data transformation tools in Isalos for pre-processing: normalization, filtering, feature selection, and data partitioning."
 ---
 
 # Data Transformation

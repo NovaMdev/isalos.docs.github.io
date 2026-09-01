@@ -4,18 +4,12 @@ title: 3.3 Split
 parent: 3. Data Transformation
 nav_order: 3
 permalink: /split.html
+description: "Split datasets into training and test sets using Kennard-Stone, random sampling, and other partitioning methods in Isalos."
 ---
 
 # Split
 {: .no_toc }
 The splitting of a dataset is a common pre-processing step in data analysis and modelling, either to reduce the volume of the data or to create subsets that will be used within the model external validation process<sup>[1](#references-split)</sup>. In the latter case, two representative subsets are often required, and for that the initial dataset is divided into training and test sets. Objects within the test set are not used during model development but are left out to measure the performance of the model in real-case scenarios<sup>[2,3](#references-split)</sup>. The splitting can be performed either randomly or using a method of representative selection, so that the selected instances cover uniformly the data space.
-
-## Table of contents
-{: .no_toc .text-delta }
-
-
-1. TOC
-{:toc}
 
 ---
 
@@ -152,12 +146,93 @@ In the left-hand spreadsheet of the tab import the data matrix that is going to 
 
 ---
 
-## Tips
+## k-Fold Partitioning
 
-* The splitting functions are useful when two (or more) subsets of data are needed e.g., as training and test/validation sets in model development or when the original dataset is too large to process in its entirety, allowing for analysis to be conducted on a more manageable subset.
-* The Kennard and Stone methodology, in contrast to the random partitioning, is a deterministic methodology, producing consistent partitions for given input parameters and data matrices. It also allows more representative subset selection that covers all the data space. However, it is more time-consuming compared to random partitioning for the same input data matrix and splitting ratio.
-* Consider [data scaling](https://www.docs.isalos.novamechanics.com/normalizers.html)  -if necessary- prior to the use of Kennard-Stone function, as calculation of distances is performed.
-* The external validation using the Kennard-Stone splitting is advised to be supplemented by cross-validation and or/other validation methodologies, as it is possible that the results lead to an overestimation of the models’ predictive ability (test set too similar to the training set). 
+K-fold partitioning is the process of dividing a dataset into k approximately equal subsets, or folds, in order to organize the data systematically before model development and evaluation. In this approach, one fold can be designated as the test set, while the remaining folds are retained for model training or other analytical purposes. The main rationale for using this procedure is that it provides a more structured and balanced way of splitting the data than relying on a single arbitrary partition. As a result, it helps reduce the risk that the findings will be overly influenced by a fortunate or unrepresentative split of the sample. More broadly, k-fold partitioning supports a more transparent, stable, and representative organization of the data, which is especially valuable when the available dataset is limited in size.
+
+Use the `K-fold Partitioning` function by browsing in the top ribbon:
+
+| Data Transformation $$\rightarrow$$ Split $$\rightarrow$$ k-Fold Partitioning |
+
+### Input
+{: .no_toc }
+
+Data matrix to partition.
+
+### Configuration
+{: .no_toc }
+
+|**k** | Specifies the number of folds into which the dataset is divided, determining how many subsets are created during the partitioning process. |
+|**Time-based RNG Seed** | Sets the random number generator seed based on the current time, producing a different random partition each time the procedure is run. |
+|**Stratified sampling** | Check this box, then select the column name from the dropdown list to ensure that the distribution of its values is approximately preserved during partitioning. |
+|**Leave One Out** | Creates partitions in which each observation is left out once as the test set, while all remaining observations are used for training. |
+
+### Output
+{: .no_toc }
+
+k data partitions. The results are not visible in the output spreadsheet, but the different partitions can be imported independently in other tabs.
+
+### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+
+In the left-hand spreadsheet of the tab import the data matrix that is going to be split.
+
+<div style="text-align: center;">
+<img src="images/Split/split-input-kfold.png" alt="split-input" width="500" height="300" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc }
+
+1. Select `Data Transformation` $$\rightarrow$$ `Split` $$\rightarrow$$ `k-Fold Partitioning`.
+1. Specify the number of folds, `k`, [1] for the data partitioning.
+1. Specify the fixed seed [2] to obtain reproducible partitions. Otherwise, select the `Time-based RNG Seed` [3].
+1. (Optional) Click on the `Stratified sampling` checkbox [3] and select the column name [4] that corresponds to the feature whose values distribution will be preserved in both partitions. 
+1. (Optional) Click on the `Leave One Out` checkbox [5] to create partitions in which each observation is used once as the test set.
+1. Click on the `Execute` button [6] to perform the k-fold partitioning.
+
+<div style="text-align: center;">
+<img src="images/Split/kfold-split-configuration.png" alt="random-split-configuration" width="500" height="300" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc }
+
+1. In the right-hand spreadsheet of the tab the input data matrix is presented intact.
+1. Insert a new tab by clicking on the `+` button [1].
+1. Right click on the left-hand spreadsheet and select `Import from SpreadSheet` [2].
+1. In the configuration window, select from the `Select input tab` the four folds [3] that will constitute the training set, and then select the remaining fold to serve as the test set.
+1. Click on the `Execute` button [4] and continue with the rest of your analysis steps.
+
+<div style="text-align: center;">
+<img src="images/Split/kfold-output.png" alt="random-split-output" width="600" height="300" class="img-responsive">
+</div>
+
+---
+
+## ✧ Tips
+
+<div class="tip-box">
+  <ul>
+    <li>
+      The splitting functions are useful when two (or more) subsets of data are needed, e.g., as training and test/validation sets in model development or when the original dataset is too large to process in its entirety, allowing for analysis to be conducted on a more manageable subset.
+    </li>
+    <li>
+      The Kennard and Stone methodology, in contrast to random partitioning, is a deterministic methodology, producing consistent partitions for given input parameters and data matrices. It also allows more representative subset selection that covers all the data space. However, it is more time-consuming compared to random partitioning for the same input data matrix and splitting ratio.
+    </li>
+    <li>
+      Consider
+      <a href="https://www.docs.isalos.novamechanics.com/normalizers.html">data scaling</a>
+      &ndash; if necessary &ndash; prior to the use of the Kennard-Stone function, as calculation of distances is performed.
+    </li>
+    <li>
+      External validation using Kennard-Stone splitting is advised to be supplemented by cross-validation and/or other validation methodologies, as it is possible that the results lead to an overestimation of the models’ predictive ability (test set too similar to the training set).
+    </li>
+  </ul>
+</div>
 
 
 ## See also

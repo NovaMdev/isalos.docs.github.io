@@ -1,18 +1,22 @@
 ---
 layout: default
 title: 9.5 Food
-parent: 9. Case Studies per Industry
+parent: 9. Use Cases per Industry
 nav_order: 5
 permalink: /case_studies_industry_food.html
+description: "Food science case studies in Isalos for experimental design and contaminant extraction optimisation."
 ---
 
-## Table of contents
-{: .no_toc .text-delta }
+# Food
+{: .no_toc }
 
-1. TOC
-{:toc}
+Below are some use cases of Isalos Analytics Platform in food applications. Each case study is accompanied by:
+* A **Manual User Guide report**, providing a detailed, step-by-step description of the methodology and results, and
+* the corresponding **Isalos workflow file**, enabling full reproducibility and hands-on execution of the analysis within the platform.
 
-# Design of Experiments
+---
+
+## Design of Experiments
 
 #### Arsenic extraction in rice samples ([`Plackett Burman`](https://www.docs.isalos.novamechanics.com//screening.html))
 {: .no_toc }
@@ -20,7 +24,7 @@ permalink: /case_studies_industry_food.html
 * [Report](files\DoE\Food Chemistry\2016_Ma\2016_Ma.pdf)
 
 
-# Classification
+## Classification
 
 #### Fish Market
 {: .no_toc }

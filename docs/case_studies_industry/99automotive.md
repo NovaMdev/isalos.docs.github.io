@@ -1,18 +1,21 @@
 ---
 layout: default
 title: 9.9 Automotive
-parent: 9. Case Studies per Industry
+parent: 9. Use Cases per Industry
 nav_order: 9
 permalink: /case_studies_industry_automotive.html
 ---
 
-## Table of contents
-{: .no_toc .text-delta }
+# Automotive
+{: .no_toc }
 
-1. TOC
-{:toc}
+Below are some use cases of Isalos Analytics Platform in automotive applications. Each case study is accompanied by:
+* A **Manual User Guide report**, providing a detailed, step-by-step description of the methodology and results, and
+* the corresponding **Isalos workflow file**, enabling full reproducibility and hands-on execution of the analysis within the platform.
 
-# Regression
+---
+
+## Regression
 
 #### Vehicle
 {: .no_toc }

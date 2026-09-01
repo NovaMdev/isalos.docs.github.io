@@ -4,6 +4,7 @@ title: 6.7 Robust Parameter
 parent: 6. DOE
 nav_order: 7
 permalink: /robust-parameter.html
+description: "Apply robust parameter design and Taguchi methods in Isalos to minimise response variability from noise factors."
 ---
 
 # Robust Parameter
@@ -24,13 +25,6 @@ Both Taguchi methods and combined designs underscore the philosophy of robust de
 Use the `Robust Parameter` design function by browsing in the top ribbon: 
 
 |DOE $$\rightarrow$$ Robust Parameter|
-
-
-# Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 

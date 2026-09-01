@@ -4,18 +4,12 @@ title: 6.3 Response Surface
 parent: 6. DOE
 nav_order: 3
 permalink: /response-surface.html
+description: "Build response surface designs in Isalos to optimise experimental outcomes and model factor interactions."
 ---
 
 # Response Surface
 {: .no_toc }
 Response Surface Designs are a subset of Design of Experiments (DoE) aimed at optimizing a response variable by exploring the relationships between multiple factors and their interactions. These designs are used when the goal is to find the optimal settings for factors that lead to the best outcome, and they are usually used as a next step after performing a screening design to reduce the number of parameters included in the model. By fitting a mathematical model to experimental data, response surface designs allow researchers to map out a surface that represents the response's behavior across factor levels. 
-
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 
@@ -86,7 +80,7 @@ In the input datasheet in the right-hand side, you can specify minimum of three 
 ##### Output
 {: .no_toc }
 
-TThe output list of experiments is generated for the three factors outlining a list of 12 experiments based on the Box Behnken design. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
+The output list of experiments is generated for the three factors outlining a list of 12 experiments based on the Box Behnken design. Standard Order, Block number, Replicate Number and Point Type are presented in Cols 2,3,4 and 5 accordingly as shown below.
 
 <div style="text-align: center;">
 <img src="images/Design of experiments/behnken-output.png" alt="Box Behnken" width="350" height="300" class="img-responsive">

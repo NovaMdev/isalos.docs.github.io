@@ -3,6 +3,7 @@ layout: default
 title: Markdown kitchen sink
 nav_order: 99
 nav_exclude: true
+description: "Introduction to the Isalos Analytics Platform — a no-code tool for data manipulation, predictive modelling, and analytics."
 ---
 
 <button class="btn js-toggle-dark-mode">Preview dark color scheme</button>

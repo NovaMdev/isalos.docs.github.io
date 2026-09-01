@@ -10,23 +10,74 @@
 {%- endcomment -%}
 
 <div class="side-bar">
-  <div class="site-header" role="banner">
-    <a href="{{ '/' | relative_url }}" class="site-title lh-tight">{% include title.html %}</a>
-    <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
-      <svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+
+  <!-- Mobile-only dark mode toggle at top of sidebar -->
+  <div class="sidebar-top-dark-mode">
+    <button class="js-toggle-dark-mode btn-reset" aria-label="Switch to dark mode" title="Toggle dark mode">
+      <img src="{{ 'images/icons/dark_mode_button.png' | relative_url }}" class="theme-icon-light" alt="Switch to dark mode" height="28">
+      <img src="{{ 'images/icons/light_mode_button.png' | relative_url }}" class="theme-icon-dark" alt="Switch to light mode" height="28">
+      <img src="{{ 'images/icons/dark_mode_button_hover.png' | relative_url }}" class="theme-icon-light-hover" alt="Switch to dark mode">
+      <img src="{{ 'images/icons/light_mode_button_hover.png' | relative_url }}" class="theme-icon-dark-hover" alt="Switch to light mode">
     </button>
   </div>
 
   {% include_cached components/site_nav.html %}
 
-  {% capture nav_footer_custom %}
-    {%- include nav_footer_custom.html -%}
-  {% endcapture %}
-  {% if nav_footer_custom != "" %}
-    {{ nav_footer_custom }}
-  {% else %}
-    <footer class="site-footer">
-      This site uses <a href="https://github.com/just-the-docs/just-the-docs">Just the Docs</a>, a documentation theme for Jekyll.
-    </footer>
-  {% endif %}
+  <!-- Mobile-only icon links at bottom of sidebar -->
+<div class="sidebar-mobile-links">
+    <a href="https://isalos.novamechanics.com/" target="_blank" class="icon-link">
+      <img src="{{ 'images/icons/Isalos_simple_logo_hover.png' | relative_url }}"
+          alt="Isalos Analytics Platform" height="30" width="39" class="icon-default">
+      <img src="{{ 'images/icons/Isalos_simple_logo.png' | relative_url }}"
+          alt="Isalos Analytics Platform" height="30" width="39" class="icon-hover">
+      <img src="{{ 'images/icons/Isalos_simple_logo_dark.png' | relative_url }}"
+          alt="Isalos Analytics Platform" height="38" width="44" class="icon-dark-default">
+      <img src="{{ 'images/icons/Isalos_simple_logo_hover_dark.png' | relative_url }}"
+          alt="Isalos Analytics Platform" height="38" width="44" class="icon-dark-default-hover">
+    </a>
+    <a href="https://novamechanics.com/" target="_blank" class="icon-link">
+      <img src="{{ 'images/icons/novaM_gray_logo.png' | relative_url }}"
+          alt="NovaMechanics Ltd" height="31" width="38" class="icon-default">
+      <img src="{{ 'images/icons/novaM_logo.png' | relative_url }}"
+          alt="NovaMechanics Ltd" height="31" width="38" class="icon-hover">
+      <img src="{{ 'images/icons/novaM_gray_logo.png' | relative_url }}"
+          alt="NovaMechanics Ltd" height="31" width="38" class="icon-dark-default">
+      <img src="{{ 'images/icons/novaM_logo.png' | relative_url }}"
+          alt="NovaMechanics Ltd" height="31" width="38" class="icon-dark-default-hover">
+    </a>
+    <a href="https://www.youtube.com/@novamechanicsltd5621" target="_blank" class="icon-link">
+      <img src="{{ 'images/icons/yt_logo_circle.png' | relative_url }}"
+          alt="Youtube channel" height="27" width="35" class="icon-default">
+      <img src="{{ 'images/icons/yt_logo_circle_hover.png' | relative_url }}"
+          alt="Youtube channel" height="38" width="44" class="icon-hover">
+      <img src="{{ 'images/icons/yt_logo_circle_dark.png' | relative_url }}"
+          alt="Youtube channel" height="38" width="44" class="icon-dark-default">
+      <img src="{{ 'images/icons/yt_logo_circle_hover.png' | relative_url }}"
+          alt="Youtube channel" height="24" width="32" class="icon-dark-default-hover">
+    </a>
+      <a href="https://www.linkedin.com/company/novamechanics/" target="_blank" class="icon-link linkedin-icon-link">
+        <img src="{{ 'images/icons/linkedin_logo.png' | relative_url }}" 
+            alt="LinkedIn" 
+            height="38"
+            width="44"
+            class="icon-default">
+        <img src="{{ 'images/icons/linkedin_logo_hover.png' | relative_url }}" 
+            alt="LinkedIn"
+            height="38"
+            width="44"  
+            class="icon-hover">
+        <img src="{{ 'images/icons/linkedin_logo_dark.png' | relative_url }}" 
+            alt="LinkedIn"
+            height="38"
+            width="44"             
+            class="icon-dark-default">
+        <img src="{{ 'images/icons/linkedin_logo_hover.png' | relative_url }}" 
+            alt="LinkedIn" 
+            height="38"
+            width="44" 
+            class="icon-dark-default-hover">
+      </a>
+  </div>
+
 </div>
+

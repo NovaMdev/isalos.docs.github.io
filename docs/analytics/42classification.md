@@ -4,18 +4,12 @@ title: 4.2 Classification
 parent: 4. Analytics
 nav_order: 2
 permalink: /classification.html
+description: "Develop classification models in Isalos for binary and multiclass prediction using supervised machine learning algorithms."
 ---
 
 # Classification
 {: .no_toc }
 Classification is a typical supervised learning technique in predictive modeling that aims to categorize data into predefined classes. Classification analysis is used when the target is a categorical value, and algorithms are trained on labeled datasets to predict the category of unseen objects. There are two types of classification problems; Binary classification where the possible outcome can be one of two distinct classes, and Multiclass classification where the outcome can be one of several categories. <sup>[1](#references-classification)</sup>
-
-
-## Table of contents
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
 
 ---
 
@@ -625,8 +619,8 @@ All variables must be specified in the datasheet. Numerical values are required 
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -662,8 +656,8 @@ The input datasheet must include one binary dependent variable, which will serve
 1.	Specify the `Value` [11] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [15] and moving columns between the `Excluded Columns` [12] and `Factors` [13] and `Covariates` [14] lists.
 1.	`Specify Reference Levels` [16] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [17].
-1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.  Select the prefered `Formula Type`[17].
+1. `Specify Custom Model Formula` [18] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [19] to perform the Binary Logistic Classification method.
 <div style="text-align: center;">
 <img src="images/GLM/BinLogGLM_Configuration.png" alt="binlogGLM-config" width="400" height="300" class="img-responsive">
@@ -716,8 +710,8 @@ All variables must be specified in the datasheet. Numerical values are required 
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -753,8 +747,8 @@ The input datasheet must include one binary dependent variable, which will serve
 1.	Specify the `Value` [11] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [15] and moving columns between the `Excluded Columns` [12] and `Factors` [13] and `Covariates` [14] lists.
 1.	`Specify Reference Levels` [16] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [17].
-1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.  Select the prefered `Formula Type`[17].
+1. `Specify Custom Model Formula` [18] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [19] to perform the Probit Classification method.
 <div style="text-align: center;">
 <img src="images/GLM/ProbitGLM_Configuration.png" alt="probitGLM-config" width="400" height="300" class="img-responsive">
@@ -804,8 +798,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -841,8 +835,8 @@ The input datasheet must include one binary dependent variable, which will serve
 1.	Specify the `Value` [11] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [15] and moving columns between the `Excluded Columns` [12] and `Factors` [13] and `Covariates` [14] lists.
 1.	`Specify Reference Levels` [16] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [17].
-1.	If the `Custom` option is selected, specify the `Formula` [18] for the analysis.
+1.  Select the prefered `Formula Type`[17].
+1. `Specify Custom Model Formula` [18] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [19] to perform the Complementary Log-Log Classification method.
 <div style="text-align: center;">
 <img src="images/GLM/CLogLogGLM_Configuration.png" alt="cloglogGLM-config" width="400" height="300" class="img-responsive">
@@ -890,8 +884,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -926,8 +920,8 @@ The input datasheet must include one target variable with ordered categories, an
 1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
 1.	`Specify Reference Levels` [15] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [16].
-1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
+1.  Select the prefered `Formula Type`[16].
+1. `Specify Custom Model Formula` [17] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [18] to perform the Ordinal Logistic Classification method.
 <div style="text-align: center;">
 <img src="images/GLM/OrdLogGLM_Configuration.png" alt="ordlogGLM-config" width="400" height="300" class="img-responsive">
@@ -975,8 +969,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1011,8 +1005,8 @@ The input datasheet must include one target variable with ordered categories, an
 1.	Specify the `Value` [10] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [14] and moving columns between the `Excluded Columns` [11] and `Factors` [12] and `Covariates` [13] lists.
 1.	`Specify Reference Levels` [15] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [16].
-1.	If the `Custom` option is selected, specify the `Formula` [17] for the analysis.
+1.  Select the prefered `Formula Type`[16].
+1. `Specify Custom Model Formula` [17] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [18] to perform the Ordinal Probit Classification method.
 <div style="text-align: center;">
 <img src="images/GLM/OrdProbitGLM_Configuration.png" alt="ordprobitGLM-config" width="400" height="300" class="img-responsive">
@@ -1068,8 +1062,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Value**| Specifies the scale parameter value manually, only when Fixed value is selected in the Scale Parameter Method. |
 |**Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate  or factor column should be specified.|
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 
 ##### Output
@@ -1104,8 +1098,8 @@ The input datasheet must include one nominal dependent variable with three or mo
 1.	Specify the `Value` [9] of the scale parameter method if the Fixed value option was chosen as the scale parameter method.
 1.	Select the columns by clicking on the arrow buttons [13] and moving columns between the `Excluded Columns` [10] and `Factors` [11] and `Covariates` [12] lists.
 1.	`Specify Reference Levels` [14] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [15].
-1.	If the `Custom` option is selected, specify the `Formula` [16] for the analysis.
+1.  Select the prefered `Formula Type`[15].
+1. `Specify Custom Model Formula` [16] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [17] to perform the Multinomial Logistic Classification method.
 <div style="text-align: center;">
 <img src="images/GLM/MultLogGLM_Configuration.png" alt="multlogGLM-config" width="400" height="300" class="img-responsive">
@@ -1182,8 +1176,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1220,8 +1214,8 @@ The dataset must include a binary target variable suitable for modeling with bin
 1.	Select the method used to estimate the `covariance matrix` [12] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [17] and moving columns between the `Excluded Columns` [13] and `Subjects` [14] and `Factors` [15] and `Covariates `[16] lists.
 1. `Specify Reference Levels` [18] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [19].
-1.	If the `Custom` option is selected, specify the `Formula` [20] for the analysis.
+1.  Select the prefered `Formula Type`[19].
+1. `Specify Custom Model Formula` [20] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [21] to perform the Binary Logistic Classification method.
 <div style="text-align: center;">
 <img src="images/GEE/BinLogGEE_Configuration.png" alt="binlogGEE-config" width="400" height="300" class="img-responsive">
@@ -1262,8 +1256,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1300,8 +1294,8 @@ The dataset must include a binary target variable suitable for modeling with bin
 1.	Select the method used to estimate the `covariance matrix` [12] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [17] and moving columns between the `Excluded Columns` [13] and `Subjects` [14] and `Factors` [15] and `Covariates `[16] lists.
 1. `Specify Reference Levels` [18] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [19].
-1.	If the `Custom` option is selected, specify the `Formula` [20] for the analysis.
+1.  Select the prefered `Formula Type`[19].
+1. `Specify Custom Model Formula` [20] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [21] to perform the Probit Classification method.
 <div style="text-align: center;">
 <img src="images/GEE/ProbitGEE_Configuration.png" alt="probitGEE-config" width="400" height="300" class="img-responsive">
@@ -1342,8 +1336,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1380,8 +1374,8 @@ The dataset must include a binary outcome variable coded as 0 and 1, suitable fo
 1.	Select the method used to estimate the `covariance matrix` [12] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [17] and moving columns between the `Excluded Columns` [13] and `Subjects` [14] and `Factors` [15] and `Covariates `[16] lists.
 1. `Specify Reference Levels` [18] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [19].
-1.	If the `Custom` option is selected, specify the `Formula` [20] for the analysis.
+1.  Select the prefered `Formula Type`[19].
+1. `Specify Custom Model Formula` [20] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [21] to perform the Complementary Log-Log Classification method.
 <div style="text-align: center;">
 <img src="images/GEE/CLogLogGEE_Configuration.png" alt="cloglogGEE-config" width="400" height="300" class="img-responsive">
@@ -1421,8 +1415,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1458,8 +1452,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
 1. `Specify Reference Levels` [17] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [18].
-1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.  Select the prefered `Formula Type`[18].
+1. `Specify Custom Model Formula` [19] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [20] to perform the Ordinal Logistic Classification method.
 <div style="text-align: center;">
 <img src="images/GEE/OrdLogGEE_Configuration.png" alt="ordlogGEE-config" width="400" height="300" class="img-responsive">
@@ -1499,8 +1493,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 |**Covariance Matrix**|In the Covariance Matrix option, the user selects how the model's standard errors will be estimated. The Robust estimator is resistant to misspecification of the correlation structure, while the Model-based estimator assumes the specified correlation is correct.|
 |**Subjects/Factors/Covariates/Excluded Columns**| Select manually the columns that correspond to subjects, factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Subjects, Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns. At least one covariate or factor column should be specified. Also, a column for the Subject is required. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
-|**Custom/Include All Main Effects/Full Factorial**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Include All Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. Note that the Include All Main Effects and Full Factorial options do not allow the use of a formula.|
-|**Formula**| Specify the model formula used for the analysis if the Custom option is selected. Include all variables listed under Factors or Covariates, separated by “+”. To include interaction terms, use the format VariableA:VariableB. If interaction terms are included, the dataset must contain all combinations of the levels of the involved categorical variables — i.e., the design must be fully crossed — to ensure the model can be properly estimated.|
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
 
 ##### Output
 {: .no_toc }
@@ -1536,8 +1530,8 @@ All variables must be specified in the datasheet. The dependent variable must be
 1.	Select the method used to estimate the `covariance matrix` [11] of the standard errors.
 1.	Select the columns by clicking on the arrow buttons [16] and moving columns between the `Excluded Columns` [12] and `Subjects` [13] and `Factors` [14] and `Covariates `[15] lists.
 1. `Specify Reference Levels` [17] for the categorical factors.
-1.	Select your preferred option to define the model you want to analyze [18].
-1.	If the `Custom` option is selected, specify the `Formula` [19] for the analysis.
+1.  Select the prefered `Formula Type`[18].
+1. `Specify Custom Model Formula` [19] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
 1.	Click on the `Execute` button [20] to perform the Ordinal Probit Classification method.
 <div style="text-align: center;">
 <img src="images/GEE/OrdProbitGEE_Configuration.png" alt="ordprobitGEE-config" width="400" height="300" class="img-responsive">
@@ -1555,23 +1549,108 @@ The Predictions, Parameter Estimates table and Working Correlation Matrix are sh
 
 
 ---
- 
-## Tips
 
-k Nearest Νeighbors:
-*   It works more efficiently for small to medium datasets and low-dimensional data. kNN is sensitive to missing data.
-*   The performance of the model is highly influenced by the selection of _k_.
+## Auto ML
 
-<!--SOM: *-->
+This function develops machine learning models for classification tasks and performs hyperparameter optimization to evaluate their performance. The models are trained and validated using all the variables of the input dataset after specification of the target variable. Additionally, the function supports multiple data splitting and normalization methods, as well as variable selection algorithms. Finally, all models are ranked according to the selected performance metrics.
 
-Radial Basis Function Network:
-*   The number of neurons in the hidden layer has a high impact on the model performance, since a large number of neurons can lead to overfitting.
+Use the `Auto ML` function by browsing in the top ribbon:
 
-XGBoost:
-*   Be cautious during hyperparameter tuning: Choosing smaller `eta` values, as well as increasing the `lambda`, `alpha` and `gamma` values result in a more conservative boosting process. Increasing the value of `max depth` parameter makes the model more complex, more likely to overfit.
+|Analytics $$\rightarrow$$ Classification $$\rightarrow$$ Auto ML|
 
-Random Forest:
-*   This algorithm performs well with datasets that contain missing values. However, it is not as efficient with a large number of sparse features or with categorical variables of many levels that are improperly encoded.
+### Input
+{: .no_toc }
+
+Data matrix with training set data. The categories of the target feature should be presented as strings. Other categorical features must be encoded into numerical values, presented as either integers or doubles. 
+
+### Configuration
+{: .no_toc }
+
+| **Available/selected models** | Select manually the machine learning algorithms through the dialog window: Use the buttons to move algorithms between the `Available Models` and `Selected Models` list. Single-arrow buttons will move all selected algorithms and double-arrow buttons will move all algorithms. Available options include: k-Nearest Neighbours (kNN), Radial Basis Function Network, XGBoost, Random Forest, J48, and Fully Connected Neural Network. Double-click on each algorithm to specify the range (**Min value**, **Max value** and **Step**) of its hyperparameters. See more for the configuration options of each algorithm in the sections above. |
+| **RNG Seed** | Select an integer as seed to get reproducible results. The option to select a time-based random number-generated seed is available. This seed will be used consistently for all operations within the AutoML function that require a seed. |
+| **Type** | Select either Grid Search or the Genetic Algorithm to perform the hyperaparameter tuning. |
+| **Target column** | Select manually from the drop-down menu the column name containing the target variable that is going to be predicted. |
+| **Split Method** | Select manually from the drop-down menu the method for the splitting of the data into train and test sets. Available options include: Kennard-Stone, Random Partitioning, and k-Fold Partitioning. After you select the split method, specify its configuration parameters by clicking on `Configure Split Method`. See more for the configuration of each splitting method [here](https://www.docs.isalos.novamechanics.com//split.html). |
+| **Normalizer** | Select manually from the drop-down menu a normalization method. Available options include: ZScore Normalizer and Min-Max Normalizer. If you select the Min-Max Normalizer, click on `Configure Normalizer` to specify the Min and Max values for the normalization. |
+| **Variable Selector** | Select manually from the drop-down menu a variable selection method. Available options include: Genetic Algorithm, Boruta, Generalized Simulated Annealing, Particle Swarm Optimization, Recursive Feature Elimination, Successive Projections Algorithm, MI-VIF Variable Selection, and Best First. After you select the variable selection method, specify its configuration parameters by clicking on `Configure Selector`. See more for the configuration of each variable selection method [here](https://www.docs.isalos.novamechanics.com//variable-selection.html). |
+| **Selected Metric** | Select manually from the drop-down menu the metric which will be used to evaluate the performance of each algorithm. Available options include: Accuracy, MCC, Confusion Matrix, Precision, Recall, F1Score, Sensitivity, False Discovery Rate, Youden's J, Roc Auc, Hamming Loss, Balanced Accuracy, Kappa, Micro Precision, Macro Precision, Weighted Precision, Micro Recall, Macro Recall, Weighted Recall, Micro F1, Macro F1, Weighted F1, Micro Specificity, Macro Specificity, Weighted Specificity, Micro Youden's J, Macro Youden's J, Weighted Youden's J, and Macro AverageRocAuc. |
+| **Top Results to Show** | Specify how many of the algorithm ranking results, starting from the top, will be presented in the output speradsheet. |
+| **Number of Cores** | Specify the number of CPU cores that will be used for the execution of the computations. |
+
+### Output
+{: .no_toc }
+
+A ranking matrix of all the trained models including the number of top results specified in the Auto ML configuration box. The matrix presents the models starting from the top of the ranking, and consists of columns with each model's algorithm, the variables used for the prediction of the target, and the evaluation metrics.   
+
+### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+
+In the left-hand spreadsheet of the tab import the data matrix including the target variable, which should have at least two distinct categories for prediction. In case that categorical-string columns are included in the set, these should be encoded into representative numerical values.
+
+<div style="text-align: center;">
+<img src="images\AutoML\Classification\automl_classification_input.png" alt="Auto ML classification input" width="750" height="650" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc }
+
+1.   Select `Analytics` $$\rightarrow$$ `Classification` $$\rightarrow$$ `Auto ML`.
+1.   Select the algorithms by clicking on the arrow buttons and moving the algorithms between the `Available Models` and `Selected Models` lists [1].
+1.   Double-click on each algorithm to specify the range of its hyperparameters. Default values, data types (double or integer) and acceptable ranges are indicated as guidance on the input parameter values [2], [3], [4]. 
+1.   Type an `RNG Seed` [5] for reproducible results or a random number generated `Time-based RNG Seed`.
+1.   Select the `Type` of hyperparameter optimization methods [6].
+1.   Select the `Target Column` that is going to be predicted from the drop-down menu [7].
+1.   Select the `Split Method` that will be applied on the dataset from the drop-down menu [8].
+1.   Click on `Configure Split Method` to specify the parameters of the splitting method [9], [10].
+1.   Select a `Normalizer` [11] from the drop-down menu. If you select the **Min-Max nomralizer** click on `Configure Normalizer` to specify the minimum and maximum values for the normalization [12], [13]. 
+1.   Select a method from the `Variable Selector` drop-down menu to remove redundant prediction variables [14].
+1.   Click on `Configure Selector` to specify the parameters for the variable selection method [15], [16].
+1.   Select the metric which will evaluate the model performance from the `Selected Metric` drop-down menu [17].
+1.   Type the number of `Top Results to Show` from the model ranking [18].
+1.   Type the `Number or Cores` that will be used to execute the computations [19].
+1.   Click on the `Execute` button to apply the Auto ML function [20].
+
+<div style="text-align: center;">
+<img src="images\AutoML\Classification\automl_classification_conf.png" alt="Auto ML classification configuration" width="700" height="700" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc }
+
+In the right-hand spreadsheet of the tab the matrix with the ranking of the predictive models is presented.
+
+<div style="text-align: center;">
+<img src="images\AutoML\Classification\automl_classification_output.png" alt="Auto ML classification output" width="750" height="700" class="img-responsive">
+</div>
+---
+
+## ✧ Tips
+
+<div class="tip-box">
+  <div class="tip-title">k Nearest Neighbors:</div>
+  <ul>
+    <li>It works more efficiently for small to medium datasets and low-dimensional data. kNN is sensitive to missing data.</li>
+    <li>The performance of the model is highly influenced by the selection of <em>k</em>.</li>
+  </ul>
+
+  <div class="tip-title">Radial Basis Function Network:</div>
+  <ul>
+    <li>The number of neurons in the hidden layer has a high impact on the model performance, since a large number of neurons can lead to overfitting.</li>
+  </ul>
+
+  <div class="tip-title">XGBoost:</div>
+  <ul>
+    <li>Be cautious during hyperparameter tuning: choosing smaller <code>eta</code> values, as well as increasing the <code>lambda</code>, <code>alpha</code>, and <code>gamma</code> values, result in a more conservative boosting process. Increasing the value of the <code>max depth</code> parameter makes the model more complex and more likely to overfit.</li>
+  </ul>
+
+  <div class="tip-title">Random Forest:</div>
+  <ul>
+    <li>This algorithm performs well with datasets that contain missing values. However, it is not as efficient with a large number of sparse features or with categorical variables of many levels that are improperly encoded.</li>
+  </ul>
+</div>
 
 ## See also 
 
