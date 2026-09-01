@@ -20,8 +20,8 @@ Below are some use cases of Isalos Analytics Platform in food applications. Each
 
 #### Arsenic extraction in rice samples ([`Plackett Burman`](https://www.docs.isalos.novamechanics.com//screening.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Food Chemistry\2016_Ma\2016_Ma_Minitab.iap)
-* [Report](files\DoE\Food Chemistry\2016_Ma\2016_Ma.pdf)
+* [Isalos workflow](files\DoE\Food Chemistry\2016_Ma_v212.iap)
+* [Report](files\DoE\Food Chemistry\2016_Ma_v212.pdf)
 
 
 ## Classification
@@ -35,3 +35,16 @@ Below are some use cases of Isalos Analytics Platform in food applications. Each
 {: .no_toc }
 * [Isalos workflow](files\Classification\Wine Quality\wine_quality_white_v206.iap)
 * [Report](files\Classification\Wine Quality\wine_quality_white.pdf)
+
+
+## ANOVA
+
+#### California Oceanic Fisheries ([`Repeated Measures ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#repeated-measures))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\CalCOFi\calcofi_v215.iap)
+* [Report](files\ANOVA\CalCOFi\calcofi_v215.pdf)
+
+#### Wine Tasting Ratings ([`Repeated Measures ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#repeated-measures))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Wine\wine_v215.iap)
+* [Report](files\ANOVA\Wine\wine_v215.pdf)

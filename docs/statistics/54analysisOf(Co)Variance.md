@@ -117,6 +117,10 @@ In a Two-Way ANOVA, three sets of hypotheses are tested:
 1. The null hypothesis for the interaction assumes that there is no interaction effect between the two factors (i.e., the effect of one factor does not depend on the level of the other).
 If the corresponding p-values are below the chosen significance level (e.g., 0.05), we reject the null hypothesis, indicating that the factor (or interaction) has a statistically significant effect on the dependent variable.
 
+In this analysis, we use a **full factorial design**, meaning that all combinations of the levels of Factor A and Factor B are included in the experiment, allowing both main effects and the interaction effect to be estimated. Sums of squares are computed using the **Type I (sequential)** method, in which each term is tested after adjusting only for the terms entered before it in the model (Factor A, then Factor B, then the A×B interaction). 
+When the design is balanced (equal sample sizes across all factor-level combinations), Type I and Type III sums of squares yield identical results, so the choice of method does not affect the conclusions drawn from the analysis.
+When the design is unbalanced (sample sizes differ across factor-level combinations), the Type I sums of squares — and consequently the significance tests for each term — depend on the order in which the factors are entered into the model. Factor A is entered first and is therefore tested unadjusted for Factor B, while Factor B is tested after adjusting for Factor A. Users should keep this ordering in mind when interpreting the main effect estimates, as reversing the entry order would produce different sums of squares for the two main effects (though the interaction term and overall model fit remain unaffected).
+
 Use Two-Way ANOVA by browsing in the top ribbon: 
 
 | Statistics $$\rightarrow$$ Analysis of (Co)Variance $$\rightarrow$$ Two-Way ANOVA |
@@ -170,7 +174,7 @@ In the input datasheet minimum requirement is to specify two factor (columns) an
 {: .no_toc }
 The statistical table of the analysis will be shown in the output spreadsheet.
 <div style="text-align: center;">
-<img src="images/ANOVA/TwoWayANOVA_output.png" alt="TwoWayANOVA-output" width="400" height="300" class="img-responsive">
+<img src="images/ANOVA/TwoWayANOVA_output.svg" alt="TwoWayANOVA-output" width="400" height="300" class="img-responsive">
 </div>
 
 ---

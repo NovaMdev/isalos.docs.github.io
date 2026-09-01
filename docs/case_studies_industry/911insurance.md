@@ -24,7 +24,12 @@ Below are some use cases of Isalos Analytics Platform in insurance applications.
 * [Report](files\Regression\Insurance charges\insurance_charges.pdf)
 
 
+## ANOVA
 
+#### Medical costs ([`Two Way ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#two-way-anova) & [`Factorial ANOVA`](https://www.docs.isalos.novamechanics.com/anova_ancova.html#factorial-anova))
+{: .no_toc }
+* [Isalos workflow](files\ANOVA\Insurance\insurance_v212.iap)
+* [Report](files\ANOVA\Insurance\insurance_v212.pdf)
 
 
 

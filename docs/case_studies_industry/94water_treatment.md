@@ -20,12 +20,12 @@ Below are some use cases of Isalos Analytics Platform in water treatment applica
 
 #### Removal of humic substances using coconut copra ([`Central Composite - CCI`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Water treatment\2015_Lee\2015_Lee.iap)
-* [Report](files\DoE\Water treatment\2015_Lee\2015_Lee.pdf)
+* [Isalos workflow](files\DoE\Water treatment\2015_Lee\2015_Lee_v212.iap)
+* [Report](files\DoE\Water treatment\2015_Lee\2015_Lee_v212.pdf)
 
 #### Biosorption of hexavalent chromium from aqueous media ([`Central Composite - CCC`](https://www.docs.isalos.novamechanics.com///response-surface.html))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Water treatment\2019_Bayuo\2019_Bayuo_DesignExpert.iap)
-* [Report](files\DoE\Water treatment\2019_Bayuo\2019_Bayuo.pdf)
+* [Isalos workflow](files\DoE\Water treatment\2019_Bayuo\2019_Bayuo_v212.iap)
+* [Report](files\DoE\Water treatment\2019_Bayuo\2019_Bayuo_v212.pdf)
 
 

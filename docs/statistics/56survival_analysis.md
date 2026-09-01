@@ -1,13 +1,13 @@
 ---
 layout: default
-title: 5.6 Survival Analysis (Under Development)
+title: 5.6 Survival Analysis
 parent: 5. Statistics
 nav_order: 6
 permalink: /survival-analysis.html
 description: "Analyze time-to-event data with different methods in Isalos"
 ---
 
-# Survival Analysis (Under Development)
+# Survival Analysis
 {: .no_toc }
 Survival Analysis, also known as "Time-to-Event" data analysis, is a collectuib of statistical methods that are used for analyzing data mesauring time until an event of interest occurs. Typical examples of such events include death, onset of disease, system failure, or arrival times. These methods are particularly useful when the timing of the event is as important as whether the event occurs.
 
@@ -647,11 +647,6 @@ The different tests arise from different choices of the weight function $$W(t_i)
 
 The log-rank test assigns equal weight to all event times. It is most powerful when the hazard functions of the groups are proportional over time and differences are consistent throughout the study period.
 
-##### Log-Rank Test
-<div style="text-align: center;"> $$ W(t_i) = 1 $$ </div>
-
-The log-rank test assigns equal weight to all event times. It is most powerful when the hazard functions of the groups are proportional over time and differences are consistent throughout the study period.
-
 ##### Wilcoxon (Breslow) Test
 <div style="text-align: center;"> $$ W(t_i) = Y_i $$ </div>
 
@@ -858,7 +853,7 @@ Categorical factors may require reference levels, while numerical covariates are
 | **Cluster ID Column** | Select the column identifying clusters of observations. This option is optional and is only available when the robust variance option is selected. It is used to compute cluster-adjusted standard errors.  |
 | **Max Iterations** |  Specify the maximum number of iterations allowed for the optimization algorithm (Newton-Raphson). Higher values may be required for complex models but will increase computation time. Default value is set to 25. |
 | **Minimum Change in Estimates** | Define the convergence threshold for the optimization algorithm. The algorithm stops when the change in parameter estimates between iterations falls below this value. Default value is set to 1e-6.  |
-| **Factors/ Covariates / exclude columns** | Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate column should be specified. |
+| **Factors/ Covariates / Excluded columns** | Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate column should be specified. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
 |**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
@@ -991,7 +986,7 @@ The Cox Proportional Hazards Model with Time-Dependent Covariates requires at le
 | **Cluster ID Column** | Select the column identifying clusters of observations. This option is optional and is only available when the robust variance option is selected. It is used to compute cluster-adjusted standard errors.  |
 | **Max Iterations** |  Specify the maximum number of iterations allowed for the optimization algorithm (Newton-Raphson). Higher values may be required for complex models but will increase computation time. Default value is set to 25. |
 | **Minimum Change in Estimates** | Define the convergence threshold for the optimization algorithm. The algorithm stops when the change in parameter estimates between iterations falls below this value. Default value is set to 1e-6.  |
-| **Factors/ Covariates / exclude columns** | Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate column should be specified. |
+| **Factors/ Covariates / Excluded columns** | Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate column should be specified. |
 |**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
 |**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
 |**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
@@ -1181,7 +1176,7 @@ Use the Univariate Parametric Analyis (Right-Censoring) method by browsing in th
 
 #### Input
 {: .no_toc }
-TheUnivariate Parametric Analyis (Right-Censoring) requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. Finally, a grouping column can be specidied as a categorical variable, either numerical or textual, indicating the group membership of each observation. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
+The Univariate Parametric Analyis (Right-Censoring) requires at least one column of numerical data to be specified in the input datasheet. The required input is a time variable column containing non-negative numerical values, representing the observed time-to-event or time-to-censoring for each subject. In addition to the time variable, several optional inputs may be provided to extend the functionality of the analysis. A censoring column may be specified as a variable, either numerical or textual, indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. Finally, a grouping column can be specidied as a categorical variable, either numerical or textual, indicating the group membership of each observation. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
 
 #### Configuration
 {: .no_toc }
@@ -1231,7 +1226,7 @@ In the input datasheet the requirement is to specify at least one numerical colu
 1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Univariate Parametric Analysis (Right-Censoring)`.
 1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
 1. Select the `Expected Distribution`[2] of the time column from the available options.
-1. Optionally click on the `Configure Event Mode Options` [2] button to select an `Event Mode Column` [4] and use the arrow buttons [5] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[6] and `Levels Considered as Event`[7] lists. `Save` or `Cancel` any changes made using the appropriate buttons [8].
+1. Optionally click on the `Configure Event Mode Options` [3] button to select an `Event Mode Column` [4] and use the arrow buttons [5] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[6] and `Levels Considered as Event`[7] lists. `Save` or `Cancel` any changes made using the appropriate buttons [8].
 1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [9] button to erase any selections made.
 1. Select/tick to `Use a Frequency Column` [10]. 
 1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[11]. This column should contain non-negative numeric values.
@@ -1263,44 +1258,558 @@ In addition, a pop-up window displays the survival curve and, if selected, the h
 
 ---
 
+### Univariate Parametric Analysis (Interval-Censoring)
+The Univariate Parametric Analysis (Interval-Censoring) method is a parametric survival analysis technique used to estimate survival characteristics from interval-censored time-to-event data by assuming that the underlying survival times follow a specified probability distribution. Unlike right-censored survival analysis, where the exact censoring time is known, interval-censoring occurs when the event is only known to have occurred within a time interval bounded by a lower and upper observation time.
+
+This method is univariate, meaning that it models the distribution of the survival time itself without incorporating predictor variables or covariates. It is useful when the goal is to describe the survival behavior of a sample, estimate smooth survival and hazard functions, or model failure behavior when exact event times are not directly observed.
+
+The user specifies an Interval Start (Lower Bound) column and an Interval End (Upper Bound) column containing the lower and upper bounds of the interval in which the event occurred. Exact observations may also be represented by rows where the lower and upper bounds are equal. Left-censored observations may be represented by intervals of the form $$(−∞,u]$$, while right-censored observations may be represented by intervals of the form $$[l,+∞)$$.
+
+The user also selects an Expected Distribution, which defines the assumed parametric form of the survival model. Available distributions include Weibull, 3-Parameter Weibull, Exponential, 2-Parameter Exponential, Normal, Lognormal, 3-Parameter Lognormal, Logistic, Loglogistic, 3-Parameter LogLogistic, and Smallest Extreme Value. [More on Available Distributions](https://www.docs/survival-analysis.html#distribution-equations-and-estimated-parameters)
+
+For a fitted parametric distribution, the survival function is expressed as:
+
+<div style="text-align: center;"> <span id="eq.Parametric Survival Function Interval"> $$ \begin{equation} S(t) = 1 - F(t) \end{equation} $$ </span> </div>
+
+where F(t) is the cumulative distribution function of the selected distribution. The corresponding cumulative probability of failure by time t is:
+
+<div style="text-align: center;"> <span id="eq.Parametric Failure Function Interval"> $$ \begin{equation} F(t) = P(T \leq t) \end{equation} $$ </span> </div>
+
+The hazard function describes the instantaneous event rate at time t conditional on survival up to time t:
+
+<div style="text-align: center;"> <span id="eq.Parametric Hazard Function Interval"> $$ \begin{equation} h(t) = \frac{f(t)}{S(t)} \end{equation} $$ </span> </div>
+
+where $$f(t)$$ is the probability density function of the selected distribution.
+
+The method supports two estimation approaches: Maximum Likelihood Estimation and Least Squares.
+
+Maximum Likelihood Estimation is the default method and estimates the distribution parameters by maximizing the likelihood of the observed interval-censored data. For interval-censored observations, the contribution of each observation corresponds to the probability that the event time lies within the observed interval:
+
+<div style="text-align: center;"> <span id="eq.Parametric MLE Interval Censoring"> $$ \begin{equation} L(\theta) = \prod_{i=1}^{n} \left[F(u_i;\theta)-F(l_i;\theta)\right] \end{equation} $$ </span> </div>
+
+where $$l_i$$ and $$u_i$$ represent the lower and upper bounds of the interval for observation i and θ denotes the distribution parameters.
+
+Special cases are handled naturally:
+
+Exact observations contribute through:
+<div style="text-align: center;"> <span id="eq.Exact Observation Interval"> $$ \begin{equation} f(t_i;\theta) \end{equation} $$ </span> </div>
+Right-censored observations contribute through:
+<div style="text-align: center;"> <span id="eq.Right Censored Interval"> $$ \begin{equation} S(l_i;\theta) \end{equation} $$ </span> </div>
+Left-censored observations contribute through:
+<div style="text-align: center;"> <span id="eq.Left Censored Interval"> $$ \begin{equation} F(u_i;\theta) \end{equation} $$ </span> </div>
+
+The Least Squares option estimates the distribution parameters by fitting the selected distribution to transformed empirical survival information derived from the interval-censored data. This approach provides an alternative to likelihood-based estimation, although Maximum Likelihood Estimation is generally preferred for interval-censored survival analysis.
+
+Optional frequency weights may be included to represent repeated identical observations. If no frequency column is selected, each row is treated as one observation.
+
+An Event Mode column may also be specified when different event types are present. Only the selected event levels are included as events in the analysis, while other rows are excluded according to the selected event mode configuration.
+
+In addition, a Grouping Column may be specified to fit the selected parametric model separately for each group while also producing results for the complete dataset.
+
+The output includes a Parameter Estimates Table, which reports the fitted distribution parameters. When Maximum Likelihood Estimation is used, standard errors, confidence intervals, and inferential statistics are also reported according to the selected confidence level and confidence interval type.
+
+The method also produces estimated distribution characteristics derived from the fitted model, including survival probabilities, cumulative failure probabilities, hazard functions, and other distribution-specific characteristics.
+
+The fitted results are visualized using smooth parametric curves generated from the selected distribution. Optionally, the user may generate:
+
+1. A fitted Hazard Function Plot
+1. A fitted Cumulative Probability of Failure Plot
+
+When grouping is enabled, separate fitted curves are produced for each group in addition to the full-sample results.
+
+Use the Univariate Parametric Analysis (Interval-Censoring) method when the exact event times are not directly observed but are known to lie within intervals, when smooth parametric survival estimates are desired, or when extrapolation beyond the observed intervals is required.
+
+Use the Univariate Parametric Analysis (Interval-Censoring) method by browsing in the top ribbon:
+
+| `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Parametric` $$\rightarrow$$ `Univariate Parametric Analyis (Interval-Censoring)` |
+
+#### Input
+{: .no_toc }
+The Univariate Parametric Analysis (Interval-Censoring) requires at least two columns of numerical data to be specified in the input datasheet. The required inputs are an interval start (lower bound) column and an interval end (upper bound) column containing non-negative numerical values, representing the lower and upper bounds of the interval within which the event occurred for each subject. Exact observations may be represented by rows where the lower and upper bounds are equal. Left-censored and right-censored observations may also be represented through appropriate interval bounds depending on the analysis configuration. In addition to the interval bounds, several optional inputs may be provided to extend the functionality of the analysis. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, which can be either numerical or textual, and is used to distinguish between different types of events depending on the analysis configuration. Finally, a grouping column can be specified as a categorical variable, either numerical or textual, indicating the group membership of each observation. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly. In addition, the lower bound must be less than or equal to the corresponding upper bound for every observation.
+
+#### Configuration
+{: .no_toc }
+
+| **Interval Start (Lower Bound)** | Select the column corresponding to the lower bound of the interval for each subject. This column must be numerical and contain non-negative values. |
+| **Interval End (Upper Bound)** | Select the column corresponding to the upper bound of the interval for each subject. This column must be numerical and contain non-negative values. For each row the upper bound should be larger or equal to the lower bound.|
+| **Expected Distribution** | Select the expected distribution of the time column. Available options include: Weibull, Smallest Extreme Value, 3-Parameter Weibull, Exponential, 2-Parameter Exponential, Normal, Lognormal, 3-Parameter Lognormal, Logistic, LogLogistic, 3-Parameter LogLogistic.  |
+|**Configure Event Mode Options**| Use this button to open the `Configure Event Mode Options` window |
+|**Event Mode Column**| Within the `Configure Event Mode Options` window, specify the column containing event mode information. |
+|**Levels not Considered as Event/Levels Considered as Event**| Manually select which levels should be treated as events from the available levels of the Event Mode Column. Use the arrow buttons to move levels between the two lists. Single-arrow buttons move selected levels, while double-arrow buttons move all levels. At least one level must be selected as an event. |
+|**Clear Event Mode Options**| Use this button to clear all selections related to event mode configuration. |
+| **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
+| **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
+| **Use a Grouping Column** | Enable this option to include a grouping column in the analysis, allowing comparison of survival across different groups in the population. |
+| **Grouping Column** |  If the `Use a Grouping Column` option is enabled, select the column containing grouping information for each observation. This column must be categorical. |
+| **Estimation Method** | Select the method used to estimate the distribution parameters. Available options include Maximum Likelihood and Least Squares. Maximum Likelihood is the default method and supports censored observations and confidence interval estimation. The Least Squares method estimates parameters by fitting the selected distribution to empirical survival information and does not allow computation of confidence intervals. |
+| **Max Iterations** | Specify the maximum number of iterations allowed for the optimization algorithm when Maximum Likelihood estimation is selected. Higher values may be required for difficult convergence cases. Default value is 25. |
+| **Minimum Change in Estimates** | Define the convergence threshold for the optimization algorithm when Maximum Likelihood estimation is selected. The algorithm stops when the change in parameter estimates between iterations falls below this value. Default value is 1e−6. |
+| **Confidence Level (%)** | Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. Default value is set to 95. |
+| **Confidence Interval Type** | Select the type of confidence interval to compute. Available options include: `Two-sided`, `Lower Bound`, `Upper Bound`. |
+| **Hazard Function Plot** | Enable this option to generate a plot of the estimated hazard function over time. |
+| **Cumulative Probability of Failure Plot** | Enable this option to generate a plot of the estimated cumulative probability of failure over time. |
+
+
+#### Output
+{: .no_toc }
+The output of the Univariate Parametric Analysis is presented in a structured spreadsheet containing summary tables of the fitted distribution parameters and derived survival characteristics. The spreadsheet includes a Parameter Estimates Table, which reports the estimated parameters of the selected distribution (e.g., shape, scale, location, or threshold depending on the distribution). When the Maximum Likelihood Estimation (MLE) method is used, the table also includes standard errors and confidence interval bounds at the selected confidence level. If the Least Squares method is selected, only the parameter estimates are reported, as confidence intervals and standard errors are not computed. In addition, the output includes a Characteristics Table, which provides derived quantities from the fitted distribution, such as measures related to survival behavior (e.g., quantiles or other distribution-specific characteristics), along with confidence intervals when available. If a grouping column is specified, the spreadsheet first presents the results for the full sample, followed by separate parameter and characteristics tables for each group.
+
+A pop-up window displays the fitted survival probability curve, which is a smooth curve derived from the selected parametric distribution. Confidence interval bounds are shown when available (i.e., under MLE). Unlike the Non-Parametric and Semi-Parametric methods, this curve is continuous and defined over the entire time range.Optionally, the user may also generate the hazard function plot and the cumulative probability of failure plot, both derived from the fitted distribution. When grouping is enabled, the plots include the overall fitted curve as well as separate curves for each group, allowing comparison of survival behavior across groups under the assumed distribution.
+
+#### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+In the input datasheet the requirement is to specify at least two numerical column and insert the appropriate data, as shown below.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/UnivariateIntervalCensoring_input.png" alt="UnivariateIntervalCensoring-input" width="800" height="600" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc }
+1. Select  `Statistics` → `Survival Analysis` → `Non-Parametric` → `Univariate Parametric Analysis (Interval-Censoring)`.
+1. Select the `Interval Start (Lower Bound)`[1]. This column should contain non-negative numeric values.
+1. Select the `Interval End (Upper Bound)`[2]. This column should contain non-negative numeric values.
+1. Select the `Expected Distribution`[3] of the time column from the available options.
+1. Optionally click on the `Configure Event Mode Options` [4] button to select an `Event Mode Column` [5] and use the arrow buttons [6] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[7] and `Levels Considered as Event`[8] lists. `Save` or `Cancel` any changes made using the appropriate buttons [9].
+1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [10] button to erase any selections made.
+1. Select/tick to `Use a Frequency Column` [11]. 
+1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[12]. This column should contain non-negative numeric values.
+1. Select/tick to `Use a Grouping Column` [13]. 
+1. If the `Use a Grouping Column` option is selected, specify a `Grouping Column`[14]. This column should be categorical, either textual or numerical.
+1. Select the desired `Estimation Method` [15].
+1. Specify the `Max Iterations` [16] of the iterative algorithm to perform and the `Minimum Change in Parameter Estimates` [17].
+1. If the Maximum Likelihood `Estimation Method` is selected, specify the `Confidence Level` (%) [18] for Confidence Intervals and the desired `Confidence Interval Type` [19].
+1. Optionally select/tick to calculate and present the `Hazard Function Plot` [20] and the `Cumulative Probability of Failure Plot` [21].
+1. Click on the `Execute` button [22] to perform the Univariate Parametric Analysis (Right-Censoring) method. 
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/UnivariateIntervalCensoring_configuration.png" alt="UnivariateIntervalCensoring-configuration" width="600" height="600" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc }
+The tables summarizing the survival analysis results for the non grouped dataset and each grouping level are shown in the output spreadsheet.
+In addition, a pop-up window displays the survival curve and, if selected, the hazard function and cumulative probability of failure plots.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/UnivariateIntervalCensoring_output.png" alt="UnivariateIntervalCensoring-output" width="800" height="600" class="img-responsive">
+</div>
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/UnivariateIntervalCensoring_chart.png" alt="UnivariateIntervalCensoring-chart" width="800" height="600" class="img-responsive">
+</div>
+
+---
+
+### Accelerated Life Testing (Right-Censoring)
+Accelerated Life Testing (ALT) with right-censored data is a parametric survival regression method used to model the effect of accelerating variables (stress variables) on the lifetime of a product, component, or system. Unlike semi-parametric survival models, ALT assumes that the survival times follow a specified probability distribution and directly models how stress conditions accelerate or decelerate the time-to-failure process.
+
+The method relates survival time to predictor variables through an Accelerated Failure Time (AFT) formulation, where predictor variables act multiplicatively on the survival-time scale. In this framework, the survival time is modeled as a function of covariates, categorical factors, and a distribution-specific random error term.
+
+The general Accelerated Failure Time formulation is:
+
+<div style="text-align: center;"> $$ \log(T) = x^T \beta + \sigma \epsilon $$ </div>
+
+where T is the survival time, x is the vector of predictor variables, β is the vector of estimated regression coefficients, σ is a scale parameter, and ϵ follows the error distribution associated with the selected parametric model.
+
+For the Weibull, Exponential, Lognormal, and Loglogistic distributions, the model is formulated in terms of the logarithm of survival time log(T). In contrast, the Smallest Extreme Value, Normal, and Logistic distributions are modeled directly on the raw survival-time scale T.
+
+Right-censored observations are incorporated by identifying observations for which the event has not occurred by the recorded time. These observations contribute information indicating that the true event time exceeds the observed censoring time. If a censoring column is specified, the selected censoring indicator value determines which rows are treated as censored. The user may additionally choose to administratively censor all observations with time values greater than or equal to a specified threshold value.
+
+The method supports:
+
+1. Right-censored survival data
+1. Optional frequency weights
+1. Optional event-mode filtering
+1. Optional administrative censoring at a specified censoring value
+1. Continuous accelerating covariates and categorical factors
+1. Custom model formulas, main-effects models, and full factorial models
+1. Multiple accelerating-variable transformations
+1. Predicted survival curves for user-specified predictor patterns
+
+The user specifies a Time Column containing non-negative numerical values representing the observed event or censoring time for each subject. The user also selects an Expected Distribution, which defines the assumed parametric form of the survival model. Available distributions include Weibull, Exponential, Normal, Lognormal, Logistic, Loglogistic and Smallest Extreme Value.
+
+The model supports several accelerating-variable relationships that may be applied to numerical covariates before model fitting. Available accelerating relationships include:
+
+1. Linear
+1. Logarithmic
+1. Arrhenius
+1. Eyring
+
+Only numerical covariates may be used as accelerating variables and transformed according to the selected accelerating relationship. Categorical factors are not transformed and are incorporated into the model through indicator-variable encoding.
+
+The following accelerating-variable transformations are supported:
+
+#### Linear Relationship
+{: .no_toc }
+
+<div style="text-align: center;"> $$ \begin{equation} z=x \end{equation} $$ </div>
+
+where x is the original covariate value.
+
+#### Logarithmic Relationship
+{: .no_toc }
+
+<div style="text-align: center;"> $$ \begin{equation} z=\log(x) \end{equation} $$ </div>
+
+where $$x>0$$.
+
+#### Arrhenius Relationship
+{: .no_toc }
+
+The Arrhenius relationship is commonly used for temperature-based accelerated testing. Input temperatures are assumed to be specified in degrees Celsius and are internally converted to Kelvin.
+
+<div style="text-align: center;"> $$ \begin{equation} z=\frac{11604.53}{x+273.15} \end{equation} $$ </div>
+
+where x represents the temperature in degrees Celsius.
+
+#### Eyring Relationship
+{: .no_toc }
+
+The Eyring relationship is also commonly used for temperature-based accelerated testing. Input temperatures are assumed to be specified in degrees Celsius and are internally converted to Kelvin.
+
+<div style="text-align: center;"> $$ \begin{equation} z=\frac{1}{x+273.15} \end{equation} $$ </div>
+
+where x represents the temperature in degrees Celsius.
+
+The method estimates model parameters using Maximum Likelihood Estimation. Under right-censoring, uncensored observations contribute through the probability density function, while censored observations contribute through the survival function. The likelihood function may be expressed as:
+
+<div style="text-align: center;"> $$ \begin{equation} L(\theta)=\prod_{i=1}^{n}\left[f(t_i;\theta)\right]^{\delta_i}\left[S(t_i;\theta)\right]^{1-\delta_i} \end{equation} $$ </div>
+
+where θ represents the model parameters, $$t_i$$ is the observed survival time for observation $$i$$, and $$\delta_i$$ indicates whether the observation corresponds to an event or a censored case.
+
+The model output includes coefficient estimates, standard errors, confidence intervals, Wald statistics, degrees of freedom, and p-values for each fitted parameter. In addition, the model estimates the scale parameter of the selected distribution when applicable.
+
+The method also provides model-level summaries, including the log-likelihood and goodness-of-fit statistics. Predicted survival curves may be generated for user-specified combinations of predictor values and factor levels.
+
+This model is useful when the primary goal is to quantify how accelerating conditions affect product lifetime, estimate reliability under normal-use conditions, or extrapolate failure behavior beyond the observed testing environment.
+
+Use the Accelerated Life Testing (Right-Censoring) method by browsing in the top ribbon:
+
+| `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Parametric` $$\rightarrow$$ `Accelerated Life Testing (Right-Censoring)` |
+
+#### Input
+{: .no_toc }
+The Accelerated Life Testing (Right-Censoring) method requires at least two columns to be specified in the input datasheet: one numerical time column and at least one predictor variable. The time column must contain non-negative numerical values representing the observed time-to-event or time-to-censoring for each subject. Predictor variables may be specified either as categorical factors or numerical covariates and are used to model the effect of accelerating conditions on the survival distribution. In addition to the time variable and predictor variables, several optional inputs may be provided to extend the analysis. A censoring column may be specified as a numerical or textual variable indicating whether each observation corresponds to an event or a censored case. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, using numerical or textual values to distinguish between different event types and determine which observations should be included in the analysis. The user may additionally specify an administrative censoring threshold value, where all observations with time values greater than or equal to the specified threshold are treated as censored. Categorical predictors may require reference levels, while numerical covariates may additionally be assigned accelerating-variable relationships including Linear, Logarithmic, Arrhenius, or Eyring transformations. Only numerical covariates may be used as accelerating variables. The selected predictors may be combined using a custom model formula, main-effects model, or full factorial model. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly.
+
+#### Configuration
+{: .no_toc }
+
+| **Time Column** | Select the column corresponding to the observed time-to-event or time-to-censoring for each subject. This column must be numerical and contain non-negative values. |
+| **Expected Distribution** | Select the expected distribution of the time column. Available options include: Weibull, Smallest Extreme Value, 3-Parameter Weibull, Exponential, 2-Parameter Exponential, Normal, Lognormal, 3-Parameter Lognormal, Logistic, LogLogistic, 3-Parameter LogLogistic.  |
+|**Configure Event Mode Options**| Use this button to open the `Configure Event Mode Options` window |
+|**Event Mode Column**| Within the `Configure Event Mode Options` window, specify the column containing event mode information. |
+|**Levels not Considered as Event/Levels Considered as Event**| Manually select which levels should be treated as events from the available levels of the Event Mode Column. Use the arrow buttons to move levels between the two lists. Single-arrow buttons move selected levels, while double-arrow buttons move all levels. At least one level must be selected as an event. |
+|**Clear Event Mode Options**| Use this button to clear all selections related to event mode configuration. |
+| **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
+| **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
+| **Use a Censoring  Column** | Enable this option to include a censoring column in the analysis. |
+| **Censoring Column** |  If the `Use a Censoring Column` option is enabled, select the column containing censoring information for each observation. This column must be categorical and may be either numerical or textual. |
+| **Censoring Indicator Value** | If a censoring column is used, specify which of its two levels represents a censored observation. |
+| **Censor times at or above a value** | Enable this option to treat all time values greater than or equal to a specified threshold as censored. |
+| **Censoring Threshold Value** | If the `Censor times at or above a value` option is enabled, specify the value above or equal to which observations will be treated as censored. |
+| **Confidence Level (%)** | Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. Default value is set to 95. |
+| **Confidence Interval Type** | Select the type of confidence interval to compute. Available options include: `Two-sided`, `Lower Bound`, `Upper Bound`. |
+| **Max Iterations** |  Specify the maximum number of iterations allowed for the optimization algorithm (Newton-Raphson). Higher values may be required for complex models but will increase computation time. Default value is set to 25. |
+| **Minimum Change in Estimates** | Define the convergence threshold for the optimization algorithm. The algorithm stops when the change in parameter estimates between iterations falls below this value. Default value is set to 1e-6.  |
+| **Factors/ Covariates / Excluded columns** | Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate column should be specified. |
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
+|**Use default prefictor variable values for plots**| When enabled, predicted survival curves are generated using default values for predictors. These defaults are the reference levels for categorical factors and the midpoints of the observed ranges for numerical covariates.|
+|**Specify Predictor Variable Values for the plot**| Define custom values for predictors to generate predicted survival curves. The user may specify up to 10 different sets of predictor values, and a separate survival curve will be produced for each set. |
+
+
+
+#### Output
+{: .no_toc }
+The output of the Accelerated Life Testing (Right-Censoring) method is presented in a structured spreadsheet containing multiple tables that summarize the fitted model, statistical inference, and overall model performance.
+
+The main output includes a Parameter Estimates table, which reports the estimated regression coefficients for each predictor variable, along with their corresponding standard errors, confidence interval bounds at the selected confidence level, test statistics, degrees of freedom, and p-values. The table also includes the estimated scale parameter of the selected parametric distribution when applicable.
+
+A Goodness-of-Fit table is also provided, summarizing key model diagnostics including the model log-likelihood. This measure may be used to assess overall model fit and compare competing accelerated life testing models fitted on the same dataset.
+
+An ANOVA table is additionally generated, providing term-wise inference for each predictor variable and interaction term included in the fitted model. This table includes Wald, likelihood ratio, and score test statistics together with their corresponding degrees of freedom and p-values for each model term.
+
+In addition to the tabular output, a pop-up window displays the predicted survival probability curves based on the fitted accelerated life testing model. These curves are computed using the estimated model coefficients and the selected parametric survival distribution. Confidence interval bounds are displayed according to the selected confidence interval type. When multiple sets of predictor values are specified, a separate survival curve (with confidence bounds) is plotted for each predictor configuration, allowing direct comparison of survival behavior under different accelerating conditions.
+
+
+#### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+In the input datasheet the requirement is to specify at least two columns, from which at least one should be numerical and insert the appropriate data, as shown below.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/KaplanMeier_input.png" alt="ALTRightCensoring-input" width="800" height="600" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc }
+1. Select  `Statistics` → `Survival Analysis` → `Parametric` → `Accelerated Life Testing (Right-Censoring)`.
+1. Select the `Time Column`[1]. This column should contain non-negative numeric values.
+1. Select the `Expected Distribution`[2] of the time column from the available options.
+1. Optionally click on the `Configure Event Mode Options` [3] button to select an `Event Mode Column` [4] and use the arrow buttons [6] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[5] and `Levels Considered as Event`[7] lists. `Save` or `Cancel` any changes made using the appropriate buttons [8].
+1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [9] button to erase any selections made.
+1. Select/tick to `Use a Frequency Column` [10]. 
+1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[11]. This column should contain non-negative numeric values.
+1. Select/tick to `Use a Censoring Column` [12]. 
+1. If the `Use a Censoring Column` option is selected, specify a `Censoring Column`[13] and the value of this column that should be the `Censored Indicator Value` [14].
+1. Select/tick to `Censor times at or above a value` [15]. 
+1. If the ``Censor times at or above a value` option is selected, specify a `Censoring Thresholdd Value`[16] above which events are considered censored.
+1. Specify the `Confidence Level` (%) [17] for Confidence Intervals and the desired `Confidence Interval Type` [18].
+1. Specify the `Max Iterations` [19] of the iterative algorithm to perform and the `Minimum Change in Parameter Estimates` [20].
+1. Select the columns by clicking on the arrow buttons [21] and moving columns between the `Excluded Columns` [22] and `Factors`[23] and `Covariates` [24] lists.
+1. Optionally, specify `Specify Reference Levels` [25] for the categorical factors.
+1. Select the prefered `Formula Type`[26].
+1. `Specify Custom Model Formula` [27] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
+1. Select/tick to `Use default predictor variable values for plots` [28], otherwise `Specify Predictor Variable Values for the plots`[29]. 
+1. Click on the `Execute` button [30] to perform the Cox Proportional Hazards Model with Fixed Covariates. 
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/ALTRightCensored_configuration.png" alt="ALTRightCensored-configuration" width="1000" height="800" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc }
+The tables summarizing the Accelerated Life Testing (Right-Censoring) analysis results are shown in the output spreadsheet. These tables include the Goodness-of-Fit table, the Parameter Estimates table, and the ANOVA table containing Wald, likelihood ratio, and score tests for each model term.
+
+In addition, a pop-up window displays the predicted survival probability curves generated from the fitted accelerated life testing model. Separate survival curves are produced for each selected set of predictor-variable settings, allowing direct comparison of survival behavior under different accelerating conditions. Confidence interval bounds are additionally displayed according to the selected confidence interval type.
+
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/ALTRightCensored_output.png" alt="ALTRightCensored-output" width="800" height="600" class="img-responsive">
+</div>
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/ALTRightCensored_chart.png" alt="ALTRightCensored-chart" width="500" height="500" class="img-responsive">
+</div>
+
+---
+
+### Accelerated Life Testing (Interval-Censoring)
+Accelerated Life Testing (ALT) with interval-censored data is a parametric survival regression method used to model the effect of accelerating variables (stress variables) on the lifetime of a product, component, or system when the exact event times are not directly observed. Instead, the event is only known to have occurred within an interval bounded by a lower and upper observation time.
+
+Unlike semi-parametric survival models, ALT assumes that the survival times follow a specified probability distribution and directly models how stress conditions accelerate or decelerate the time-to-failure process.
+
+The method relates survival time to predictor variables through an Accelerated Failure Time (AFT) formulation, where predictor variables act multiplicatively on the survival-time scale. In this framework, the survival time is modeled as a function of covariates, categorical factors, and a distribution-specific random error term.
+
+The general Accelerated Failure Time formulation is:
+
+<div style="text-align: center;"> $$ \log(T) = x^T \beta + \sigma \epsilon $$ </div>
+
+where T is the survival time, x is the vector of predictor variables, β is the vector of estimated regression coefficients, σ is a scale parameter, and ϵ follows the error distribution associated with the selected parametric model.
+
+For the Weibull, Exponential, Lognormal, and Loglogistic distributions, the model is formulated in terms of the logarithm of survival time log(T). In contrast, the Smallest Extreme Value, Normal, and Logistic distributions are modeled directly on the raw survival-time scale T.
+
+Interval-censored observations are incorporated by specifying lower and upper bounds for the interval within which the event occurred. Exact observations may be represented by intervals where the lower and upper bounds are equal. Left-censored observations may additionally be represented through intervals of the form (−∞,u], while right-censored observations may be represented through intervals of the form [l,+∞).
+
+The method supports:
+
+1. Interval-censored survival data
+1. Optional frequency weights
+1. Optional event-mode filtering
+1. Continuous accelerating covariates and categorical factors
+1. Custom model formulas, main-effects models, and full factorial models
+1. Multiple accelerating-variable transformations
+1. Predicted survival curves for user-specified predictor patterns
+
+The user specifies an Interval Start (Lower Bound) column and an Interval End (Upper Bound) column containing non-negative numerical values representing the interval within which the event occurred for each subject. The user also selects an Expected Distribution, which defines the assumed parametric form of the survival model. Available distributions include Weibull, Exponential, Normal, Lognormal, Logistic, Loglogistic and Smallest Extreme Value.
+
+The model supports several accelerating-variable relationships that may be applied to numerical covariates before model fitting. Available accelerating relationships include:
+
+1. Linear
+1. Logarithmic
+1. Arrhenius
+1. Eyring
+
+Only numerical covariates may be used as accelerating variables and transformed according to the selected accelerating relationship. Categorical factors are not transformed and are incorporated into the model through indicator-variable encoding.
+
+The following accelerating-variable transformations are supported:
+
+#### Linear Relationship
+{: .no_toc }
+
+<div style="text-align: center;"> $$ \begin{equation} z=x \end{equation} $$ </div>
+
+where x is the original covariate value.
+
+#### Logarithmic Relationship
+{: .no_toc }
+
+<div style="text-align: center;"> $$ \begin{equation} z=\log(x) \end{equation} $$ </div>
+
+where $$x>0$$.
+
+#### Arrhenius Relationship
+{: .no_toc }
+
+The Arrhenius relationship is commonly used for temperature-based accelerated testing. Input temperatures are assumed to be specified in degrees Celsius and are internally converted to Kelvin.
+
+<div style="text-align: center;"> $$ \begin{equation} z=\frac{11604.53}{x+273.15} \end{equation} $$ </div>
+
+where x represents the temperature in degrees Celsius.
+
+#### Eyring Relationship
+{: .no_toc }
+
+The Eyring relationship is also commonly used for temperature-based accelerated testing. Input temperatures are assumed to be specified in degrees Celsius and are internally converted to Kelvin.
+
+<div style="text-align: center;"> $$ \begin{equation} z=\frac{1}{x+273.15} \end{equation} $$ </div>
+
+where x represents the temperature in degrees Celsius.
+
+The method estimates model parameters using Maximum Likelihood Estimation. Under interval-censoring, each observation contributes the probability that the event time lies within the observed interval. The likelihood function may be expressed as:
+
+<div style="text-align: center;"> $$ \begin{equation} L(\theta)=\prod_{i=1}^{n}\left[F(u_i;\theta)-F(l_i;\theta)\right] \end{equation} $$ </div>
+
+where $$l_i$$ and $$u_i$$ denote the lower and upper interval bounds for observation i and θ represents the model parameters.
+
+Special cases are handled naturally:
+
+Exact observations contribute through:
+<div style="text-align: center;"> $$ \begin{equation} f(t_i;\theta) \end{equation} $$ </div>
+Right-censored observations contribute through:
+<div style="text-align: center;"> $$ \begin{equation} S(l_i;\theta) \end{equation} $$ </div>
+Left-censored observations contribute through:
+<div style="text-align: center;"> $$ \begin{equation} F(u_i;\theta) \end{equation} $$ </div>
+
+The model output includes coefficient estimates, standard errors, confidence intervals, Wald statistics, degrees of freedom, and p-values for each fitted parameter. In addition, the model estimates the scale parameter of the selected distribution when applicable.
+
+The method also provides model-level summaries, including the log-likelihood and goodness-of-fit statistics. Predicted survival curves may be generated for user-specified combinations of predictor values and factor levels.
+
+This model is useful when the primary goal is to quantify how accelerating conditions affect product lifetime, estimate reliability under normal-use conditions, or extrapolate failure behavior beyond the observed testing environment when exact failure times are not directly observed.
+
+Use the Accelerated Life Testing (Interval-Censoring) method by browsing in the top ribbon:
+
+| `Statistics` $$\rightarrow$$ `Survival Analysis` $$\rightarrow$$ `Parametric` $$\rightarrow$$ `Accelerated Life Testing (Interval-Censoring)` |
+
+#### Input
+{: .no_toc }
+The Accelerated Life Testing (Interval-Censoring) method requires at least three columns to be specified in the input datasheet: one numerical lower-bound column, one numerical upper-bound column, and at least one predictor variable. The lower-bound and upper-bound columns must contain non-negative numerical values representing the interval within which the event occurred for each subject. Exact observations may be represented by rows where the lower and upper bounds are equal. Predictor variables may be specified either as categorical factors or numerical covariates and are used to model the effect of accelerating conditions on the survival distribution. In addition to the interval bounds and predictor variables, several optional inputs may be provided to extend the analysis. A frequency column may also be included, consisting of non-negative numerical values that represent the number of identical observations associated with each row; if this column is not provided, each row is treated as a single observation by default. Furthermore, an event mode column may be defined, using numerical or textual values to distinguish between different event types and determine which observations should be included in the analysis. Categorical predictors may require reference levels, while numerical covariates may additionally be assigned accelerating-variable relationships including Linear, Logarithmic, Arrhenius, or Eyring transformations. Only numerical covariates may be used as accelerating variables. The selected predictors may be combined using a custom model formula, main-effects model, or full factorial model. All input columns must be of consistent type and should not contain invalid or missing values, as this may prevent the method from executing correctly. In addition, the lower interval bound must be less than or equal to the corresponding upper interval bound for every observation.
+
+#### Configuration
+{: .no_toc }
+
+| **Interval Start (Lower Bound)** | Select the column corresponding to the lower bound of the interval for each subject. This column must be numerical and contain non-negative values. |
+| **Interval End (Upper Bound)** | Select the column corresponding to the upper bound of the interval for each subject. This column must be numerical and contain non-negative values. For each row the upper bound should be larger or equal to the lower bound.|
+| **Expected Distribution** | Select the expected distribution of the time column. Available options include: Weibull, Smallest Extreme Value, 3-Parameter Weibull, Exponential, 2-Parameter Exponential, Normal, Lognormal, 3-Parameter Lognormal, Logistic, LogLogistic, 3-Parameter LogLogistic.  |
+|**Configure Event Mode Options**| Use this button to open the `Configure Event Mode Options` window |
+|**Event Mode Column**| Within the `Configure Event Mode Options` window, specify the column containing event mode information. |
+|**Levels not Considered as Event/Levels Considered as Event**| Manually select which levels should be treated as events from the available levels of the Event Mode Column. Use the arrow buttons to move levels between the two lists. Single-arrow buttons move selected levels, while double-arrow buttons move all levels. At least one level must be selected as an event. |
+|**Clear Event Mode Options**| Use this button to clear all selections related to event mode configuration. |
+| **Use a Frequency Column** | Enable this option to include a frequency column in the analysis. |
+| **Frequency Column** |  If the `Use a Frequency Column` option is enabled, select the column containing frequency information for each observation. This column must be numerical and contain non-negative values. |
+| **Confidence Level (%)** | Specify the confidence level of the analysis. Values should range from 0 to 100 and correspond to percentages. Default value is set to 95. |
+| **Confidence Interval Type** | Select the type of confidence interval to compute. Available options include: `Two-sided`, `Lower Bound`, `Upper Bound`. |
+| **Max Iterations** |  Specify the maximum number of iterations allowed for the optimization algorithm (Newton-Raphson). Higher values may be required for complex models but will increase computation time. Default value is set to 25. |
+| **Minimum Change in Estimates** | Define the convergence threshold for the optimization algorithm. The algorithm stops when the change in parameter estimates between iterations falls below this value. Default value is set to 1e-6.  |
+| **Factors/ Covariates / Excluded columns** | Select manually the columns that correspond to factors and the columns that correspond to covariates through the dialog window: Use the buttons to move columns between the Factors and Covariates list and Excluded Columns list. Single-arrow buttons will move all selected columns and double-arrow buttons will move all columns. At least one covariate column should be specified. |
+|**Specify Reference Levels**| Specify the reference level for each of the categorical factors specified. The default option for each factor is its last level. |
+|**Formula Type**| These options refer to the terms that will be included in the model. The Custom option allows the user to input a formula defining the exact terms to be included. The Main Effects option allows the analysis of a model that only includes all main effects and finally, the Full Factorial option includes both all main effects and all possible interaction terms to build a full model. |
+|**Specify Custom Model Formula**| Specify the model formula used for the analysis if the Custom option is selected. The formula is created in the Custom Formula Creation dialog window by selecting factors and covariates and adding interaction terms up to the required order. Main effects of the included columns are always part of the model and cannot be excluded. |
+|**Use default prefictor variable values for plots**| When enabled, predicted survival curves are generated using default values for predictors. These defaults are the reference levels for categorical factors and the midpoints of the observed ranges for numerical covariates.|
+|**Specify Predictor Variable Values for the plot**| Define custom values for predictors to generate predicted survival curves. The user may specify up to 10 different sets of predictor values, and a separate survival curve will be produced for each set. |
+
+
+
+#### Output
+{: .no_toc }
+The output of the Accelerated Life Testing (Interval-Censoring) method is presented in a structured spreadsheet containing multiple tables that summarize the fitted model, statistical inference, and overall model performance.
+
+The main output includes a Parameter Estimates table, which reports the estimated regression coefficients for each predictor variable, along with their corresponding standard errors, confidence interval bounds at the selected confidence level, test statistics, degrees of freedom, and p-values. The table also includes the estimated scale parameter of the selected parametric distribution when applicable.
+
+A Goodness-of-Fit table is also provided, summarizing key model diagnostics including the model log-likelihood. This measure may be used to assess overall model fit and compare competing accelerated life testing models fitted on the same dataset.
+
+An ANOVA table is additionally generated, providing term-wise inference for each predictor variable and interaction term included in the fitted model. This table includes Wald, likelihood ratio, and score test statistics together with their corresponding degrees of freedom and p-values for each model term.
+
+In addition to the tabular output, a pop-up window displays the predicted survival probability curves based on the fitted accelerated life testing model. These curves are computed using the estimated model coefficients and the selected parametric survival distribution. Confidence interval bounds are displayed according to the selected confidence interval type. When multiple sets of predictor values are specified, a separate survival curve (with confidence bounds) is plotted for each predictor configuration, allowing direct comparison of survival behavior under different accelerating conditions.
+
+
+#### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+In the input datasheet the requirement is to specify at least two columns, from which at least one should be numerical and insert the appropriate data, as shown below.
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/UnivariateIntervalCensoring_input.png" alt="ALTIntervalCensoring-input" width="800" height="600" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc }
+1. Select  `Statistics` → `Survival Analysis` → `Parametric` → `Accelerated Life Testing (Right-Censoring)`.
+1. Select the `Interval Start (Lower Bound)`[1]. This column should contain non-negative numeric values.
+1. Select the `Interval End (Upper Bound)`[2]. This column should contain non-negative numeric values.
+1. Select the `Expected Distribution`[3] of the time column from the available options.
+1. Optionally click on the `Configure Event Mode Options` [4] button to select an `Event Mode Column` [5] and use the arrow buttons [7] to select the levels that should be accounted for in the analysis by moving them between the `Levels not Considered as Event`[6] and `Levels Considered as Event`[8] lists. `Save` or `Cancel` any changes made using the appropriate buttons [9].
+1. Once you have configured some Event Mode Options you can optionally use the `Clear Event Mode Options` [10] button to erase any selections made.
+1. Select/tick to `Use a Frequency Column` [11]. 
+1. If the `Use a Frequency Column` option is selected, specify a `Frequency Column`[12]. This column should contain non-negative numeric values.
+1. Specify the `Confidence Level` (%) [13] for Confidence Intervals and the desired `Confidence Interval Type` [14].
+1. Specify the `Max Iterations` [15] of the iterative algorithm to perform and the `Minimum Change in Parameter Estimates` [16].
+1. Select the columns by clicking on the arrow buttons [17] and moving columns between the `Excluded Columns` [18] and `Factors`[19] and `Covariates` [20] lists.
+1. Optionally, specify `Specify Reference Levels` [21] for the categorical factors.
+1. Select the prefered `Formula Type`[22].
+1. `Specify Custom Model Formula` [23] for the analysis if `Custom` option is selected. [How to specify a custom model formula?](https://www.docs/anova_ancova.html#specify-custom-model-formula)
+1. Select/tick to `Use default predictor variable values for plots` [24], otherwise `Specify Predictor Variable Values for the plots`[25]. 
+1. Click on the `Execute` button [26] to perform the Cox Proportional Hazards Model with Fixed Covariates. 
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/ALTIntervalCensored_Configuration.png" alt="ALTIntervalCensored-configuration" width="1000" height="800" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc }
+The tables summarizing the Accelerated Life Testing (Interval-Censoring) analysis results are shown in the output spreadsheet. These tables include the Goodness-of-Fit table, the Parameter Estimates table, and the ANOVA table containing Wald, likelihood ratio, and score tests for each model term.
+
+In addition, a pop-up window displays the predicted survival probability curves generated from the fitted accelerated life testing model. Separate survival curves are produced for each selected set of predictor-variable settings, allowing direct comparison of survival behavior under different accelerating conditions. Confidence interval bounds are additionally displayed according to the selected confidence interval type.
+
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/ALTIntervalCensored_output.png" alt="ALTIntervalCensored-output" width="800" height="600" class="img-responsive">
+</div>
+<div style="text-align: center;">
+<img src="images/SurvivalAnalysis/ALTIntervalCensored_chart.png" alt="ALTIntervalCensored-chart" width="500" height="500" class="img-responsive">
+</div>
+
+---
+
 ### Distribution Equations and Estimated Parameters
 
-The Univariate Parametric Analysis fits one of the selected probability distributions to the observed time-to-event data. Each distribution is defined by its probability density function $$f(t)$$, and the method estimates the unknown distribution parameters from the data.
+The Parametric Methods fit one of the selected probability distributions to the observed time-to-event data. Each distribution is defined by its probability density function $$f(t)$$, and the method estimates the unknown distribution parameters from the data.
 
 ---
 
 #### Weibull Distribution
 {: .no_toc }
-<div style="text-align: center;"> <span id="eq.Weibull pdf"> $$ \begin{equation}  
-f(t)=\frac{\alpha}{\lambda}\left(\frac{t}{\lambda}\right)^{\alpha-1}
-\exp\left[-\left(\frac{t}{\lambda}\right)^\alpha\right], \quad t \geq 0
+<div style="text-align: center;"> <span id="eq.Weibull pdf"> $$ 
+\begin{equation}  
+f(t)=\frac{\beta}{\eta}\left(\frac{t}{\eta}\right)^{\beta-1}
+\exp\left[-\left(\frac{t}{\eta}\right)^\beta\right], \quad t \geq 0
 \end{equation} $$ </span> </div>
 
 Estimated parameters:
-1. $$\alpha$$: Shape  
-2. $$\lambda$$: Scale  
+1. $$\beta$$: Shape  
+2. $$\eta$$: Scale  
 
 ---
 
 #### 3-Parameter Weibull Distribution
 {: .no_toc }
-<div style="text-align: center;"> <span id="eq.3P Weibull pdf"> $$ \begin{equation} 
-f(t)=\frac{\alpha}{\lambda}
-\left(\frac{t-\gamma}{\lambda}\right)^{\alpha-1}
-\exp\left[-\left(\frac{t-\gamma}{\lambda}\right)^\alpha\right], \quad t > \gamma
+<div style="text-align: center;"> <span id="eq.3P Weibull pdf"> $$ 
+\begin{equation} 
+f(t)=\frac{\beta}{\eta}
+\left(\frac{t-\gamma}{\eta}\right)^{\beta-1}
+\exp\left[-\left(\frac{t-\gamma}{\eta}\right)^\beta\right], \quad t > \gamma
 \end{equation} $$ </span> </div>
 
 Estimated parameters:
-1. $$\alpha$$: Shape  
-2. $$\lambda$$: Scale  
+1. $$\beta$$: Shape  
+2. $$\eta$$: Scale  
 3. $$\gamma$$: Threshold  
 
 ---
 
 #### Exponential Distribution
 {: .no_toc }
-<div style="text-align: center;"> <span id="eq.Exponential pdf"> $$ \begin{equation} 
-f(t)=\lambda \exp(-\lambda t), \quad t \geq 0
+<div style="text-align: center;"> <span id="eq.Exponential pdf"> $$ 
+\begin{equation} 
+f(t)=\lambda \exp\left(- \lambda t \right), \quad t \geq 0
 \end{equation} $$ </span> </div>
 
 Estimated parameter:
@@ -1310,8 +1819,10 @@ Estimated parameter:
 
 #### 2-Parameter Exponential Distribution
 {: .no_toc }
-<div style="text-align: center;"> <span id="eq.2P Exponential pdf"> $$ \begin{equation} 
-f(t)=\lambda \exp[-\lambda(t-\gamma)], \quad t \geq \gamma
+<div style="text-align: center;"> <span id="eq.2P Exponential pdf"> $$ 
+\begin{equation} 
+f(t)= \lambda
+\exp\left[-\lambda(t-\gamma)\right], \quad t \geq \gamma
 \end{equation} $$ </span> </div>
 
 Estimated parameters:
@@ -1322,98 +1833,11 @@ Estimated parameters:
 
 #### Normal Distribution
 {: .no_toc }
-<div style="text-align: center;"> <span id="eq.Normal pdf"> $$ \begin{equation} 
+<div style="text-align: center;"> <span id="eq.Normal pdf"> $$ 
+\begin{equation} 
 f(t)=\frac{1}{\sigma\sqrt{2\pi}}
-\exp\left[-\frac{1}{2}\left(\frac{t-\mu}{\sigma}\right)^2\right]
-\end{equation} $$ </span> </div>
-
-Estimated parameters:
-1. $$\mu$$: Mean  
-2. $$\sigma$$: Standard Deviation  
-
----
-
-#### Lognormal Distribution
-{: .no_toc }
-<div style="text-align: center;"> <span id="eq.LogNormal pdf"> $$ \begin{equation} 
-f(t)=\frac{1}{t\sigma\sqrt{2\pi}}
-\exp\left[-\frac{1}{2}\left(\frac{\ln(t)-\mu}{\sigma}\right)^2\right], \quad t > 0
-\end{equation} $$ </span> </div>
-
-Estimated parameters:
-1. $$\mu$$: Log Mean  
-2. $$\sigma$$: Log Standard Deviation  
-
----
-
-#### 3-Parameter Lognormal Distribution
-{: .no_toc }
-<div style="text-align: center;"> <span id="eq.3P LogNormal pdf"> $$ \begin{equation} 
-f(t)=\frac{1}{(t-\gamma)\sigma\sqrt{2\pi}}
-\exp\left[-\frac{1}{2}\left(\frac{\ln(t-\gamma)-\mu}{\sigma}\right)^2\right], \quad t > \gamma
-\end{equation} $$ </span> </div>
-
-Estimated parameters:
-1. $$\mu$$: Log Mean  
-2. $$\sigma$$: Log Standard Deviation  
-3. $$\gamma$$: Threshold  
-
----
-
-#### Logistic Distribution
-{: .no_toc }
-<div style="text-align: center;"> <span id="eq.Logistic pdf"> $$ \begin{equation} 
-f(t)=
-\frac{\exp\left[-\frac{t-\mu}{s}\right]}
-{s\left(1+\exp\left[-\frac{t-\mu}{s}\right]\right)^2}
-\end{equation} $$ </span> </div>
-
-Estimated parameters:
-1. $$\mu$$: Location  
-2. $$s$$: Scale  
-
----
-
-#### Loglogistic Distribution
-{: .no_toc }
-<div style="text-align: center;"> <span id="eq.LogLogistic pdf"> $$ \begin{equation} 
-f(t)=
-\frac{\alpha}{\lambda}
-\left(\frac{t}{\lambda}\right)^{\alpha-1}
-\left[1+\left(\frac{t}{\lambda}\right)^\alpha\right]^{-2}, \quad t > 0
-\end{equation} $$ </span> </div>
-
-Estimated parameters:
-1. $$\alpha$$: Shape  
-2. $$\lambda$$: Scale  
-
----
-
-#### 3-Parameter Loglogistic Distribution
-{: .no_toc }
-<div style="text-align: center;"> <span id="eq.3P LogLogistic pdf"> $$ \begin{equation} 
-f(t)=
-\frac{\alpha}{\lambda}
-\left(\frac{t-\gamma}{\lambda}\right)^{\alpha-1}
-\left[1+\left(\frac{t-\gamma}{\lambda}\right)^\alpha\right]^{-2}, \quad t > \gamma
-\end{equation} $$ </span> </div>
-
-Estimated parameters:
-1. $$\alpha$$: Shape  
-2. $$\lambda$$: Scale  
-3. $$\gamma$$: Threshold  
-
----
-
-#### Smallest Extreme Value Distribution
-{: .no_toc }
-<div style="text-align: center;"> <span id="eq.SEV pdf"> $$ \begin{equation} 
-f(t)=\frac{1}{\sigma}
-\exp\left[
-\frac{t-\mu}{\sigma}
--
-\exp\left(\frac{t-\mu}{\sigma}\right)
-\right]
+\exp\left[-\frac{1}{2}\left(\frac{t-\mu}{\sigma}\right)^2\right],
+\quad -\infty < t < \infty
 \end{equation} $$ </span> </div>
 
 Estimated parameters:
@@ -1421,6 +1845,167 @@ Estimated parameters:
 2. $$\sigma$$: Scale  
 
 ---
+
+#### Lognormal Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.LogNormal pdf"> $$ 
+\begin{equation} 
+f(t)=\frac{1}{t\sigma\sqrt{2\pi}}
+\exp\left[-\frac{1}{2}\left(\frac{\ln(t)-\mu}{\sigma}\right)^2\right],
+\quad t > 0
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\mu$$: Location  
+2. $$\sigma$$: Scale  
+
+---
+
+#### 3-Parameter Lognormal Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.3P LogNormal pdf"> $$ 
+\begin{equation} 
+f(t)=\frac{1}{(t-\gamma)\sigma\sqrt{2\pi}}
+\exp\left[-\frac{1}{2}
+\left(\frac{\ln(t-\gamma)-\mu}{\sigma}\right)^2\right],
+\quad t > \gamma
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\mu$$: Location  
+2. $$\sigma$$: Scale  
+3. $$\gamma$$: Threshold  
+
+---
+
+#### Logistic Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.Logistic pdf"> $$ 
+\begin{equation} 
+f(t)=
+\frac{\exp\left(-\frac{t-\mu}{\sigma}\right)}
+{\sigma\left[1+\exp\left(-\frac{t-\mu}{\sigma}\right)\right]^2},
+\quad -\infty < t < \infty
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\mu$$: Location  
+2. $$\sigma$$: Scale  
+
+---
+
+#### Loglogistic Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.LogLogistic pdf"> $$ 
+\begin{equation} 
+f(t)=
+\frac{1}{\sigma t}
+\frac{\exp\left(\frac{\ln(t)-\mu}{\sigma}\right)}
+{\left[1+\exp\left(\frac{\ln(t)-\mu}{\sigma}\right)\right]^2},
+\quad t > 0
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\mu$$: Location  
+2. $$\sigma$$: Scale  
+
+---
+
+#### 3-Parameter Loglogistic Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.3P LogLogistic pdf"> $$ 
+\begin{equation} 
+f(t)=
+\frac{1}{\sigma (t-\gamma)}
+\frac{\exp\left(\frac{\ln(t-\gamma)-\mu}{\sigma}\right)}
+{\left[1+\exp\left(\frac{\ln(t-\gamma)-\mu}{\sigma}\right)\right]^2},
+\quad t > \gamma
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\mu$$: Location  
+2. $$\sigma$$: Scale  
+3. $$\gamma$$: Threshold  
+
+---
+
+#### Smallest Extreme Value Distribution
+{: .no_toc }
+<div style="text-align: center;"> <span id="eq.SEV pdf"> $$ 
+\begin{equation} 
+f(t)=\frac{1}{\sigma}
+\exp\left[
+\frac{t-\mu}{\sigma}
+-
+\exp\left(\frac{t-\mu}{\sigma}\right)
+\right],
+\quad -\infty < t < \infty
+\end{equation} $$ </span> </div>
+
+Estimated parameters:
+1. $$\mu$$: Location  
+2. $$\sigma$$: Scale  
+
+---
+
+### Anderson–Darling Test Statistic
+The Anderson–Darling statistic is a goodness-of-fit measure used to evaluate how well the selected parametric distribution describes the observed data. Unlike goodness-of-fit measures that weight all portions of the distribution equally, the Anderson–Darling statistic places greater emphasis on the tails of the distribution, making it particularly sensitive to deviations in extreme values.
+
+The statistic is calculated using the empirical plotting positions together with the cumulative probabilities predicted by the fitted distribution. Let $$z_i$$ denote the ordered plotting positions and let $$F_i$$ denote the corresponding fitted cumulative probabilities. The Anderson–Darling statistic is computed through an integrated discrepancy measure between the empirical and fitted distributions:
+
+<div style="text-align: center;"> $$ \begin{equation} A^2 = n \sum_{i=1}^{n+1} \left( A_i + B_i + C_i \right) \end{equation} $$ </div>
+
+where the individual components are defined as:
+
+<div style="text-align: center;"> $$ \begin{equation} A_i = -z_i -\log(1-z_i) +z_{i-1} +\log(1-z_{i-1}) \end{equation} $$ </div> <div style="text-align: center;"> $$ \begin{equation} B_i = 2 \log(1-z_i)F_{i-1} - 2 \log(1-z_{i-1})F_{i-1} \end{equation} $$ </div> <div style="text-align: center;"> $$ \begin{equation} C_i = \log(z_i)F_{i-1}^2 - \log(1-z_i)F_{i-1}^2 - \log(z_{i-1})F_{i-1}^2 + \log(1-z_{i-1})F_{i-1}^2 \end{equation} $$ </div>
+
+where n is the sample size.
+
+To ensure numerical stability, the plotting positions are internally constrained to lie within the interval:
+
+<div style="text-align: center;"> $$ \begin{equation} \epsilon \le z_i \le 1-\epsilon \end{equation} $$ </div>
+
+with a small positive constant ϵ.
+
+Smaller Anderson–Darling values indicate better agreement between the fitted distribution and the observed data, while larger values suggest poorer fit.
+
+### Pearson Correlation Coefficient for Probability Plots
+It quantifies the strength of the linear relationship between the empirical quantiles of the observed data and the theoretical quantiles implied by the fitted distribution.
+
+Before computing the correlation coefficient, the data and theoretical quantiles are transformed according to the selected parametric distribution. The transformation depends on the distributional form:
+
+#### Logarithmic Transformation
+{: .no_toc }
+
+For the Weibull, Exponential, Lognormal, and Loglogistic distributions:
+
+<div style="text-align: center;"> $$ \begin{equation} y = \log(x) \end{equation} $$ </div>
+
+where $$x>0$$.
+
+#### Shifted Logarithmic Transformation
+{: .no_toc }
+
+For the 3-Parameter Weibull, 2-Parameter Exponential, 3-Parameter Lognormal, and 3-Parameter Loglogistic distributions:
+
+<div style="text-align: center;"> $$ \begin{equation} y = \log(x-\gamma) \end{equation} $$ </div>
+
+where γ is the estimated threshold parameter and x>γ.
+
+#### No Transformation
+{: .no_toc }
+
+For the Normal, Logistic, and Smallest Extreme Value distributions:
+
+<div style="text-align: center;"> $$ \begin{equation} y = x \end{equation} $$ </div>
+
+After transformation, the Pearson correlation coefficient is computed between the transformed empirical quantiles and the transformed theoretical quantiles:
+
+<div style="text-align: center;"> $$ \begin{equation} r = \frac{ \sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y}) }{ \sqrt{ \sum_{i=1}^{n}(x_i-\bar{x})^2 \sum_{i=1}^{n}(y_i-\bar{y})^2 } } \end{equation} $$ </div>
+
+where $$x_i$$ denotes the transformed empirical quantiles and $$y_i$$ denotes the transformed theoretical quantiles.
+
+Values of the Pearson correlation coefficient close to 1 indicate strong linear agreement between the empirical and theoretical quantiles and therefore suggest that the selected distribution provides a good fit to the observed data.
 
 ## References {#references-survivalAnalysis}
 1. Emmert-Streib, Frank, and Matthias Dehmer. "Introduction to survival analysis in practice." Machine Learning and Knowledge Extraction 1, no. 3 (2019): 1013-1038. [doi.org/10.3390/make1030058](https://doi.org/10.3390/make1030058).
@@ -1439,4 +2024,4 @@ Estimated parameters:
 ## Version History
 Introduced in Isalos Analytics Platform v2.0.3
 
-_Instructions last updated on April 2026_
+_Instructions last updated on May 2026_
