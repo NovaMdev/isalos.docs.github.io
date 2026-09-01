@@ -706,6 +706,115 @@ The output data of the calculation is presented in the right-hand spreadsheet of
 </div>
 
 ---
+
+## Correlation Analysis
+
+Correlation analysis quantifies the strength and direction of the linear or monotonic relationship between pairs of numerical columns. For each pair of included columns a correlation coefficient and an associated p-value are computed. Optionally, columns that are redundant with respect to a user-defined threshold are identified and flagged for removal, supporting feature selection workflows.<sup>[1](#references-basic-statistics)</sup>
+
+Three correlation methods are available:
+
+**Pearson** — measures the linear relationship between two continuous variables. The Pearson correlation coefficient r is calculated as:
+
+$$
+r =
+\frac{
+\sum_{i=1}^{n}(x_i-\bar{x})(y_i-\bar{y})
+}{
+\sqrt{
+\sum_{i=1}^{n}(x_i-\bar{x})^2
+\sum_{i=1}^{n}(y_i-\bar{y})^2
+}
+}
+$$
+
+where x<sub>i</sub> and y<sub>i</sub> are the paired observations, x̄ and ȳ are their respective means, and n is the number of paired observations. The coefficient r ranges from −1 (perfect negative linear correlation) to +1 (perfect positive linear correlation), with 0 indicating no linear correlation.
+
+P-values are computed from the t-distribution with n − 2 degrees of freedom:
+
+$$
+t = r \sqrt{\frac{n-2}{1-r^2}}, \quad
+p = 2\left(1-F_t\left(|t|,\,n-2\right)\right)
+$$
+
+**Spearman** — a rank-based measure of monotonic association. Data are replaced by their ranks and Pearson's formula is applied to the ranked values. P-values use the same t-statistic approximation as Pearson.
+
+**Kendall's Tau** — measures the proportion of concordant minus discordant pairs relative to the total number of pairs. The p-value is computed from a normal approximation of the S statistic with variance correction for tied values:
+
+$$z = \frac{S}{\sqrt{\mathrm{Var}(S)}}, \quad p = 2\,\Phi(-|z|)$$
+
+where S = τ · √((n₀ − tieX)(n₀ − tieY)), n₀ = n(n−1)/2, and Var(S) includes tie-correction terms for both variables.
+
+**Redundancy filtering**
+
+When a threshold is specified, the algorithm performs a greedy forward sweep over all pairs (i, j) with i < j in the order they appear in the Included Columns list. If abs(coefficient(i, j)) ≥ threshold and column i has not already been flagged for removal, column j is flagged. The `Removed | Highly Correlated` column in the output records which column was flagged and by which column it was first made redundant, tracing the justification back to the original root cause. Columns that survive (are never flagged) are appended to the output table as data columns. When no threshold is set (or threshold = 1.0), no columns are flagged and all included columns are appended to the output.
+
+Use the `Correlation Analysis` function by browsing in the top ribbon:
+
+| Statistics $$\rightarrow$$ Basic Statistics $$\rightarrow$$ Correlation Analysis |
+
+#### Input
+{: .no_toc }
+
+The input spreadsheet consists of numerical columns without missing values. At least 2 complete numerical columns are required. Columns with missing values are automatically excluded from the available column list.
+
+#### Configuration
+{: .no_toc }
+
+| **Excluded Columns** | Lists all eligible numerical columns not yet selected. |
+| **Included Columns** | Lists the columns to be analysed. At least 2 columns must be present. |
+| **Method** | Select the correlation method: `Pearson`, `Spearman`, or `Kendall's Tau`. Default: Pearson. |
+| **Threshold** | Specify a value in [0.0, 1.0] for the redundancy-filtering threshold. Pairs whose absolute correlation coefficient meets or exceeds this value trigger removal of the later column. Default: 1.0. |
+
+#### Output
+{: .no_toc }
+
+The output table contains one row per column pair, followed by the surviving data columns appended to the right. The fixed columns are:
+
+| Column | Content |
+|---|---|
+| `Column 1` | Name of the first column in the pair. |
+| `Column 2` | Name of the second column in the pair. |
+| `Correlation Value` | The computed correlation coefficient for this pair. |
+| `p-Value` | The p-value associated with the computed correlation coefficient, indicating the statistical significance of the observed correlation. |
+| `Removed \| Highly Correlated` | If a column is flagged as redundant on this row, contains `<Removed column> \| <Highly-Correlated column>`; otherwise empty. |
+
+After the five fixed columns, each surviving column (not flagged for removal) is appended as a data column with its original values.
+
+#### Example
+{: .no_toc }
+
+##### Input
+{: .no_toc }
+
+In the left-hand spreadsheet of the tab import the data matrix. Each column should represent a distinct numerical variable to be correlated. Columns with missing values will not be available for selection.
+
+<div style="text-align: center;">
+<img src="images/Correlation Analysis/correlation-analysis-input.png" alt="Correlation Analysis input" width="400" height="300" class="img-responsive">
+</div>
+
+##### Configuration
+{: .no_toc }
+
+1. Select `Statistics` $$\rightarrow$$ `Basic Statistics` $$\rightarrow$$ `Correlation Analysis`.
+1. Move the columns to analyse from the `Excluded Columns` list [1] to the `Included Columns` list [2] using the arrow buttons [3].
+1. Select the correlation `Method` [4]: Pearson, Spearman, or Kendall's Tau.
+1. Optionally enter a `Threshold` [5] in [0.0, 1.0] to enable redundancy filtering. Leave blank to report all pairs without flagging any column.
+1. Click the `Execute` button [6] to run the analysis.
+
+<div style="text-align: center;">
+<img src="images/Correlation Analysis/correlation-analysis-configuration.png" alt="Correlation Analysis configuration" width="400" height="300" class="img-responsive">
+</div>
+
+##### Output
+{: .no_toc }
+
+In the right-hand spreadsheet of the tab, each row corresponds to one column pair. The first five columns report the pair names, correlation coefficient, p-value, and any redundancy flag. Surviving columns (not flagged for removal) are appended to the right as data columns.
+
+<div style="text-align: center;">
+<img src="images/Correlation Analysis/correlation-analysis-output.png" alt="Correlation Analysis output" width="400" height="300" class="img-responsive">
+</div>
+
+---
 ## Hypothesis Testing
 Hypothesis testing is a statistical method used to decide whether the sample data sufficiently supports a particular hypothesis about a population. It generally involves formulating two competing hypotheses, the null hypothesis ($H_0$) and the alternative hypothesis ($H_a$), and then collecting data to assess the evidence. The null hypothesis ($H_0$) is the hypothesis that there is no effect or difference, and it assumes that any observed differences in the data are due to random chance. The alternative Hypothesis ($H_a$) is the hypothesis that challenges the null, proposing that there is a true effect or difference in the population.
 
@@ -1029,4 +1138,4 @@ In the right-hand spreadsheet of the tab the output data displays the count (ins
 ## Version History
 Introduced in Isalos Analytics Platform v0.2.4
 
-_Instructions last updated on July 2024_
+_Instructions last updated on August 2026_
