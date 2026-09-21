@@ -30,6 +30,11 @@ Below are some use cases of Isalos Analytics Platform in environmental applicati
 * [Isalos workflow](files\DoE\Environmental\PFAS Fate\pfas_env_fate_v212.iap)
 * [Report](files\DoE\Environmental\PFAS Fate\pfas_env_fate_v212.pdf)
 
+#### Application of environmental fate modelling tool for nanomaterials ([`Halton Design`](https://www.docs.isalos.novamechanics.com/space-filling.html#halton-design))
+{: .no_toc }
+* [Isalos workflow](files\DoE\Environmental\2026_Mintis\2026_Mintis_Halton_Design.iap)
+* [Report](files\DoE\Environmental\2026_Mintis\2026_Mintis_env.pdf)
+
 
 ## ANOVA
 

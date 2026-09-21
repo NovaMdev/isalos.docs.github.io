@@ -35,3 +35,12 @@ Below are some use cases of Isalos Analytics Platform in analytical chemistry ap
 * [Isalos workflow](files\DoE\Analytical chemistry\2016_Terzic\2016_Terzic_v212.iap)
 * [Report](files\DoE\Analytical chemistry\2016_Terzic\2016_Terzic_v212.pdf)
 
+#### Optimization of methylal production ([`Extreme vertices`](https://www.docs.isalos.novamechanics.com/mixtures.html#extreme-vertices))
+{: .no_toc }
+* [Isalos workflow](files\DoE\Analytical chemistry\2016_Damiri\2016_Damiri_extreme vertices.iap)
+* [Report](files\DoE\Analytical chemistry\2016_Damiri\2016_Damiri_v220.pdf)
+
+#### Chemical process optimization ([`Taguchi Design`](https://www.docs.isalos.novamechanics.com/robust-parameter.html#robust-parameter))
+{: .no_toc }
+* [Isalos workflow](files\DoE\Analytical chemistry\2013_Patyal\2013_Patyal_Robust designs.iap)
+* [Report](files\DoE\Analytical chemistry\2013_Patyal\2013_Patyal_v220.pdf)

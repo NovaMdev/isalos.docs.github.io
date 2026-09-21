@@ -90,6 +90,44 @@ Below are some use cases of Isalos Analytics Platform in DOE applications. Each 
 * [Report](files\DoE\Pharmaceuticals\2016_Patel\2016_Patel_v212.pdf)
 
 
+## Mixture Designs
+#### Optimization of methylal production ([`Extreme vertices`](https://www.docs.isalos.novamechanics.com/mixtures.html#extreme-vertices))
+{: .no_toc }
+* [Isalos workflow](files\DoE\Analytical chemistry\2016_Damiri\2016_Damiri_extreme vertices.iap)
+* [Report](files\DoE\Analytical chemistry\2016_Damiri\2016_Damiri_v220.pdf)
+
+#### Development of Darunavir loaded self micro emulsifying drug delivery system ([`Extreme vertices`](https://www.docs.isalos.novamechanics.com/mixtures.html#extreme-vertices))
+{: .no_toc }
+* [Isalos workflow](files\DoE\Pharmaceuticals\2020_Reddy\2020_Reddy_extreme vertices.iap)
+* [Report](files\DoE\Pharmaceuticals\2020_Reddy\2020_Reddy_v220.pdf)
+
+#### Formulation and characterization of hybrid oil as feedstock ([`Simplex Lattice`](https://www.docs.isalos.novamechanics.com/mixtures.html#simplex-methods))
+{: .no_toc }
+* [Isalos workflow](files\DoE\Energy\2019_Nouadjep\2019_Nouadjep_Simplex Lattice.iap)
+* [Report](files\DoE\Energy\2019_Nouadjep\2019_Nouadjep_v220.pdf)
+
+#### Design of all-solid waste red mud-based cementious materials ([`Simplex Centroid`](https://www.docs.isalos.novamechanics.com/mixtures.html#simplex-methods))
+{: .no_toc }
+* [Isalos workflow](files\DoE\Materials\2024_Cui\2024_Cui_Simplex Centroid.iap)
+* [Report](files\DoE\Materials\2024_Cui\2024_Cui_v220.pdf)
+
+
+## Space Filling Designs
+
+#### Application of environmental fate modelling tool for nanomaterials ([`Halton Design`](https://www.docs.isalos.novamechanics.com/space-filling.html#halton-design))
+{: .no_toc }
+* [Isalos workflow](files\DoE\Environmental\2026_Mintis\2026_Mintis_Halton_Design.iap)
+* [Report](files\DoE\Environmental\2026_Mintis\2026_Mintis_env.pdf)
+
+
+## Robust Parameter Designs
+
+#### Chemical process optimization ([`Taguchi Design`](https://www.docs.isalos.novamechanics.com/robust-parameter.html#robust-parameter))
+{: .no_toc }
+* [Isalos workflow](files\DoE\Analytical chemistry\2013_Patyal\2013_Patyal_Robust designs.iap)
+* [Report](files\DoE\Analytical chemistry\2013_Patyal\2013_Patyal_v220.pdf)
+
+
 ## Combination
 
 #### Bilastine determination by hydrophilic interaction LC ([`Box Behnken`](https://www.docs.isalos.novamechanics.com///response-surface.html) & [`Fractional Factorial`](https://www.docs.isalos.novamechanics.com//screening.html))
