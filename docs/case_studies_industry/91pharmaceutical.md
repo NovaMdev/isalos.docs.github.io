@@ -79,6 +79,11 @@ Below are some use cases of Isalos Analytics Platform in pharmaceutical applicat
 * [Isalos workflow](files\DoE\Pharmaceuticals\2017_Valenzuela-Oses\2017_Valenzuela-Oses_v212.iap)
 * [Report](files\DoE\Pharmaceuticals\2017_Valenzuela-Oses\2017_Valenzuel-Oses_v212.pdf)
 
+#### Development of Darunavir loaded self micro emulsifying drug delivery system ([`Extreme vertices`](https://www.docs.isalos.novamechanics.com/mixtures.html#extreme-vertices))
+{: .no_toc }
+* [Isalos workflow](files\DoE\Pharmaceuticals\2020_Reddy\2020_Reddy_extreme vertices.iap)
+* [Report](files\DoE\Pharmaceuticals\2020_Reddy\2020_Reddy_v220.pdf)
+
 
 ## AutoML
 

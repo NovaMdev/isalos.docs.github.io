@@ -1,16 +1,16 @@
 ---
 layout: default
-title: 9.15 Materials
+title: 9.16 Energy
 parent: 9. Use Cases per Industry
-nav_order: 15
-permalink: /case_studies_industry_materials.html
-description: "Material science case studies in Isalos."
+nav_order: 16
+permalink: /case_studies_industry_energy.html
+description: "Energy case studies in Isalos."
 ---
 
-# Material Science
+# Energy
 {: .no_toc }
 
-Below are some use cases of Isalos Analytics Platform in material science applications. Each case study is accompanied by:
+Below are some use cases of Isalos Analytics Platform in applications regarding the energy sector. Each case study is accompanied by:
 * A **Manual User Guide report**, providing a detailed, step-by-step description of the methodology and results, and
 * the corresponding **Isalos workflow file**, enabling full reproducibility and hands-on execution of the analysis within the platform.
 
@@ -25,9 +25,8 @@ Below are some use cases of Isalos Analytics Platform in material science applic
 
 
 ## Design of Experiments
-
-#### Design of all-solid waste red mud-based cementious materials ([`Simplex Centroid`](https://www.docs.isalos.novamechanics.com/mixtures.html#simplex-methods))
+#### Formulation and characterization of hybrid oil as feedstock ([`Simplex Lattice`](https://www.docs.isalos.novamechanics.com/mixtures.html#simplex-methods))
 {: .no_toc }
-* [Isalos workflow](files\DoE\Materials\2024_Cui\2024_Cui_Simplex Centroid.iap)
-* [Report](files\DoE\Materials\2024_Cui\2024_Cui_v220.pdf)
+* [Isalos workflow](files\DoE\Energy\2019_Nouadjep\2019_Nouadjep_Simplex Lattice.iap)
+* [Report](files\DoE\Energy\2019_Nouadjep\2019_Nouadjep_v220.pdf)
 
